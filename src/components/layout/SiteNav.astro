@@ -1,9 +1,11 @@
 ---
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
 const navItems = [
-  { href: '/', label: 'Works' },
-  { href: '/themes', label: 'Themes' },
-  { href: '/writing', label: 'Writing' },
-  { href: '/about', label: 'About' },
+  { href: base + '/', label: 'Works' },
+  { href: base + '/themes', label: 'Themes' },
+  { href: base + '/writing', label: 'Writing' },
+  { href: base + '/about', label: 'About' },
 ];
 
 const currentPath = Astro.url.pathname;
@@ -11,7 +13,7 @@ const currentPath = Astro.url.pathname;
 
 <header class="site-header">
   <nav class="site-nav">
-    <a href="/" class="brand">Portfolio</a>
+    <a href="/" class="brand">Zong Xuezhen</a>
     <ul class="nav-list">
       {navItems.map(item => (
         <li>

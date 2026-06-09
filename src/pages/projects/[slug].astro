@@ -26,8 +26,8 @@ const { Content } = await render(project);
 
     <div class="project-meta">
       <dl>
-        <dt>年份</dt><dd>{project.data.year}</dd>
-        <dt>媒介</dt><dd>{project.data.medium}</dd>
+        <dt>日期</dt><dd>{project.data.publishDate.toLocaleDateString('zh-CN')}</dd>
+        <dt>标签</dt><dd>{project.data.tags.join(' / ')}</dd>
       </dl>
     </div>
 

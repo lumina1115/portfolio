@@ -1,1 +1,197 @@
-<html></html>
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteNav from '../../components/layout/SiteNav.astro';
+
+const projects = await getCollection('projects');
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+// 主题中文映射
+const themeLabels: Record<string, string> = {
+  'dark-tech': '暗黑科技',
+  'warm-craft': '温暖工艺',
+  'minimalist': '极简主义',
+};
+
+// 按 theme 分组
+const grouped = new Map<string, typeof projects>();
+for (const p of projects) {
+  const t = p.data.theme || 'minimalist';
+  if (!grouped.has(t)) grouped.set(t, []);
+  grouped.get(t)!.push(p);
+}
+---
+
+<BaseLayout title="Themes — 宗雪祯">
+  <SiteNav slot="nav" />
+  <main class="themes-page">
+
+    <header class="page-header">
+      <h1>Projects</h1>
+      <p class="subtitle">按设计主题浏览作品</p>
+    </header>
+
+    {
+      [...grouped.entries()].map(([themeKey, items]) => (
+        <section class="theme-group">
+          <h2 class="theme-title">
+            <span class="theme-dot" data-theme={themeKey}></span>
+            {themeLabels[themeKey] || themeKey}
+          </h2>
+          <div class="project-grid">
+            {items.map(project => (
+              <a
+                href={`${base}/projects/${project.id}`}
+                class="project-card"
+                data-theme={themeKey}
+              >
+                <div class="card-cover">
+                  <img
+                    src={project.data.coverUrl}
+                    alt={project.data.title}
+                    loading="lazy"
+                  />
+                </div>
+                <div class="card-body">
+                  <h3 class="card-title">{project.data.title}</h3>
+                  {project.data.subtitle && (
+                    <p class="card-subtitle">{project.data.subtitle}</p>
+                  )}
+                  <p class="card-summary">{project.data.summary}</p>
+                  <div class="card-tags">
+                    {project.data.tags.map(tag => (
+                      <span class="tag">{tag}</span>
+                    ))}
+                  </div>
+                </div>
+              </a>
+            ))}
+          </div>
+        </section>
+      ))
+    }
+  </main>
+</BaseLayout>
+
+<style>
+  .themes-page {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: var(--space-8) var(--space-5) var(--space-9);
+  }
+
+  .page-header {
+    margin-bottom: var(--space-8);
+  }
+  .page-header h1 {
+    font-size: var(--text-3xl);
+    margin: 0 0 var(--space-2);
+  }
+  .subtitle {
+    font-family: var(--font-sans);
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    margin: 0;
+  }
+
+  /* 主题分组 */
+  .theme-group {
+    margin-bottom: var(--space-8);
+  }
+  .theme-title {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-family: var(--font-sans);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-text-secondary);
+    margin: 0 0 var(--space-5);
+    padding-bottom: var(--space-3);
+    border-bottom: 1px solid var(--color-divider);
+  }
+  .theme-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-accent);
+  }
+  .theme-dot[data-theme="dark-tech"]  { background: #2B2620; }
+  .theme-dot[data-theme="warm-craft"] { background: #C47B4A; }
+  .theme-dot[data-theme="minimalist"]  { background: #8B8B8B; }
+
+  /* 项目卡片网格 */
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: var(--space-6);
+  }
+
+  .project-card {
+    display: block;
+    border: none;
+    color: inherit;
+    background: transparent;
+    transition: opacity 0.3s ease;
+  }
+  .project-card:hover {
+    opacity: 0.75;
+  }
+
+  .card-cover {
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: #E8E6E0;
+    margin-bottom: var(--space-3);
+  }
+  .card-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+  .project-card:hover .card-cover img {
+    transform: scale(1.04);
+  }
+
+  .card-body {
+    padding: 0 var(--space-1);
+  }
+  .card-title {
+    font-size: var(--text-lg);
+    font-weight: 600;
+    margin: 0 0 var(--space-1);
+  }
+  .card-subtitle {
+    font-family: var(--font-sans);
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    margin: 0 0 var(--space-2);
+  }
+  .card-summary {
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    margin: 0 0 var(--space-3);
+    line-height: var(--leading-normal);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-1);
+  }
+  .tag {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    color: var(--color-text-secondary);
+    background: #F0EFEB;
+    padding: 2px 8px;
+    border-radius: 3px;
+  }
+</style>

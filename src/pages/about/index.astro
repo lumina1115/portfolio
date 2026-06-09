@@ -1,1 +1,70 @@
-<html></html>
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteNav from '../../components/layout/SiteNav.astro';
+---
+
+<BaseLayout title="About — 宗雪祯">
+  <SiteNav slot="nav" />
+  <main class="about">
+    <section class="hero">
+      <h1>宗雪祯</h1>
+      <p class="school">浙江科技大学 · 工业设计 · 2027 届</p>
+    </section>
+
+    <section class="bio">
+      <p>
+        我是浙江科技大学工业设计专业的学生，预计 2027 年毕业。
+        关注产品设计、用户体验与可持续设计方向，
+        希望通过设计连接人与物、功能与美。
+      </p>
+    </section>
+
+    <section class="contact">
+      <h2>联系方式</h2>
+      <ul>
+        <li>📧 <a href="mailto:3233507383@qq.com">3233507383@qq.com</a></li>
+      </ul>
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+  .about {
+    max-width: var(--measure);
+    margin: 0 auto;
+    padding: var(--space-8) var(--space-5);
+  }
+  .hero {
+    margin-bottom: var(--space-7);
+  }
+  .hero h1 {
+    font-size: var(--text-3xl);
+    margin: 0 0 var(--space-2);
+  }
+  .school {
+    font-family: var(--font-sans);
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    margin: 0;
+  }
+  .bio {
+    margin-bottom: var(--space-7);
+  }
+  .bio p {
+    margin: 0 0 var(--space-3);
+  }
+  .contact h2 {
+    font-size: var(--text-base);
+    margin: 0 0 var(--space-2);
+  }
+  .contact ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .contact li {
+    font-family: var(--font-sans);
+    font-size: var(--text-sm);
+    margin-bottom: var(--space-2);
+  }
+</style>

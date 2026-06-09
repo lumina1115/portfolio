@@ -1,0 +1,10 @@
+{
+  "name": "portfolio-image-cdn",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "deploy": "wrangler deploy",
+    "upload": "bash upload.sh",
+    "dev": "wrangler dev"
+  }
+}

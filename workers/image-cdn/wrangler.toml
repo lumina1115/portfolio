@@ -1,0 +1,15 @@
+# Cloudflare Worker 图床配置
+# 使用 R2 存储图片，Worker 负责分发
+# 部署前请确保已在 Cloudflare Dashboard 开通 R2
+
+name = "portfolio-image-cdn"
+main = "src/index.ts"
+compatibility_date = "2026-06-09"
+
+# R2 存储桶绑定
+[[r2_buckets]]
+binding = "IMAGES"
+bucket_name = "portfolio-images"
+
+[observability]
+enabled = true
