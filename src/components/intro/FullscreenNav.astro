@@ -1,321 +1,262 @@
----
-// FullscreenNav.astro — fullscreen directory page
-// Appears directly after SplashOverlay dismisses
-// 4 items: ABOUT, PROJECTS, ARCHIVE, CONTACT
-
+﻿---
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
-
-interface NavItem {
-  number: string;
-  label: string;
-  href: string;
-}
-
-const navItems: NavItem[] = [
-  { number: '01', label: 'ABOUT',    href: base + '/about' },
-  { number: '02', label: 'PROJECTS', href: base + '/projects' },
-  { number: '03', label: 'ARCHIVE',  href: base + '/writing' },
-  { number: '04', label: 'CONTACT',  href: base + '/about' },
-];
 ---
 
-<div class="fs-root">
-  <!-- Subtle header -->
-  <div class="fs-header">
-    <a href={base + '/'} class="fs-header_name">ZONG XUEZHEN</a>
-  </div>
+<main class="home-root" id="top">
+  <section class="home-hero">
+    <div class="home-hero__left">
+      <div class="home-spacer" aria-hidden="true"></div>
+      <div class="home-intro">
+        <p>
+          我不只把作品当作交付物，而是把它看作产品、情绪和体验之间的表达方式。
+        </p>
+        <a class="text-button-shell" href={base + '/about'}>
+          <span class="text-button">Get in Touch</span>
+        </a>
+      </div>
+    </div>
 
-  <!-- Directory (always visible) -->
-  <div class="fs-directory">
-    {navItems.map((item, i) => (
-      <>
-        {i > 0 && <div class="fs-line" data-nav="line"></div>}
-        <div class="fs-row">
-          <div class="fs-img-slot" data-nav="img-slot">
-            <div class="fs-placeholder" data-nav="placeholder"></div>
-          </div>
-          <div class="fs-link-wrap">
-            <a
-              nav-number={item.number}
-              href={item.href}
-              class="fs-link"
-              data-nav="link"
-            >
-              {item.label}
-            </a>
-          </div>
-          <div class="fs-img-slot" data-nav="img-slot">
-            <div class="fs-placeholder" data-nav="placeholder"></div>
-          </div>
-        </div>
-      </>
-    ))}
-  </div>
-</div>
+    <div class="home-hero__right">
+      <p class="hero-line display-title">Product</p>
+      <p class="hero-line display-title">
+        <span class="serif-italic">and</span> Industrial
+      </p>
+      <p class="hero-line display-title">Design</p>
+      <p class="hero-line display-title hero-line--indent">
+        <span class="serif-italic">for</span> People
+      </p>
+    </div>
+  </section>
 
-<script>
-  import gsap from 'gsap';
+  <section class="home-about">
+    <div class="home-image-frame" aria-hidden="true">
+      <div class="home-image-card"></div>
+    </div>
+    <p>
+      Great design starts with understanding people—their stories, their needs, and the bigger picture around the product.
+      I explore opportunities in constraints and turn them into thoughtful, useful objects and systems.
+    </p>
+  </section>
 
-  function splitText(element: HTMLElement) {
-    const text = element.textContent || '';
-    element.textContent = '';
-
-    const lineWrapper = document.createElement('span');
-    lineWrapper.style.display = 'inline-block';
-    lineWrapper.style.overflow = 'hidden';
-
-    const chars: HTMLSpanElement[] = [];
-    for (const char of text) {
-      const span = document.createElement('span');
-      span.textContent = char === ' ' ? ' ' : char;
-      span.style.display = 'inline-block';
-      lineWrapper.appendChild(span);
-      chars.push(span);
-    }
-    element.appendChild(lineWrapper);
-    return { chars, lines: [lineWrapper] };
-  }
-
-  function init() {
-    const imgSlots = document.querySelectorAll<HTMLElement>('[data-nav="img-slot"]');
-    const placeholders = document.querySelectorAll<HTMLElement>('[data-nav="placeholder"]');
-    const links = document.querySelectorAll<HTMLElement>('[data-nav="link"]');
-    const lines = document.querySelectorAll<HTMLElement>('[data-nav="line"]');
-
-    if (links.length === 0) return;
-
-    // Split each link text into characters
-    const linkSplits = Array.from(links, (n) => splitText(n as HTMLElement));
-
-    // Set initial state: image slots hidden from sides
-    gsap.set(imgSlots, {
-      clipPath: (index) =>
-        index % 2 === 1
-          ? 'inset(0% 100% 0% 0%)'
-          : 'inset(0% 0% 0% 100%)',
-    });
-
-    // ── Hover animations per row ──────────────────────────
-    links.forEach((_linkEl, index) => {
-      const { chars } = linkSplits[index];
-      if (!chars) return;
-
-      const staggerFrom = index % 2 === 0 ? 'start' : 'end';
-      const leftSlot = imgSlots[2 * index];
-      const rightSlot = imgSlots[2 * index + 1];
-      const leftPh = placeholders[2 * index];
-      const rightPh = placeholders[2 * index + 1];
-
-      links[index].addEventListener('mouseenter', () => {
-        const tl = gsap.timeline();
-        tl.to(chars, {
-          y: '-100%',
-          stagger: { each: 0.02, from: staggerFrom },
-          duration: 0.3,
-        })
-          .to(
-            [leftSlot, rightSlot],
-            { clipPath: 'inset(0% 0% 0% 0%)', duration: 0.5 },
-            0.2,
-          )
-          .fromTo(
-            [leftPh, rightPh],
-            { scale: 1.5 },
-            { scale: 1, duration: 0.75, ease: 'expo.out' },
-            0.2,
-          );
-      });
-
-      links[index].addEventListener('mouseleave', () => {
-        const tl = gsap.timeline();
-        tl.to(chars, {
-          y: 0,
-          overwrite: true,
-          stagger: { each: 0.02, from: staggerFrom },
-          duration: 0.3,
-        })
-          .to(
-            [leftSlot, rightSlot],
-            {
-              clipPath: (i: number) =>
-                i % 2 === 1
-                  ? 'inset(0% 100% 0% 0%)'
-                  : 'inset(0% 0% 0% 100%)',
-              duration: 0.5,
-            },
-            0.2,
-          )
-          .fromTo(
-            [leftPh, rightPh],
-            { scale: 1 },
-            { scale: 1.5, duration: 0.75, ease: 'power2.out' },
-            0.2,
-          );
-      });
-    });
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
-    init();
-  }
-</script>
+  <section class="home-work">
+    <p class="serif-italic home-section-title">Work</p>
+    <div class="home-work-list">
+      <a href={base + '/projects/project-1'} class="home-work-row">
+        <span>01</span>
+        <strong>Gradient</strong>
+      </a>
+      <a href={base + '/projects/project-2'} class="home-work-row">
+        <span>02</span>
+        <strong>NeuroLimb</strong>
+      </a>
+      <a href={base + '/projects/project-3'} class="home-work-row">
+        <span>03</span>
+        <strong>BirdScope</strong>
+      </a>
+    </div>
+    <a class="text-button-shell home-all-work" href={base + '/projects'}>
+      <span class="text-button">All Work</span>
+    </a>
+  </section>
+</main>
 
 <style>
-  /* ═══════════════════════════════════════════════════════
-     FullscreenNav — gradient background, always-visible directory
-     ═══════════════════════════════════════════════════════ */
+  .home-root {
+    min-height: 100vh;
+    overflow-x: hidden;
+    background: var(--color-bg);
+    color: var(--color-text);
+  }
 
-  .fs-root {
-    width: 100%;
-    height: 100vh;
+  .home-hero,
+  .home-about,
+  .home-work {
+    width: min(var(--container), 100%);
+    margin: 0 auto;
+    padding-inline: clamp(1rem, 2.4vw, 2.5rem);
+  }
+
+  .home-hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: minmax(16rem, 0.55fr) minmax(0, 1fr);
+    gap: clamp(2rem, 4vw, 4rem);
+    padding-top: clamp(4.5rem, 8vh, 6rem);
+    padding-bottom: clamp(2rem, 5vh, 4rem);
+  }
+
+  .home-hero__left {
+    min-height: calc(100vh - 8rem);
     display: flex;
     flex-direction: column;
-    overflow: hidden;
-    /* Gradient matching the splash overlay */
-    background: linear-gradient(
-      135deg,
-      rgb(255, 135, 9) 20%,
-      rgb(247, 189, 248) 70%
-    );
-    font-family: var(--font-sans, 'Inter', system-ui, sans-serif);
   }
 
-  /* ── Header ─────────────────────────────────────────── */
-  .fs-header {
-    z-index: 2;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 1.25rem 1rem;
-    flex-shrink: 0;
+  .home-spacer {
+    flex: 1;
   }
 
-  .fs-header_name {
-    color: #fffce1;
-    font-family: var(--font-sans, 'Inter', system-ui, sans-serif);
-    font-size: 0.9rem;
-    font-weight: 500;
-    letter-spacing: 0.08em;
+  .home-intro {
+    max-width: 19rem;
+    display: grid;
+    gap: 1.25rem;
+    padding-bottom: 3rem;
+  }
+
+  .home-intro p {
+    margin: 0;
+    color: var(--color-text);
+    font-size: var(--text-sm);
+    line-height: 1.55;
     text-transform: uppercase;
-    text-decoration: none;
-    border: none;
-    opacity: 0.7;
-    transition: opacity 0.3s ease;
   }
 
-  .fs-header_name:hover {
-    opacity: 1;
-  }
-
-  /* ── Directory ──────────────────────────────────────── */
-  .fs-directory {
-    flex: 1;
+  .home-hero__right {
+    align-self: end;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
-    padding: 0 1rem;
+    align-items: flex-end;
   }
 
-  /* ── Rows ───────────────────────────────────────────── */
-  .fs-row {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 5vh;
-    min-height: 0;
+  .hero-line {
+    margin: 0;
+    font-size: clamp(4.6rem, 14vw, 13rem);
+    text-align: right;
+    white-space: nowrap;
   }
 
-  /* ── Image slots (placeholders) ─────────────────────── */
-  .fs-img-slot {
-    aspect-ratio: 3 / 2;
-    flex: none;
-    width: 17.5vh;
+  .hero-line .serif-italic {
+    font-size: 0.46em;
+    text-transform: lowercase;
+    vertical-align: 0.15em;
+  }
+
+  .hero-line--indent {
+    padding-right: clamp(1rem, 9vw, 9rem);
+  }
+
+  .home-about {
+    display: grid;
+    gap: 2.5rem;
+    padding-top: clamp(4rem, 10vw, 9rem);
+    padding-bottom: clamp(4rem, 10vw, 9rem);
+  }
+
+  .home-image-frame {
+    width: min(50rem, 78vw);
+    aspect-ratio: 2.25 / 1;
+    justify-self: center;
     position: relative;
-    overflow: hidden;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--color-divider);
   }
 
-  .fs-placeholder {
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.12);
-    border: 1px dashed rgba(255, 255, 255, 0.25);
-    border-radius: 2px;
+  .home-image-card {
+    width: 46%;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    background:
+      radial-gradient(circle at 32% 35%, var(--color-accent) 0 8%, transparent 8.5%),
+      radial-gradient(circle at 68% 35%, var(--color-text-secondary) 0 8%, transparent 8.5%),
+      radial-gradient(circle at 50% 68%, var(--color-black) 0 12%, transparent 12.5%),
+      var(--color-surface);
   }
 
-  /* ── Link text ──────────────────────────────────────── */
-  .fs-link-wrap {
-    padding: 1vh 3vh;
-    position: relative;
-    overflow: hidden;
+  .home-about p {
+    max-width: 48rem;
+    margin: 0 auto;
+    color: var(--color-text);
+    font-size: var(--text-sm);
+    line-height: 1.65;
+    text-align: center;
+    text-transform: uppercase;
   }
 
-  .fs-link {
-    color: #fffce1;
-    flex: none;
-    font-family: var(--font-serif, 'EB Garamond', Georgia, serif);
-    font-size: 15vh;
-    font-weight: 600;
-    line-height: 1;
-    position: relative;
-    overflow: hidden;
-    text-decoration: none;
-    border: none;
-    text-shadow: 0px 1em 0px #cb9f4d;
-    cursor: pointer;
+  .home-work {
+    padding-top: clamp(3rem, 8vw, 7rem);
+    padding-bottom: clamp(5rem, 10vw, 9rem);
   }
 
-  .fs-link:hover {
-    opacity: 1;
+  .home-section-title {
+    margin: 0 0 2rem;
+    text-align: center;
+    font-size: clamp(3rem, 7vw, 6rem);
   }
 
-  /* Number badge (01, 02, …) */
-  .fs-link::before {
-    content: attr(nav-number);
-    font-size: 0.15em;
-    position: absolute;
-    top: 0.7em;
-    text-shadow: none;
-    opacity: 0;
-    transition: opacity 0.3s ease-out;
-    color: #fffce1;
+  .home-work-list {
+    display: grid;
+    gap: 0;
   }
 
-  .fs-row:nth-child(odd) .fs-link::before {
-    right: -1.2em;
+  .home-work-row {
+    display: grid;
+    grid-template-columns: clamp(2rem, 5vw, 4rem) minmax(0, 1fr);
+    gap: 1rem;
+    align-items: start;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--color-divider);
+    color: var(--color-text);
   }
 
-  .fs-row:nth-of-type(4n + 1) .fs-link::before {
-    left: -1.2em;
+  .home-work-row span {
+    padding-top: 0.6em;
+    color: var(--color-text-secondary);
+    font-size: var(--text-xs);
   }
 
-  /* ── Separator lines ────────────────────────────────── */
-  .fs-line {
-    width: 100%;
-    height: 2px;
-    background: rgba(255, 255, 255, 0.3);
-    flex-shrink: 0;
+  .home-work-row strong {
+    font-family: var(--font-display);
+    font-size: clamp(3.6rem, 10vw, 9rem);
+    font-weight: 400;
+    line-height: 0.82;
+    text-transform: uppercase;
   }
 
-  /* ── Performance hints ──────────────────────────────── */
-  .fs-img-slot {
-    will-change: clip-path;
+  .home-work-row:hover {
+    color: var(--color-accent);
   }
 
-  .fs-link > * {
-    will-change: transform;
+  .home-all-work {
+    margin: 2.5rem auto 0;
+    display: block;
   }
 
-  /* ── Responsive ─────────────────────────────────────── */
-  @media screen and (max-width: 640px) {
-    .fs-img-slot {
+  @media (max-width: 920px) {
+    .home-hero {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .home-hero__left {
+      min-height: auto;
+    }
+
+    .home-spacer {
       display: none;
     }
 
-    .fs-link {
-      font-size: 10vh;
+    .home-intro {
+      padding-left: 4rem;
+      padding-bottom: 1rem;
+    }
+
+    .hero-line {
+      font-size: clamp(4.2rem, 21vw, 10rem);
+    }
+  }
+
+  @media (max-width: 560px) {
+    .home-intro {
+      padding-left: 3.75rem;
+    }
+
+    .hero-line {
+      white-space: normal;
+    }
+
+    .home-work-row strong {
+      font-size: clamp(3rem, 18vw, 5.5rem);
     }
   }
 </style>
+

@@ -3,68 +3,107 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import SiteNav from '../../components/layout/SiteNav.astro';
 ---
 
-<BaseLayout title="About — 宗雪祯">
+<BaseLayout title="About — Zong Xuezhen" pageClass="about-page">
   <SiteNav slot="nav" />
-  <main class="about">
-    <section class="hero">
-      <h1>宗雪祯</h1>
-      <p class="school">浙江科技大学 · 工业设计 · 2027 届</p>
+  <main class="about-shell">
+    <section class="about-hero">
+      <p class="eyebrow">About</p>
+      <h1 class="display-title">宗雪祯</h1>
+      <p>浙江科技大学工业设计专业，2027 届。</p>
     </section>
 
-    <section class="bio">
-      <p>
-        我是浙江科技大学工业设计专业的学生，预计 2027 年毕业。
-        关注产品设计、用户体验与可持续设计方向，
-        希望通过设计连接人与物、功能与美。
-      </p>
-    </section>
+    <section class="about-grid" id="contact">
+      <article class="about-copy">
+        <p>
+          我关注产品设计、用户体验、医疗康复和可持续设计。
+          目前的作品主要围绕工业设计方法、视觉秩序与物理原型展开，强调功能、材质与交互逻辑的统一。
+        </p>
+        <p>
+          如果你需要作品集、项目介绍或合作沟通，可以直接联系我。
+        </p>
+      </article>
 
-    <section class="contact">
-      <h2>联系方式</h2>
-      <ul>
-        <li>📧 <a href="mailto:3233507383@qq.com">3233507383@qq.com</a></li>
-      </ul>
+      <aside class="about-contact">
+        <p class="about-label">Contact</p>
+        <a href="mailto:3233507383@qq.com">3233507383@qq.com</a>
+        <span>3233507383@qq.com</span>
+      </aside>
     </section>
   </main>
 </BaseLayout>
 
 <style>
-  .about {
-    max-width: var(--measure);
+  .about-shell {
+    width: min(var(--container), 100%);
     margin: 0 auto;
-    padding: var(--space-8) var(--space-5);
+    padding: clamp(1.25rem, 3vw, 2.5rem) clamp(1rem, 2.4vw, 2.5rem) clamp(4rem, 8vw, 7rem);
   }
-  .hero {
-    margin-bottom: var(--space-7);
+
+  .about-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(16rem, 26rem);
+    gap: 2rem;
+    align-items: end;
+    padding: clamp(2rem, 5vw, 4rem) 0 clamp(1.5rem, 3vw, 2.5rem);
+    border-bottom: 1px solid var(--color-divider);
   }
-  .hero h1 {
-    font-size: var(--text-3xl);
-    margin: 0 0 var(--space-2);
+
+  .about-hero h1 {
+    margin: 0;
+    font-size: clamp(5rem, 14vw, 13rem);
+    text-shadow: 0 0.82em 0 var(--color-text-secondary);
   }
-  .school {
-    font-family: var(--font-sans);
-    font-size: var(--text-sm);
+
+  .about-hero p:last-child {
+    margin: 0;
     color: var(--color-text-secondary);
+    text-transform: uppercase;
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(16rem, 22rem);
+    gap: 2rem;
+    padding-top: 2rem;
+  }
+
+  .about-copy p {
+    max-width: 42rem;
+    margin: 0 0 1.25rem;
+    color: var(--color-text);
+    font-size: var(--text-md);
+    line-height: var(--leading-loose);
+    text-transform: none;
+  }
+
+  .about-contact {
+    align-self: start;
+    display: grid;
+    gap: 0.6rem;
+    padding: 1.25rem 0 0;
+    border-top: 1px solid var(--color-divider);
+  }
+
+  .about-label {
     margin: 0;
-  }
-  .bio {
-    margin-bottom: var(--space-7);
-  }
-  .bio p {
-    margin: 0 0 var(--space-3);
-  }
-  .contact h2 {
-    font-size: var(--text-base);
-    margin: 0 0 var(--space-2);
-  }
-  .contact ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  .contact li {
+    color: var(--color-text-secondary);
     font-family: var(--font-sans);
-    font-size: var(--text-sm);
-    margin-bottom: var(--space-2);
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+  }
+
+  .about-contact a,
+  .about-contact span {
+    color: var(--color-text);
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: clamp(1.35rem, 3vw, 2rem);
+  }
+
+  @media (max-width: 860px) {
+    .about-hero,
+    .about-grid {
+      grid-template-columns: 1fr;
+    }
   }
 </style>

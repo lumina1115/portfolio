@@ -1,145 +1,36 @@
----
-// SplashOverlay.astro — rotating typewriter + GSAP blob exit
-const ROLES = ['工业设计', 'ESFP', '好奇心创作者', '原型开发'];
+﻿---
 ---
 
-<div id="splash-root">
-  <!-- Typewriter -->
+<div id="splash-root" aria-hidden="true">
+  <div class="loader-bar">
+    <div class="loader-progress"></div>
+  </div>
+
+  <div class="splash-marquee">
+    <span>ZONG XUEZHEN</span>
+    <span>ZONG XUEZHEN</span>
+  </div>
+
   <div class="splash-text-wrap">
     <span class="splash-name">宗雪祯</span>
-    <span class="splash-sep">|</span>
+    <span class="splash-sep">/</span>
     <span class="splash-role-slot">
-      <span id="splash-role" class="splash-role"></span><span id="splash-cursor" class="splash-cursor" aria-hidden="true">|</span>
+      <span class="splash-role">工业设计</span><span class="splash-cursor">|</span>
     </span>
   </div>
 
-  <!-- Click hint -->
-  <p class="splash-hint">&#123;click me&#125;</p>
-
-  <!-- Blob background -->
-  <div class="blob-wrapper">
-    <svg class="blob-svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMin slice">
-      <defs>
-        <linearGradient id="splash-grad" x1="0" y1="0" x2="99" y2="99" gradientUnits="userSpaceOnUse">
-          <stop offset="0.2" stop-color="rgb(255, 135, 9)" />
-          <stop offset="0.7" stop-color="rgb(247, 189, 248)" />
-        </linearGradient>
-      </defs>
-      <path class="blob-path" stroke="url(#splash-grad)" fill="url(#splash-grad)" stroke-width="2px" vector-effect="non-scaling-stroke" d="M 0 100 V 0 Q 50 0 100 0 V 100 z" />
-    </svg>
-  </div>
+  <p class="loader-percent">100%</p>
 </div>
-
-<!-- Immediate sessionStorage check — runs synchronously to prevent flash -->
-<script is:inline>
-  if (sessionStorage.getItem('splash-dismissed') === 'true') {
-    var el = document.getElementById('splash-root');
-    if (el) el.remove();
-  } else {
-    document.documentElement.style.overflow = 'hidden';
-    document.documentElement.style.background = '#0e100f';
-  }
-</script>
-
-<!-- Module script — uses bundled GSAP (single instance, no CDN conflict) -->
-<script>
-import gsap from 'gsap';
-
-const root = document.getElementById('splash-root');
-if (!root) { /* already dismissed by sessionStorage check */ } else {
-
-let dismissed = false;
-
-const SHAPE_START = 'M 0 100 V 50 Q 50 0 100 50 V 100 z';
-const SHAPE_FLAT  = 'M 0 100 V 100 Q 50 100 100 100 V 100 z';
-
-// ── Rotating typewriter ──────────────────────────────────
-const roleEl = document.getElementById('splash-role');
-
-if (roleEl) {
-  const roles = ['工业设计', 'ESFP', '好奇心创作者', '原型开发'];
-  let roleIdx = 0;
-  let charIdx = 0;
-  let isDeleting = false;
-  const typeSpeed = 100;
-  const deleteSpeed = 50;
-  const pauseAfterType = 1500;
-  const pauseAfterDelete = 400;
-
-  function tick() {
-    if (dismissed) return;
-    const currentRole = roles[roleIdx];
-
-    if (!isDeleting) {
-      if (charIdx < currentRole.length) {
-        roleEl.textContent += currentRole.charAt(charIdx);
-        charIdx++;
-        setTimeout(tick, typeSpeed);
-      } else {
-        isDeleting = true;
-        setTimeout(tick, pauseAfterType);
-      }
-    } else {
-      if (charIdx > 0) {
-        roleEl.textContent = currentRole.substring(0, charIdx - 1);
-        charIdx--;
-        setTimeout(tick, deleteSpeed);
-      } else {
-        isDeleting = false;
-        roleIdx = (roleIdx + 1) % roles.length;
-        setTimeout(tick, pauseAfterDelete);
-      }
-    }
-  }
-
-  setTimeout(tick, 500);
-}
-
-// ── Dismiss ─────────────────────────────────────────────
-function dismiss() {
-  if (dismissed) return;
-  dismissed = true;
-  sessionStorage.setItem('splash-dismissed', 'true');
-
-  const path = document.querySelector('.blob-path');
-  const textWrap = document.querySelector('.splash-text-wrap');
-  const hint = document.querySelector('.splash-hint');
-
-  gsap.to([textWrap, hint], {
-    opacity: 0, y: -15, duration: 0.4, ease: 'power2.in',
-  });
-
-  const tl = gsap.timeline();
-  tl.to(path, { attr: { d: SHAPE_START }, duration: 0.6, ease: 'power2.in' })
-    .to(path, { attr: { d: SHAPE_FLAT },  duration: 0.5, ease: 'power2.out' });
-
-  gsap.to(root, {
-    opacity: 0, duration: 0.2, delay: 1.1,
-    onComplete: cleanup
-  });
-}
-
-function cleanup() {
-  root.remove();
-  document.documentElement.style.overflow = '';
-  document.documentElement.style.background = '';
-}
-
-root.addEventListener('click', dismiss);
-document.addEventListener('keydown', function(e) {
-  if (!dismissed) dismiss();
-});
-
-} // end if (root)
-</script>
 
 <style>
   #splash-root {
     position: fixed;
     inset: 0;
     z-index: 99999;
-    cursor: pointer;
-    pointer-events: auto;
+    overflow: hidden;
+    color: var(--color-text);
+    background: var(--color-bg);
+    animation: splash-hide 0.55s ease 2.65s forwards;
   }
 
   #splash-root * {
@@ -147,24 +38,70 @@ document.addEventListener('keydown', function(e) {
     padding: 0;
   }
 
-  /* ── Typewriter line ──────────────────────────────────── */
+  .loader-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 4;
+    width: 100%;
+    height: 6px;
+    background: rgba(225, 203, 166, 0.24);
+  }
+
+  .loader-progress {
+    width: 100%;
+    height: 100%;
+    transform: scaleX(0);
+    transform-origin: left center;
+    background: var(--color-black);
+    animation: loader-fill 2.35s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+  }
+
+  .loader-percent {
+    position: fixed;
+    right: clamp(1.25rem, 2.6vw, 2.5rem);
+    bottom: clamp(1.25rem, 2.6vw, 2.5rem);
+    z-index: 3;
+    color: var(--color-text);
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 8vw, 6rem);
+    line-height: 0.8;
+    opacity: 0;
+    animation: percent-show 0.4s ease 1.9s forwards;
+  }
+
+  .splash-marquee {
+    position: fixed;
+    left: -1rem;
+    right: -1rem;
+    top: 10vh;
+    z-index: 2;
+    display: flex;
+    gap: 2rem;
+    color: rgba(225, 203, 166, 0.08);
+    font-family: var(--font-display);
+    font-size: clamp(4.5rem, 16vw, 12rem);
+    line-height: 0.8;
+    text-transform: uppercase;
+    white-space: nowrap;
+    pointer-events: none;
+  }
+
   .splash-text-wrap {
     position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 999999;
+    left: clamp(1.25rem, 2.6vw, 2.5rem);
+    bottom: clamp(6rem, 12vh, 9rem);
+    z-index: 3;
     display: flex;
     align-items: baseline;
-    justify-content: center;
-    gap: 0;
+    gap: 0.35em;
+    color: var(--color-text);
+    font-family: var(--font-serif);
+    font-size: clamp(1.7rem, 4vw, 4rem);
+    font-style: italic;
+    line-height: 1;
     user-select: none;
     pointer-events: none;
-    color: #fffce1;
-    font-family: var(--font-serif, 'EB Garamond', Georgia, serif);
-    font-size: clamp(1.25rem, 3vw, 2rem);
-    font-weight: 400;
-    font-style: italic;
   }
 
   .splash-name {
@@ -173,27 +110,37 @@ document.addEventListener('keydown', function(e) {
   }
 
   .splash-sep {
-    font-weight: 300;
-    white-space: nowrap;
-    margin: 0 0.35em;
-    opacity: 0.6;
+    opacity: 0.62;
   }
 
   .splash-role-slot {
-    display: inline-block;
+    display: inline-flex;
     white-space: nowrap;
-    text-align: left;
   }
 
   .splash-role {
-    font-weight: 300;
-    opacity: 0.7;
+    display: inline-block;
+    max-width: 0;
+    overflow: hidden;
     white-space: nowrap;
+    color: var(--color-text-secondary);
+    animation: type-role 1.15s steps(4, end) 0.35s forwards;
   }
 
   .splash-cursor {
-    font-weight: 200;
     animation: cursor-blink 0.8s step-end infinite;
+  }
+
+  @keyframes loader-fill {
+    to { transform: scaleX(1); }
+  }
+
+  @keyframes percent-show {
+    to { opacity: 1; }
+  }
+
+  @keyframes type-role {
+    to { max-width: 5em; }
   }
 
   @keyframes cursor-blink {
@@ -201,36 +148,19 @@ document.addEventListener('keydown', function(e) {
     50% { opacity: 0; }
   }
 
-  /* ── Click hint ──────────────────────────────────────── */
-  .splash-hint {
-    position: fixed;
-    bottom: 12%;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 999999;
-    text-align: center;
-    color: #fffce1;
-    font-family: var(--font-sans, 'Inter', system-ui, sans-serif);
-    font-size: 14px;
-    font-weight: 400;
-    letter-spacing: 0.06em;
-    cursor: pointer;
-    user-select: none;
-    pointer-events: none;
-    opacity: 0.7;
+  @keyframes splash-hide {
+    to {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
   }
 
-  /* ── Blob ────────────────────────────────────────────── */
-  .blob-wrapper {
-    pointer-events: none;
-    min-height: 100vh;
-  }
-
-  .blob-svg {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
+  @media (max-width: 640px) {
+    .splash-text-wrap {
+      flex-wrap: wrap;
+      max-width: calc(100vw - 2.5rem);
+      bottom: 6.25rem;
+    }
   }
 </style>

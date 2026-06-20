@@ -1,351 +1,137 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteNav from '../../components/layout/SiteNav.astro';
 
 const projects = await getCollection('projects');
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
-
-const featuredIds = ['project-1', 'project-2', 'project-3', 'project-4'];
-const featured = featuredIds
-  .map(id => projects.find(p => p.id === id))
-  .filter(Boolean);
-
-const linkColors = ['#5EBED6', '#F09060', '#B8CC28', '#F08090'];
-const cdnBase = 'https://portfolio-image-cdn.zongxz66.workers.dev';
+const sorted = [...projects].sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf());
 ---
 
-<BaseLayout title="Projects">
-  <!-- Outfit font -->
-  <link
-    rel="preconnect"
-    href="https://fonts.googleapis.com"
-    crossorigin
-  />
-  <link
-    rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;800&display=swap"
-  />
-
-  <div class="container">
-    <div class="spacer"></div>
-
-    <div class="arch">
-      <div class="arch__left">
-        {
-          featured.map((project, i) => (
-            <div class="arch__info" id={`arch-${i}`}>
-              <div class="content">
-                <h2 class="header">{project.data.title.split(' — ')[0]}</h2>
-                <p class="desc">{project.data.summary}</p>
-                <a
-                  class="link"
-                  href={`${base}/projects/${project.id}`}
-                  style={`background-color: ${linkColors[i]}`}
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="11"
-                    height="11"
-                    fill="none"
-                  >
-                    <path
-                      fill="#121212"
-                      d="M5 2c0 1.105-1.895 2-3 2a2 2 0 1 1 0-4c1.105 0 3 .895 3 2ZM11 3.5c0 1.105-.895 3-2 3s-2-1.895-2-3a2 2 0 1 1 4 0ZM6 9a2 2 0 1 1-4 0c0-1.105.895-3 2-3s2 1.895 2 3Z"
-                    />
-                  </svg>
-                  <span>查看项目</span>
-                </a>
-              </div>
-            </div>
-          ))
-        }
+<BaseLayout title="Work — Zong Xuezhen" pageClass="projects-page">
+  <SiteNav slot="nav" />
+  <main class="projects-shell">
+    <section class="projects-hero">
+      <p class="eyebrow">Selected Work</p>
+      <div class="projects-hero-title">
+        <h1 class="display-title">Work</h1>
+        <p>Product design, interaction systems, and medical devices.</p>
       </div>
+    </section>
 
-      <div class="arch__right">
-        {
-          featured.map((project, i) => (
-            <div class="img-wrapper" data-index={featured.length - i}>
-              <img
-                src={`${cdnBase}/${project.id}/cover.jpg`}
-                alt={project.data.title}
-                loading={i === 0 ? 'eager' : 'lazy'}
-              />
-            </div>
-          ))
-        }
-      </div>
-    </div>
-
-    <div class="spacer"></div>
-  </div>
-
-  <script>
-  import gsap from 'gsap';
-  import ScrollTrigger from 'gsap/ScrollTrigger';
-
-  gsap.registerPlugin(ScrollTrigger);
-
-  // ── Page-specific body overrides ─────────────────────
-  document.body.style.fontFamily = '"Outfit", sans-serif';
-  document.body.style.backgroundColor = '#EDF9FF';
-
-  let initialized = false;
-
-  function init() {
-    if (initialized) return;
-
-    // ── Kill any stale ScrollTriggers first ─────────────
-    ScrollTrigger.getAll().forEach(st => st.kill());
-
-    // ── Force scroll to top ─────────────────────────────
-    window.scrollTo(0, 0);
-    document.documentElement.scrollTop = 0;
-
-    // ── Z-index stacking for images ──────────────────────
-    const wrappers = document.querySelectorAll<HTMLElement>('.arch__right .img-wrapper');
-    wrappers.forEach((el) => {
-      const order = el.getAttribute('data-index');
-      if (order !== null) el.style.zIndex = order;
-    });
-
-    // ── Mobile layout handler ────────────────────────────
-    function handleMobileLayout() {
-      const isMobile = window.matchMedia('(max-width: 768px)').matches;
-      const leftItems = gsap.utils.toArray('.arch__left .arch__info') as HTMLElement[];
-      const rightItems = gsap.utils.toArray('.arch__right .img-wrapper') as HTMLElement[];
-
-      if (isMobile) {
-        leftItems.forEach((item, i) => { item.style.order = String(i * 2); });
-        rightItems.forEach((item, i) => { item.style.order = String(i * 2 + 1); });
-      } else {
-        leftItems.forEach((item) => { item.style.order = ''; });
-        rightItems.forEach((item) => { item.style.order = ''; });
-      }
-    }
-    handleMobileLayout();
-
-    // ── GSAP scroll animation ────────────────────────────
-    const imgs = gsap.utils.toArray<HTMLImageElement>('.img-wrapper img');
-    const bgColors = ['#FEE4CD', '#f9ffe7', '#FFECF2'];
-
-    if (imgs.length < 4) {
-      console.warn('[projects] Expected 4 images, found', imgs.length);
-      return;
-    }
-
-    // ── 用 gsap.set() 显式设置初始状态（不依赖 fromTo 的 from 值）──
-    gsap.set(imgs[0], { clipPath: 'inset(0px 0px 0px 0px)', objectPosition: '0px 0%' });
-    gsap.set(imgs[1], { clipPath: 'inset(0px 0px 0px 0px)', objectPosition: '0px 0%' });
-    gsap.set(imgs[2], { clipPath: 'inset(0px 0px 0px 0px)', objectPosition: '0px 0%' });
-    gsap.set(imgs[3], { objectPosition: '0px 0%' });
-
-    // ── Desktop & Mobile 分离到 matchMedia ───────────────
-    //    避免桌面端 timeline 在移动端同时运行造成冲突
-    const mm = gsap.matchMedia();
-
-    mm.add('(min-width: 769px)', () => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: '.arch',
-          start: 'top top',
-          end: 'bottom bottom',
-          pin: '.arch__right',
-          scrub: true,
-        },
-      });
-
-      // Transition 1: image[0] → image[1]  (t=0)
-      tl.to(imgs[0], { clipPath: 'inset(0px 0px 100% 0px)', objectPosition: '0px 60%', duration: 1, ease: 'none' }, 0);
-      tl.to(imgs[1], { objectPosition: '0px 40%', duration: 1, ease: 'none' }, 0);
-      tl.to('body', { backgroundColor: bgColors[0], duration: 1, ease: 'power2.inOut' }, 0);
-
-      // Transition 2: image[1] → image[2]  (t=1)
-      tl.to(imgs[1], { clipPath: 'inset(0px 0px 100% 0px)', objectPosition: '0px 60%', duration: 1, ease: 'none' }, 1);
-      tl.to(imgs[2], { objectPosition: '0px 40%', duration: 1, ease: 'none' }, 1);
-      tl.to('body', { backgroundColor: bgColors[1], duration: 1, ease: 'power2.inOut' }, 1);
-
-      // Transition 3: image[2] → image[3]  (t=2)
-      tl.to(imgs[2], { clipPath: 'inset(0px 0px 100% 0px)', objectPosition: '0px 60%', duration: 1, ease: 'none' }, 2);
-      tl.to(imgs[3], { objectPosition: '0px 40%', duration: 1, ease: 'none' }, 2);
-      tl.to('body', { backgroundColor: bgColors[2], duration: 1, ease: 'power2.inOut' }, 2);
-    });
-
-    mm.add('(max-width: 768px)', () => {
-      gsap.set(imgs, { objectPosition: '0px 60%' });
-      imgs.forEach((image, index) => {
-        gsap.timeline({
-          scrollTrigger: {
-            trigger: image,
-            start: 'top-=70% top+=50%',
-            end: 'bottom+=200% bottom',
-            scrub: true,
-          },
-        })
-        .to(image, { objectPosition: '0px 30%', duration: 5, ease: 'none' })
-        .to('body', { backgroundColor: bgColors[index], duration: 1.5, ease: 'power2.inOut' }, 0);
-      });
-    });
-
-    initialized = true;
-
-    // ── 延迟 refresh，等 pin-spacer 布局稳定
-    setTimeout(() => ScrollTrigger.refresh(), 200);
-  }
-
-  // ── Wait for splash overlay before init ───────────────
-  if (!document.getElementById('splash-root')) {
-    init();
-  } else {
-    const observer = new MutationObserver(() => {
-      if (!document.getElementById('splash-root')) {
-        observer.disconnect();
-        setTimeout(() => {
-          window.scrollTo(0, 0);
-          init();
-        }, 100);
-      }
-    });
-    observer.observe(document.body, { childList: true, subtree: false });
-  }
-  </script>
+    <section class="projects-list" aria-label="Selected projects">
+      {sorted.map((project, index) => (
+        <a class="project-row" href={`${base}/projects/${project.id}`} data-project-index={index + 1}>
+          <span class="project-number">{String(index + 1).padStart(2, '0')}</span>
+          <span class="project-title">{project.data.title.split(' — ')[0]}</span>
+          <span class="project-meta">{project.data.subtitle ?? project.data.tags.slice(0, 2).join(' / ')}</span>
+        </a>
+      ))}
+    </section>
+  </main>
+</BaseLayout>
 
 <style>
-  .container {
-    max-width: 1440px;
-    padding: 2rem;
+  .projects-shell {
+    width: min(var(--container), 100%);
+    margin: 0 auto;
+    padding: clamp(1.25rem, 3vw, 2.5rem) clamp(1rem, 2.4vw, 2.5rem) clamp(4rem, 8vw, 7rem);
   }
 
-  .spacer {
-    width: 100%;
-    height: 30vh;
-  }
-
-  .arch {
-    display: flex;
-    gap: 60px;
-    justify-content: space-between;
-    max-width: 1100px;
-    margin-inline: auto;
-  }
-
-  .arch__left {
+  .projects-hero {
     display: flex;
     flex-direction: column;
-    min-width: 300px;
+    gap: 1rem;
+    padding: clamp(2rem, 5vw, 4rem) 0 clamp(1.5rem, 3vw, 2.5rem);
+    border-bottom: 1px solid var(--color-divider);
   }
 
-  .arch__left .arch__info {
-    max-width: 356px;
-    height: 100vh;
+  .projects-hero-title {
     display: grid;
-    place-items: center;
+    grid-template-columns: minmax(0, 1fr) minmax(16rem, 24rem);
+    gap: 2rem;
+    align-items: end;
   }
 
-  .arch__left .arch__info h2.header {
-    font-family: Outfit, sans-serif;
-    font-size: 42px;
-    font-weight: 800;
-    letter-spacing: -0.84px;
+  .projects-hero h1 {
+    margin: 0;
+    font-size: clamp(5rem, 14vw, 13rem);
+    text-shadow: 0 0.82em 0 var(--color-text-secondary);
   }
 
-  .arch__left .arch__info p.desc {
-    color: rgba(18, 18, 18, 0.8);
-    font-size: 18px;
-    letter-spacing: -0.54px;
-    margin-block: 6px 28px;
-    line-height: normal;
+  .projects-hero p {
+    margin: 0;
+    max-width: 18rem;
+    font-size: var(--text-md);
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
   }
 
-  .arch__left .arch__info a.link {
-    text-decoration: none;
-    padding: 16px 18px;
-    color: inherit;
-    border-radius: 40px;
-    display: flex;
-    gap: 4px;
-    width: fit-content;
-    align-items: center;
-    font-family: Outfit, sans-serif;
-  }
-
-  .arch__right {
-    flex-shrink: 1;
-    height: 100vh;
-    width: 100%;
-    max-width: 540px;
-    position: relative;
+  .projects-list {
     display: flex;
     flex-direction: column;
   }
 
-  .arch__right .img-wrapper {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    transform: translateY(-50%);
-    height: 400px;
-    width: 100%;
-    border-radius: 16px;
-    overflow: hidden;
+  .project-row {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) minmax(14rem, 22rem);
+    align-items: baseline;
+    gap: 1.5rem;
+    padding: 1.35rem 0;
+    border-bottom: 1px solid var(--color-divider);
+    color: var(--color-text);
   }
 
-  .arch__right .img-wrapper img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    border-radius: 16px;
+  .project-row:hover {
+    color: var(--color-accent);
   }
 
-  @media (max-width: 900px) {
-    .arch {
-      gap: 30px;
-    }
+  .project-number {
+    font-family: var(--font-sans);
+    font-size: var(--text-xs);
+    color: var(--color-text-secondary);
   }
 
-  @media (max-width: 768px) {
-    .arch {
-      flex-direction: column;
-      gap: 20px;
+  .project-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.2rem, 5vw, 5rem);
+    line-height: 0.88;
+    text-transform: uppercase;
+  }
+
+  .project-meta {
+    justify-self: end;
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    text-align: right;
+  }
+
+  @media (max-width: 860px) {
+    .projects-hero-title {
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
     }
 
-    .arch__left,
-    .arch__right {
-      display: contents;
+    .project-row {
+      grid-template-columns: auto 1fr;
     }
 
-    .arch__right {
-      height: auto;
-      max-width: 100%;
-    }
-
-    .arch__right .img-wrapper {
-      position: static;
-      transform: none;
-      height: 360px;
-      width: 100%;
-      margin-bottom: 20px;
-    }
-
-    .arch__left .arch__info {
-      height: auto;
-      padding: 20px 0;
+    .project-meta {
+      grid-column: 2;
+      justify-self: start;
+      text-align: left;
     }
   }
 
   @media (max-width: 560px) {
-    .arch {
-      gap: 12px;
+    .project-row {
+      gap: 0.8rem;
+      padding: 1rem 0;
     }
 
-    .container {
-      padding: 10px;
-    }
-
-    .arch__right .img-wrapper {
-      border-radius: 10px;
-      height: 280px;
+    .project-title {
+      font-size: clamp(1.75rem, 11vw, 3rem);
     }
   }
 </style>
-</BaseLayout>

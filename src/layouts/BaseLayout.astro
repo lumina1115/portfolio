@@ -1,12 +1,21 @@
----
+﻿---
 import SplashOverlay from '../components/intro/SplashOverlay.astro';
+import GlobalMenu from '../components/layout/GlobalMenu.astro';
 import '../styles/global.css';
 
 interface Props {
   title: string;
   description?: string;
+  pageClass?: string;
+  showSplash?: boolean;
 }
-const { title, description = '' } = Astro.props;
+
+const {
+  title,
+  description = '',
+  pageClass = '',
+  showSplash = false,
+} = Astro.props;
 ---
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -16,8 +25,9 @@ const { title, description = '' } = Astro.props;
   <title>{title}</title>
   {description && <meta name="description" content={description} />}
 </head>
-<body>
-  <SplashOverlay />
+<body class={pageClass}>
+  {showSplash && <SplashOverlay />}
+  <GlobalMenu />
   <slot name="nav" />
   <slot />
 </body>

@@ -5,27 +5,30 @@
 @import '@fontsource/inter/600.css';
 
 :root {
-  /* 颜色 */
-  --color-bg: #FAFAF7;
-  --color-text: #1A1A1A;
-  --color-text-secondary: #6B6B6B;
-  --color-divider: #E5E3DD;
-  --color-accent: #2B2620;
+  --color-bg: #a93207;
+  --color-surface: #892400;
+  --color-text: #e1cba6;
+  --color-text-secondary: #bf9245;
+  --color-divider: rgba(225, 203, 166, 0.42);
+  --color-accent: #c6f332;
+  --color-black: #050505;
+  --color-blush: #fbe7e4;
+  --color-flame: #ea4035;
 
-  /* 字体 */
+  --font-display: Impact, Haettenschweiler, 'Arial Narrow Bold', 'Arial Narrow', 'Microsoft YaHei', sans-serif;
   --font-serif: 'EB Garamond', Georgia, serif;
-  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-sans: 'Inter', 'Microsoft YaHei', system-ui, sans-serif;
 
-  /* 字号（模块化音阶 1.25）*/
-  --text-sm:   0.875rem;
-  --text-base: 1.125rem;
-  --text-lg:   1.375rem;
-  --text-xl:   1.75rem;
-  --text-2xl:  2.25rem;
-  --text-3xl:  2.8125rem;
-  --text-4xl:  3.5rem;
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-md: 1.125rem;
+  --text-lg: 1.5rem;
+  --text-xl: 2rem;
+  --text-2xl: 3rem;
+  --text-3xl: 5.5rem;
+  --text-4xl: 8.5rem;
 
-  /* 间距（基于 8px）*/
   --space-1: 0.25rem;
   --space-2: 0.5rem;
   --space-3: 1rem;
@@ -36,38 +39,75 @@
   --space-8: 6rem;
   --space-9: 8rem;
 
-  /* 布局 */
-  --measure:   42rem;
-  --container: 80rem;
+  --measure: 42rem;
+  --container: 103rem;
 
-  /* 行高 */
-  --leading-tight:  1.2;
-  --leading-normal: 1.6;
-  --leading-loose:  1.8;
+  --leading-tight: 0.9;
+  --leading-normal: 1.45;
+  --leading-loose: 1.8;
 }
 
 *, *::before, *::after {
   box-sizing: border-box;
 }
 
+html {
+  background: var(--color-bg);
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
+  min-height: 100vh;
   background: var(--color-bg);
   color: var(--color-text);
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-size: var(--text-base);
   line-height: var(--leading-normal);
   -webkit-font-smoothing: antialiased;
+  text-rendering: geometricPrecision;
+}
+
+body.project-detail-page {
+  --color-bg: #FAFAF7;
+  --color-text: #1A1A1A;
+  --color-text-secondary: #6B6B6B;
+  --color-divider: #E5E3DD;
+  --color-accent: #2B2620;
+  --font-serif: 'EB Garamond', Georgia, serif;
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --text-sm: 0.875rem;
+  --text-base: 1.125rem;
+  --text-lg: 1.375rem;
+  --text-xl: 1.75rem;
+  --text-2xl: 2.25rem;
+  --text-3xl: 2.8125rem;
+  --text-4xl: 3.5rem;
+  --measure: 42rem;
+  --container: 80rem;
+  --leading-tight: 1.2;
+  --leading-normal: 1.6;
+  --leading-loose: 1.8;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-serif);
+}
+
+::selection {
+  color: var(--color-bg);
+  background: var(--color-accent);
 }
 
 a {
-  color: var(--color-accent);
+  color: inherit;
   text-decoration: none;
-  border-bottom: 1px solid currentColor;
-  transition: opacity 0.2s ease;
+  border-bottom: 0;
+  transition: color 0.2s ease, opacity 0.2s ease, transform 0.2s ease, background 0.2s ease;
 }
 
-a:hover { opacity: 0.6; }
+a:hover {
+  opacity: 1;
+}
 
 img {
   max-width: 100%;
@@ -75,7 +115,82 @@ img {
   display: block;
 }
 
+h1, h2, h3, h4, p {
+  margin-top: 0;
+}
+
 h1, h2, h3, h4 {
   line-height: var(--leading-tight);
-  font-weight: 600;
+  font-weight: 400;
+}
+
+.display-title {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0;
+  line-height: 0.82;
+}
+
+.serif-italic {
+  font-family: var(--font-serif);
+  font-style: italic;
+}
+
+.eyebrow {
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  line-height: 1.25;
+  text-transform: uppercase;
+  letter-spacing: 0;
+}
+
+.text-button-shell {
+  display: inline-block;
+  width: fit-content;
+  padding: 0.25rem 0.25rem 0.6rem;
+  border-radius: 0.75rem;
+  background: var(--color-black);
+}
+
+.text-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3.75rem;
+  padding: 1rem 1.75rem;
+  border-radius: 0.65rem;
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-family: var(--font-serif);
+  font-size: var(--text-xl);
+  font-style: italic;
+  line-height: 1;
+}
+
+.text-button-shell:hover {
+  transform: translate(0.25rem, -0.25rem);
+}
+
+@media (max-width: 900px) {
+  :root {
+    --text-3xl: 4rem;
+    --text-4xl: 5.8rem;
+    --space-8: 4rem;
+    --space-9: 5rem;
+  }
+}
+
+@media (max-width: 620px) {
+  :root {
+    --text-lg: 1.25rem;
+    --text-xl: 1.55rem;
+    --text-2xl: 2.25rem;
+    --text-3xl: 3.15rem;
+    --text-4xl: 3.8rem;
+    --space-5: 1.25rem;
+    --space-6: 2rem;
+    --space-7: 3rem;
+    --space-8: 3rem;
+    --space-9: 4rem;
+  }
 }

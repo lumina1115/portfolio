@@ -5,193 +5,146 @@ import SiteNav from '../../components/layout/SiteNav.astro';
 
 const projects = await getCollection('projects');
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
-
-// 主题中文映射
-const themeLabels: Record<string, string> = {
-  'dark-tech': '暗黑科技',
-  'warm-craft': '温暖工艺',
-  'minimalist': '极简主义',
-};
-
-// 按 theme 分组
 const grouped = new Map<string, typeof projects>();
-for (const p of projects) {
-  const t = p.data.theme || 'minimalist';
-  if (!grouped.has(t)) grouped.set(t, []);
-  grouped.get(t)!.push(p);
+
+for (const project of projects) {
+  const theme = project.data.theme || 'minimalist';
+  if (!grouped.has(theme)) grouped.set(theme, []);
+  grouped.get(theme)!.push(project);
 }
+
+const themeCopy: Record<string, { title: string; note: string }> = {
+  'dark-tech': { title: 'Dark Tech', note: 'Medical devices and systems with a sharper edge.' },
+  'warm-craft': { title: 'Warm Craft', note: 'Home products and tactile material studies.' },
+  minimalist: { title: 'Minimalist', note: 'Sparse layouts, direct communication, clean structure.' },
+};
 ---
 
-<BaseLayout title="Themes — 宗雪祯">
+<BaseLayout title="Themes — Zong Xuezhen" pageClass="themes-page">
   <SiteNav slot="nav" />
-  <main class="themes-page">
+  <main class="themes-shell">
+    <section class="themes-hero">
+      <p class="eyebrow">Themes</p>
+      <h1 class="display-title">Themes</h1>
+      <p>Three directions, grouped by mood and material language.</p>
+    </section>
 
-    <header class="page-header">
-      <h1>Projects</h1>
-      <p class="subtitle">按设计主题浏览作品</p>
-    </header>
-
-    {
-      [...grouped.entries()].map(([themeKey, items]) => (
-        <section class="theme-group">
-          <h2 class="theme-title">
-            <span class="theme-dot" data-theme={themeKey}></span>
-            {themeLabels[themeKey] || themeKey}
-          </h2>
-          <div class="project-grid">
-            {items.map(project => (
-              <a
-                href={`${base}/projects/${project.id}`}
-                class="project-card"
-                data-theme={themeKey}
-              >
-                <div class="card-cover">
-                  <img
-                    src={project.data.coverUrl}
-                    alt={project.data.title}
-                    loading="lazy"
-                  />
-                </div>
-                <div class="card-body">
-                  <h3 class="card-title">{project.data.title}</h3>
-                  {project.data.subtitle && (
-                    <p class="card-subtitle">{project.data.subtitle}</p>
-                  )}
-                  <p class="card-summary">{project.data.summary}</p>
-                  <div class="card-tags">
-                    {project.data.tags.map(tag => (
-                      <span class="tag">{tag}</span>
-                    ))}
-                  </div>
-                </div>
-              </a>
-            ))}
-          </div>
-        </section>
-      ))
-    }
+    <section class="theme-stack">
+      {[...grouped.entries()].map(([themeKey, items]) => {
+        const copy = themeCopy[themeKey] ?? { title: themeKey, note: '' };
+        const cover = items[0]?.data.coverUrl;
+        return (
+          <article class="theme-row">
+            <div class="theme-copy">
+              <p class="theme-index">{String(items.length).padStart(2, '0')}</p>
+              <h2>{copy.title}</h2>
+              <p>{copy.note}</p>
+            </div>
+            <a class="theme-link" href={`${base}/projects/${items[0].id}`} aria-label={copy.title}>
+              {cover && <img src={cover} alt={copy.title} loading="lazy" />}
+            </a>
+          </article>
+        );
+      })}
+    </section>
   </main>
 </BaseLayout>
 
 <style>
-  .themes-page {
-    max-width: var(--container);
+  .themes-shell {
+    width: min(var(--container), 100%);
     margin: 0 auto;
-    padding: var(--space-8) var(--space-5) var(--space-9);
+    padding: clamp(1.25rem, 3vw, 2.5rem) clamp(1rem, 2.4vw, 2.5rem) clamp(4rem, 8vw, 7rem);
   }
 
-  .page-header {
-    margin-bottom: var(--space-8);
-  }
-  .page-header h1 {
-    font-size: var(--text-3xl);
-    margin: 0 0 var(--space-2);
-  }
-  .subtitle {
-    font-family: var(--font-sans);
-    font-size: var(--text-sm);
-    color: var(--color-text-secondary);
-    margin: 0;
-  }
-
-  /* 主题分组 */
-  .theme-group {
-    margin-bottom: var(--space-8);
-  }
-  .theme-title {
-    display: flex;
-    align-items: center;
-    gap: var(--space-2);
-    font-family: var(--font-sans);
-    font-size: var(--text-sm);
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: var(--color-text-secondary);
-    margin: 0 0 var(--space-5);
-    padding-bottom: var(--space-3);
+  .themes-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(16rem, 26rem);
+    gap: 2rem;
+    align-items: end;
+    padding: clamp(2rem, 5vw, 4rem) 0 clamp(1.5rem, 3vw, 2.5rem);
     border-bottom: 1px solid var(--color-divider);
   }
-  .theme-dot {
-    display: inline-block;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--color-accent);
-  }
-  .theme-dot[data-theme="dark-tech"]  { background: #2B2620; }
-  .theme-dot[data-theme="warm-craft"] { background: #C47B4A; }
-  .theme-dot[data-theme="minimalist"]  { background: #8B8B8B; }
 
-  /* 项目卡片网格 */
-  .project-grid {
+  .themes-hero h1 {
+    margin: 0;
+    font-size: clamp(5rem, 14vw, 13rem);
+    text-shadow: 0 0.82em 0 var(--color-text-secondary);
+  }
+
+  .themes-hero p {
+    margin: 0;
+    font-size: var(--text-md);
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+  }
+
+  .theme-stack {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .theme-row {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: var(--space-6);
+    grid-template-columns: minmax(0, 1fr) minmax(18rem, 24rem);
+    gap: 2rem;
+    align-items: center;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--color-divider);
   }
 
-  .project-card {
+  .theme-copy h2 {
+    margin: 0 0 0.45rem;
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 6vw, 6rem);
+    line-height: 0.84;
+    text-transform: uppercase;
+  }
+
+  .theme-copy p {
+    margin: 0;
+    max-width: 30rem;
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+  }
+
+  .theme-index {
+    margin-bottom: 0.75rem !important;
+    color: var(--color-accent) !important;
+    font-family: var(--font-sans);
+    font-size: var(--text-xs) !important;
+  }
+
+  .theme-link {
     display: block;
-    border: none;
-    color: inherit;
-    background: transparent;
-    transition: opacity 0.3s ease;
-  }
-  .project-card:hover {
-    opacity: 0.75;
-  }
-
-  .card-cover {
     aspect-ratio: 4 / 3;
     overflow: hidden;
-    background: #E8E6E0;
-    margin-bottom: var(--space-3);
+    border: 1px solid var(--color-divider);
+    border-radius: 0.5rem;
   }
-  .card-cover img {
+
+  .theme-link img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.4s ease;
-  }
-  .project-card:hover .card-cover img {
-    transform: scale(1.04);
+    filter: saturate(0.92) contrast(1.04);
+    transition: transform 0.35s ease;
   }
 
-  .card-body {
-    padding: 0 var(--space-1);
+  .theme-link:hover img {
+    transform: scale(1.03);
   }
-  .card-title {
-    font-size: var(--text-lg);
-    font-weight: 600;
-    margin: 0 0 var(--space-1);
+
+  @media (max-width: 860px) {
+    .themes-hero,
+    .theme-row {
+      grid-template-columns: 1fr;
+    }
   }
-  .card-subtitle {
-    font-family: var(--font-sans);
-    font-size: var(--text-sm);
-    color: var(--color-text-secondary);
-    margin: 0 0 var(--space-2);
-  }
-  .card-summary {
-    font-size: var(--text-sm);
-    color: var(--color-text-secondary);
-    margin: 0 0 var(--space-3);
-    line-height: var(--leading-normal);
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-  .card-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-1);
-  }
-  .tag {
-    font-family: var(--font-sans);
-    font-size: 0.75rem;
-    color: var(--color-text-secondary);
-    background: #F0EFEB;
-    padding: 2px 8px;
-    border-radius: 3px;
+
+  @media (max-width: 560px) {
+    .theme-copy h2 {
+      font-size: clamp(2rem, 11vw, 3rem);
+    }
   }
 </style>

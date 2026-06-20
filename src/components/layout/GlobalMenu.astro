@@ -1,0 +1,209 @@
+﻿---
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+const navItems = [
+  { number: '01', label: 'Home', href: base + '/' },
+  { number: '02', label: 'Work', href: base + '/projects' },
+  { number: '03', label: 'Themes', href: base + '/themes' },
+  { number: '04', label: 'About', href: base + '/about' },
+];
+---
+
+<div class="global-menu-root">
+  <input class="menu-state" type="checkbox" id="global-menu-state" aria-hidden="true" />
+  <label class="menu-toggle" for="global-menu-state" aria-label="Open menu">
+    <span></span>
+    <span></span>
+  </label>
+
+  <aside class="global-menu" aria-label="Site directory">
+    <div class="global-menu__inner">
+      <div class="global-menu__top">
+        <a href={base + '/'} class="global-menu__brand">Zong Xuezhen</a>
+        <span>Portfolio 2026</span>
+      </div>
+
+      <nav class="global-menu__nav" aria-label="Site directory">
+        {navItems.map((item) => (
+          <a href={item.href} class="global-menu__link">
+            <span class="global-menu__number">{item.number}</span>
+            <span class="global-menu__label">{item.label}</span>
+          </a>
+        ))}
+      </nav>
+
+      <div class="global-menu__foot">
+        <span>Industrial Design / UX / Smart Product</span>
+        <a href="mailto:3233507383@qq.com">3233507383@qq.com</a>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<style>
+  .global-menu-root {
+    --menu-bg: #a93207;
+    --menu-cream: #e1cba6;
+    --menu-muted: #bf9245;
+    --menu-accent: #c6f332;
+  }
+
+  .menu-state {
+    position: fixed;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .menu-toggle {
+    position: fixed;
+    top: clamp(1rem, 2vw, 1.55rem);
+    left: clamp(1rem, 2vw, 2rem);
+    z-index: 10020;
+    display: flex;
+    width: 3.1rem;
+    height: 2.4rem;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.52rem;
+    color: var(--menu-cream);
+    cursor: pointer;
+  }
+
+  .menu-toggle span {
+    display: block;
+    width: 2.35rem;
+    height: 2px;
+    background: currentColor;
+    transform-origin: center;
+    transition: transform 0.28s ease, background 0.2s ease;
+  }
+
+  .menu-state:checked + .menu-toggle span:first-child {
+    transform: translateY(0.32rem) rotate(16deg);
+  }
+
+  .menu-state:checked + .menu-toggle span:last-child {
+    transform: translateY(-0.32rem) rotate(-16deg);
+  }
+
+  :global(.project-detail-page) .menu-toggle {
+    color: #1a1a1a;
+  }
+
+  .menu-state:checked + .menu-toggle,
+  :global(.project-detail-page) .menu-state:checked + .menu-toggle {
+    color: var(--menu-cream);
+  }
+
+  .global-menu {
+    position: fixed;
+    inset: 0;
+    z-index: 10010;
+    overflow: hidden;
+    clip-path: inset(0% 0% 100% 0%);
+    pointer-events: none;
+    color: var(--menu-cream);
+    background: var(--menu-bg);
+    transition: clip-path 0.48s cubic-bezier(0.76, 0, 0.24, 1);
+  }
+
+  .menu-state:checked ~ .global-menu {
+    clip-path: inset(0% 0% 0% 0%);
+    pointer-events: auto;
+  }
+
+  .global-menu__inner {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: clamp(1rem, 2vw, 1.75rem) clamp(1rem, 2.4vw, 2.5rem) clamp(1rem, 2.4vw, 2.5rem);
+  }
+
+  .global-menu__top,
+  .global-menu__foot {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-left: clamp(4rem, 6vw, 5.5rem);
+    font-family: var(--font-sans);
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+  }
+
+  .global-menu__top span,
+  .global-menu__foot span,
+  .global-menu__foot a {
+    color: var(--menu-muted);
+  }
+
+  .global-menu__brand {
+    color: var(--menu-cream);
+  }
+
+  .global-menu__nav {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-block: 2rem;
+  }
+
+  .global-menu__link {
+    display: grid;
+    grid-template-columns: clamp(2rem, 5vw, 5rem) minmax(0, 1fr);
+    gap: clamp(0.75rem, 2vw, 1.5rem);
+    align-items: start;
+    padding: 0.35rem 0;
+    overflow: hidden;
+    color: var(--menu-cream);
+    border-bottom: 1px solid rgba(225, 203, 166, 0.28);
+    opacity: 0;
+    transform: translateY(2rem);
+    transition: color 0.2s ease, opacity 0.35s ease, transform 0.35s ease;
+  }
+
+  .menu-state:checked ~ .global-menu .global-menu__link {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .menu-state:checked ~ .global-menu .global-menu__link:nth-child(2) { transition-delay: 0.04s; }
+  .menu-state:checked ~ .global-menu .global-menu__link:nth-child(3) { transition-delay: 0.08s; }
+  .menu-state:checked ~ .global-menu .global-menu__link:nth-child(4) { transition-delay: 0.12s; }
+
+  .global-menu__link:hover {
+    color: var(--menu-accent);
+  }
+
+  .global-menu__number {
+    padding-top: 0.4em;
+    color: var(--menu-muted);
+    font-family: var(--font-sans);
+    font-size: var(--text-xs);
+    line-height: 1;
+  }
+
+  .global-menu__label {
+    font-family: var(--font-display);
+    font-size: clamp(4rem, 13vw, 13rem);
+    line-height: 0.82;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 700px) {
+    .global-menu__top,
+    .global-menu__foot {
+      padding-left: 4rem;
+    }
+
+    .global-menu__foot {
+      flex-direction: column;
+    }
+
+    .global-menu__label {
+      font-size: clamp(3.4rem, 18vw, 7rem);
+    }
+  }
+</style>

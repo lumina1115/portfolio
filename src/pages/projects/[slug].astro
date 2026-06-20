@@ -1,4 +1,4 @@
----
+﻿---
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SiteNav from '../../components/layout/SiteNav.astro';
@@ -19,11 +19,11 @@ const Content = rendered?.Content;
 ---
 
 {isProject1 ? (
-  <BaseLayout title={project.data.title} description={project.data.summary}>
+  <BaseLayout title={project.data.title} description={project.data.summary} pageClass="project-detail-page">
     <Project1Editorial project={project} />
   </BaseLayout>
 ) : (
-  <BaseLayout title={project.data.title}>
+  <BaseLayout title={project.data.title} pageClass="project-detail-page">
     <SiteNav slot="nav" />
     <main class="project">
       <header class="project-hero">
@@ -102,4 +102,15 @@ const Content = rendered?.Content;
   .project-body p {
     margin: 0 0 var(--space-4);
   }
+  @media screen and (orientation: portrait) {
+    .project :global(.project-split),
+    .project :global(.detail-split),
+    .project :global(.media-text),
+    .project :global(.text-media),
+    .project :global(.two-column) {
+      grid-template-columns: 1fr !important;
+    }
+  }
 </style>
+
+
