@@ -3454,20 +3454,23 @@ const explodedAnnotations = [
   .p1-positioning .p1-card-feature {
     grid-column: auto;
     display: grid;
-    grid-template-columns: minmax(0, 0.48fr) minmax(0, 0.52fr);
-    gap: var(--row-gap-section);
+    grid-template-columns: minmax(0, 0.58fr) minmax(18rem, 0.42fr);
+    gap: clamp(1.2rem, 2vw, 2rem);
     align-items: center;
     padding: 0;
     background: transparent;
     min-height: 0;
+    min-width: 0;
   }
 
   .p1-positioning .p1-feature-media {
     margin: 0;
-    width: min(45vw, 40rem);
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
     height: auto;
     aspect-ratio: 4.5 / 1;
-    justify-self: start;
+    justify-self: stretch;
     border-radius: 12px;
     overflow: hidden;
     background: rgba(251, 247, 237, 0.72) !important;
@@ -3476,19 +3479,24 @@ const explodedAnnotations = [
 
   .p1-positioning .p1-feature-copy {
     padding: 0;
+    min-width: 0;
+    width: 100%;
     max-width: 34rem;
+    justify-self: stretch;
     gap: clamp(0.55rem, 1vw, 0.85rem);
   }
 
   .p1-positioning .p1-feature-title {
     font-size: clamp(1.55rem, 1.8vw, 1.95rem);
+    overflow-wrap: anywhere;
   }
 
   .p1-positioning .p1-feature-text {
     max-width: 34rem;
     font-size: clamp(0.92rem, 0.95vw, 1rem);
     line-height: 1.75;
-    white-space: nowrap;
+    white-space: normal;
+    overflow-wrap: anywhere;
   }
 
   .p1-positioning .p1-feature-media--cutout {
@@ -4364,11 +4372,12 @@ const explodedAnnotations = [
 
     .p1-positioning .p1-card-feature {
       grid-column: auto;
+      grid-template-columns: 1fr;
       width: 100%;
     }
 
     .p1-positioning .p1-feature-media {
-      width: min(45vw, 34rem);
+      width: 100%;
       height: auto;
     }
 
