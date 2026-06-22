@@ -56,21 +56,19 @@ const explodedAnnotations = [
       </div>
 
       <div class="p1-hero-copy">
-        <p class="p1-caption p1-hero-caption">{heroTitle} / project 01</p>
-
-        <div class="p1-kicker-row">
-          <span class="p1-hero-index">01</span>
-          <span class="p1-kicker-line"></span>
-          <span class="p1-kicker-text">工业设计 / 智能穿戴 / 医疗机能</span>
-        </div>
+        <p class="p1-caption p1-hero-caption">01 · Case Study</p>
 
         <div class="p1-copy-stack">
-          <p class="p1-overline">case study</p>
           <h1 class="p1-hero-title">{heroTitle}</h1>
-          <p class="p1-hero-sub">{heroSubtitle}</p>
         </div>
 
-        <p class="p1-hero-desc">{heroSummary}</p>
+        <p class="p1-hero-desc" aria-label={heroSummary}>
+          <span>Gradient 是一款面向痉挛型脑瘫儿童的智能踝足矫形器</span>
+          <span>通过 AFO 三点力学结构矫正足内翻步态，内置柔性压力传感面料</span>
+          <span>实时监测足底数据，帮助医生与家长掌握康复进程</span>
+        </p>
+
+        <p class="p1-hero-quote">让康复，始于每一步</p>
 
         <div class="p1-hero-tags">
           <span>AFO 三点力学矫形</span>
@@ -81,7 +79,24 @@ const explodedAnnotations = [
     </div>
   </section>
 
-  <section class="p1-section p1-context">
+  <section class="p1-section p1-chapter p1-chapter--insight is-active" id="p1-insight" data-chapter-section data-chapter="insight">
+    <div class="p1-editorial-track">
+      <aside class="p1-sticky-rail">
+        <a href="#p1-insight" class="p1-sticky-tag" data-chapter-link>
+          <span class="p1-sidebar-rule" aria-hidden="true"></span>
+          <span class="p1-sidebar-copy">
+            <span class="p1-sidebar-index">01</span>
+            <span class="p1-sidebar-title">
+              <span>INSIGHT</span>
+              <span>&amp;</span>
+              <span>RESEARCH</span>
+            </span>
+            <span class="p1-sidebar-subtitle">用户洞察与需求分析</span>
+          </span>
+        </a>
+      </aside>
+      <div class="p1-section-main">
+    <section class="p1-chapter-block p1-context">
     <div class="p1-rect-grid p1-rect-grid--context">
       <article class="p1-rect-card p1-card-context-merged" data-section-label="设计背景">
         <div class="p1-context-copy-panel">
@@ -90,7 +105,7 @@ const explodedAnnotations = [
 
         <div class="p1-context-detail-panel">
           <p class="p1-context-body">
-            痉挛性脑瘫是儿童高发的运动障碍疾病，足部肌张力紊乱常引发足内翻，造成重心偏移、步态不稳与更高跌倒风险。与此同时，患儿往往难以准确表达疼痛与不适，传统矫形器又普遍外观医疗化，容易带来病耻感与穿戴抗拒。市场仍缺少兼顾步态数据采集、医患沟通与儿童审美的智能矫形设备。
+            痉挛性脑瘫是儿童高发的运动障碍疾病，足部肌张力紊乱常引发<span class="p1-context-key">足内翻</span>，造成重心偏移、步态不稳与更高跌倒风险。与此同时，患儿往往难以准确表达疼痛与不适，传统矫形器又普遍<span class="p1-context-key">外观医疗化</span>，容易带来<span class="p1-context-key">病耻感与穿戴抗拒</span>。市场仍缺少兼顾步态数据采集、医患沟通与儿童审美的智能矫形设备。
           </p>
 
           <div class="p1-stat-rail">
@@ -119,9 +134,9 @@ const explodedAnnotations = [
         </figure>
       </article>
     </div>
-  </section>
+    </section>
 
-  <section class="p1-section p1-pain">
+    <section class="p1-chapter-block p1-pain">
     <div class="p1-pain-grid" data-section-label="痛点分析">
       <article class="p1-rect-card p1-pain-card">
         <figure class="p1-pain-media p1-pain-media--a">
@@ -156,9 +171,9 @@ const explodedAnnotations = [
         </div>
       </article>
     </div>
-  </section>
+    </section>
 
-  <section class="p1-section p1-positioning">
+    <section class="p1-chapter-block p1-positioning">
     <div class="p1-rect-grid" data-section-label="技术调研">
       <article class="p1-rect-card p1-card-feature">
         <figure class="p1-feature-media p1-feature-media--cutout">
@@ -190,202 +205,249 @@ const explodedAnnotations = [
         </div>
       </article>
     </div>
+    </section>
+      </div>
+    </div>
   </section>
 
-  <section class="p1-section p1-dev">
+  <section class="p1-section p1-chapter p1-dev p1-chapter--refinement" id="p1-refinement" data-chapter-section data-chapter="refinement">
+    <div class="p1-editorial-track">
+      <aside class="p1-sticky-rail">
+        <a href="#p1-refinement" class="p1-sticky-tag" data-chapter-link>
+          <span class="p1-sidebar-rule" aria-hidden="true"></span>
+          <span class="p1-sidebar-copy">
+            <span class="p1-sidebar-index">02</span>
+            <span class="p1-sidebar-title">
+              <span>REFINEMENT</span>
+              <span>&amp;</span>
+              <span>PROTOTYPING</span>
+            </span>
+            <span class="p1-sidebar-subtitle">方案推演与工程验证</span>
+          </span>
+        </a>
+      </aside>
+      <div class="p1-section-main">
     <div class="p1-rect-grid">
-      <article class="p1-rect-card p1-card-mapping" data-section-label="设计目标">
+      <article class="p1-rect-card p1-card-mapping" data-section-label="设计目标" data-target-map>
         <div class="p1-mapping-bg" aria-hidden="true"></div>
         <header class="p1-mapping-head">
           <p class="p1-overline">design target</p>
-          <h2>从痛点到设计目标</h2>
-          <p>将儿童康复中的身体问题、沟通问题与情绪问题，分别转译为结构、传感与外观策略。</p>
+          <h2>设计目标</h2>
+          <p>基于前期深入调研，项目将痉挛型脑瘫儿童的运动生物力学障碍、情感表达隔阂及社交病耻感，解构并转化为与之对应的三点力学结构、柔性传感机能与去医疗化的外观设计策略。</p>
         </header>
 
         <div class="p1-mapping-list">
-          <div class="p1-mapping-row">
-            <span class="p1-mapping-num">01</span>
+          <article class="p1-mapping-row" data-target-card tabindex="0">
+            <div class="p1-mapping-meta">
+              <span class="p1-mapping-num">01</span>
+              <span class="p1-mapping-label">PROBLEM</span>
+            </div>
             <div class="p1-mapping-cell p1-mapping-issue">
-              <small>problem</small>
+              <small>痛点</small>
               <strong>足内翻问题</strong>
             </div>
-            <span class="p1-mapping-link" aria-hidden="true">→</span>
+            <span class="p1-mapping-line" aria-hidden="true"></span>
             <div class="p1-mapping-cell p1-mapping-solution">
-              <small>target</small>
+              <small>TARGET</small>
               <strong>AFO 三点力学矫形</strong>
             </div>
-          </div>
+          </article>
 
-          <div class="p1-mapping-row">
-            <span class="p1-mapping-num">02</span>
+          <article class="p1-mapping-row" data-target-card tabindex="0">
+            <div class="p1-mapping-meta">
+              <span class="p1-mapping-num">02</span>
+              <span class="p1-mapping-label">PROBLEM</span>
+            </div>
             <div class="p1-mapping-cell p1-mapping-issue">
-              <small>problem</small>
+              <small>痛点</small>
               <strong>沟通障碍</strong>
             </div>
-            <span class="p1-mapping-link" aria-hidden="true">→</span>
+            <span class="p1-mapping-line" aria-hidden="true"></span>
             <div class="p1-mapping-cell p1-mapping-solution">
-              <small>target</small>
+              <small>TARGET</small>
               <strong>智能压力传感监测</strong>
             </div>
-          </div>
+          </article>
 
-          <div class="p1-mapping-row">
-            <span class="p1-mapping-num">03</span>
+          <article class="p1-mapping-row" data-target-card tabindex="0">
+            <div class="p1-mapping-meta">
+              <span class="p1-mapping-num">03</span>
+              <span class="p1-mapping-label">PROBLEM</span>
+            </div>
             <div class="p1-mapping-cell p1-mapping-issue">
-              <small>problem</small>
+              <small>痛点</small>
               <strong>病耻感</strong>
             </div>
-            <span class="p1-mapping-link" aria-hidden="true">→</span>
+            <span class="p1-mapping-line" aria-hidden="true"></span>
             <div class="p1-mapping-cell p1-mapping-solution">
-              <small>target</small>
+              <small>TARGET</small>
               <strong>模块化运动鞋外观</strong>
             </div>
+          </article>
+        </div>
+      </article>
+
+      <article class="p1-rect-card p1-card-exploration-hardware" data-section-label="Exploration & Hardware">
+        <header class="p1-lab-head">
+          <p class="p1-lab-eyebrow">SECTION 1 / Exploration &amp; Hardware</p>
+          <h2>概念转化与硬件就绪</h2>
+          <p>以草图、造型生成与硬件连接实拍，呈现方案从概念语言进入可验证系统的过程。</p>
+        </header>
+
+        <section class="p1-lab-block p1-lab-sketch" data-sketch-reveal>
+          <div class="p1-lab-copy">
+            <span>01 / SKETCH</span>
+            <h3>草图</h3>
           </div>
-        </div>
-      </article>
+          <figure class="p1-lab-sketch-figure">
+            <img loading="lazy" decoding="async" src="https://telegraph-image-90w.pages.dev/file/AgACAgUAAyEGAATqb6rsAAMVajWGPn54MjgAAeEbQ2dFd2uwuJB7AAJqEGsbQZ2oVTzhTIVSVxQ2AQADAgADdwADPAQ.png" alt="设计草图" />
+          </figure>
+        </section>
 
-      <article class="p1-rect-card p1-card-design-process" data-section-label="设计推演">
-        <figure class="p1-process-figure">
-          <img loading="lazy" decoding="async" src="https://telegraph-image-90w.pages.dev/file/AgACAgUAAyEGAATqb6rsAAMVajWGPn54MjgAAeEbQ2dFd2uwuJB7AAJqEGsbQZ2oVTzhTIVSVxQ2AQADAgADdwADPAQ.png" alt="设计草图" />
-          <figcaption class="p1-caption">设计草图</figcaption>
-        </figure>
-        <figure class="p1-process-figure">
-          <img loading="lazy" decoding="async" src="https://telegraph-image-90w.pages.dev/file/AgACAgUAAyEGAATqb6rsAAMWajWGUPZlTbiSuYv8nPCZFvTvBA4AAmsQaxtBnahVtFOl2BhV0S4BAAMCAAN3AAM8BA.png" alt="Gradient AIGC 形态探索图" />
-          <figcaption class="p1-caption">AIGC 形态探索</figcaption>
-        </figure>
-      </article>
-
-      <article class="p1-rect-card p1-card-making-process" data-section-label="模型制作">
-        <div class="p1-making-copy">
-          <p class="p1-overline">model making</p>
-          <h2 class="p1-body-title">用实体草模校准鞋体体量与穿戴关系</h2>
-          <p class="p1-body-text p1-body-text--large">
-            通过手工模型快速验证鞋底厚度、鞋面包裹、绑带位置与模块连接关系，让形态推演从二维草图进入可触摸的穿戴尺度。
-          </p>
-          <p class="p1-body-text">
-            过程重点放在比例修正、部件拼接与佩戴状态观察，为后续电路嵌入和最终造型提供实体依据。
-          </p>
-        </div>
-
-        <div class="p1-making-gallery" aria-label="模型制作过程照片">
-          <figure class="p1-making-photo p1-making-photo--hero">
-            <img loading="lazy" decoding="async" src="https://telegraph-image-90w.pages.dev/file/AgACAgUAAyEGAATqb6rsAAMXajaZtdrcYEkG3mZ8MHKPuE4XaboAAswQaxtlnrhV-2D7fyECDhABAAMCAAN3AAM8BA.png" alt="模型制作过程照片 1" />
-          </figure>
-          <figure class="p1-making-photo">
-            <img loading="lazy" decoding="async" src="https://telegraph-image-90w.pages.dev/file/AgACAgUAAyEGAATqb6rsAAMYajaZ2N1FbaKCCPKY0Tya5AzelyQAAs0QaxtlnrhVKmvMaEZ8VsEBAAMCAAN5AAM8BA.png" alt="模型制作过程照片 2" />
-          </figure>
-          <figure class="p1-making-photo">
-            <img loading="lazy" decoding="async" src="https://telegraph-image-90w.pages.dev/file/AgACAgUAAyEGAATqb6rsAAMZajaZ3RzgNzFYHUxBRfHhbyHRYnAAAs4QaxtlnrhVxOjNxcnUz4QBAAMCAAN5AAM8BA.png" alt="模型制作过程照片 3" />
-          </figure>
-          <figure class="p1-making-photo">
-            <img loading="lazy" decoding="async" src="https://telegraph-image-90w.pages.dev/file/AgACAgUAAyEGAATqb6rsAAMaajaZ44AOm-k9VJuMghmQss5nAlEAAs8QaxtlnrhVJDwqIfqX9lIBAAMCAAN5AAM8BA.png" alt="模型制作过程照片 4" />
-          </figure>
-          <figure class="p1-making-photo">
-            <img loading="lazy" decoding="async" src="https://telegraph-image-90w.pages.dev/file/AgACAgUAAyEGAATqb6rsAAMbajaZ7peVhT4fuQGXVB-uvLQf8HkAAtAQaxtlnrhVZY0y5snUNtsBAAMCAAN5AAM8BA.png" alt="模型制作过程照片 5" />
-          </figure>
-        </div>
-      </article>
-
-      <article class="p1-rect-card p1-card-validation-process" data-section-label="电路连接 / 代码测试">
-        <section class="p1-validation-section">
-          <div class="p1-validation-copy">
-            <p class="p1-overline">circuit connection</p>
-            <p class="p1-body-text p1-validation-text--singleline">
-              通过实体连接验证传感器布点、导线走向和开发板读取链路，先保证硬件信号稳定，再进入代码测试。
-            </p>
+        <section class="p1-lab-block p1-lab-aigc">
+          <div class="p1-lab-copy">
+            <span>02 / AIGC FORM STUDY</span>
+            <h3>外观造型探索</h3>
           </div>
-          <div class="p1-validation-gallery p1-validation-gallery--circuit">
-            <figure class="p1-validation-photo">
-              <img loading="lazy" decoding="async" src="https://telegraph-image-90w.pages.dev/file/AgACAgUAAyEGAATqb6rsAAMcajabC-c58wpx2hyQq0tzsIWp_xwAAtQQaxtlnrhVBxYnfM7QQLkBAAMCAAN5AAM8BA.png" alt="电路连接过程照片 1" />
-            </figure>
-            <figure class="p1-validation-photo">
-              <img loading="lazy" decoding="async" src="https://telegraph-image-90w.pages.dev/file/AgACAgUAAyEGAATqb6rsAAMdajabEAYH-MbIehxuhUqaU4SLD9oAAtUQaxtlnrhVrvNgDoika18BAAMCAAN5AAM8BA.png" alt="电路连接过程照片 2" />
-            </figure>
-            <figure class="p1-validation-photo">
-              <img loading="lazy" decoding="async" src="https://telegraph-image-90w.pages.dev/file/AgACAgUAAyEGAATqb6rsAAMeajabFHuqyBmH1Sm2Xc_-E0nd0TIAAtYQaxtlnrhV_BXXWkUAAV4sAQADAgADeQADPAQ.png" alt="电路连接过程照片 3" />
-            </figure>
-            <figure class="p1-validation-photo">
-              <img loading="lazy" decoding="async" src="https://telegraph-image-90w.pages.dev/file/AgACAgUAAyEGAATqb6rsAAMfajabGdY7294hBVNineLsc2SgCh4AAtcQaxtlnrhVXK43uJZvjEcBAAMCAAN5AAM8BA.png" alt="电路连接过程照片 4" />
-            </figure>
+          <div class="p1-aigc-board" aria-label="AIGC 外观造型探索图组" data-aigc-spotlight>
+            <div class="p1-aigc-bg p1-aigc-bg--base" aria-hidden="true"></div>
+            <div class="p1-aigc-bg p1-aigc-bg--spotlight" aria-hidden="true"></div>
+            <div class="p1-aigc-tiles">
+              <figure class="p1-aigc-tile"><img loading="lazy" decoding="async" src="/portfolio/project-1/aigc/aigc-1.png" alt="外观意向图 1" /></figure>
+              <figure class="p1-aigc-tile"><img loading="lazy" decoding="async" src="/portfolio/project-1/aigc/aigc-2.png" alt="外观意向图 2" /></figure>
+              <figure class="p1-aigc-tile"><img loading="lazy" decoding="async" src="/portfolio/project-1/aigc/aigc-3.png" alt="外观意向图 3" /></figure>
+              <figure class="p1-aigc-tile"><img loading="lazy" decoding="async" src="/portfolio/project-1/aigc/aigc-4.png" alt="外观意向图 4" /></figure>
+              <figure class="p1-aigc-tile"><img loading="lazy" decoding="async" src="/portfolio/project-1/aigc/aigc-5.png" alt="外观意向图 5" /></figure>
+              <figure class="p1-aigc-tile"><img loading="lazy" decoding="async" src="/portfolio/project-1/aigc/aigc-6.png" alt="外观意向图 6" /></figure>
+            </div>
           </div>
         </section>
 
-        <section class="p1-validation-section p1-validation-section--code">
-          <div class="p1-validation-copy">
-            <p class="p1-overline">code test</p>
-            <h2 class="p1-body-title">用代码读取压力变化并输出测试反馈</h2>
-            <p class="p1-body-text">
-              代码测试将硬件输入转译为可观察的数据变化，用手压和脚底模拟验证阈值响应是否稳定。
-            </p>
+        <section class="p1-lab-block p1-lab-circuit" data-circuit-scroll>
+          <div class="p1-lab-copy p1-lab-copy--circuit">
+            <span>03 / CIRCUITRY</span>
+            <h3>硬件调试：传感器布线与主控电路连接实拍</h3>
           </div>
-          <div class="p1-validation-code-layout">
-            <div class="p1-code-block p1-code-block--screen">
+          <div class="p1-circuit-scroll-shell" data-circuit-shell>
+            <div class="p1-circuit-sticky" data-circuit-sticky>
+              <div class="p1-circuit-viewport" data-circuit-viewport>
+                <div class="p1-circuit-track" data-circuit-track>
+                  <figure class="p1-circuit-photo">
+                    <img loading="lazy" decoding="async" src="https://telegraph-image-90w.pages.dev/file/AgACAgUAAyEGAATqb6rsAAMcajabC-c58wpx2hyQq0tzsIWp_xwAAtQQaxtlnrhVBxYnfM7QQLkBAAMCAAN5AAM8BA.png" alt="电路连接过程照片 1" />
+                  </figure>
+                  <figure class="p1-circuit-photo">
+                    <img loading="lazy" decoding="async" src="https://telegraph-image-90w.pages.dev/file/AgACAgUAAyEGAATqb6rsAAMdajabEAYH-MbIehxuhUqaU4SLD9oAAtUQaxtlnrhVrvNgDoika18BAAMCAAN5AAM8BA.png" alt="电路连接过程照片 2" />
+                  </figure>
+                  <figure class="p1-circuit-photo">
+                    <img loading="lazy" decoding="async" src="https://telegraph-image-90w.pages.dev/file/AgACAgUAAyEGAATqb6rsAAMeajabFHuqyBmH1Sm2Xc_-E0nd0TIAAtYQaxtlnrhV_BXXWkUAAV4sAQADAgADeQADPAQ.png" alt="电路连接过程照片 3" />
+                  </figure>
+                  <figure class="p1-circuit-photo">
+                    <img loading="lazy" decoding="async" src="https://telegraph-image-90w.pages.dev/file/AgACAgUAAyEGAATqb6rsAAMfajabGdY7294hBVNineLsc2SgCh4AAtcQaxtlnrhVXK43uJZvjEcBAAMCAAN5AAM8BA.png" alt="电路连接过程照片 4" />
+                  </figure>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </article>
+
+      <article class="p1-rect-card p1-card-validation-process p1-card-code-sandbox" data-section-label="Code Testing Sandbox" data-code-sandbox>
+        <section class="p1-sandbox-dashboard" aria-label="代码测试沙盒">
+          <header class="p1-sandbox-head">
+            <p>Code Testing Sandbox</p>
+            <h2>利用沙盒完成软硬件闭环验证</h2>
+            <span>将足底压力传感输入、Arduino 阈值判断与可视化反馈放入同一测试界面中校准。</span>
+          </header>
+
+          <div class="p1-sandbox-grid">
+            <div class="p1-sandbox-panel p1-code-editor" aria-label="Arduino 仿真代码编辑器">
               <div class="p1-code-header">
                 <span class="p1-code-dot"></span>
                 <span class="p1-code-dot"></span>
                 <span class="p1-code-dot"></span>
-                <span class="p1-code-label">Arduino — FSR pressure test</span>
+                <span class="p1-code-label">Arduino / FSR gait monitor</span>
+                <span class="p1-code-state">serial active</span>
               </div>
-              <pre><code>const int FSR_INNER = A0;  // inner sensor
-const int FSR_OUTER = A1;  // outer sensor
-
-void setup() &#123;
-  Serial.begin(9600);
-&#125;
-
-void loop() &#123;
-  int innerVal = analogRead(FSR_INNER);
-  int outerVal = analogRead(FSR_OUTER);
-
-  if ((innerVal - outerVal) &gt; 350) &#123;
-    triggerAlert();
-  &#125;
-
-  delay(50);
-&#125;</code></pre>
+              <pre><code><span class="p1-code-line" style="--line: 0"><span class="tok-comment">// Gradient 智能踝足矫形器 —— 足底压力传感原型</span></span>
+<span class="p1-code-line" style="--line: 1"><span class="tok-comment">// 功能：读取压电传感器电压值，通过串口绘图器输出实时波形</span></span>
+<span class="p1-code-line" style="--line: 2"><span class="tok-comment">// 硬件：Arduino Uno + 压电薄膜压力传感器（接模拟口 A0）</span></span>
+<span class="p1-code-line" style="--line: 3"></span>
+<span class="p1-code-line" style="--line: 4"><span class="tok-key">const</span> <span class="tok-type">int</span> sensorPin = A0;      <span class="tok-comment">// 压力传感器接入的模拟引脚</span></span>
+<span class="p1-code-line" style="--line: 5"><span class="tok-type">int</span> sensorValue = 0;           <span class="tok-comment">// 存储传感器读取的原始值（0-1023）</span></span>
+<span class="p1-code-line" style="--line: 6"></span>
+<span class="p1-code-line" style="--line: 7"><span class="tok-key">void</span> <span class="tok-fn">setup</span>() &#123;</span>
+<span class="p1-code-line" style="--line: 8">  Serial.<span class="tok-fn">begin</span>(9600);          <span class="tok-comment">// 初始化串口通信，波特率9600</span></span>
+<span class="p1-code-line" style="--line: 9">&#125;</span>
+<span class="p1-code-line" style="--line: 10"></span>
+<span class="p1-code-line" style="--line: 11"><span class="tok-key">void</span> <span class="tok-fn">loop</span>() &#123;</span>
+<span class="p1-code-line" style="--line: 12">  sensorValue = <span class="tok-fn">analogRead</span>(sensorPin);  <span class="tok-comment">// 读取压力传感器的模拟值</span></span>
+<span class="p1-code-line" style="--line: 13"></span>
+<span class="p1-code-line" style="--line: 14">  <span class="tok-comment">// 仅输出数值，便于Arduino串口绘图器直接绘制波形</span></span>
+<span class="p1-code-line p1-code-line--serial" style="--line: 15">  Serial.<span class="tok-fn">println</span>(sensorValue);<span class="p1-data-spill" aria-label="串口实时输出"><b data-spill-value>000</b> RAW</span></span>
+<span class="p1-code-line" style="--line: 16"></span>
+<span class="p1-code-line" style="--line: 17">  <span class="tok-fn">delay</span>(20);                   <span class="tok-comment">// 采样间隔20ms，约50Hz采样率，</span></span>
+<span class="p1-code-line" style="--line: 18">                                <span class="tok-comment">// 足以捕捉步态中足底压力的变化趋势</span></span>
+<span class="p1-code-line" style="--line: 19">&#125;<span class="p1-code-cursor" aria-hidden="true"></span></span></code></pre>
             </div>
-            <div class="p1-validation-gallery p1-validation-gallery--code">
-              <figure class="p1-validation-photo">
-                <img loading="lazy" decoding="async" src="https://telegraph-image-90w.pages.dev/file/AgACAgUAAyEGAATqb6rsAAMgajabcxem948a8XviF74iI_IOM44AAtgQaxtlnrhVRHpGKC9n8ggBAAMCAAN5AAM8BA.png" alt="代码测试过程照片 1" />
+
+            <aside class="p1-sandbox-panel p1-sensor-panel" aria-label="数据可视化与硬件联动窗口">
+              <figure class="p1-sensor-photo">
+                <img loading="lazy" decoding="async" src="https://telegraph-image-90w.pages.dev/file/AgACAgUAAyEGAATqb6rsAAMfajabGdY7294hBVNineLsc2SgCh4AAtcQaxtlnrhVXK43uJZvjEcBAAMCAAN5AAM8BA.png" alt="Arduino 主控与传感器连接实拍" />
               </figure>
-              <figure class="p1-validation-photo">
-                <img loading="lazy" decoding="async" src="https://telegraph-image-90w.pages.dev/file/AgACAgUAAyEGAATqb6rsAAMhajabd3ZCUjwSoqdRVNR_KoXZngkAAtkQaxtlnrhVPwETneTw7uEBAAMCAAN5AAM8BA.png" alt="代码测试过程照片 2" />
-              </figure>
-              <figure class="p1-validation-photo">
-                <img loading="lazy" decoding="async" src="https://telegraph-image-90w.pages.dev/file/AgACAgUAAyEGAATqb6rsAAMiajabesFP0qeANZiFquqxeXqTKzkAAtoQaxtlnrhV9CHH1EN136cBAAMCAAN5AAM8BA.png" alt="代码测试过程照片 3" />
-              </figure>
-              <figure class="p1-validation-photo">
-                <img loading="lazy" decoding="async" src="https://telegraph-image-90w.pages.dev/file/AgACAgUAAyEGAATqb6rsAAMjajabgdAQt3xYZCTo6bRpYU-eYkkAAtsQaxtlnrhV756pLVW-yk8BAAMCAAN5AAM8BA.png" alt="代码测试过程照片 4" />
-              </figure>
-            </div>
+
+              <div class="p1-waveform-card">
+                <div class="p1-waveform-head">
+                  <span>FSR gait pressure stream</span>
+                  <strong>Live</strong>
+                </div>
+                <svg class="p1-waveform" viewBox="0 0 360 180" role="img" aria-label="实时压力波形动画">
+                  <g class="p1-wave-grid" aria-hidden="true">
+                    <path d="M0 45H360M0 90H360M0 135H360" />
+                    <path d="M60 0V180M120 0V180M180 0V180M240 0V180M300 0V180" />
+                  </g>
+                  <path class="p1-wave p1-wave--soft" data-wave-peak d="" />
+                  <path class="p1-wave p1-wave--main" data-wave-current d="" />
+                </svg>
+                <div class="p1-signal-metrics">
+                  <span><strong><b data-signal-current>000</b> RAW</strong>实时数值</span>
+                  <span><strong>50 Hz</strong>采样率定位</span>
+                  <span><strong><b data-signal-peak>000</b> PEAK</strong>峰值捕获</span>
+                </div>
+              </div>
+            </aside>
           </div>
         </section>
       </article>
     </div>
+      </div>
+    </div>
   </section>
 
-  <section class="p1-section p1-final">
+  <section class="p1-section p1-chapter p1-chapter--final" id="p1-final-delivery" data-chapter-section data-chapter="final">
+    <div class="p1-editorial-track">
+      <aside class="p1-sticky-rail">
+        <a href="#p1-final-delivery" class="p1-sticky-tag" data-chapter-link>
+          <span class="p1-sidebar-rule" aria-hidden="true"></span>
+          <span class="p1-sidebar-copy">
+            <span class="p1-sidebar-index">03</span>
+            <span class="p1-sidebar-title">
+              <span>FINAL</span>
+              <span>DELIVERY</span>
+            </span>
+            <span class="p1-sidebar-subtitle">最终设计与场景呈现</span>
+          </span>
+        </a>
+      </aside>
+      <div class="p1-section-main">
+    <section class="p1-chapter-block p1-final">
     <div class="p1-rect-grid">
       <article class="p1-rect-card p1-card-render-gallery" data-section-label="产品渲染">
-        <section class="p1-render-screen p1-render-screen--modular">
-          <figure class="p1-render-item p1-render-item--full">
-            <img loading="lazy" decoding="async" src="/portfolio/project-1/renders/modular.png" alt="模块化产品渲染图" />
-          </figure>
-        </section>
-
-        <section class="p1-render-screen p1-render-screen--details">
-          <figure class="p1-render-item">
-            <img loading="lazy" decoding="async" src="/portfolio/project-1/renders/detail-strap.png" alt="可调节绑带细节渲染图" />
-          </figure>
-          <figure class="p1-render-item">
-            <img loading="lazy" decoding="async" src="/portfolio/project-1/renders/detail-buckle.png" alt="蓝粉卡扣渐变细节渲染图" />
-          </figure>
-          <figure class="p1-render-item">
-            <img loading="lazy" decoding="async" src="/portfolio/project-1/renders/detail-mesh.png" alt="透气网面细节渲染图" />
-          </figure>
-          <figure class="p1-render-item p1-render-item--overall">
-            <img loading="lazy" decoding="async" src="/portfolio/project-1/renders/overall-1.png" alt="产品整体渲染图 1" />
-          </figure>
+        <section class="p1-render-screen p1-render-screen--modular" data-modular-reveal>
+          <div class="p1-modular-pin">
+            <figure class="p1-render-item p1-render-item--full p1-render-item--modular" data-modular-figure>
+              <img loading="lazy" decoding="async" src="/portfolio/project-1/renders/modular.png" alt="模块化产品渲染图" />
+            </figure>
+          </div>
         </section>
 
         <section class="p1-render-screen p1-render-screen--exploded">
@@ -434,11 +496,23 @@ void loop() &#123;
             </div>
           </div>
         </section>
+
+        <section class="p1-render-screen p1-render-screen--details" data-render-reveal>
+          <figure class="p1-render-item" data-render-tilt>
+            <img loading="lazy" decoding="async" src="/portfolio/project-1/renders/detail-strap.png" alt="可调节绑带细节渲染图" />
+          </figure>
+          <figure class="p1-render-item" data-render-tilt>
+            <img loading="lazy" decoding="async" src="/portfolio/project-1/renders/detail-buckle.png" alt="蓝粉卡扣渐变细节渲染图" />
+          </figure>
+          <figure class="p1-render-item" data-render-tilt>
+            <img loading="lazy" decoding="async" src="/portfolio/project-1/renders/detail-mesh.png" alt="透气网面细节渲染图" />
+          </figure>
+        </section>
       </article>
     </div>
-  </section>
+    </section>
 
-  <section class="p1-section p1-outro">
+    <section class="p1-chapter-block p1-outro">
     <div class="p1-rect-grid">
       <article class="p1-rect-card p1-card-summary" data-section-label="项目总结">
         <p>
@@ -456,6 +530,9 @@ void loop() &#123;
         </a>
       </article>
     </div>
+    </section>
+      </div>
+    </div>
   </section>
 </main>
 
@@ -466,7 +543,9 @@ void loop() &#123;
     const video = document.querySelector('[data-exploded-video]');
     const layer = document.querySelector('[data-exploded-layer]');
 
-    if (!(stage instanceof HTMLElement) || !(media instanceof HTMLElement) || !(video instanceof HTMLVideoElement) || !(layer instanceof HTMLElement)) {
+    const screen = stage.closest('.p1-render-screen--exploded');
+
+    if (!(stage instanceof HTMLElement) || !(media instanceof HTMLElement) || !(video instanceof HTMLVideoElement) || !(layer instanceof HTMLElement) || !(screen instanceof HTMLElement)) {
       return;
     }
 
@@ -492,6 +571,10 @@ void loop() &#123;
       layer.style.top = `${top}px`;
       layer.style.width = `${width}px`;
       layer.style.height = `${height}px`;
+
+      const screenRect = screen.getBoundingClientRect();
+      screen.style.setProperty('--exploded-frame-top', `${mediaRect.top - screenRect.top + top}px`);
+      screen.style.setProperty('--exploded-frame-height', `${height}px`);
     };
 
     const revealAnnotations = () => {
@@ -506,6 +589,11 @@ void loop() &#123;
     video.pause();
 
     let hasStarted = false;
+
+    const finishOnFinalFrame = () => {
+      video.pause();
+      revealAnnotations();
+    };
 
     const playOnce = () => {
       if (hasStarted) {
@@ -537,19 +625,7 @@ void loop() &#123;
       syncAnnotationLayer();
     });
 
-    video.addEventListener('ended', () => {
-      video.pause();
-
-      if (Number.isFinite(video.duration) && video.duration > 0) {
-        try {
-          video.currentTime = Math.max(video.duration - 0.04, 0);
-        } catch {
-          // Some browsers disallow seeking immediately after ended; keeping the ended frame is still valid.
-        }
-      }
-
-      revealAnnotations();
-    }, { once: true });
+    video.addEventListener('ended', finishOnFinalFrame, { once: true });
 
     window.addEventListener('resize', syncAnnotationLayer);
     syncAnnotationLayer();
@@ -571,38 +647,506 @@ void loop() &#123;
     }
   };
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', setupExplodedVideo, { once: true });
-  } else {
+  const setupChapterSidebar = () => {
+    const chapters = Array.from(document.querySelectorAll('[data-chapter-section]'));
+
+    if (!chapters.length) {
+      return;
+    }
+
+    const activateChapter = (chapter: Element) => {
+      chapters.forEach((item) => {
+        item.classList.toggle('is-active', item === chapter);
+      });
+    };
+
+    activateChapter(chapters[0]);
+
+    if (!('IntersectionObserver' in window)) {
+      return;
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      const visibleEntries = entries
+        .filter((entry) => entry.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+
+      if (visibleEntries[0]?.target) {
+        activateChapter(visibleEntries[0].target);
+      }
+    }, {
+      rootMargin: '-28% 0px -42% 0px',
+      threshold: [0, 0.12, 0.28, 0.5, 0.72],
+    });
+
+    chapters.forEach((chapter) => observer.observe(chapter));
+  };
+
+  const setupRailMenuVisibility = () => {
+    const chapters = Array.from(document.querySelectorAll('[data-chapter-section]'));
+    const firstChapter = chapters[0];
+    const lastChapter = chapters[chapters.length - 1];
+
+    if (!(firstChapter instanceof HTMLElement) || !(lastChapter instanceof HTMLElement)) {
+      return;
+    }
+
+    const setVisible = (isVisible: boolean) => {
+      document.body.classList.toggle('menu-on-rail', isVisible);
+    };
+
+    let ticking = false;
+
+    const updateVisibility = () => {
+      const stickyOffset = window.innerHeight * 0.12;
+      const firstTop = firstChapter.getBoundingClientRect().top + window.scrollY;
+      const lastBottom = lastChapter.getBoundingClientRect().bottom + window.scrollY;
+      const scrollAnchor = window.scrollY + stickyOffset;
+
+      setVisible(scrollAnchor >= firstTop && window.scrollY < lastBottom);
+      ticking = false;
+    };
+
+    const requestUpdate = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateVisibility);
+        ticking = true;
+      }
+    };
+
+    window.addEventListener('scroll', requestUpdate, { passive: true });
+    window.addEventListener('resize', requestUpdate);
+    updateVisibility();
+  };
+
+  const setupTargetMappingReveal = () => {
+    // Reveals the three mapping rows once, with a 0.2s stagger between cards.
+    const mapping = document.querySelector('[data-target-map]');
+    const cards = Array.from(document.querySelectorAll('[data-target-card]'));
+
+    if (!(mapping instanceof HTMLElement) || !cards.length) {
+      return;
+    }
+
+    if (!('IntersectionObserver' in window)) {
+      cards.forEach((card) => card.classList.add('is-visible'));
+      return;
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      const entry = entries[0];
+
+      if (!entry?.isIntersecting) {
+        return;
+      }
+
+      cards.forEach((card, index) => {
+        window.setTimeout(() => {
+          card.classList.add('is-visible');
+        }, index * 200);
+      });
+      observer.disconnect();
+    }, {
+      rootMargin: '0px 0px -18% 0px',
+      threshold: 0.18,
+    });
+
+    observer.observe(mapping);
+  };
+
+  const setupLabInteractions = () => {
+    const sketch = document.querySelector('[data-sketch-reveal]');
+    const circuitSection = document.querySelector('[data-circuit-scroll]');
+    const circuitShell = document.querySelector('[data-circuit-shell]');
+    const circuitSticky = document.querySelector('[data-circuit-sticky]');
+    const circuitViewport = document.querySelector('[data-circuit-viewport]');
+    const circuitTrack = document.querySelector('[data-circuit-track]');
+    const aigcSpotlight = document.querySelector('[data-aigc-spotlight]');
+    const codeSandbox = document.querySelector('[data-code-sandbox]');
+
+    if (sketch instanceof HTMLElement) {
+      if ('IntersectionObserver' in window) {
+        const sketchObserver = new IntersectionObserver((entries) => {
+          if (entries[0]?.isIntersecting) {
+            sketch.classList.add('is-visible');
+            sketchObserver.disconnect();
+          }
+        }, {
+          rootMargin: '0px 0px -18% 0px',
+          threshold: 0.18,
+        });
+
+        sketchObserver.observe(sketch);
+      } else {
+        sketch.classList.add('is-visible');
+      }
+    }
+
+    if (aigcSpotlight instanceof HTMLElement) {
+      const tiles = Array.from(aigcSpotlight.querySelectorAll('.p1-aigc-tile'));
+
+      tiles.forEach((tile) => {
+        if (!(tile instanceof HTMLElement)) {
+          return;
+        }
+
+        const resetTile = () => {
+          tile.style.setProperty('--shoe-x', '0px');
+          tile.style.setProperty('--shoe-y', '0px');
+          tile.classList.remove('is-active');
+        };
+
+        tile.addEventListener('pointermove', (event) => {
+          const boardRect = aigcSpotlight.getBoundingClientRect();
+          const tileRect = tile.getBoundingClientRect();
+          const relX = (event.clientX - tileRect.left) / tileRect.width - 0.5;
+          const relY = (event.clientY - tileRect.top) / tileRect.height - 0.5;
+          const spotX = ((event.clientX - boardRect.left) / boardRect.width) * 100;
+          const spotY = ((event.clientY - boardRect.top) / boardRect.height) * 100;
+
+          aigcSpotlight.style.setProperty('--spot-x', `${spotX}%`);
+          aigcSpotlight.style.setProperty('--spot-y', `${spotY}%`);
+          tile.style.setProperty('--shoe-x', `${(-relX * 10).toFixed(2)}px`);
+          tile.style.setProperty('--shoe-y', `${(-relY * 10).toFixed(2)}px`);
+        });
+
+        tile.addEventListener('pointerenter', () => {
+          tile.classList.add('is-active');
+        });
+        tile.addEventListener('pointerleave', () => {
+          resetTile();
+        });
+      });
+    }
+
+    if (codeSandbox instanceof HTMLElement) {
+      if ('IntersectionObserver' in window) {
+        const sandboxObserver = new IntersectionObserver((entries) => {
+          if (entries[0]?.isIntersecting) {
+            codeSandbox.classList.add('is-visible');
+            sandboxObserver.disconnect();
+          }
+        }, {
+          rootMargin: '0px 0px -16% 0px',
+          threshold: 0.22,
+        });
+
+        sandboxObserver.observe(codeSandbox);
+      } else {
+        codeSandbox.classList.add('is-visible');
+      }
+
+      if (!codeSandbox.dataset.plotterReady) {
+        codeSandbox.dataset.plotterReady = 'true';
+
+        const waveCurrent = codeSandbox.querySelector('[data-wave-current]');
+        const wavePeak = codeSandbox.querySelector('[data-wave-peak]');
+        const currentValue = codeSandbox.querySelector('[data-signal-current]');
+        const peakValue = codeSandbox.querySelector('[data-signal-peak]');
+        const spillValue = codeSandbox.querySelector('[data-spill-value]');
+        const spillTag = codeSandbox.querySelector('.p1-data-spill');
+
+        if (waveCurrent && wavePeak && currentValue && peakValue && spillValue) {
+          const sampleCount = 360;
+          const cycleLength = 112;
+          const values = Array.from({ length: sampleCount }, () => 0);
+          const envelope = Array.from({ length: sampleCount }, () => 0);
+          let sampleIndex = 0;
+          let cyclePeak = 0;
+          let previousPhase = 0;
+          let smoothValue = 0;
+
+          const clamp = (value: number, min: number, max: number) => Math.min(Math.max(value, min), max);
+          const easeOut = (value: number) => 1 - Math.pow(1 - value, 3);
+          const easeIn = (value: number) => value * value * value;
+
+          const gaitValue = (index: number) => {
+            const phase = ((index % cycleLength) + cycleLength) % cycleLength / cycleLength;
+            let value = 0;
+
+            if (phase < 0.14) {
+              value = 18 + Math.sin(phase / 0.14 * Math.PI) * 18;
+            } else if (phase < 0.27) {
+              value = 40 + easeOut((phase - 0.14) / 0.13) * 760;
+            } else if (phase < 0.56) {
+              const t = (phase - 0.27) / 0.29;
+              value = 780 - easeOut(t) * 420 + Math.sin(t * Math.PI * 2) * 26;
+            } else if (phase < 0.74) {
+              const t = (phase - 0.56) / 0.18;
+              value = 330 + Math.sin(t * Math.PI) * 260;
+            } else {
+              const t = (phase - 0.74) / 0.26;
+              value = 310 * (1 - easeIn(t)) + 16;
+            }
+
+            const microVariation = Math.sin(index * 0.41) * 14 + Math.sin(index * 0.097) * 9;
+            return Math.round(clamp(value + microVariation, 0, 1023));
+          };
+
+          const yFromValue = (value: number) => 162 - value / 1023 * 136;
+          const buildPath = (items: number[]) => items
+            .map((value, index) => `${index === 0 ? 'M' : 'L'}${index} ${yFromValue(value).toFixed(1)}`)
+            .join(' ');
+          const formatValue = (value: number) => String(value).padStart(3, '0');
+
+          const tickPlotter = () => {
+            const raw = gaitValue(sampleIndex);
+            const phase = ((sampleIndex % cycleLength) + cycleLength) % cycleLength / cycleLength;
+
+            if (phase < previousPhase) {
+              cyclePeak = 0;
+            }
+
+            cyclePeak = Math.max(cyclePeak, raw);
+            previousPhase = phase;
+            smoothValue = Math.round(smoothValue * 0.82 + raw * 0.18);
+
+            values.push(raw);
+            values.shift();
+            envelope.push(smoothValue);
+            envelope.shift();
+
+            waveCurrent.setAttribute('d', buildPath(values));
+            wavePeak.setAttribute('d', buildPath(envelope));
+
+            currentValue.textContent = formatValue(raw);
+            peakValue.textContent = formatValue(cyclePeak);
+            spillValue.textContent = formatValue(raw);
+
+            spillTag?.classList.toggle('is-hot', raw > 620);
+            sampleIndex += 1;
+          };
+
+          for (let index = 0; index < sampleCount; index += 1) {
+            tickPlotter();
+          }
+
+          window.setInterval(tickPlotter, 20);
+        }
+      }
+    }
+
+    if (
+      !(circuitSection instanceof HTMLElement) ||
+      !(circuitShell instanceof HTMLElement) ||
+      !(circuitSticky instanceof HTMLElement) ||
+      !(circuitViewport instanceof HTMLElement) ||
+      !(circuitTrack instanceof HTMLElement)
+    ) {
+      return;
+    }
+
+    let ticking = false;
+    let circuitPointerActive = false;
+    let circuitShift = 0;
+    let circuitMaxShift = 0;
+
+    const updateCircuitScroll = () => {
+      const photos = Array.from(circuitTrack.children).filter((child): child is HTMLElement => child instanceof HTMLElement);
+      const trackStyle = window.getComputedStyle(circuitTrack);
+      const trackGap = Number.parseFloat(trackStyle.columnGap || trackStyle.gap || '0') || 0;
+      const sectionRect = circuitSection.getBoundingClientRect();
+      const visibleWidth = Math.max(sectionRect.width, 1);
+      const photoWidthRatio = window.matchMedia('(max-width: 768px)').matches ? 0.82 : window.matchMedia('(max-width: 1100px)').matches ? 0.78 : 0.68;
+      const minPhotoWidth = Math.min(visibleWidth * 0.88, 260);
+      const photoWidth = Math.max(Math.min(visibleWidth * photoWidthRatio, 704), minPhotoWidth);
+
+      circuitViewport.style.setProperty('--circuit-photo-width', `${photoWidth}px`);
+      circuitViewport.style.width = `${visibleWidth}px`;
+
+      // Force the browser to apply the freshly calculated image width before measuring the track.
+      circuitTrack.getBoundingClientRect();
+      const measuredTrackWidth = photos.reduce((total, photo) => total + photo.offsetWidth, 0) + Math.max(photos.length - 1, 0) * trackGap;
+      const trackWidth = Math.max(circuitTrack.scrollWidth, measuredTrackWidth);
+      const maxShift = Math.max(trackWidth - visibleWidth, 0);
+
+      const stickyHeight = Math.max(circuitSticky.offsetHeight, circuitViewport.offsetHeight, 1);
+      circuitShell.style.height = `${Math.ceil(stickyHeight)}px`;
+      circuitMaxShift = maxShift;
+      circuitShift = Math.min(circuitShift, circuitMaxShift);
+
+      circuitTrack.style.transform = `translate3d(${-circuitShift}px, 0, 0)`;
+      circuitSticky.classList.remove('is-fixed', 'is-after');
+      circuitSticky.style.left = '';
+      circuitSticky.style.width = '';
+
+      ticking = false;
+    };
+
+    const requestUpdate = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateCircuitScroll);
+        ticking = true;
+      }
+    };
+
+    const setCircuitPointerActive = (active: boolean) => {
+      circuitPointerActive = active;
+      requestUpdate();
+    };
+
+    const handleCircuitWheel = (event: WheelEvent) => {
+      if (!circuitPointerActive || circuitMaxShift <= 0) {
+        return;
+      }
+
+      const delta = Math.abs(event.deltaX) > Math.abs(event.deltaY) ? event.deltaX : event.deltaY;
+      const nextShift = Math.min(Math.max(circuitShift + delta, 0), circuitMaxShift);
+      const canMove = nextShift !== circuitShift;
+
+      if (!canMove) {
+        return;
+      }
+
+      event.preventDefault();
+      circuitShift = nextShift;
+      circuitTrack.style.transform = `translate3d(${-circuitShift}px, 0, 0)`;
+    };
+
+    window.addEventListener('scroll', requestUpdate, { passive: true });
+    window.addEventListener('resize', requestUpdate);
+    circuitViewport.addEventListener('pointerenter', () => setCircuitPointerActive(true));
+    circuitViewport.addEventListener('pointerleave', () => setCircuitPointerActive(false));
+    circuitViewport.addEventListener('pointerdown', () => setCircuitPointerActive(true));
+    circuitViewport.addEventListener('wheel', handleCircuitWheel, { passive: false });
+    circuitTrack.querySelectorAll('img').forEach((image) => {
+      image.addEventListener('load', requestUpdate, { once: true });
+    });
+    updateCircuitScroll();
+  };
+
+  const setupRenderGalleryInteractions = () => {
+    const modularReveal = document.querySelector('[data-modular-reveal]');
+    const revealItems = Array.from(document.querySelectorAll('[data-render-reveal]'));
+    const tiltItems = Array.from(document.querySelectorAll('[data-render-tilt]'));
+    let modularTicking = false;
+
+    const updateModularReveal = () => {
+      if (!(modularReveal instanceof HTMLElement)) {
+        modularTicking = false;
+        return;
+      }
+
+      const rect = modularReveal.getBoundingClientRect();
+      const scrollable = Math.max(1, rect.height - window.innerHeight);
+      const progress = Math.min(1, Math.max(0, -rect.top / scrollable));
+      const easedProgress = 1 - Math.pow(1 - progress, 3);
+      const scale = 1.05 - easedProgress * 0.05;
+
+      modularReveal.style.setProperty('--modular-reveal', easedProgress.toFixed(4));
+      modularReveal.style.setProperty('--modular-scale', scale.toFixed(4));
+      modularTicking = false;
+    };
+
+    const requestModularReveal = () => {
+      if (!modularTicking) {
+        window.requestAnimationFrame(updateModularReveal);
+        modularTicking = true;
+      }
+    };
+
+    if (modularReveal instanceof HTMLElement) {
+      window.addEventListener('scroll', requestModularReveal, { passive: true });
+      window.addEventListener('resize', requestModularReveal);
+      modularReveal.querySelectorAll('img').forEach((image) => {
+        image.addEventListener('load', requestModularReveal, { once: true });
+      });
+      updateModularReveal();
+    }
+
+    if (revealItems.length) {
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, {
+          rootMargin: '0px 0px -14% 0px',
+          threshold: 0.18,
+        });
+
+        revealItems.forEach((item) => observer.observe(item));
+      } else {
+        revealItems.forEach((item) => item.classList.add('is-visible'));
+      }
+    }
+
+    tiltItems.forEach((item) => {
+      if (!(item instanceof HTMLElement)) {
+        return;
+      }
+
+      item.addEventListener('pointermove', (event) => {
+        const rect = item.getBoundingClientRect();
+        const x = (event.clientX - rect.left) / rect.width - 0.5;
+        const y = (event.clientY - rect.top) / rect.height - 0.5;
+        const rotateX = (-y * 10).toFixed(2);
+        const rotateY = (x * 10).toFixed(2);
+
+        item.style.setProperty('--rx', `${rotateX}deg`);
+        item.style.setProperty('--ry', `${rotateY}deg`);
+        item.style.setProperty('--shine-x', `${(x + 0.5) * 100}%`);
+      });
+
+      item.addEventListener('pointerleave', () => {
+        item.style.setProperty('--rx', '0deg');
+        item.style.setProperty('--ry', '0deg');
+        item.style.setProperty('--shine-x', '50%');
+      });
+    });
+  };
+
+  const setupProject1Interactions = () => {
     setupExplodedVideo();
+    setupChapterSidebar();
+    setupRailMenuVisibility();
+    setupTargetMappingReveal();
+    setupLabInteractions();
+    setupRenderGalleryInteractions();
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupProject1Interactions, { once: true });
+  } else {
+    setupProject1Interactions();
   }
 </script>
 
 <style>
   :root {
-    --p1-bg: #EDF9FF;
-    --p1-surface: #F7FCFF;
-    --p1-surface-2: #E6F3FA;
+    --p1-bg: #e1cba6;
+    --p1-bg-rgb: 225, 203, 166;
+    --p1-surface: #fbf7ed;
+    --p1-surface-rgb: 251, 247, 237;
+    --p1-surface-2: #efe3c9;
     --p1-border: rgba(26, 26, 26, 0.08);
     --p1-text: #1a1a1a;
     --p1-text-dim: rgba(26, 26, 26, 0.62);
-    --p1-accent: #4a8cb8;
+    --p1-accent: #315f7d;
     --p1-accent-warm: #b87ab8;
-    --p1-gradient: linear-gradient(135deg, #6ea8d8 28%, #d4a0d4 72%);
-    --p1-code-bg: #f4f8fb;
-    --p1-code-header-bg: #eaf3f8;
+    --p1-accent-rgb: 49, 95, 125;
+    --p1-gradient: linear-gradient(135deg, #315f7d 28%, #a93207 72%);
+    --p1-code-bg: #f7efdf;
+    --p1-code-header-bg: #efe3c9;
     --p1-measure: min(42rem, 100%);
     --p1-container: 92rem;
-    --p1-section-px: clamp(1rem, 2vw, 1.75rem);
+    --rail-to-card-gap: clamp(0.9rem, 1.35vw, 1.25rem);
+    --card-padding: clamp(1.2rem, 2vw, 1.8rem);
+    --row-gap-section: clamp(0.9rem, 1.35vw, 1.25rem);
+    --chapter-end-media-gap: 4.6875vh;
+    --p1-section-px: var(--rail-to-card-gap);
     --p1-section-py: clamp(1rem, 2.2vh, 1.5rem);
-    --p1-grid-gap: clamp(0.9rem, 1.35vw, 1.25rem);
-    --p1-card-pad: clamp(1.2rem, 2vw, 1.8rem);
+    --p1-grid-gap: var(--row-gap-section);
+    --p1-card-pad: var(--card-padding);
   }
 
   .p1-root {
     background: var(--p1-bg);
     color: var(--p1-text);
-    font-family: var(--font-serif);
+    font-family: var(--font-cjk-sans);
     padding-bottom: clamp(3rem, 8vh, 5rem);
   }
 
@@ -616,15 +1160,197 @@ void loop() &#123;
     padding-inline: var(--p1-section-px);
   }
 
+  .p1-section-main {
+    font-family: var(--font-cjk-sans);
+  }
+
   .p1-section {
     padding-block: var(--p1-section-py);
-    content-visibility: auto;
+    margin-bottom: clamp(3.75rem, 6.5vh, 5rem);
+    content-visibility: visible;
     contain-intrinsic-size: 900px;
+    overflow: visible;
+  }
+
+  .p1-section:last-of-type {
+    margin-bottom: 0;
+  }
+
+  .p1-chapter {
+    padding-left: 0;
+  }
+
+  .p1-editorial-track {
+    --p1-rail-red: #a93207;
+    --p1-rail-cream: #e1cba6;
+    --p1-rail-axis: clamp(1.45rem, 2.4vw, 2rem);
+    --p1-editorial-gap: var(--rail-to-card-gap);
+    position: relative;
+    display: flex;
+    align-items: stretch;
+    column-gap: var(--p1-editorial-gap);
+    width: 100%;
+  }
+
+  .p1-chapter-block + .p1-chapter-block {
+    margin-top: 0;
+  }
+
+  .p1-sticky-rail {
+    position: relative;
+    flex: 0 0 clamp(9rem, 14.25vw, 15rem);
+    min-width: 0;
+    background: var(--p1-rail-red);
+    color: var(--p1-rail-cream);
+  }
+
+  .p1-sticky-rail::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: var(--p1-rail-axis);
+    width: 1px;
+    background: rgba(225, 203, 166, 0.28);
+  }
+
+  .p1-sticky-rail::after {
+    display: none;
+  }
+
+  .p1-sticky-tag {
+    --p1-sidebar-index-size: clamp(4.6rem, 7.4vw, 8rem);
+    position: sticky;
+    top: 12vh;
+    display: grid;
+    grid-template-columns: clamp(1rem, 1.8vw, 2rem) minmax(0, 1fr);
+    grid-template-areas:
+      'rule copy';
+    column-gap: clamp(0.52rem, 0.8vw, 0.72rem);
+    align-items: start;
+    width: calc(100% - var(--p1-rail-axis) - clamp(0.55rem, 1vw, 0.9rem));
+    margin-left: var(--p1-rail-axis);
+    padding-top: 0.05rem;
+    color: rgba(225, 203, 166, 0.22);
+    text-decoration: none;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 1;
+  }
+
+  .p1-sidebar-rule {
+    grid-area: rule;
+    width: 100%;
+    height: 1px;
+    margin-top: calc(var(--p1-sidebar-index-size) * 0.4);
+    background: currentColor;
+    transform-origin: left center;
+    transform: scaleX(0.42);
+    transition: inherit;
+  }
+
+  .p1-sidebar-title {
+    display: block;
+    font-family: var(--font-display);
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+
+  .p1-sidebar-title span {
+    display: block;
+  }
+
+  .p1-sidebar-copy {
+    grid-area: copy;
+    position: relative;
+    display: grid;
+    gap: 0.68rem;
+    justify-items: start;
+    min-width: 0;
+    padding-block: 0.32rem;
+    isolation: isolate;
+  }
+
+  .p1-sidebar-index {
+    position: relative;
+    z-index: 0;
+    font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+    font-size: var(--p1-sidebar-index-size);
+    font-weight: 700;
+    line-height: 0.7;
+    letter-spacing: -0.1em;
+    color: currentColor;
+    opacity: 0.16;
+  }
+
+  .p1-sidebar-title {
+    color: currentColor;
+    font-size: clamp(0.86rem, 1.05vw, 1.18rem);
+    line-height: 1.48;
+    letter-spacing: 0.18em;
+    text-wrap: balance;
+  }
+
+  .p1-sidebar-subtitle {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 0.62rem;
+    font-weight: 500;
+    line-height: 1.58;
+    letter-spacing: 0.1em;
+    color: rgba(225, 203, 166, 0.24);
+    transition: inherit;
+  }
+
+  .p1-chapter.is-active .p1-sticky-tag {
+    color: var(--p1-rail-cream);
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .p1-chapter.is-active .p1-sidebar-rule {
+    transform: scaleX(1);
+  }
+
+  .p1-chapter.is-active .p1-sidebar-subtitle {
+    color: rgba(225, 203, 166, 0.48);
+  }
+
+  .p1-section-main {
+    flex: 1 1 auto;
+    display: grid;
+    align-content: start;
+    row-gap: var(--row-gap-section);
+    min-width: 0;
+  }
+
+  .p1-section-main [data-section-label]::before {
+    color: var(--p1-rail-cream);
+    font-weight: 800;
+  }
+
+  .p1-chapter--insight .p1-section-main [data-section-label]::before {
+    content: none;
+  }
+
+  .p1-chapter--insight .p1-card-context-merged,
+  .p1-chapter--insight .p1-pain-grid,
+  .p1-chapter--insight .p1-positioning .p1-rect-grid {
+    padding-top: var(--chapter-end-media-gap);
+    padding-bottom: var(--chapter-end-media-gap);
+  }
+
+  .p1-chapter--insight .p1-pain-grid[data-section-label],
+  .p1-chapter--insight .p1-positioning .p1-rect-grid[data-section-label] {
+    padding-top: var(--chapter-end-media-gap);
+    padding-bottom: var(--chapter-end-media-gap);
   }
 
   .p1-hero {
     content-visibility: visible;
-    padding-block: clamp(1rem, 2.5vh, 1.5rem) clamp(0.75rem, 2vh, 1.25rem);
+    min-height: 100svh;
+    padding: 0;
     background: var(--p1-bg);
   }
 
@@ -636,10 +1362,10 @@ void loop() &#123;
 
   .p1-hero-shell {
     position: relative;
-    min-height: clamp(34rem, 78vh, 48rem);
+    min-height: 100svh;
     display: flex;
     align-items: stretch;
-    border: 1px solid var(--p1-border);
+    border: 0;
     border-radius: 0;
     overflow: hidden;
     box-shadow: none;
@@ -658,15 +1384,17 @@ void loop() &#123;
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(90deg, var(--p1-bg) 0%, var(--p1-bg) 28%, transparent 68%, transparent 100%);
+    background:
+      linear-gradient(90deg, rgba(255, 247, 237, 0.94) 0%, rgba(255, 247, 237, 0.78) 32%, rgba(255, 247, 237, 0.28) 58%, rgba(255, 247, 237, 0) 82%),
+      linear-gradient(180deg, rgba(255, 247, 237, 0.16) 0%, rgba(255, 247, 237, 0) 38%, rgba(255, 247, 237, 0.18) 100%);
   }
 
   .p1-hero-img {
-    width: 118%;
+    width: 100%;
     max-width: none;
     height: 100%;
     object-fit: cover;
-    object-position: 100% 85%;
+    object-position: 70% 76%;
     background: var(--p1-surface-2);
   }
 
@@ -676,16 +1404,16 @@ void loop() &#123;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 1.25rem;
-    width: min(100%, 38rem);
-    min-height: clamp(34rem, 78vh, 48rem);
+    gap: 1.05rem;
+    width: min(100%, 39rem);
+    min-height: 100svh;
     padding: clamp(2rem, 5vw, 4rem);
   }
 
   .p1-copy-stack {
     display: flex;
     flex-direction: column;
-    gap: 0.4rem;
+    gap: 0.5rem;
   }
 
   .p1-kicker-row {
@@ -693,20 +1421,22 @@ void loop() &#123;
     align-items: center;
     gap: 1rem;
     font-family: var(--font-sans);
+    flex-wrap: nowrap;
+    min-width: 0;
   }
 
   .p1-hero-index {
     font-size: clamp(2.75rem, 6vw, 4.4rem);
     font-weight: 600;
     line-height: 0.9;
-    color: var(--p1-accent);
+    color: rgba(36, 78, 108, 0.7);
     letter-spacing: -0.05em;
   }
 
   .p1-kicker-line {
     width: min(11rem, 20vw);
     height: 1px;
-    background: rgba(26, 26, 26, 0.15);
+    background: rgba(var(--p1-accent-rgb), 0.52);
     flex-shrink: 0;
   }
 
@@ -729,6 +1459,10 @@ void loop() &#123;
     color: rgba(26, 26, 26, 0.58);
   }
 
+  .p1-kicker-text {
+    white-space: nowrap;
+  }
+
   .p1-overline {
     margin: 0 0 0.9rem;
   }
@@ -743,9 +1477,9 @@ void loop() &#123;
   .p1-caption {
     margin-top: 0.8rem;
     font-size: 0.875rem;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: rgba(26, 26, 26, 0.46);
+    color: rgba(36, 78, 108, 0.62);
   }
 
   .p1-hero-caption {
@@ -757,7 +1491,7 @@ void loop() &#123;
   .p1-body-title,
   .p1-card-title {
     margin: 0;
-    font-family: var(--font-serif);
+    font-family: var(--font-cjk-sans);
     color: var(--p1-text);
     letter-spacing: -0.03em;
   }
@@ -802,19 +1536,40 @@ void loop() &#123;
     margin: 0;
   }
 
+  .p1-hero-desc {
+    display: grid;
+    gap: 0.14em;
+    max-width: min(43rem, 100%);
+  }
+
+  .p1-hero-desc span {
+    display: block;
+    text-align: left;
+  }
+
+  .p1-hero-quote {
+    margin: 0.15rem 0 0;
+    font-family: var(--font-cjk-sans);
+    font-size: clamp(1.18rem, 2vw, 1.55rem);
+    font-weight: 700;
+    line-height: 1.45;
+    color: rgba(36, 78, 108, 0.9);
+  }
+
   .p1-hero-tags {
     display: flex;
     flex-wrap: wrap;
     gap: 0.65rem;
-    margin-top: 0.35rem;
+    margin-top: 0.45rem;
   }
 
   .p1-hero-tags span {
-    padding: 0.5rem 0.85rem;
+    padding: 0.48rem 0.82rem;
     border-radius: 999px;
-    border: 1px solid rgba(26, 26, 26, 0.08);
-    background: rgba(255, 255, 255, 0.55);
-    color: rgba(26, 26, 26, 0.76);
+    border: 0.5px solid rgba(36, 78, 108, 0.14);
+    background: rgba(255, 255, 255, 0.4);
+    color: rgba(36, 78, 108, 0.86);
+    box-shadow: 0 0.4rem 1.2rem rgba(36, 78, 108, 0.05);
     font-family: var(--font-sans);
     font-size: 0.72rem;
     letter-spacing: 0.08em;
@@ -851,8 +1606,8 @@ void loop() &#123;
   [data-section-label]::before {
     content: attr(data-section-label);
     position: absolute;
-    top: clamp(0.8rem, 1.3vw, 1.1rem);
-    left: clamp(0.8rem, 1.3vw, 1.1rem);
+    top: var(--card-padding);
+    left: var(--card-padding);
     z-index: 6;
     padding: 0;
     border: 0;
@@ -868,13 +1623,13 @@ void loop() &#123;
   }
 
   .p1-card-mapping[data-section-label]::before {
-    right: clamp(0.8rem, 1.3vw, 1.1rem);
+    right: var(--card-padding);
     left: auto;
   }
 
   .p1-pain-grid[data-section-label],
   .p1-positioning .p1-rect-grid[data-section-label] {
-    padding-top: clamp(3rem, 4vw, 3.4rem);
+    padding-top: calc(var(--card-padding) * 2.25);
   }
 
   .p1-card-code[data-section-label]::before {
@@ -884,6 +1639,7 @@ void loop() &#123;
   .p1-card-code,
   .p1-card-summary,
   .p1-card-mapping,
+  .p1-card-exploration-hardware,
   .p1-card-context-merged,
   .p1-card-feature,
   .p1-pain-card,
@@ -1014,15 +1770,25 @@ void loop() &#123;
 
   .p1-card-validation-process {
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
     gap: var(--p1-grid-gap);
     padding: var(--p1-card-pad);
     min-height: min(92vh, 54rem);
+    border: 1px solid rgba(255, 255, 255, 0.72);
+    background:
+      linear-gradient(135deg, rgba(255, 255, 255, 0.78), rgba(231, 244, 251, 0.52));
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.9),
+      0 1.8rem 4rem rgba(var(--p1-accent-rgb), 0.12);
+    backdrop-filter: blur(18px);
   }
 
   .p1-validation-section {
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
     grid-template-rows: auto minmax(0, 1fr);
     gap: clamp(0.9rem, 1.4vw, 1.25rem);
+    min-width: 0;
     min-height: 0;
   }
 
@@ -1068,6 +1834,14 @@ void loop() &#123;
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
+  .p1-validation-gallery--circuit {
+    padding: clamp(0.65rem, 1vw, 0.9rem);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.32);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.78);
+    backdrop-filter: blur(14px);
+  }
+
   .p1-validation-photo {
     margin: 0;
     overflow: hidden;
@@ -1082,11 +1856,856 @@ void loop() &#123;
     object-position: center;
   }
 
+  .p1-card-exploration-hardware {
+    --circuit-module-gap: clamp(0.95rem, 1.6vw, 1.4rem);
+    display: grid;
+    gap: clamp(2.5rem, 5vw, 5rem);
+    padding: clamp(3.4rem, 5vw, 5rem) clamp(1rem, 3.2vw, 3rem) var(--circuit-module-gap);
+    overflow: visible;
+    content-visibility: visible;
+    background:
+      linear-gradient(135deg, rgba(251, 247, 237, 0.95), rgba(241, 246, 247, 0.72)),
+      linear-gradient(90deg, rgba(var(--p1-accent-rgb), 0.05) 1px, transparent 1px),
+      linear-gradient(180deg, rgba(var(--p1-accent-rgb), 0.04) 1px, transparent 1px);
+    background-size: auto, 4.5rem 4.5rem, 4.5rem 4.5rem;
+  }
+
+  .p1-lab-head {
+    display: grid;
+    gap: 0.8rem;
+    max-width: 54rem;
+  }
+
+  .p1-card-exploration-hardware > .p1-lab-head {
+    display: none;
+  }
+
+  .p1-lab-eyebrow,
+  .p1-lab-copy span {
+    margin: 0;
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    line-height: 1.2;
+    text-transform: uppercase;
+    color: rgba(var(--p1-accent-rgb), 0.72);
+  }
+
+  .p1-lab-head h2,
+  .p1-lab-copy h3 {
+    margin: 0;
+    color: var(--p1-accent);
+    font-family: var(--font-cjk-sans);
+    font-weight: 800;
+    letter-spacing: 0;
+  }
+
+  .p1-lab-head h2 {
+    font-size: clamp(2rem, 4vw, 4rem);
+    line-height: 1.05;
+  }
+
+  .p1-lab-head p:last-child {
+    margin: 0;
+    max-width: 36rem;
+    font-size: clamp(0.92rem, 1vw, 1.02rem);
+    line-height: 1.8;
+    color: rgba(26, 26, 26, 0.56);
+  }
+
+  .p1-lab-block {
+    display: grid;
+    gap: clamp(0.95rem, 1.6vw, 1.4rem);
+    min-width: 0;
+  }
+
+  .p1-lab-copy {
+    display: grid;
+    gap: 0.45rem;
+  }
+
+  .p1-lab-copy h3 {
+    font-size: clamp(1.35rem, 2.1vw, 2rem);
+    line-height: 1.16;
+  }
+
+  .p1-lab-sketch {
+    opacity: 0;
+    transform: translateY(15px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .p1-lab-sketch.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .p1-lab-sketch-figure,
+  .p1-aigc-tile,
+  .p1-circuit-photo {
+    margin: 0;
+    overflow: hidden;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.42);
+  }
+
+  .p1-lab-sketch-figure {
+    overflow: visible;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: 0 1.6rem 4rem rgba(var(--p1-accent-rgb), 0.09);
+  }
+
+  .p1-lab-sketch-figure img,
+  .p1-aigc-tile img,
+  .p1-circuit-photo img {
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    object-fit: cover;
+    background: transparent;
+    transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), filter 0.7s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .p1-lab-sketch-figure img {
+    height: auto;
+    border-radius: 0;
+    object-fit: contain;
+  }
+
+  .p1-aigc-board {
+    --spot-x: 50%;
+    --spot-y: 50%;
+    position: relative;
+    min-height: min(66vh, 42rem);
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    padding: clamp(1rem, 2.5vw, 2rem);
+    isolation: isolate;
+    background:
+      radial-gradient(circle at 50% 50%, rgba(var(--p1-accent-rgb), 0.055), transparent 46%),
+      rgba(247, 245, 240, 0.82);
+  }
+
+  .p1-aigc-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-image: url('https://telegraph-image-90w.pages.dev/file/AgACAgUAAyEGAATqb6rsAAM5ajjfXXIoSQObFQMRCY4Ed5tgtiwAAgoRaxsof8lVSQEkf8NyUm4BAAMCAAN5AAM8BA.png');
+    background-size: auto 100%;
+    background-position: center;
+    background-repeat: repeat-x;
+    pointer-events: none;
+  }
+
+  .p1-aigc-bg--base {
+    opacity: 0.075;
+    filter: grayscale(100%) blur(1px);
+  }
+
+  .p1-aigc-bg--spotlight {
+    opacity: 0;
+    filter: grayscale(0%) blur(0);
+    -webkit-mask-image: radial-gradient(
+      circle at var(--spot-x) var(--spot-y),
+      #000 0,
+      rgba(0, 0, 0, 0.92) clamp(5.2rem, 10vw, 8.4rem),
+      rgba(0, 0, 0, 0.42) clamp(6.8rem, 13vw, 10.8rem),
+      transparent clamp(8.4rem, 16vw, 13rem)
+    );
+    mask-image: radial-gradient(
+      circle at var(--spot-x) var(--spot-y),
+      #000 0,
+      rgba(0, 0, 0, 0.92) clamp(5.2rem, 10vw, 8.4rem),
+      rgba(0, 0, 0, 0.42) clamp(6.8rem, 13vw, 10.8rem),
+      transparent clamp(8.4rem, 16vw, 13rem)
+    );
+    transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1), filter 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .p1-aigc-board.is-spotlight-active .p1-aigc-bg--spotlight {
+    opacity: 0.16;
+  }
+
+  .p1-aigc-tiles {
+    position: relative;
+    z-index: 1;
+    width: min(100%, 50rem);
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+    gap: clamp(0.7rem, 1.7vw, 1.35rem);
+  }
+
+  .p1-aigc-tile {
+    --shoe-x: 0px;
+    --shoe-y: 0px;
+    aspect-ratio: 1 / 1;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    border: 1px solid rgba(var(--p1-accent-rgb), 0.13);
+    border-radius: 12px;
+    background: transparent;
+    box-shadow: none;
+    transition:
+      transform 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+      border-color 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+      box-shadow 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .p1-aigc-tile img {
+    width: 92%;
+    height: 92%;
+    border-radius: 0;
+    object-fit: contain;
+    object-position: center;
+    background: transparent;
+    filter: grayscale(100%) saturate(0.35) contrast(0.9) opacity(0.42) drop-shadow(0 1rem 1.4rem rgba(26, 26, 26, 0.06));
+    mix-blend-mode: multiply;
+    transform: translate3d(var(--shoe-x), var(--shoe-y), 0);
+  }
+
+  .p1-aigc-tile:hover,
+  .p1-aigc-tile.is-active {
+    z-index: 2;
+    transform: translateY(-4px);
+    border-color: rgba(91, 174, 235, 0.82);
+    background: rgba(247, 250, 252, 0.92) !important;
+    box-shadow:
+      0 0 0 1px rgba(91, 174, 235, 0.16),
+      0 0.9rem 2.2rem rgba(var(--p1-accent-rgb), 0.16),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.72);
+  }
+
+  .p1-aigc-tile:hover img,
+  .p1-aigc-tile.is-active img {
+    background: transparent !important;
+    filter: grayscale(0%) saturate(1.04) contrast(1.01) opacity(1) drop-shadow(0 1.2rem 1.9rem rgba(var(--p1-accent-rgb), 0.18));
+    mix-blend-mode: normal;
+  }
+
+  .p1-lab-circuit {
+    --circuit-photo-height: min(68vh, 38rem);
+    overflow: visible;
+    gap: var(--circuit-module-gap);
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .p1-lab-copy--circuit span {
+    color: rgba(var(--p1-accent-rgb), 0.72);
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    line-height: 1.2;
+    text-transform: uppercase;
+  }
+
+  .p1-lab-copy--circuit h3 {
+    max-width: 38rem;
+  }
+
+  .p1-circuit-scroll-shell {
+    position: relative;
+    min-height: var(--circuit-photo-height);
+    width: 100%;
+    max-width: 100%;
+    margin-inline: 0;
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .p1-circuit-sticky {
+    position: relative;
+    top: 0;
+    height: var(--circuit-photo-height);
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    padding-inline: 0;
+    max-width: 100%;
+  }
+
+  .p1-circuit-sticky.is-fixed {
+    position: fixed;
+    top: 0;
+    right: auto;
+    bottom: auto;
+    z-index: 18;
+  }
+
+  .p1-circuit-sticky.is-after {
+    position: absolute;
+    inset: auto 0 0 0;
+    width: 100% !important;
+  }
+
+  .p1-circuit-viewport {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow: hidden;
+    border-radius: 6px;
+    contain: layout paint;
+    clip-path: inset(0 round 6px);
+  }
+
+  .p1-circuit-track {
+    display: flex;
+    gap: 12px;
+    width: max-content;
+    will-change: transform;
+    transition: none;
+  }
+
+  .p1-circuit-photo {
+    flex: 0 0 var(--circuit-photo-width, min(68%, 44rem));
+    height: var(--circuit-photo-height);
+    border-radius: 6px;
+    box-shadow: 0 1.4rem 3rem rgba(var(--p1-accent-rgb), 0.1);
+    transition: box-shadow 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .p1-circuit-photo img {
+    border-radius: 6px;
+    transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .p1-circuit-photo:hover {
+    box-shadow: 0 1.6rem 3.4rem rgba(var(--p1-accent-rgb), 0.16);
+    z-index: 1;
+  }
+
+  .p1-circuit-photo:hover img {
+    transform: scale(1.018);
+  }
+
+  .p1-card-code-sandbox {
+    height: min(100svh, 56rem);
+    min-height: 0;
+    max-height: 100svh;
+    padding: clamp(1.5rem, 2.6vw, 2.6rem) clamp(1.5rem, 2.6vw, 2.6rem) var(--chapter-end-media-gap);
+    overflow: hidden;
+    isolation: isolate;
+    color: #2a2d34;
+    border: 1px solid rgba(226, 228, 233, 0.8);
+    background:
+      radial-gradient(circle at 78% 16%, rgba(0, 102, 255, 0.075), transparent 34%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.35), rgba(241, 238, 227, 0.82)),
+      #f1eee3;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.85),
+      0 1.4rem 3rem rgba(var(--p1-accent-rgb), 0.08);
+    content-visibility: visible;
+  }
+
+  .p1-card-code-sandbox[data-section-label]::before {
+    color: rgba(var(--p1-accent-rgb), 0.72);
+  }
+
+  .p1-card-code-sandbox::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background:
+      linear-gradient(90deg, rgba(49, 95, 125, 0.045) 1px, transparent 1px),
+      linear-gradient(180deg, rgba(49, 95, 125, 0.035) 1px, transparent 1px);
+    background-size: 4.5rem 4.5rem;
+    opacity: 0.26;
+  }
+
+  .p1-sandbox-dashboard {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr);
+    gap: clamp(1rem, 1.5vw, 1.45rem);
+    height: 100%;
+    min-height: 0;
+  }
+
+  .p1-sandbox-head {
+    display: grid;
+    gap: 0.42rem;
+    max-width: 52rem;
+  }
+
+  .p1-sandbox-head p,
+  .p1-waveform-head span {
+    margin: 0;
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    line-height: 1.2;
+    text-transform: uppercase;
+    color: rgba(var(--p1-accent-rgb), 0.74);
+  }
+
+  .p1-sandbox-head h2 {
+    margin: 0;
+    color: #2a2d34;
+    font-family: var(--font-cjk-sans);
+    font-size: clamp(1.7rem, 3vw, 3rem);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: 0;
+  }
+
+  .p1-sandbox-head > span {
+    max-width: 42rem;
+    color: rgba(42, 45, 52, 0.62);
+    font-size: clamp(0.86rem, 0.95vw, 0.96rem);
+    line-height: 1.68;
+  }
+
+  .p1-sandbox-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: clamp(1rem, 1.45vw, 1.35rem);
+    align-items: stretch;
+    min-height: 0;
+  }
+
+  .p1-sandbox-panel {
+    min-width: 0;
+    min-height: 0;
+    border-radius: 12px;
+    border: 1px solid rgba(226, 228, 233, 0.8);
+    background: rgba(245, 246, 248, 0.75);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.9),
+      0 1.1rem 2.6rem rgba(var(--p1-accent-rgb), 0.08);
+    backdrop-filter: blur(12px);
+    opacity: 0;
+    transform: translateY(18px);
+    transition:
+      opacity 0.72s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.72s cubic-bezier(0.16, 1, 0.3, 1),
+      border-color 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+      box-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .p1-card-code-sandbox.is-visible .p1-sandbox-panel {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .p1-card-code-sandbox.is-visible .p1-sensor-panel {
+    transition-delay: 0.12s;
+  }
+
+  .p1-code-editor {
+    overflow: hidden;
+    min-height: 0;
+    background: rgba(245, 246, 248, 0.75);
+  }
+
+  .p1-code-editor .p1-code-header {
+    gap: 0.5rem;
+    padding: 0.62rem 0.9rem;
+    border-bottom: 1px solid rgba(226, 228, 233, 0.8);
+    background: rgba(255, 255, 255, 0.48);
+    box-shadow: none;
+  }
+
+  .p1-code-editor .p1-code-label {
+    color: rgba(42, 45, 52, 0.66);
+  }
+
+  .p1-code-editor .p1-code-dot {
+    background: #f2a7ae;
+  }
+
+  .p1-code-editor .p1-code-dot:nth-child(2) {
+    background: #e9c67a;
+  }
+
+  .p1-code-editor .p1-code-dot:nth-child(3) {
+    background: #9bc7b1;
+  }
+
+  .p1-code-state {
+    margin-left: auto;
+    color: rgba(0, 102, 255, 0.72);
+    font-family: var(--font-sans);
+    font-size: 0.64rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .p1-code-editor pre {
+    margin: 0;
+    height: calc(100% - 2.35rem);
+    min-height: 0;
+    overflow: hidden;
+    padding: clamp(0.62rem, 0.95vw, 0.9rem) clamp(0.78rem, 1.1vw, 1rem);
+    font-family: 'Fira Code', 'SF Mono', 'Cascadia Code', Consolas, monospace;
+    font-size: clamp(0.7rem, 0.78vw, 0.86rem);
+    font-weight: 520;
+    line-height: 0.78;
+    color: #1f2933;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .p1-code-line {
+    display: block;
+    width: max-content;
+    max-width: 100%;
+    min-height: 0.78em;
+    overflow: hidden;
+    white-space: pre;
+    opacity: 0;
+    transform: translateY(0);
+    clip-path: inset(0 100% 0 0);
+  }
+
+  .p1-card-code-sandbox.is-visible .p1-code-line {
+    animation: p1-code-type-line 0.48s steps(34, end) both;
+    animation-delay: calc(0.12s + var(--line) * 72ms);
+  }
+
+  .tok-key {
+    color: #005bd8;
+    font-weight: 700;
+  }
+
+  .tok-type {
+    color: #244e68;
+    font-weight: 650;
+  }
+
+  .tok-fn {
+    color: #9a5a13;
+    font-weight: 650;
+  }
+
+  .tok-comment {
+    color: rgba(77, 86, 98, 0.68);
+    font-weight: 500;
+  }
+
+  .tok-string {
+    color: #7a5c12;
+    font-weight: 600;
+  }
+
+  .p1-code-cursor {
+    display: inline-block;
+    width: 0.52em;
+    height: 1.2em;
+    margin-left: 0.18em;
+    vertical-align: -0.18em;
+    border-radius: 1px;
+    background: #0066ff;
+    opacity: 0;
+  }
+
+  .p1-card-code-sandbox.is-visible .p1-code-cursor {
+    opacity: 1;
+    animation: p1-code-cursor-blink 1s steps(1, end) infinite;
+    animation-delay: 2.8s;
+  }
+
+  .p1-code-line--serial {
+    position: relative;
+  }
+
+  .p1-data-spill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.22rem;
+    margin-left: 0.55rem;
+    padding: 0.08rem 0.34rem 0.09rem;
+    border-radius: 999px;
+    border: 1px solid rgba(0, 102, 255, 0.18);
+    background: rgba(0, 102, 255, 0.08);
+    color: rgba(0, 102, 255, 0.78);
+    font-family: 'Fira Code', 'SF Mono', 'Cascadia Code', Consolas, monospace;
+    font-size: 0.64rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0;
+    opacity: 0;
+    transform: translateX(-0.25rem);
+    transition:
+      opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+      background-color 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .p1-card-code-sandbox.is-visible .p1-data-spill {
+    opacity: 1;
+    transform: translateX(0);
+    transition-delay: 1.35s;
+  }
+
+  .p1-data-spill.is-hot {
+    background: rgba(0, 102, 255, 0.14);
+  }
+
+  .p1-data-spill b {
+    min-width: 3ch;
+    font: inherit;
+    text-align: right;
+  }
+
+  .p1-sensor-panel {
+    display: grid;
+    grid-template-rows: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 20px;
+    padding: clamp(0.75rem, 1.2vw, 1rem);
+    background: rgba(245, 246, 248, 0.75);
+  }
+
+  .p1-sensor-photo {
+    margin: 0;
+    height: 100%;
+    min-height: 0;
+    aspect-ratio: auto;
+    overflow: hidden;
+    border-radius: 12px;
+    border: 1px solid rgba(226, 228, 233, 0.8);
+    background: rgba(245, 246, 248, 0.75);
+    backdrop-filter: blur(12px);
+  }
+
+  .p1-sensor-photo img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center top;
+    transform: scale(1.03);
+    filter: saturate(0.82) contrast(1.04);
+  }
+
+  .p1-waveform-card {
+    position: relative;
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr) auto;
+    gap: 0.62rem;
+    overflow: hidden;
+    border-radius: 12px;
+    padding: clamp(0.8rem, 1.2vw, 1rem);
+    border: 1px solid rgba(226, 228, 233, 0.8);
+    background: rgba(245, 246, 248, 0.75);
+    backdrop-filter: blur(12px);
+    min-height: 0;
+  }
+
+  .p1-waveform-head,
+  .p1-signal-metrics {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+  }
+
+  .p1-waveform-head strong {
+    position: relative;
+    color: #0066ff;
+    font-family: var(--font-sans);
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .p1-waveform-head strong::before {
+    content: "";
+    display: inline-block;
+    width: 0.45rem;
+    height: 0.45rem;
+    margin-right: 0.45rem;
+    border-radius: 999px;
+    background: #0066ff;
+    box-shadow: 0 0 1rem rgba(0, 102, 255, 0.42);
+    animation: p1-signal-pulse 1.6s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+  }
+
+  .p1-waveform {
+    width: 100%;
+    min-height: 9rem;
+    overflow: hidden;
+  }
+
+  .p1-wave-grid path {
+    fill: none;
+    stroke: rgba(42, 45, 52, 0.08);
+    stroke-width: 1;
+  }
+
+  .p1-wave-track {
+    transform-box: fill-box;
+  }
+
+  .p1-wave {
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .p1-wave--soft {
+    stroke: #f2a23a;
+    stroke-width: 3.5;
+    opacity: 0.86;
+  }
+
+  .p1-wave--main {
+    stroke: #0066ff;
+    stroke-width: 3;
+    filter: drop-shadow(0 0 0.4rem rgba(0, 102, 255, 0.28));
+  }
+
+  .p1-signal-metrics {
+    color: rgba(42, 45, 52, 0.72);
+    font-family: 'Fira Code', 'SF Mono', 'Cascadia Code', Consolas, monospace;
+    font-size: 0.84rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .p1-signal-metrics span {
+    display: grid;
+    gap: 0.15rem;
+  }
+
+  .p1-signal-metrics strong {
+    display: inline-flex;
+    min-width: 7ch;
+    gap: 0.25rem;
+    align-items: baseline;
+    justify-content: flex-start;
+    color: #2a2d34;
+    font-size: 1.32rem;
+    font-weight: 800;
+    line-height: 1;
+  }
+
+  .p1-signal-metrics b {
+    min-width: 3ch;
+    font: inherit;
+    text-align: right;
+  }
+
+  @keyframes p1-code-cursor-blink {
+    0%,
+    49% {
+      opacity: 1;
+    }
+
+    50%,
+    100% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes p1-code-type-line {
+    from {
+      opacity: 1;
+      clip-path: inset(0 100% 0 0);
+    }
+
+    to {
+      opacity: 1;
+      clip-path: inset(0 0 0 0);
+    }
+  }
+
+  @keyframes p1-wave-drift {
+    from {
+      transform: translate3d(0, 0, 0);
+    }
+
+    to {
+      transform: translate3d(-112px, 0, 0);
+    }
+  }
+
+  @keyframes p1-wave-breathe {
+    from {
+      transform: translate3d(0, -4px, 0);
+    }
+
+    to {
+      transform: translate3d(0, 5px, 0);
+    }
+  }
+
+  @keyframes p1-signal-pulse {
+    0%,
+    100% {
+      opacity: 0.62;
+      transform: scale(0.9);
+    }
+
+    50% {
+      opacity: 1;
+      transform: scale(1.12);
+    }
+  }
+
+  @media screen and (max-width: 1100px) {
+    .p1-card-code-sandbox {
+      height: auto;
+      max-height: none;
+    }
+
+    .p1-sandbox-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .p1-code-editor {
+      min-height: 28rem;
+    }
+
+    .p1-sensor-panel {
+      grid-template-rows: minmax(0, 1fr) minmax(0, 1fr);
+      min-height: 32rem;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .p1-card-code-sandbox {
+      height: auto;
+      max-height: none;
+      padding: 3.35rem 1rem var(--chapter-end-media-gap);
+    }
+
+    .p1-sandbox-head h2 {
+      font-size: clamp(1.75rem, 8vw, 2.5rem);
+    }
+
+    .p1-code-editor pre {
+      min-height: 0;
+      font-size: 0.66rem;
+      line-height: 0.82;
+    }
+
+    .p1-code-state {
+      display: none;
+    }
+
+    .p1-signal-metrics {
+      align-items: stretch;
+    }
+  }
+
   .p1-validation-code-layout {
     display: grid;
     grid-template-columns: minmax(24rem, 0.48fr) minmax(0, 0.52fr);
     gap: clamp(0.85rem, 1.4vw, 1.25rem);
     align-items: stretch;
+    min-width: 0;
     min-height: 0;
   }
 
@@ -1109,9 +2728,13 @@ void loop() &#123;
   }
 
   .p1-code-block--screen {
-    border-radius: 0.7rem;
-    border: 1px solid rgba(74, 140, 184, 0.18);
-    box-shadow: 0 1rem 2.5rem rgba(74, 140, 184, 0.12);
+    border-radius: 0.85rem;
+    border: 1px solid rgba(255, 255, 255, 0.82);
+    background: rgba(244, 248, 251, 0.82);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.88),
+      0 1rem 2.5rem rgba(var(--p1-accent-rgb), 0.16);
+    backdrop-filter: blur(16px);
     min-height: 100%;
   }
 
@@ -1122,110 +2745,227 @@ void loop() &#123;
   }
 
   .p1-card-render-gallery {
+    --render-inset: clamp(0.75rem, 1.3vw, 1.3rem);
+    --render-stage-width: min(calc(100% - var(--render-inset)), 78rem);
+    --render-outer-rail: calc((100% - var(--render-stage-width)) / 4);
+    --render-visual-width: calc(100% - var(--render-outer-rail) - var(--render-outer-rail));
+    --render-stack-gap: 9.375vh;
+    --render-detail-gap: var(--chapter-end-media-gap);
+    --modular-reveal-scroll: var(--render-stack-gap);
+    --modular-mask-duration: 4.8s;
     display: grid;
-    gap: clamp(1rem, 1.8vw, 1.8rem);
-    padding: var(--p1-card-pad);
-    background: transparent;
+    gap: 0;
+    padding: clamp(1rem, 2vh, 1.5rem) 0 var(--chapter-end-media-gap);
+    background: #f1eee3;
     border: 0;
     box-shadow: none;
+    overflow: visible;
+    content-visibility: visible;
   }
 
   .p1-render-screen {
     display: grid;
-    min-height: min(100vh, 58rem);
+    min-height: 0;
     align-items: center;
     background: transparent;
   }
 
-  .p1-render-screen--details {
-    min-height: 0;
-    height: min(62vh, 34rem);
-    grid-template-columns: repeat(12, minmax(0, 1fr));
-    grid-template-rows: 1fr;
-    gap: clamp(0.9rem, 1.35vw, 1.35rem);
-    align-items: stretch;
-    padding: var(--p1-card-pad);
+  .p1-render-screen--modular {
+    --modular-bg-width: var(--render-visual-width);
+    --modular-reveal: 0;
+    --modular-scale: 1.05;
+    min-height: calc(100vh + var(--modular-reveal-scroll));
+    place-items: stretch;
+    padding: 0;
     position: relative;
+    overflow: visible;
+  }
+
+  .p1-modular-pin {
+    position: sticky;
+    top: 0;
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    background:
+      radial-gradient(
+        circle at 50% 50%,
+        rgba(var(--p1-accent-rgb), calc(0.08 * var(--modular-reveal))) 0%,
+        rgba(255, 255, 255, calc(0.16 * var(--modular-reveal))) 36%,
+        transparent 68%
+      );
   }
 
   .p1-render-item {
-    grid-column: span 3;
     margin: 0;
     min-width: 0;
-    overflow: visible;
+    position: relative;
     background: transparent;
-    aspect-ratio: 16 / 10;
-  }
-
-  .p1-render-screen--details .p1-render-item {
-    aspect-ratio: auto;
-    filter: drop-shadow(0 1rem 1.8rem rgba(70, 91, 112, 0.12));
   }
 
   .p1-render-item--full {
+    width: min(82vw, 78rem);
+    height: auto;
+    opacity: 1;
+    transform: scale(var(--modular-scale));
+    filter: drop-shadow(0 2.2rem 3.6rem rgba(var(--p1-accent-rgb), 0.13));
+    transition:
+      filter 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+      opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform, clip-path;
+  }
+
+  .p1-render-item--full.is-visible {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .p1-render-item--modular {
+    width: var(--modular-bg-width);
+    background:
+      linear-gradient(
+        135deg,
+        rgba(228, 241, 249, 0.92) 0%,
+        rgba(238, 247, 252, 0.82) 48%,
+        rgba(218, 236, 247, 0.9) 100%
+      );
+    clip-path: circle(calc(6% + 96% * var(--modular-reveal)) at 50% 50%);
+    transition:
+      clip-path var(--modular-mask-duration) cubic-bezier(0.16, 1, 0.3, 1),
+      transform var(--modular-mask-duration) cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .p1-render-item--full img {
     width: 100%;
-    height: min(88vh, 52rem);
-    aspect-ratio: auto;
+    height: auto;
+    display: block;
   }
 
-  .p1-render-item--overall {
-    grid-column: 1 / span 6;
-    grid-row: 1;
-    aspect-ratio: auto;
-    z-index: 1;
-  }
-
-  .p1-render-item--overall img {
-    transform: scaleX(-1);
-  }
-
-  .p1-render-screen--details .p1-render-item:nth-child(1) {
-    grid-column: 7 / span 2;
-    grid-row: 1;
-    z-index: 3;
-  }
-
-  .p1-render-screen--details .p1-render-item:nth-child(2) {
-    grid-column: 9 / span 2;
-    grid-row: 1;
-    z-index: 2;
-  }
-
-  .p1-render-screen--details .p1-render-item:nth-child(3) {
-    grid-column: 11 / span 2;
-    grid-row: 1;
-    z-index: 2;
-  }
-
-  .p1-render-screen--details .p1-render-item:not(.p1-render-item--overall) {
-    border-radius: 0.9rem;
+  .p1-render-screen--exploded {
+    --exploded-stage-width: var(--render-stage-width);
+    --exploded-side-rail: var(--render-outer-rail);
+    --exploded-media-height: min(88vh, 52rem);
+    --exploded-frame-height: var(--exploded-media-height);
+    --exploded-frame-top: 0;
+    position: relative;
+    min-height: var(--exploded-media-height);
+    place-items: center;
+    padding: 0 0 var(--render-detail-gap);
     overflow: hidden;
+    isolation: isolate;
   }
 
-  .p1-render-screen--details .p1-render-item:not(.p1-render-item--overall) img {
-    transform: scale(1.2);
+  .p1-render-screen--exploded::before,
+  .p1-render-screen--exploded::after {
+    content: "";
+    position: absolute;
+    top: var(--exploded-frame-top);
+    width: var(--exploded-side-rail);
+    height: var(--exploded-frame-height);
+    background: #ffffff;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .p1-render-screen--exploded::before {
+    left: var(--exploded-side-rail);
+  }
+
+  .p1-render-screen--exploded::after {
+    right: var(--exploded-side-rail);
+  }
+
+  .p1-render-screen--details {
+    width: min(82vw, 78rem);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 32px;
+    align-items: stretch;
+    opacity: 0;
+    transform: translateY(1.2rem);
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .p1-render-screen--details.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .p1-render-screen--details .p1-render-item {
+    --rx: 0deg;
+    --ry: 0deg;
+    --shine-x: 50%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    border-radius: 12px;
+    transform: perspective(1000px) rotateX(var(--rx)) rotateY(var(--ry)) scale(1);
+    transform-style: preserve-3d;
+    filter: drop-shadow(0 1.4rem 2.2rem rgba(var(--p1-accent-rgb), 0.11));
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform, filter;
+  }
+
+  .p1-render-screen--details .p1-render-item::after {
+    content: "";
+    position: absolute;
+    inset: -35%;
+    pointer-events: none;
+    background:
+      linear-gradient(
+        110deg,
+        transparent 0%,
+        transparent 38%,
+        rgba(255, 255, 255, 0.28) 48%,
+        rgba(255, 255, 255, 0.08) 56%,
+        transparent 68%,
+        transparent 100%
+      );
+    opacity: 0;
+    transform: translateX(calc(var(--shine-x) - 120%)) rotate(6deg);
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .p1-render-screen--details .p1-render-item:hover {
+    transform: perspective(1000px) rotateX(var(--rx)) rotateY(var(--ry)) scale(1.02);
+    filter: drop-shadow(0 1.8rem 2.8rem rgba(var(--p1-accent-rgb), 0.16));
+  }
+
+  .p1-render-screen--details .p1-render-item:hover::after {
+    opacity: 1;
+    transform: translateX(calc(var(--shine-x) - 55%)) rotate(6deg);
+  }
+
+  .p1-outro {
+    display: none;
   }
 
   .p1-render-item img {
     width: 100%;
     height: 100%;
+    display: block;
     object-fit: contain;
     object-position: center;
     background: transparent;
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .p1-exploded-stage {
-    width: 100%;
-    min-height: min(100vh, 58rem);
+    position: relative;
+    z-index: 1;
+    width: var(--exploded-stage-width);
+    min-height: var(--exploded-media-height);
     display: grid;
     place-items: center;
     background: transparent;
+    margin-inline: auto;
   }
 
   .p1-exploded-media {
     position: relative;
     width: 100%;
-    height: min(88vh, 52rem);
+    height: var(--exploded-media-height);
     overflow: visible;
     background: transparent;
     transform: translateX(0);
@@ -1273,13 +3013,13 @@ void loop() &#123;
   }
 
   .p1-exploded-arrow line {
-    stroke: rgba(74, 140, 184, 0.72);
+    stroke: rgba(var(--p1-accent-rgb), 0.72);
     stroke-width: 0.28;
     vector-effect: non-scaling-stroke;
   }
 
   .p1-exploded-arrow marker path {
-    fill: rgba(74, 140, 184, 0.78);
+    fill: rgba(var(--p1-accent-rgb), 0.78);
   }
 
   .p1-exploded-dot {
@@ -1290,7 +3030,7 @@ void loop() &#123;
     height: 0.55rem;
     border-radius: 999px;
     background: var(--p1-accent);
-    box-shadow: 0 0 0 0.32rem rgba(74, 140, 184, 0.16);
+    box-shadow: 0 0 0 0.32rem rgba(var(--p1-accent-rgb), 0.16);
     transform: translate(-50%, -50%);
   }
 
@@ -1331,32 +3071,38 @@ void loop() &#123;
   }
 
   .p1-card-mapping {
+    /* Design target module: tune the background color and outer spacing here. */
+    --mapping-ease: cubic-bezier(0.16, 1, 0.3, 1);
     position: relative;
     isolation: isolate;
     display: grid;
     grid-template-columns: 1fr;
-    align-items: start;
-    gap: var(--p1-grid-gap);
-    min-height: clamp(26rem, 38vw, 36rem);
-    padding: var(--p1-card-pad);
+    align-items: stretch;
+    gap: clamp(2rem, 4vw, 4.5rem);
+    min-height: clamp(38rem, 68vw, 55rem);
+    padding: clamp(3.6rem, 6vw, 6.5rem) clamp(1.1rem, 3.8vw, 4.5rem) clamp(2.2rem, 4vw, 4rem);
     contain-intrinsic-size: 760px;
-    overflow: hidden;
-    background:
-      linear-gradient(120deg, rgba(247, 252, 255, 0.98) 0%, rgba(230, 245, 253, 0.98) 58%, rgba(250, 241, 251, 0.94) 100%);
+    overflow: clip;
+    background: #f7f5f0;
   }
 
   .p1-card-mapping::before {
+    /* Background wordmark: keep this low contrast so Chinese title stays primary. */
     content: 'TARGET';
     position: absolute;
-    right: clamp(0.7rem, 2vw, 1.5rem);
-    top: clamp(0.4rem, 1.4vw, 1rem);
+    right: clamp(0.7rem, 4vw, 4rem);
+    top: clamp(0.15rem, 1vw, 0.8rem);
     z-index: -1;
     font-family: var(--font-sans);
-    font-size: clamp(5rem, 15vw, 13rem);
-    font-weight: 800;
-    line-height: 0.75;
-    letter-spacing: -0.06em;
-    color: rgba(74, 140, 184, 0.075);
+    font-size: clamp(4.2rem, 13vw, 12rem);
+    font-weight: 300;
+    line-height: 0.78;
+    letter-spacing: 0;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(49, 95, 125, 0.065);
+    text-stroke: 1px rgba(49, 95, 125, 0.065);
+    opacity: 0.24;
+    mix-blend-mode: multiply;
     pointer-events: none;
   }
 
@@ -1366,166 +3112,321 @@ void loop() &#123;
     z-index: -2;
     overflow: hidden;
     background:
-      radial-gradient(circle at 78% 18%, rgba(212, 160, 212, 0.32), transparent 22rem),
-      radial-gradient(circle at 16% 80%, rgba(110, 168, 216, 0.24), transparent 20rem),
-      linear-gradient(rgba(74, 140, 184, 0.12) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(74, 140, 184, 0.12) 1px, transparent 1px);
-    background-size: auto, auto, 3rem 3rem, 3rem 3rem;
-  }
-
-  .p1-mapping-bg::before,
-  .p1-mapping-bg::after {
-    content: '';
-    position: absolute;
-    border: 1px solid rgba(74, 140, 184, 0.2);
-    border-radius: 48% 52% 44% 56%;
-    transform: rotate(-12deg);
-  }
-
-  .p1-mapping-bg::before {
-    width: min(44rem, 72vw);
-    height: min(20rem, 38vw);
-    right: -8rem;
-    bottom: 6rem;
-  }
-
-  .p1-mapping-bg::after {
-    width: min(34rem, 58vw);
-    height: min(15rem, 30vw);
-    right: 7rem;
-    bottom: 12rem;
-    opacity: 0.62;
+      linear-gradient(90deg, rgba(26, 26, 26, 0.045) 1px, transparent 1px),
+      linear-gradient(180deg, rgba(26, 26, 26, 0.035) 1px, transparent 1px);
+    background-size: 5rem 5rem;
+    mask-image: linear-gradient(180deg, transparent 0%, #000 18%, #000 78%, transparent 100%);
+    opacity: 0.52;
   }
 
   .p1-mapping-head {
     position: relative;
     z-index: 1;
     align-self: start;
-    max-width: none;
-    padding-top: clamp(0.25rem, 1.6vw, 1.5rem);
+    max-width: min(100%, 52rem);
+    padding-top: clamp(0.1rem, 1vw, 0.8rem);
   }
 
   .p1-mapping-head h2 {
     margin: 0;
-    max-width: none;
-    font-family: var(--font-serif);
-    font-size: clamp(2.5rem, 5.8vw, 5rem);
-    font-weight: 600;
-    line-height: 1;
-    letter-spacing: -0.04em;
+    font-family: var(--font-cjk-sans);
+    font-size: clamp(2.1rem, 4.4vw, 4.25rem);
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: 0;
     color: var(--p1-accent);
-    white-space: nowrap;
+    text-wrap: balance;
   }
 
   .p1-mapping-head > p:last-child {
-    margin: clamp(1rem, 2vw, 1.4rem) 0 0;
-    max-width: 29rem;
+    margin: clamp(1rem, 1.6vw, 1.35rem) 0 0;
+    max-width: 48rem;
     font-family: var(--font-sans);
-    font-size: clamp(0.95rem, 1.2vw, 1.08rem);
-    line-height: 1.85;
-    color: rgba(26, 26, 26, 0.66);
+    font-size: clamp(0.92rem, 1vw, 1.04rem);
+    line-height: 1.88;
+    color: rgba(26, 26, 26, 0.54);
   }
 
   .p1-mapping-list {
     position: relative;
     z-index: 1;
-    width: min(100%, 88rem);
+    width: 100%;
     display: grid;
-    gap: clamp(0.65rem, 1.4vw, 0.9rem);
+    gap: clamp(0.85rem, 1.35vw, 1.25rem);
     align-self: start;
   }
 
   .p1-mapping-row {
+    /* Row card spacing: adjust padding/min-height for denser or airier dashboard rhythm. */
+    position: relative;
     display: grid;
-    grid-template-columns: clamp(2.65rem, 4vw, 3.4rem) minmax(12rem, 0.7fr) clamp(2.7rem, 4vw, 3.45rem) minmax(20rem, 1.3fr);
+    grid-template-columns: clamp(5.5rem, 8vw, 7rem) minmax(13rem, 0.86fr) minmax(3rem, 0.34fr) minmax(16rem, 1fr);
     align-items: center;
-    gap: clamp(0.45rem, 1vw, 0.75rem);
+    gap: clamp(1rem, 2.2vw, 2.5rem);
+    min-height: clamp(8.8rem, 13vw, 11rem);
+    padding: clamp(1.1rem, 2.2vw, 2rem);
+    border: 1px solid rgba(76, 87, 96, 0.13);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(18px) saturate(1.04);
+    -webkit-backdrop-filter: blur(18px) saturate(1.04);
+    box-shadow: 0 1.5rem 4rem rgba(26, 26, 26, 0);
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(15px);
+    isolation: isolate;
+    overflow: hidden;
+    transition:
+      opacity 0.8s var(--mapping-ease),
+      transform 0.8s var(--mapping-ease),
+      background 0.55s var(--mapping-ease),
+      border-color 0.55s var(--mapping-ease),
+      backdrop-filter 0.55s var(--mapping-ease),
+      box-shadow 0.55s var(--mapping-ease);
+    will-change: transform, opacity;
   }
 
-  .p1-mapping-num,
-  .p1-mapping-link {
-    display: grid;
-    place-items: center;
-    aspect-ratio: 1;
-    border-radius: 999px;
+  .p1-mapping-row::before,
+  .p1-mapping-row::after {
+    content: '';
+    position: absolute;
+    pointer-events: none;
+    border-radius: inherit;
+    opacity: 0;
+    transition: opacity 0.55s var(--mapping-ease);
+  }
+
+  .p1-mapping-row::before {
+    inset: 0;
+    z-index: 2;
+    padding: 1px;
+    background:
+      conic-gradient(
+        from 0turn,
+        rgba(86, 162, 219, 0) 0turn,
+        rgba(86, 162, 219, 0) 0.08turn,
+        rgba(106, 190, 255, 0.98) 0.12turn,
+        rgba(86, 162, 219, 0.18) 0.19turn,
+        rgba(86, 162, 219, 0) 0.28turn,
+        rgba(86, 162, 219, 0) 1turn
+      );
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    mask-composite: exclude;
+    transform-origin: center;
+    transform: rotate(0turn);
+  }
+
+  .p1-mapping-row::after {
+    inset: -18%;
+    z-index: -1;
+    background:
+      radial-gradient(circle at 18% 8%, rgba(91, 169, 223, 0.15), transparent 28%),
+      radial-gradient(circle at 88% 38%, rgba(49, 95, 125, 0.1), transparent 32%);
+    filter: blur(18px);
+  }
+
+  .p1-mapping-row > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .p1-mapping-row.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .p1-mapping-row.is-visible:hover,
+  .p1-mapping-row.is-visible:focus-visible {
+    transform: translateX(8px);
+  }
+
+  .p1-mapping-row:hover,
+  .p1-mapping-row:focus-visible {
+    border-color: rgba(86, 162, 219, 0.28);
+    background:
+      linear-gradient(135deg, rgba(255, 255, 255, 0.78), rgba(241, 248, 252, 0.46));
+    box-shadow: 0 1.4rem 3.4rem rgba(38, 45, 52, 0.08), 0 0 2.2rem rgba(49, 95, 125, 0.055);
+    outline: 0;
+  }
+
+  .p1-mapping-row:hover::before,
+  .p1-mapping-row:focus-visible::before {
+    opacity: 1;
+    animation: p1-border-orbit 1.45s var(--mapping-ease) both;
+  }
+
+  .p1-mapping-row:hover::after,
+  .p1-mapping-row:focus-visible::after {
+    opacity: 1;
+  }
+
+  .p1-mapping-meta {
+    position: relative;
+    display: flex;
+    align-items: baseline;
+    gap: 0.62rem;
+    min-width: 0;
     font-family: var(--font-sans);
-    font-weight: 800;
+  }
+
+  .p1-mapping-meta::after {
+    content: '';
+    position: absolute;
+    left: clamp(1.7rem, 2.8vw, 2.6rem);
+    top: 50%;
+    width: 0.38rem;
+    height: 0.38rem;
+    border-radius: 999px;
+    background: rgba(76, 104, 125, 0.38);
+    box-shadow: 0 0 0 0.22rem rgba(76, 104, 125, 0.05), 0 0 0.8rem rgba(76, 104, 125, 0.1);
+    transform: translateY(-50%);
+    transition: background-color 0.55s var(--mapping-ease), box-shadow 0.55s var(--mapping-ease), transform 0.55s var(--mapping-ease);
+  }
+
+  .p1-mapping-row:hover .p1-mapping-meta::after,
+  .p1-mapping-row:focus-visible .p1-mapping-meta::after {
+    background: #65c7ff;
+    box-shadow: 0 0 0 0.28rem rgba(101, 199, 255, 0.1), 0 0 1rem rgba(101, 199, 255, 0.72);
+    transform: translateY(-50%) scale(1.16);
+    animation: p1-status-breathe 1.8s ease-in-out infinite;
   }
 
   .p1-mapping-num {
-    background: var(--p1-accent);
-    color: #fff;
-    font-size: clamp(0.72rem, 1vw, 0.88rem);
-    letter-spacing: 0.06em;
-    box-shadow: 0 1rem 2rem rgba(74, 140, 184, 0.18);
+    font-size: clamp(1.65rem, 2.8vw, 2.6rem);
+    font-weight: 300;
+    line-height: 1;
+    color: rgba(26, 26, 26, 0.76);
+    letter-spacing: 0;
+  }
+
+  .p1-mapping-label {
+    font-size: 0.68rem;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 0.14em;
+    color: rgba(49, 95, 125, 0.42);
   }
 
   .p1-mapping-cell {
     min-width: 0;
-    min-height: clamp(5.8rem, 9vw, 7.4rem);
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 0.45rem;
-    padding: clamp(0.95rem, 1.5vw, 1.35rem);
-    border: 1px solid rgba(74, 140, 184, 0.15);
-    background: rgba(255, 255, 255, 0.7);
+    gap: clamp(0.52rem, 0.8vw, 0.72rem);
   }
 
   .p1-mapping-cell small {
     font-family: var(--font-sans);
-    font-size: 0.68rem;
-    font-weight: 800;
-    letter-spacing: 0.14em;
+    font-size: 0.66rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
     line-height: 1;
     text-transform: uppercase;
-    color: rgba(74, 140, 184, 0.68);
+    color: rgba(26, 26, 26, 0.38);
   }
 
   .p1-mapping-cell strong {
-    font-family: var(--font-serif);
-    font-size: clamp(1.35rem, 2.4vw, 2.35rem);
-    font-weight: 600;
-    line-height: 1.02;
-    letter-spacing: -0.04em;
-    color: var(--p1-text);
-  }
-
-  .p1-mapping-issue {
-    color: var(--p1-text);
+    font-family: var(--font-cjk-sans);
+    font-size: clamp(1.35rem, 2.15vw, 2.2rem);
+    font-weight: 400;
+    line-height: 1.12;
+    letter-spacing: 0;
   }
 
   .p1-mapping-issue strong {
-    font-size: clamp(1.25rem, 2vw, 2.05rem);
-    color: rgba(26, 26, 26, 0.52);
-    white-space: nowrap;
+    color: rgba(26, 26, 26, 0.68);
+  }
+
+  .p1-mapping-line {
+    position: relative;
+    display: block;
+    width: 10%;
+    min-width: 2rem;
+    height: 1px;
+    background: rgba(26, 26, 26, 0.2);
+    overflow: hidden;
+    transition: width 0.72s var(--mapping-ease), background-color 0.72s var(--mapping-ease);
+  }
+
+  .p1-mapping-line::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    width: 45%;
+    background: linear-gradient(90deg, transparent, rgba(49, 95, 125, 0.62), transparent);
+    transform: translateX(-120%);
+    opacity: 0;
+    transition: opacity 0.35s var(--mapping-ease);
+  }
+
+  .p1-mapping-row:hover .p1-mapping-line,
+  .p1-mapping-row:focus-visible .p1-mapping-line {
+    width: 100%;
+    background: rgba(49, 95, 125, 0.28);
+  }
+
+  .p1-mapping-row:hover .p1-mapping-line::after,
+  .p1-mapping-row:focus-visible .p1-mapping-line::after {
+    opacity: 1;
+    animation: p1-charge-flow 1.1s var(--mapping-ease) infinite;
   }
 
   .p1-mapping-solution {
-    border-color: rgba(74, 140, 184, 0.28);
-    background:
-      linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(230, 246, 255, 0.9));
-    box-shadow: 0 1.35rem 3rem rgba(74, 140, 184, 0.13);
+    opacity: 0.1;
+    transform: translateX(-0.35rem);
+    transition: opacity 0.62s var(--mapping-ease), transform 0.62s var(--mapping-ease);
+  }
+
+  .p1-mapping-solution small {
+    color: rgba(49, 95, 125, 0.4);
   }
 
   .p1-mapping-solution strong {
-    font-size: clamp(1.55rem, 2.65vw, 2.85rem);
-    color: var(--p1-accent);
+    font-size: clamp(1.45rem, 2.35vw, 2.55rem);
+    color: rgba(49, 95, 125, 0.92);
   }
 
-  @media screen and (min-width: 1101px) {
-    .p1-mapping-solution strong {
-      white-space: nowrap;
+  .p1-mapping-row:hover .p1-mapping-solution,
+  .p1-mapping-row:focus-visible .p1-mapping-solution {
+    opacity: 1;
+    transform: translateX(0.5rem);
+  }
+
+  @keyframes p1-charge-flow {
+    from {
+      transform: translateX(-120%);
+    }
+
+    to {
+      transform: translateX(260%);
     }
   }
 
-  .p1-mapping-link {
-    width: clamp(2.7rem, 4vw, 3.45rem);
-    border: 1px solid rgba(255, 203, 47, 0.84);
-    background: #ffcb2f;
-    color: var(--p1-text);
-    font-size: clamp(1.15rem, 1.8vw, 1.55rem);
-    box-shadow: 0 1rem 2rem rgba(255, 203, 47, 0.26);
+  @keyframes p1-border-orbit {
+    from {
+      transform: rotate(0turn);
+    }
+
+    to {
+      transform: rotate(1turn);
+    }
+  }
+
+  @keyframes p1-status-breathe {
+    0%,
+    100% {
+      box-shadow: 0 0 0 0.24rem rgba(101, 199, 255, 0.08), 0 0 0.72rem rgba(101, 199, 255, 0.48);
+    }
+
+    50% {
+      box-shadow: 0 0 0 0.38rem rgba(101, 199, 255, 0.15), 0 0 1.25rem rgba(101, 199, 255, 0.88);
+    }
   }
 
   .p1-card-feature {
@@ -1536,7 +3437,7 @@ void loop() &#123;
   }
 
   .p1-positioning {
-    min-height: min(100vh, 54rem);
+    min-height: 0;
     display: flex;
     align-items: stretch;
   }
@@ -1545,17 +3446,16 @@ void loop() &#123;
     grid-template-columns: 1fr;
     gap: var(--p1-grid-gap);
     padding: var(--p1-card-pad);
-    padding-top: clamp(3.6rem, 5vw, 4.4rem);
     background: var(--p1-surface);
-    align-content: center;
-    min-height: calc(100vh - (var(--p1-section-py) * 2));
+    align-content: start;
+    min-height: 0;
   }
 
   .p1-positioning .p1-card-feature {
     grid-column: auto;
     display: grid;
     grid-template-columns: minmax(0, 0.48fr) minmax(0, 0.52fr);
-    gap: clamp(1.8rem, 3vw, 3.4rem);
+    gap: var(--row-gap-section);
     align-items: center;
     padding: 0;
     background: transparent;
@@ -1568,8 +3468,10 @@ void loop() &#123;
     height: auto;
     aspect-ratio: 4.5 / 1;
     justify-self: start;
-    background: transparent !important;
-    background-color: transparent !important;
+    border-radius: 12px;
+    overflow: hidden;
+    background: rgba(251, 247, 237, 0.72) !important;
+    background-color: rgba(251, 247, 237, 0.72) !important;
   }
 
   .p1-positioning .p1-feature-copy {
@@ -1598,15 +3500,22 @@ void loop() &#123;
     width: 100%;
     height: 100%;
     max-width: none;
-    object-fit: contain;
+    object-fit: cover;
     object-position: center;
+    border-radius: 12px;
     background: transparent !important;
     mix-blend-mode: normal;
   }
 
+  .p1-positioning .p1-feature-media--cutout :global(img) {
+    width: 112%;
+    height: 112%;
+    object-position: center;
+  }
+
   .p1-feature-media {
     height: 18.5rem;
-    margin: clamp(1rem, 1.6vw, 1.45rem) clamp(1rem, 1.6vw, 1.45rem) 0;
+    margin: var(--card-padding) var(--card-padding) 0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1639,7 +3548,7 @@ void loop() &#123;
     display: flex;
     flex-direction: column;
     gap: 0.65rem;
-    padding: 1rem;
+    padding: var(--card-padding);
   }
 
   .p1-feature-title {
@@ -1679,7 +3588,7 @@ void loop() &#123;
     grid-column: auto;
     display: grid;
     grid-template-rows: auto auto;
-    gap: clamp(0.7rem, 1vw, 0.95rem);
+    gap: var(--row-gap-section);
     padding: 0;
     background: transparent;
     min-width: 0;
@@ -1731,8 +3640,8 @@ void loop() &#123;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    gap: 0.55rem;
-    padding: 0 0.1rem 0.15rem;
+    gap: calc(var(--row-gap-section) * 0.5);
+    padding: 0;
   }
 
   .p1-pain-title {
@@ -1777,6 +3686,7 @@ void loop() &#123;
     justify-content: flex-start;
     gap: 0;
     min-width: 0;
+    padding-top: 0;
   }
 
   .p1-context-detail-panel {
@@ -1786,7 +3696,7 @@ void loop() &#123;
     flex-direction: column;
     justify-content: flex-start;
     align-self: center;
-    gap: 1.85rem;
+    gap: var(--row-gap-section);
     min-width: 0;
   }
 
@@ -1800,14 +3710,37 @@ void loop() &#123;
     width: 100%;
     min-width: 0;
     align-self: start;
+    position: relative;
+    overflow: hidden;
+    background: var(--p1-surface);
   }
 
   .p1-context-media :global(img) {
-    width: 100%;
+    width: 106%;
     height: 100%;
     min-height: 22rem;
     object-fit: cover;
-    object-position: 76% top;
+    object-position: 78% center;
+    transform: translateX(-2.5%) scale(1.06);
+    transform-origin: center;
+    -webkit-mask-image:
+      linear-gradient(90deg, transparent 0%, #000 18%, #000 82%, transparent 100%),
+      linear-gradient(180deg, transparent 0%, #000 13%, #000 87%, transparent 100%);
+    -webkit-mask-composite: source-in;
+    mask-image:
+      linear-gradient(90deg, transparent 0%, #000 18%, #000 82%, transparent 100%),
+      linear-gradient(180deg, transparent 0%, #000 13%, #000 87%, transparent 100%);
+    mask-composite: intersect;
+  }
+
+  .p1-context-media::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      linear-gradient(90deg, var(--p1-surface) 0%, rgba(var(--p1-surface-rgb), 0.96) 7%, rgba(var(--p1-surface-rgb), 0) 24%, rgba(var(--p1-surface-rgb), 0) 76%, rgba(var(--p1-surface-rgb), 0.96) 93%, var(--p1-surface) 100%),
+      linear-gradient(180deg, var(--p1-surface) 0%, rgba(var(--p1-surface-rgb), 0) 18%, rgba(var(--p1-surface-rgb), 0) 82%, var(--p1-surface) 100%);
   }
 
   .p1-context-title {
@@ -1824,7 +3757,7 @@ void loop() &#123;
 
   .p1-context-body {
     margin: 0;
-    max-width: 29rem;
+    max-width: 31.5rem;
     padding-left: 0;
     font-size: 1rem;
     line-height: 2.05;
@@ -1832,6 +3765,11 @@ void loop() &#123;
     text-align: justify;
     text-justify: inter-ideograph;
     hanging-punctuation: allow-end;
+  }
+
+  .p1-context-key {
+    color: var(--p1-accent);
+    font-weight: 800;
   }
 
   .p1-lead {
@@ -1857,28 +3795,31 @@ void loop() &#123;
   }
 
   .p1-stat-row {
-    display: flex;
+    display: inline-flex;
     align-items: flex-end;
-    gap: 0.28rem;
-    padding-bottom: 0.3rem;
-    border-bottom: 1.5px solid rgba(74, 140, 184, 0.24);
+    gap: 0.34rem;
+    width: fit-content;
+    max-width: 100%;
+    padding: 0 0.18rem 0.32rem 0;
+    border-bottom: 1.5px solid rgba(var(--p1-accent-rgb), 0.14);
   }
 
   .p1-stat-num {
     font-family: var(--font-sans);
-    font-size: clamp(2rem, 3.5vw, 2.8rem);
-    font-weight: 600;
-    line-height: 0.92;
+    font-size: clamp(2.35rem, 4.15vw, 3.35rem);
+    font-weight: 800;
+    line-height: 0.86;
     letter-spacing: -0.04em;
     color: var(--p1-accent);
   }
 
   .p1-stat-unit {
     font-family: var(--font-sans);
-    font-size: clamp(0.8rem, 1vw, 1rem);
+    font-size: clamp(0.62rem, 0.72vw, 0.78rem);
+    font-weight: 700;
     line-height: 1;
     color: var(--p1-accent);
-    transform: translateY(-0.2rem);
+    transform: translateY(-0.26rem);
   }
 
   .p1-stat-note {
@@ -2059,6 +4000,54 @@ void loop() &#123;
     background: var(--p1-surface-2);
   }
 
+  .p1-card-exploration-hardware :global(img) {
+    border-radius: 12px;
+  }
+
+  .p1-card-exploration-hardware .p1-lab-sketch-figure :global(img) {
+    border-radius: 0;
+  }
+
+  .p1-card-exploration-hardware .p1-aigc-tile {
+    border-radius: 12px;
+    background: transparent;
+  }
+
+  .p1-card-exploration-hardware .p1-aigc-tile :global(img) {
+    border-radius: 0;
+    background: transparent;
+  }
+
+  .p1-card-exploration-hardware .p1-circuit-photo,
+  .p1-card-exploration-hardware .p1-circuit-photo :global(img) {
+    border-radius: 6px;
+  }
+
+  .p1-card-render-gallery :global(img) {
+    border-radius: 0;
+    background: transparent;
+  }
+
+  .p1-card-render-gallery .p1-render-screen--details .p1-render-item,
+  .p1-card-render-gallery .p1-render-screen--details .p1-render-item :global(img) {
+    border-radius: 12px;
+  }
+
+  .p1-card-code-sandbox .p1-sensor-photo,
+  .p1-card-code-sandbox .p1-sensor-photo :global(img) {
+    border-radius: 12px;
+  }
+
+  .p1-card-code-sandbox .p1-sensor-photo :global(img) {
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center top;
+    transform: scale(1.03);
+    filter: saturate(0.82) contrast(1.04);
+    background: rgba(245, 246, 248, 0.75);
+  }
+
   .p1-body-title {
     max-width: 28rem;
     font-size: clamp(1.75rem, 2vw, 2rem);
@@ -2100,7 +4089,7 @@ void loop() &#123;
     border-radius: 0.7rem;
     background: var(--p1-code-bg);
     box-shadow: none;
-    border: 1px solid rgba(74, 140, 184, 0.16);
+    border: 1px solid rgba(var(--p1-accent-rgb), 0.16);
   }
 
   .p1-code-header {
@@ -2108,23 +4097,25 @@ void loop() &#123;
     align-items: center;
     gap: 0.4rem;
     padding: 0.8rem 1rem;
-    background: var(--p1-code-header-bg);
-    border-bottom: 1px solid rgba(74, 140, 184, 0.14);
+    background: rgba(234, 243, 248, 0.72);
+    border-bottom: 1px solid rgba(var(--p1-accent-rgb), 0.12);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.82);
   }
 
   .p1-code-dot {
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: rgba(74, 140, 184, 0.42);
+    background: #ff5f57;
+    box-shadow: 0 0 0 1px rgba(26, 26, 26, 0.06);
   }
 
   .p1-code-dot:nth-child(2) {
-    background: rgba(184, 122, 184, 0.42);
+    background: #ffbd2e;
   }
 
   .p1-code-dot:nth-child(3) {
-    background: rgba(122, 164, 150, 0.42);
+    background: #28c840;
   }
 
   .p1-code-label {
@@ -2174,8 +4165,8 @@ void loop() &#123;
   }
 
   .p1-flow-step--active {
-    border-color: rgba(74, 140, 184, 0.22);
-    box-shadow: 0 10px 24px rgba(74, 140, 184, 0.12);
+    border-color: rgba(var(--p1-accent-rgb), 0.22);
+    box-shadow: 0 10px 24px rgba(var(--p1-accent-rgb), 0.12);
   }
 
   .p1-flow-char {
@@ -2241,7 +4232,7 @@ void loop() &#123;
     gap: 1rem;
     padding-top: 0.9rem;
     border-top: 1px solid rgba(26, 26, 26, 0.08);
-    font-family: var(--font-serif);
+    font-family: var(--font-cjk-sans);
     font-size: 1.2rem;
     line-height: 1.5;
     text-decoration: none;
@@ -2250,6 +4241,70 @@ void loop() &#123;
   .p1-next-link svg {
     flex-shrink: 0;
     color: var(--p1-accent);
+  }
+
+  .p1-section-main .p1-context-title,
+  .p1-section-main .p1-pain-title,
+  .p1-section-main .p1-feature-title,
+  .p1-section-main .p1-body-title,
+  .p1-section-main .p1-card-title {
+    color: var(--p1-accent);
+    font-weight: 800;
+  }
+
+  @media screen and (max-width: 1100px) {
+    .p1-aigc-board {
+      grid-template-columns: 1fr;
+    }
+
+    .p1-circuit-photo {
+      flex-basis: var(--circuit-photo-width, min(78%, 42rem));
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .p1-card-exploration-hardware {
+      gap: 2.2rem;
+      padding: 3.4rem 1rem var(--circuit-module-gap);
+    }
+
+    .p1-lab-circuit {
+      --circuit-photo-height: min(62vh, 30rem);
+    }
+
+    .p1-lab-head h2 {
+      font-size: clamp(1.8rem, 8vw, 2.6rem);
+    }
+
+    .p1-aigc-tiles {
+      width: min(100%, 24rem);
+      gap: 0.55rem;
+    }
+
+    .p1-aigc-board {
+      min-height: min(66vh, 34rem);
+      padding: 1rem 0.65rem;
+    }
+
+    .p1-circuit-scroll-shell {
+      min-height: var(--circuit-photo-height);
+      margin-inline: 0;
+    }
+
+    .p1-circuit-sticky {
+      top: 0;
+      height: var(--circuit-photo-height);
+      padding-inline: 0;
+    }
+
+    .p1-circuit-track {
+      gap: 12px;
+    }
+
+    .p1-circuit-photo {
+      flex-basis: var(--circuit-photo-width, 82%);
+      height: var(--circuit-photo-height);
+    }
   }
 
   @media screen and (max-width: 1100px) {
@@ -2287,7 +4342,7 @@ void loop() &#123;
     .p1-card-sketch,
     .p1-card-aigc,
     .p1-card-design-process {
-      padding: 1rem;
+      padding: var(--card-padding);
     }
 
     .p1-card-making-process {
@@ -2325,6 +4380,7 @@ void loop() &#123;
       grid-template-columns: 1fr;
       align-items: start;
       min-height: 0;
+      padding-inline: var(--card-padding);
     }
 
     .p1-mapping-head {
@@ -2339,6 +4395,19 @@ void loop() &#123;
       transform: none;
     }
 
+    .p1-mapping-row {
+      grid-template-columns: clamp(5rem, 9vw, 6rem) minmax(11rem, 0.95fr) minmax(3rem, 0.28fr) minmax(13rem, 1fr);
+      gap: clamp(0.8rem, 1.8vw, 1.4rem);
+    }
+
+    .p1-mapping-cell strong {
+      font-size: clamp(1.22rem, 2.4vw, 1.85rem);
+    }
+
+    .p1-mapping-solution strong {
+      font-size: clamp(1.28rem, 2.6vw, 2rem);
+    }
+
     .p1-card-model-wide {
       grid-template-columns: 1fr;
     }
@@ -2346,8 +4415,8 @@ void loop() &#123;
     .p1-card-context-merged {
       grid-column: span 6;
       grid-template-columns: minmax(0, 0.95fr) minmax(16rem, 1.05fr);
-      column-gap: 1.5rem;
-      row-gap: 1.25rem;
+      column-gap: var(--row-gap-section);
+      row-gap: var(--row-gap-section);
     }
 
     .p1-context-copy-panel {
@@ -2358,7 +4427,7 @@ void loop() &#123;
     .p1-context-detail-panel {
       grid-column: 1;
       grid-row: 2;
-      gap: 1.5rem;
+      gap: var(--row-gap-section);
     }
 
     .p1-context-media {
@@ -2379,7 +4448,7 @@ void loop() &#123;
 
   @media screen and (orientation: portrait) {
     .p1-root {
-      --p1-portrait-media-width: min(42rem, calc(100vw - 2rem));
+      --p1-portrait-media-width: min(42rem, calc(100vw - (var(--rail-to-card-gap) * 2)));
     }
 
     .p1-pain-grid,
@@ -2401,7 +4470,7 @@ void loop() &#123;
     }
 
     .p1-feature-media {
-      margin-top: 1rem;
+      margin-top: var(--card-padding);
       margin-bottom: 0;
     }
 
@@ -2422,7 +4491,7 @@ void loop() &#123;
     .p1-card-context-merged {
       grid-template-columns: 1fr;
       column-gap: 0;
-      row-gap: clamp(1.25rem, 3vw, 2rem);
+      row-gap: var(--row-gap-section);
     }
 
     .p1-context-copy-panel,
@@ -2466,8 +4535,73 @@ void loop() &#123;
     }
   }
   @media screen and (max-width: 768px) {
+    .p1-root {
+      --rail-to-card-gap: clamp(0.75rem, 3vw, 1rem);
+      --card-padding: clamp(0.9rem, 4vw, 1.15rem);
+      --row-gap-section: var(--rail-to-card-gap);
+      --chapter-end-media-gap: 4.6875vh;
+    }
+
     .p1-section {
-      padding-block: 1rem;
+      padding-block: var(--row-gap-section);
+      margin-bottom: clamp(2.125rem, 5.5vh, 3rem);
+    }
+
+    .p1-editorial-track {
+      flex-direction: column;
+      --p1-editorial-gap: var(--row-gap-section);
+      gap: var(--p1-editorial-gap);
+    }
+
+    .p1-chapter-block + .p1-chapter-block {
+      margin-top: 0;
+    }
+
+    .p1-sticky-rail {
+      flex: none;
+      width: 100%;
+      background: var(--p1-rail-red);
+    }
+
+    .p1-sticky-rail::before {
+      display: none;
+    }
+
+    .p1-sticky-rail::after {
+      display: none;
+    }
+
+    .p1-sticky-tag {
+      --p1-sidebar-index-size: 3.1rem;
+      position: static;
+      display: grid;
+      grid-template-columns: 2.8rem minmax(0, 1fr);
+      width: 100%;
+      margin: 0;
+      padding: 0.85rem 1rem 0.9rem clamp(4.75rem, 15vw, 5.35rem);
+      border-bottom: 0;
+      color: var(--p1-rail-cream);
+      opacity: 1;
+      transform: none !important;
+    }
+
+    .p1-sidebar-rule {
+      width: 100%;
+      transform: scaleX(1);
+    }
+
+    .p1-sidebar-index {
+      right: auto;
+    }
+
+    .p1-sidebar-title {
+      font-size: 0.76rem;
+      letter-spacing: 0.2em;
+      line-height: 1.18;
+    }
+
+    .p1-sidebar-subtitle {
+      font-size: 0.58rem;
     }
 
     .p1-rect-grid {
@@ -2506,6 +4640,65 @@ void loop() &#123;
       grid-template-columns: 1fr;
     }
 
+    .p1-card-mapping {
+      gap: clamp(1.7rem, 7vw, 2.6rem);
+      padding: clamp(3.25rem, 10vw, 4.25rem) 1rem clamp(1.5rem, 6vw, 2.2rem);
+    }
+
+    .p1-card-mapping::before {
+      right: 0.75rem;
+      top: 0.35rem;
+      font-size: clamp(3.8rem, 18vw, 6rem);
+      opacity: 0.55;
+    }
+
+    .p1-mapping-head h2 {
+      font-size: clamp(1.85rem, 8vw, 2.6rem);
+      line-height: 1.12;
+    }
+
+    .p1-mapping-head > p:last-child {
+      max-width: 24rem;
+      font-size: 0.92rem;
+      line-height: 1.72;
+    }
+
+    .p1-mapping-row {
+      grid-template-columns: 1fr;
+      gap: 0.9rem;
+      min-height: 0;
+      padding: 1.1rem;
+    }
+
+    .p1-mapping-meta {
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .p1-mapping-num {
+      font-size: 1.7rem;
+    }
+
+    .p1-mapping-line {
+      width: 10%;
+      min-width: 2.35rem;
+      margin-block: 0.25rem;
+    }
+
+    .p1-mapping-row:hover .p1-mapping-line,
+    .p1-mapping-row:focus-visible .p1-mapping-line {
+      width: 100%;
+    }
+
+    .p1-mapping-solution {
+      transform: translateX(0);
+    }
+
+    .p1-mapping-row:hover .p1-mapping-solution,
+    .p1-mapping-row:focus-visible .p1-mapping-solution {
+      transform: translateX(0.2rem);
+    }
+
     .p1-card-making-process {
       grid-template-columns: 1fr;
       min-height: 0;
@@ -2537,12 +4730,18 @@ void loop() &#123;
       grid-template-columns: 1fr;
     }
 
+    .p1-validation-text--singleline,
+    .p1-validation-section--code .p1-body-text {
+      white-space: normal;
+    }
+
     .p1-validation-gallery--circuit,
     .p1-validation-gallery--code {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     .p1-card-render-gallery {
+      --render-stack-gap: 9.375vh;
       grid-template-columns: 1fr;
     }
 
@@ -2567,10 +4766,24 @@ void loop() &#123;
       aspect-ratio: 4 / 3;
     }
 
+    .p1-render-screen--modular {
+      min-height: calc(86vh + var(--modular-reveal-scroll));
+      height: auto;
+      padding: 0;
+    }
+
+    .p1-modular-pin {
+      min-height: 86vh;
+    }
+
     .p1-exploded-stage,
     .p1-exploded-media {
       min-height: 0;
       height: min(72vh, 34rem);
+    }
+
+    .p1-exploded-stage {
+      min-height: min(72vh, 34rem);
     }
 
     .p1-exploded-card {
@@ -2594,8 +4807,8 @@ void loop() &#123;
     .p1-pain-card {
       min-height: 0;
       grid-template-rows: clamp(7rem, 26vw, 10rem) auto;
-      gap: 0.5rem;
-      padding: 0.5rem;
+      gap: calc(var(--row-gap-section) * 0.5);
+      padding: 0;
     }
 
     .p1-pain-media {
@@ -2611,8 +4824,8 @@ void loop() &#123;
     }
 
     .p1-pain-copy {
-      gap: 0.35rem;
-      padding: 0.65rem 0.55rem 0.75rem;
+      gap: calc(var(--row-gap-section) * 0.35);
+      padding: 0;
     }
 
     .p1-pain-title {
@@ -2629,30 +4842,32 @@ void loop() &#123;
     }
 
     .p1-card-mapping {
-      gap: 1.35rem;
-      padding: clamp(1.2rem, 5vw, 1.75rem);
+      gap: clamp(1.7rem, 7vw, 2.6rem);
+      padding: clamp(3.25rem, 10vw, 4.25rem) 1rem clamp(1.5rem, 6vw, 2.2rem);
     }
 
     .p1-card-mapping::before {
-      right: 0.5rem;
-      top: 0.65rem;
-      font-size: clamp(4rem, 21vw, 6.8rem);
+      right: 0.75rem;
+      top: 0.35rem;
+      font-size: clamp(3.8rem, 18vw, 6rem);
+      opacity: 0.55;
     }
 
     .p1-mapping-bg {
-      background-size: auto, auto, 2.35rem 2.35rem, 2.35rem 2.35rem;
+      background-size: 3rem 3rem;
     }
 
     .p1-mapping-head h2 {
       max-width: none;
-      font-size: clamp(1.7rem, 7.5vw, 2.6rem);
-      white-space: nowrap;
+      font-size: clamp(1.85rem, 8vw, 2.6rem);
+      line-height: 1.12;
+      white-space: normal;
     }
 
     .p1-mapping-head > p:last-child {
-      max-width: none;
-      font-size: 0.95rem;
-      line-height: 1.75;
+      max-width: 24rem;
+      font-size: 0.92rem;
+      line-height: 1.72;
     }
 
     .p1-mapping-list {
@@ -2660,43 +4875,49 @@ void loop() &#123;
     }
 
     .p1-mapping-row {
-      grid-template-columns: 2.6rem minmax(0, 1fr);
-      grid-template-areas:
-        'num issue'
-        'num link'
-        'num solution';
-      align-items: start;
-      gap: 0.55rem 0.75rem;
+      grid-template-columns: 1fr;
+      align-items: center;
+      gap: 0.9rem;
+      min-height: 0;
+      padding: 1.1rem;
+    }
+
+    .p1-mapping-row.is-visible:hover,
+    .p1-mapping-row.is-visible:focus-visible {
+      transform: translateX(4px);
+    }
+
+    .p1-mapping-meta {
+      justify-content: space-between;
+      align-items: center;
     }
 
     .p1-mapping-num {
-      grid-area: num;
-      width: 2.6rem;
+      font-size: 1.7rem;
     }
 
-    .p1-mapping-issue {
-      grid-area: issue;
+    .p1-mapping-line {
+      width: 10%;
+      min-width: 2.35rem;
+      margin-block: 0.25rem;
     }
 
-    .p1-mapping-link {
-      grid-area: link;
-      justify-self: start;
-      width: 2.6rem;
-      transform: rotate(90deg);
-    }
-
-    .p1-mapping-solution {
-      grid-area: solution;
-    }
-
-    .p1-mapping-cell {
+    .p1-mapping-row:hover .p1-mapping-line,
+    .p1-mapping-row:focus-visible .p1-mapping-line {
       width: 100%;
-      min-height: 0;
-      padding: 1rem;
     }
 
     .p1-mapping-cell strong {
       font-size: clamp(1.25rem, 7vw, 2rem);
+    }
+
+    .p1-mapping-solution {
+      transform: translateX(0);
+    }
+
+    .p1-mapping-row:hover .p1-mapping-solution,
+    .p1-mapping-row:focus-visible .p1-mapping-solution {
+      transform: translateX(0.2rem);
     }
 
     .p1-card-model-wide {
@@ -2709,32 +4930,40 @@ void loop() &#123;
     }
 
     .p1-hero {
-      padding-block: 4.75rem 2.5rem;
+      min-height: 100svh;
+      padding: 0;
     }
 
     .p1-hero-shell {
-      min-height: 32rem;
-      border-radius: 1.1rem;
+      min-height: 100svh;
+      border-radius: 0;
     }
 
     .p1-hero-media::after {
-      background: linear-gradient(180deg, rgba(255, 247, 237, 0.9) 0%, rgba(255, 247, 237, 0.72) 34%, rgba(255, 247, 237, 0.38) 62%, rgba(255, 247, 237, 0.16) 100%);
+      background:
+        linear-gradient(180deg, rgba(255, 247, 237, 0.16) 0%, rgba(255, 247, 237, 0.36) 38%, rgba(255, 247, 237, 0.9) 100%),
+        linear-gradient(90deg, rgba(255, 247, 237, 0.62) 0%, rgba(255, 247, 237, 0.12) 100%);
     }
 
     .p1-hero-copy {
       width: 100%;
-      min-height: 32rem;
+      min-height: 100svh;
       padding: 1.5rem;
       justify-content: flex-end;
     }
 
     .p1-kicker-row {
-      flex-wrap: wrap;
-      gap: 0.75rem;
+      flex-wrap: nowrap;
+      gap: 0.55rem;
     }
 
     .p1-kicker-line {
-      width: 4.5rem;
+      width: clamp(2.2rem, 11vw, 4.5rem);
+    }
+
+    .p1-kicker-text {
+      font-size: clamp(0.62rem, 2.25vw, 0.78rem);
+      letter-spacing: 0.06em;
     }
 
     .p1-lead,
@@ -2761,7 +4990,7 @@ void loop() &#123;
 
     .p1-card-context-merged {
       grid-template-columns: 1fr;
-      gap: 1.25rem;
+      gap: var(--row-gap-section);
     }
 
     .p1-context-copy-panel {
@@ -2769,7 +4998,7 @@ void loop() &#123;
     }
 
     .p1-context-detail-panel {
-      gap: 1.25rem;
+      gap: var(--row-gap-section);
     }
 
     .p1-context-media {
