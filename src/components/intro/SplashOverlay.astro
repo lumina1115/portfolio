@@ -1,36 +1,178 @@
 ﻿---
 ---
 
-<div id="splash-root" aria-hidden="true">
-  <div class="loader-bar">
-    <div class="loader-progress"></div>
-  </div>
+<script is:inline>
+  (() => {
+    try {
+      const navigation = performance.getEntriesByType('navigation')[0];
+      const isReload = navigation && navigation.type === 'reload';
 
-  <div class="splash-marquee">
-    <span>ZONG XUEZHEN</span>
-    <span>ZONG XUEZHEN</span>
-  </div>
+      if (isReload) {
+        sessionStorage.removeItem('portfolioSplashSeen');
+        return;
+      }
+
+      if (sessionStorage.getItem('portfolioSplashSeen') === 'true') {
+        document.documentElement.classList.add('has-seen-splash');
+      }
+    } catch {
+      // Keep the splash available when browser storage is unavailable.
+    }
+  })();
+</script>
+
+<div id="splash-root" aria-hidden="true">
+  <svg class="splash-grain" aria-hidden="true" viewBox="0 0 100 100" preserveAspectRatio="none">
+    <filter id="splash-grain-filter">
+      <feTurbulence type="fractalNoise" baseFrequency="2.2" numOctaves="1" seed="4" stitchTiles="stitch">
+        <animate
+          attributeName="seed"
+          dur="0.5s"
+          values="4;19;8;31;13;43;6;27;4"
+          calcMode="discrete"
+          repeatCount="indefinite"
+        />
+      </feTurbulence>
+      <feColorMatrix type="saturate" values="0" />
+      <feComponentTransfer>
+        <feFuncR type="discrete" tableValues="0.42 0.88 1" />
+        <feFuncG type="discrete" tableValues="0.42 0.88 1" />
+        <feFuncB type="discrete" tableValues="0.42 0.88 1" />
+        <feFuncA type="table" tableValues="0.08 0.42" />
+      </feComponentTransfer>
+    </filter>
+    <rect width="100%" height="100%" filter="url(#splash-grain-filter)"></rect>
+  </svg>
 
   <div class="splash-text-wrap">
-    <span class="splash-name">宗雪祯</span>
-    <span class="splash-sep">/</span>
+    <span class="splash-name">Zong Xuezhen</span>
+    <span class="splash-sep">|</span>
     <span class="splash-role-slot">
-      <span class="splash-role">工业设计</span><span class="splash-cursor">|</span>
+      <span class="splash-role" data-splash-role></span><span class="splash-cursor">|</span>
     </span>
   </div>
 
-  <p class="loader-percent">100%</p>
+  <div class="loader-module">
+    <div class="loader-bar">
+      <div class="loader-progress"></div>
+    </div>
+    <p class="loader-percent" data-loader-percent>0%</p>
+  </div>
 </div>
 
+<script>
+  const loaderDuration = 6500;
+  const splashSeenKey = 'portfolioSplashSeen';
+  const roles = [
+    'industrial design',
+    'product strategy',
+    'aigc workflow',
+  ];
+  const typingWindow = 900;
+  const holdWindow = 1000;
+  const eraseWindow = 350;
+  const cycleWindow = typingWindow + holdWindow + eraseWindow;
+
+  const isReloadNavigation = () => {
+    const navigation = performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming | undefined;
+    return navigation?.type === 'reload';
+  };
+
+  const initSplash = () => {
+    try {
+      if (isReloadNavigation()) {
+        sessionStorage.removeItem(splashSeenKey);
+      }
+
+      if (sessionStorage.getItem(splashSeenKey) === 'true') {
+        document.documentElement.classList.remove('is-splashing');
+        document.documentElement.classList.add('has-seen-splash');
+        return;
+      }
+    } catch {
+      // Continue with the splash if storage cannot be read.
+    }
+
+    const splashRoot = document.querySelector('#splash-root');
+    const percentLabel = document.querySelector('[data-loader-percent]');
+    const roleLabel = document.querySelector('[data-splash-role]');
+
+    if (!splashRoot || !percentLabel || !roleLabel) {
+      requestAnimationFrame(initSplash);
+      return;
+    }
+
+    document.documentElement.classList.add('is-splashing');
+    try {
+      sessionStorage.setItem(splashSeenKey, 'true');
+    } catch {
+      // Storage is optional; the animation still works without it.
+    }
+
+    const startedAt = performance.now();
+
+    const renderFrame = (now: number) => {
+      const progress = Math.min((now - startedAt) / loaderDuration, 1);
+
+      percentLabel.textContent = `${Math.round(progress * 100)}%`;
+
+      const elapsed = Math.min(now - startedAt, loaderDuration);
+      const segmentIndex = Math.min(Math.floor(elapsed / cycleWindow), roles.length - 1);
+      const segmentStart = segmentIndex === roles.length - 1 ? cycleWindow * (roles.length - 1) : segmentIndex * cycleWindow;
+      const segmentElapsed = Math.max(0, elapsed - segmentStart);
+      const currentRole = roles[segmentIndex];
+      const isLastRole = segmentIndex === roles.length - 1;
+      const currentTypingWindow = isLastRole ? loaderDuration - segmentStart : typingWindow;
+      const holdUntil = typingWindow + holdWindow;
+      const typeProgress = Math.min(segmentElapsed / currentTypingWindow, 1);
+      let visibleChars = Math.max(1, Math.round(currentRole.length * typeProgress));
+
+      if (!isLastRole && segmentElapsed > holdUntil) {
+        const eraseProgress = Math.min((segmentElapsed - holdUntil) / eraseWindow, 1);
+        visibleChars = Math.round(currentRole.length * (1 - eraseProgress));
+      }
+
+      roleLabel.textContent = currentRole.slice(0, visibleChars);
+
+      if (progress < 1) {
+        requestAnimationFrame(renderFrame);
+      }
+    };
+
+    renderFrame(startedAt);
+
+    splashRoot.addEventListener('animationend', (event) => {
+      if (event.animationName === 'splash-hide') {
+        document.documentElement.classList.remove('is-splashing');
+      }
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSplash, { once: true });
+  } else {
+    initSplash();
+  }
+</script>
+
 <style>
+  :global(html.is-splashing),
+  :global(html.is-splashing body) {
+    overflow: hidden;
+  }
+
+  :global(html.has-seen-splash) #splash-root {
+    display: none;
+  }
+
   #splash-root {
     position: fixed;
     inset: 0;
-    z-index: 99999;
+    z-index: 2147483000;
     overflow: hidden;
-    color: var(--color-text);
-    background: var(--color-bg);
-    animation: splash-hide 0.55s ease 2.65s forwards;
+    color: #d83a35;
+    background: #dccac8;
+    animation: splash-hide 0.62s ease 6.5s forwards;
   }
 
   #splash-root * {
@@ -38,14 +180,39 @@
     padding: 0;
   }
 
-  .loader-bar {
+  .splash-grain {
     position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 4;
+    inset: 0;
+    z-index: 1;
     width: 100%;
-    height: 6px;
-    background: rgba(225, 203, 166, 0.24);
+    height: 100%;
+    pointer-events: none;
+    mix-blend-mode: overlay;
+    opacity: 0.75;
+  }
+
+  .splash-grain rect {
+    fill: #ffffff;
+  }
+
+  .loader-module {
+    position: fixed;
+    left: 50%;
+    top: calc(50% + 3.25rem);
+    z-index: 5;
+    width: min(10.67rem, 39vw);
+    display: grid;
+    justify-items: center;
+    gap: 0.75rem;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+
+  .loader-bar {
+    width: 100%;
+    height: 0.36rem;
+    overflow: hidden;
+    background: rgba(216, 58, 53, 0.22);
   }
 
   .loader-progress {
@@ -53,81 +220,71 @@
     height: 100%;
     transform: scaleX(0);
     transform-origin: left center;
-    background: var(--color-black);
-    animation: loader-fill 2.35s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+    background: #d83a35;
+    animation: loader-fill 6.5s cubic-bezier(0.76, 0, 0.24, 1) forwards;
   }
 
   .loader-percent {
-    position: fixed;
-    right: clamp(1.25rem, 2.6vw, 2.5rem);
-    bottom: clamp(1.25rem, 2.6vw, 2.5rem);
-    z-index: 3;
-    color: var(--color-text);
+    color: #d83a35;
     font-family: var(--font-display);
-    font-size: clamp(3rem, 8vw, 6rem);
-    line-height: 0.8;
-    opacity: 0;
-    animation: percent-show 0.4s ease 1.9s forwards;
-  }
-
-  .splash-marquee {
-    position: fixed;
-    left: -1rem;
-    right: -1rem;
-    top: 10vh;
-    z-index: 2;
-    display: flex;
-    gap: 2rem;
-    color: rgba(225, 203, 166, 0.08);
-    font-family: var(--font-display);
-    font-size: clamp(4.5rem, 16vw, 12rem);
-    line-height: 0.8;
-    text-transform: uppercase;
-    white-space: nowrap;
-    pointer-events: none;
+    font-size: clamp(1.4rem, 2.8vw, 2.55rem);
+    font-weight: 400;
+    line-height: 0.82;
+    text-shadow: 0.035em 0.035em 0 rgba(255, 255, 255, 0.28);
+    animation: percent-pulse 1.1s steps(2, end) infinite;
   }
 
   .splash-text-wrap {
     position: fixed;
-    left: clamp(1.25rem, 2.6vw, 2.5rem);
-    bottom: clamp(6rem, 12vh, 9rem);
-    z-index: 3;
-    display: flex;
-    align-items: baseline;
-    gap: 0.35em;
-    color: var(--color-text);
+    left: 50%;
+    top: calc(50% - 3.25rem);
+    z-index: 5;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.28em;
+    color: #d83a35;
     font-family: var(--font-serif);
-    font-size: clamp(1.7rem, 4vw, 4rem);
+    font-size: clamp(1.1rem, 2vw, 1.8rem);
     font-style: italic;
     line-height: 1;
+    transform: translate(-50%, -50%);
     user-select: none;
     pointer-events: none;
   }
 
   .splash-name {
-    font-weight: 600;
+    font: inherit;
+    line-height: 1;
     white-space: nowrap;
   }
 
   .splash-sep {
-    opacity: 0.62;
-  }
-
-  .splash-role-slot {
-    display: inline-flex;
-    white-space: nowrap;
+    line-height: 1;
+    opacity: 0.84;
   }
 
   .splash-role {
     display: inline-block;
-    max-width: 0;
-    overflow: hidden;
+    font-family: var(--font-display);
+    font-size: 1.96em;
+    font-style: normal;
+    line-height: 1;
+    text-align: left;
+    text-transform: uppercase;
     white-space: nowrap;
-    color: var(--color-text-secondary);
-    animation: type-role 1.15s steps(4, end) 0.35s forwards;
+  }
+
+  .splash-role-slot {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
   }
 
   .splash-cursor {
+    display: inline-block;
+    padding-left: 0.04em;
+    line-height: 1;
     animation: cursor-blink 0.8s step-end infinite;
   }
 
@@ -135,12 +292,9 @@
     to { transform: scaleX(1); }
   }
 
-  @keyframes percent-show {
-    to { opacity: 1; }
-  }
-
-  @keyframes type-role {
-    to { max-width: 5em; }
+  @keyframes percent-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.78; }
   }
 
   @keyframes cursor-blink {
@@ -159,8 +313,12 @@
   @media (max-width: 640px) {
     .splash-text-wrap {
       flex-wrap: wrap;
-      max-width: calc(100vw - 2.5rem);
-      bottom: 6.25rem;
+      row-gap: 0.3rem;
+      width: min(24rem, calc(100vw - 2rem));
+    }
+
+    .splash-name {
+      width: 100%;
     }
   }
 </style>

@@ -1,0 +1,217 @@
+---
+---
+
+<div class="page-load-overlay" data-page-load-overlay aria-hidden="true">
+  <svg class="page-load-grain" aria-hidden="true" viewBox="0 0 100 100" preserveAspectRatio="none">
+    <filter id="page-load-grain-filter">
+      <feTurbulence type="fractalNoise" baseFrequency="2.2" numOctaves="1" seed="4" stitchTiles="stitch">
+        <animate
+          attributeName="seed"
+          dur="0.5s"
+          values="4;19;8;31;13;43;6;27;4"
+          calcMode="discrete"
+          repeatCount="indefinite"
+        />
+      </feTurbulence>
+      <feColorMatrix type="saturate" values="0" />
+      <feComponentTransfer>
+        <feFuncR type="discrete" tableValues="0.42 0.88 1" />
+        <feFuncG type="discrete" tableValues="0.42 0.88 1" />
+        <feFuncB type="discrete" tableValues="0.42 0.88 1" />
+        <feFuncA type="table" tableValues="0.08 0.42" />
+      </feComponentTransfer>
+    </filter>
+    <rect width="100%" height="100%" filter="url(#page-load-grain-filter)"></rect>
+  </svg>
+
+  <div class="page-load-module">
+    <div class="page-load-spinner" aria-hidden="true"></div>
+    <p class="page-load-label">Loading</p>
+    <p class="page-load-brand">Zong Xuezhen Portfolio</p>
+  </div>
+</div>
+
+<script>
+  const revealDelay = 180;
+  const minimumVisibleDuration = 450;
+  const hideDuration = 360;
+
+  const initPageLoadOverlay = () => {
+    const overlay = document.querySelector('[data-page-load-overlay]');
+
+    if (!(overlay instanceof HTMLElement)) {
+      document.documentElement.classList.remove('is-page-load-pending');
+      return;
+    }
+
+    if (document.readyState === 'complete') {
+      document.documentElement.classList.remove('is-page-load-pending');
+      overlay.classList.add('is-complete');
+      return;
+    }
+
+    let isVisible = false;
+    let shownAt = 0;
+
+    const revealTimer = window.setTimeout(() => {
+      isVisible = true;
+      shownAt = performance.now();
+      document.documentElement.classList.add('is-page-loading');
+      overlay.classList.add('is-visible');
+    }, revealDelay);
+
+    const complete = () => {
+      window.clearTimeout(revealTimer);
+
+      if (!isVisible) {
+        document.documentElement.classList.remove('is-page-load-pending');
+        overlay.classList.add('is-complete');
+        return;
+      }
+
+      const visibleFor = performance.now() - shownAt;
+      const remaining = Math.max(0, minimumVisibleDuration - visibleFor);
+
+      window.setTimeout(() => {
+        overlay.classList.remove('is-visible');
+        overlay.classList.add('is-hiding');
+        document.documentElement.classList.remove('is-page-loading', 'is-page-load-pending');
+
+        window.setTimeout(() => {
+          overlay.classList.remove('is-hiding');
+          overlay.classList.add('is-complete');
+        }, hideDuration);
+      }, remaining);
+    };
+
+    window.addEventListener('load', complete, { once: true });
+    window.addEventListener('pagehide', () => window.clearTimeout(revealTimer), { once: true });
+  };
+
+  initPageLoadOverlay();
+</script>
+
+<style>
+  :global(html.is-page-loading),
+  :global(html.is-page-load-pending),
+  :global(html.is-page-loading body),
+  :global(html.is-page-load-pending body) {
+    overflow: hidden;
+  }
+
+  :global(html.is-page-load-pending body > :not(.page-load-overlay)) {
+    visibility: hidden;
+  }
+
+  .page-load-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 2147482000;
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+    color: #d83a35;
+    background: #dccac8;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition:
+      opacity 0.36s ease,
+      visibility 0s linear 0.36s;
+  }
+
+  .page-load-overlay.is-visible {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transition:
+      opacity 0.22s ease,
+      visibility 0s;
+  }
+
+  .page-load-overlay.is-hiding {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  .page-load-overlay.is-complete {
+    display: none;
+  }
+
+  .page-load-overlay * {
+    margin: 0;
+    padding: 0;
+  }
+
+  .page-load-grain {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    mix-blend-mode: overlay;
+    opacity: 0.75;
+  }
+
+  .page-load-grain rect {
+    fill: #ffffff;
+  }
+
+  .page-load-module {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    justify-items: center;
+    gap: 0.7rem;
+    width: min(18rem, calc(100vw - 2rem));
+    text-align: center;
+    user-select: none;
+  }
+
+  .page-load-spinner {
+    width: clamp(3.75rem, 14vw, 6.25rem);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background:
+      radial-gradient(circle closest-side, #dccac8 72%, transparent 74%),
+      conic-gradient(from 0deg, #d83a35 0 78deg, rgba(216, 58, 53, 0.18) 78deg 360deg);
+    box-shadow:
+      0 0 0 1px rgba(216, 58, 53, 0.18) inset,
+      0.18rem 0.18rem 0 rgba(255, 255, 255, 0.24);
+    animation: page-load-spin 0.85s linear infinite;
+  }
+
+  .page-load-label {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 5vw, 3.4rem);
+    line-height: 0.82;
+    text-transform: uppercase;
+    text-shadow: 0.035em 0.035em 0 rgba(255, 255, 255, 0.28);
+  }
+
+  .page-load-brand {
+    color: rgba(216, 58, 53, 0.78);
+    font-family: var(--font-serif);
+    font-size: clamp(1rem, 2vw, 1.4rem);
+    font-style: italic;
+    line-height: 1;
+  }
+
+  @keyframes page-load-spin {
+    to {
+      transform: rotate(1turn);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .page-load-overlay {
+      transition: none;
+    }
+
+    .page-load-spinner {
+      animation-duration: 1.8s;
+    }
+  }
+</style>

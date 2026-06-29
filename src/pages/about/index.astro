@@ -1,109 +1,208 @@
----
+﻿---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import SiteNav from '../../components/layout/SiteNav.astro';
+
 ---
 
-<BaseLayout title="About — Zong Xuezhen" pageClass="about-page">
-  <SiteNav slot="nav" />
-  <main class="about-shell">
-    <section class="about-hero">
-      <p class="eyebrow">About</p>
-      <h1 class="display-title">宗雪祯</h1>
-      <p>浙江科技大学工业设计专业，2027 届。</p>
-    </section>
+<BaseLayout title="About · Zong Xuezhen" pageClass="about-page">
+  <main class="about-screen">
+    <section class="about-stage" aria-labelledby="about-title">
+      <div class="about-stage__left">
+        <div class="left-title">
+          <p class="display-title">Zong</p>
+          <p class="display-title">Xuezhen</p>
+        </div>
 
-    <section class="about-grid" id="contact">
-      <article class="about-copy">
-        <p>
-          我关注产品设计、用户体验、医疗康复和可持续设计。
-          目前的作品主要围绕工业设计方法、视觉秩序与物理原型展开，强调功能、材质与交互逻辑的统一。
-        </p>
-        <p>
-          如果你需要作品集、项目介绍或合作沟通，可以直接联系我。
-        </p>
-      </article>
+        <div class="left-cta">
+          <p class="left-copy">
+            工业设计 / 产品设计 / AIGC 辅助设计
+          </p>
+        <a
+          class="text-button-shell resume-link"
+          href={`${import.meta.env.BASE_URL}about/resume.pdf`}
+          download="宗雪祯-简历.pdf"
+        >
+          <span class="text-button">下载PDF简历</span>
+        </a>
+        </div>
+      </div>
 
-      <aside class="about-contact">
-        <p class="about-label">Contact</p>
-        <a href="mailto:3233507383@qq.com">3233507383@qq.com</a>
-        <span>3233507383@qq.com</span>
-      </aside>
+      <div class="about-stage__right">
+        <h1 id="about-title">
+          <span class="display-title">Product</span>
+          <span class="display-title">Industrial</span>
+          <span class="display-title accent-line">Design</span>
+        </h1>
+      </div>
     </section>
   </main>
 </BaseLayout>
 
 <style>
-  .about-shell {
-    width: min(var(--container), 100%);
+  .about-screen {
+    width: min(100%, 1480px);
+    min-height: 100vh;
     margin: 0 auto;
-    padding: clamp(1.25rem, 3vw, 2.5rem) clamp(1rem, 2.4vw, 2.5rem) clamp(4rem, 8vw, 7rem);
+    padding:
+      max(5.4rem, calc(env(safe-area-inset-top) + 4.7rem))
+      clamp(1rem, 2.2vw, 2rem)
+      clamp(1.25rem, 2vw, 1.75rem)
+      clamp(4.75rem, 8vw, 6.8rem);
+    box-sizing: border-box;
+    display: flex;
   }
 
-  .about-hero {
+  .about-stage {
+    flex: 1;
+    min-height: calc(100vh - max(6.65rem, calc(env(safe-area-inset-top) + 6rem)));
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(16rem, 26rem);
-    gap: 2rem;
-    align-items: end;
-    padding: clamp(2rem, 5vw, 4rem) 0 clamp(1.5rem, 3vw, 2.5rem);
-    border-bottom: 1px solid var(--color-divider);
+    grid-template-columns: minmax(16rem, 0.86fr) minmax(0, 1.14fr);
+    gap: clamp(1.5rem, 4vw, 4.5rem);
   }
 
-  .about-hero h1 {
-    margin: 0;
-    font-size: clamp(5rem, 14vw, 13rem);
-    text-shadow: 0 0.82em 0 var(--color-text-secondary);
+  .about-stage__left,
+  .about-stage__right {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
   }
 
-  .about-hero p:last-child {
+  .about-stage__left {
+    justify-content: space-between;
+  }
+
+  .about-stage__right {
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-top: clamp(0.5rem, 2vw, 1rem);
+  }
+
+  h1,
+  p,
+  span,
+  a {
     margin: 0;
-    color: var(--color-text-secondary);
+  }
+
+  .left-title {
+    padding-top: clamp(0.2rem, 1vw, 1rem);
+  }
+
+  .left-title .display-title,
+  h1 .display-title {
+    margin: 0;
+    line-height: 0.84;
+    white-space: nowrap;
+  }
+
+  .left-title .display-title {
+    font-size: clamp(4.4rem, 11vw, 10.2rem);
+  }
+
+  h1 .display-title {
+    font-size: clamp(4.5rem, 10.4vw, 10rem);
+  }
+
+  .left-cta {
+    max-width: 19rem;
+    display: grid;
+    gap: 1.15rem;
+    padding-bottom: clamp(0.5rem, 2vh, 1.25rem);
+  }
+
+  .left-copy {
+    font-family: var(--font-sans);
     text-transform: uppercase;
   }
 
-  .about-grid {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(16rem, 22rem);
-    gap: 2rem;
-    padding-top: 2rem;
+  .left-copy {
+    color: var(--color-text);
+    font-size: var(--text-sm);
+    line-height: 1.55;
   }
 
-  .about-copy p {
-    max-width: 42rem;
-    margin: 0 0 1.25rem;
-    color: var(--color-text);
-    font-size: var(--text-md);
-    line-height: var(--leading-loose);
+  .resume-link {
+    width: fit-content;
+  }
+
+  .resume-link .text-button {
+    min-width: min(100%, 18rem);
+  }
+
+  h1 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 100%;
+    margin-block: auto;
+  }
+
+  h1 .accent-line {
+    font-family: var(--font-serif);
+    font-style: italic;
     text-transform: none;
   }
 
-  .about-contact {
-    align-self: start;
-    display: grid;
-    gap: 0.6rem;
-    padding: 1.25rem 0 0;
-    border-top: 1px solid var(--color-divider);
-  }
+  @media (max-width: 1100px) {
+    .about-screen {
+      padding-top: max(5.1rem, calc(env(safe-area-inset-top) + 4.4rem));
+      padding-left: clamp(4.25rem, 7vw, 5.8rem);
+    }
 
-  .about-label {
-    margin: 0;
-    color: var(--color-text-secondary);
-    font-family: var(--font-sans);
-    font-size: var(--text-xs);
-    text-transform: uppercase;
-  }
-
-  .about-contact a,
-  .about-contact span {
-    color: var(--color-text);
-    font-family: var(--font-serif);
-    font-style: italic;
-    font-size: clamp(1.35rem, 3vw, 2rem);
-  }
-
-  @media (max-width: 860px) {
-    .about-hero,
-    .about-grid {
+    .about-stage {
       grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .about-stage__right {
+      align-items: flex-start;
+      gap: 1.5rem;
+    }
+
+    h1 {
+      align-items: flex-start;
+    }
+  }
+
+  @media (max-width: 720px) {
+    .about-screen {
+      width: 100%;
+      min-height: auto;
+      padding:
+        max(4.8rem, calc(env(safe-area-inset-top) + 4.2rem))
+        0.85rem
+        1rem
+        0.85rem;
+    }
+
+    .about-stage {
+      min-height: auto;
+      gap: 1.5rem;
+    }
+
+    .left-title .display-title,
+    h1 .display-title {
+      font-size: clamp(3.6rem, 18vw, 5.5rem);
+      white-space: normal;
+    }
+
+    .resume-link,
+    .resume-link .text-button {
+      width: 100%;
+    }
+
+    .left-cta {
+      width: 100%;
+      max-width: none;
+    }
+  }
+
+  @media (max-height: 780px) and (min-width: 721px) {
+    .about-screen {
+      padding-bottom: 0.85rem;
+    }
+
+    .left-cta {
+      padding-bottom: 0;
     }
   }
 </style>

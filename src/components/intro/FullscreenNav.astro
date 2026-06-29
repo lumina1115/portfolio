@@ -7,11 +7,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     <div class="home-hero__left">
       <div class="home-spacer" aria-hidden="true"></div>
       <div class="home-intro">
-        <p>
-          我不只把作品当作交付物，而是把它看作产品、情绪和体验之间的表达方式。
-        </p>
         <a class="text-button-shell" href={base + '/about'}>
-          <span class="text-button">Get in Touch</span>
+          <span class="text-button">About</span>
         </a>
       </div>
     </div>
@@ -28,34 +25,24 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     </div>
   </section>
 
-  <section class="home-about">
-    <div class="home-image-frame" aria-hidden="true">
-      <div class="home-image-card"></div>
-    </div>
-    <p>
-      Great design starts with understanding people—their stories, their needs, and the bigger picture around the product.
-      I explore opportunities in constraints and turn them into thoughtful, useful objects and systems.
-    </p>
-  </section>
-
   <section class="home-work">
-    <p class="serif-italic home-section-title">Work</p>
+    <p class="serif-italic home-section-title">Projects</p>
     <div class="home-work-list">
-      <a href={base + '/projects/project-1'} class="home-work-row">
+      <a href={base + '/projects/脑瘫儿童智能踝足矫形器'} class="home-work-row">
         <span>01</span>
         <strong>Gradient</strong>
       </a>
-      <a href={base + '/projects/project-2'} class="home-work-row">
+      <a href={base + '/projects/截肢患者悬吊系统'} class="home-work-row">
         <span>02</span>
         <strong>NeuroLimb</strong>
       </a>
-      <a href={base + '/projects/project-3'} class="home-work-row">
+      <a href={base + '/projects/AR观鸟望远镜'} class="home-work-row">
         <span>03</span>
         <strong>BirdScope</strong>
       </a>
     </div>
     <a class="text-button-shell home-all-work" href={base + '/projects'}>
-      <span class="text-button">All Work</span>
+      <span class="text-button">All Projects</span>
     </a>
   </section>
 </main>
@@ -69,7 +56,6 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   }
 
   .home-hero,
-  .home-about,
   .home-work {
     width: min(var(--container), 100%);
     margin: 0 auto;
@@ -96,18 +82,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   }
 
   .home-intro {
-    max-width: 19rem;
     display: grid;
-    gap: 1.25rem;
+    gap: 0.75rem;
     padding-bottom: 3rem;
-  }
-
-  .home-intro p {
-    margin: 0;
-    color: var(--color-text);
-    font-size: var(--text-sm);
-    line-height: 1.55;
-    text-transform: uppercase;
   }
 
   .home-hero__right {
@@ -132,44 +109,6 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
   .hero-line--indent {
     padding-right: clamp(1rem, 9vw, 9rem);
-  }
-
-  .home-about {
-    display: grid;
-    gap: 2.5rem;
-    padding-top: clamp(4rem, 10vw, 9rem);
-    padding-bottom: clamp(4rem, 10vw, 9rem);
-  }
-
-  .home-image-frame {
-    width: min(50rem, 78vw);
-    aspect-ratio: 2.25 / 1;
-    justify-self: center;
-    position: relative;
-    display: grid;
-    place-items: center;
-    border: 1px solid var(--color-divider);
-  }
-
-  .home-image-card {
-    width: 46%;
-    aspect-ratio: 1 / 1;
-    border-radius: 50%;
-    background:
-      radial-gradient(circle at 32% 35%, var(--color-accent) 0 8%, transparent 8.5%),
-      radial-gradient(circle at 68% 35%, var(--color-text-secondary) 0 8%, transparent 8.5%),
-      radial-gradient(circle at 50% 68%, var(--color-black) 0 12%, transparent 12.5%),
-      var(--color-surface);
-  }
-
-  .home-about p {
-    max-width: 48rem;
-    margin: 0 auto;
-    color: var(--color-text);
-    font-size: var(--text-sm);
-    line-height: 1.65;
-    text-align: center;
-    text-transform: uppercase;
   }
 
   .home-work {

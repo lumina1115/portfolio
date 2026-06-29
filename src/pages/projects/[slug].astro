@@ -1,21 +1,61 @@
 ﻿---
-import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SiteNav from '../../components/layout/SiteNav.astro';
 import Project1Editorial from '../../components/projects/Project1Editorial.astro';
+import ProjectEditorialBody from '../../components/projects/ProjectEditorialBody.astro';
+import ProjectEditorialHero from '../../components/projects/ProjectEditorialHero.astro';
+import { projects } from '../../data/projects';
+
+const project1Id = 'project-1';
+const editorialProjectIds = ['project-2', 'project-3', 'project-4'] as const;
 
 export async function getStaticPaths() {
-  const projects = await getCollection('projects');
   return projects.map(project => ({
-    params: { slug: project.id },
+    params: { slug: project.data.slug },
     props: { project },
   }));
 }
 
 const { project } = Astro.props;
-const isProject1 = project.id === 'project-1';
-const rendered = isProject1 ? null : await render(project);
-const Content = rendered?.Content;
+const isProject1 = project.id === project1Id;
+const hasEditorialBody = editorialProjectIds.includes(project.id);
+const editorialHeroContent = {
+  'project-2': {
+    logoUrl: 'https://portfolio-image-cdn.zongxz66.workers.dev/project-2/neuro-logo.png',
+    logoMode: 'replace',
+    quote: '让康复，不止于重新站立',
+    tags: ['智能动态悬吊减重', '沉浸式 VR 视觉反馈', '术后步态康复训练'],
+    descriptionLines: [
+      'NeuroLimb 是一套面向腿部截肢患者术后康复的 VR 悬吊系统',
+      '以智能动态悬吊提供可调减重支持，并通过高沉浸 VR 视觉反馈触发神经重塑',
+      '把身体训练、疼痛干预与心理适应整合为完整的康复体验',
+    ],
+  },
+  'project-3': {
+    logoUrl: 'https://portfolio-image-cdn.zongxz66.workers.dev/project-3/birdscope-logo.png',
+    logoMode: 'prefix',
+    quote: '让自然，被看见，也被理解',
+    tags: ['AR 实时标注识别', '端侧 AI 物种匹配', '定向拾音观鸟体验'],
+    descriptionLines: [
+      'BirdScope 是一款面向景区与自然教育场景的 AR 智能观鸟终端',
+      '通过 AI 端侧识别、AR 实时标注与波束成形定向拾音降低观察门槛',
+      '将静态自然风景转化为可学习、可记录、可分享的数字体验',
+    ],
+  },
+  'project-4': {
+    logoUrl: 'https://portfolio-image-cdn.zongxz66.workers.dev/project-4/kaizo-logo.png',
+    logoMode: 'prefix',
+    quote: '意承古窑，温润入家',
+    tags: ['砂砾肌理家居 CMF', '温度指示灯渐变', '古窑意象智能烘烤'],
+    descriptionLines: [
+      'KAIZO 是一款以家用场景与温润自然气质为核心的智能披萨炉',
+      '从传统窑炉意象出发，将砂砾触感、原木把手与柔和温度光谱融入产品语言',
+      '让高温烘烤设备从粗犷工具转化为家居空间中的情感化艺术品',
+    ],
+  },
+} as const;
+const heroContent = editorialHeroContent[project.id as keyof typeof editorialHeroContent];
+const projectIndex = Number(project.id.replace('project-', ''));
 ---
 
 {isProject1 ? (
@@ -25,92 +65,19 @@ const Content = rendered?.Content;
 ) : (
   <BaseLayout title={project.data.title} pageClass="project-detail-page">
     <SiteNav slot="nav" />
-    <main class="project">
-      <header class="project-hero">
-        <h1>{project.data.title}</h1>
-        <p class="summary">{project.data.summary}</p>
-      </header>
-
-      <div class="project-meta">
-        <dl>
-          <dt>日期</dt><dd>{project.data.publishDate.toLocaleDateString('zh-CN')}</dd>
-          <dt>标签</dt><dd>{project.data.tags.join(' / ')}</dd>
-        </dl>
-      </div>
-
-      <div class="project-body">
-        {Content && <Content />}
-      </div>
-    </main>
+    {heroContent && (
+      <ProjectEditorialHero
+        project={project}
+        index={projectIndex}
+        descriptionLines={[...heroContent.descriptionLines]}
+        quote={heroContent.quote}
+        tags={[...heroContent.tags]}
+        logoUrl={heroContent.logoUrl}
+        logoMode={heroContent.logoMode}
+      />
+    )}
+    {hasEditorialBody && <ProjectEditorialBody project={project} />}
   </BaseLayout>
 )}
-
-<style>
-  .project {
-    max-width: var(--container);
-    margin: 0 auto;
-    padding: 0 var(--space-5) var(--space-9);
-  }
-
-  .project-hero {
-    max-width: var(--measure);
-    padding: var(--space-8) 0 var(--space-6);
-    border-bottom: 1px solid var(--color-divider);
-    margin-bottom: var(--space-6);
-  }
-
-  .project-hero h1 {
-    font-size: var(--text-3xl);
-    margin: 0 0 var(--space-4);
-  }
-
-  .summary {
-    font-size: var(--text-lg);
-    color: var(--color-text-secondary);
-    margin: 0;
-  }
-
-  .project-meta {
-    margin-bottom: var(--space-7);
-  }
-
-  .project-meta dl {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: var(--space-2) var(--space-4);
-    font-family: var(--font-sans);
-    font-size: var(--text-sm);
-    max-width: 20rem;
-  }
-
-  .project-meta dt {
-    color: var(--color-text-secondary);
-  }
-
-  .project-body {
-    max-width: var(--measure);
-  }
-
-  .project-body h2 {
-    font-size: var(--text-xl);
-    margin-top: var(--space-7);
-    margin-bottom: var(--space-4);
-    padding-top: var(--space-6);
-    border-top: 1px solid var(--color-divider);
-  }
-
-  .project-body p {
-    margin: 0 0 var(--space-4);
-  }
-  @media screen and (orientation: portrait) {
-    .project :global(.project-split),
-    .project :global(.detail-split),
-    .project :global(.media-text),
-    .project :global(.text-media),
-    .project :global(.two-column) {
-      grid-template-columns: 1fr !important;
-    }
-  }
-</style>
 
 

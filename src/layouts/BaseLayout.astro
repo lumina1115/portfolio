@@ -1,5 +1,6 @@
 ﻿---
 import SplashOverlay from '../components/intro/SplashOverlay.astro';
+import PageLoadOverlay from '../components/intro/PageLoadOverlay.astro';
 import GlobalMenu from '../components/layout/GlobalMenu.astro';
 import '../styles/global.css';
 
@@ -8,6 +9,7 @@ interface Props {
   description?: string;
   pageClass?: string;
   showSplash?: boolean;
+  showPageLoader?: boolean;
 }
 
 const {
@@ -15,7 +17,10 @@ const {
   description = '',
   pageClass = '',
   showSplash = false,
+  showPageLoader,
 } = Astro.props;
+
+const shouldShowPageLoader = showPageLoader ?? !showSplash;
 ---
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -24,9 +29,15 @@ const {
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{title}</title>
   {description && <meta name="description" content={description} />}
+  {shouldShowPageLoader && (
+    <script is:inline>
+      document.documentElement.classList.add('is-page-load-pending');
+    </script>
+  )}
 </head>
 <body class={pageClass}>
   {showSplash && <SplashOverlay />}
+  {shouldShowPageLoader && <PageLoadOverlay />}
   <GlobalMenu />
   <slot name="nav" />
   <slot />

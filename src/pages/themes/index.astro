@@ -1,23 +1,6 @@
 ---
-import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SiteNav from '../../components/layout/SiteNav.astro';
-
-const projects = await getCollection('projects');
-const base = import.meta.env.BASE_URL.replace(/\/$/, '');
-const grouped = new Map<string, typeof projects>();
-
-for (const project of projects) {
-  const theme = project.data.theme || 'minimalist';
-  if (!grouped.has(theme)) grouped.set(theme, []);
-  grouped.get(theme)!.push(project);
-}
-
-const themeCopy: Record<string, { title: string; note: string }> = {
-  'dark-tech': { title: 'Dark Tech', note: 'Medical devices and systems with a sharper edge.' },
-  'warm-craft': { title: 'Warm Craft', note: 'Home products and tactile material studies.' },
-  minimalist: { title: 'Minimalist', note: 'Sparse layouts, direct communication, clean structure.' },
-};
 ---
 
 <BaseLayout title="Themes — Zong Xuezhen" pageClass="themes-page">
@@ -26,26 +9,7 @@ const themeCopy: Record<string, { title: string; note: string }> = {
     <section class="themes-hero">
       <p class="eyebrow">Themes</p>
       <h1 class="display-title">Themes</h1>
-      <p>Three directions, grouped by mood and material language.</p>
-    </section>
-
-    <section class="theme-stack">
-      {[...grouped.entries()].map(([themeKey, items]) => {
-        const copy = themeCopy[themeKey] ?? { title: themeKey, note: '' };
-        const cover = items[0]?.data.coverUrl;
-        return (
-          <article class="theme-row">
-            <div class="theme-copy">
-              <p class="theme-index">{String(items.length).padStart(2, '0')}</p>
-              <h2>{copy.title}</h2>
-              <p>{copy.note}</p>
-            </div>
-            <a class="theme-link" href={`${base}/projects/${items[0].id}`} aria-label={copy.title}>
-              {cover && <img src={cover} alt={copy.title} loading="lazy" />}
-            </a>
-          </article>
-        );
-      })}
+      <p>正在开发中</p>
     </section>
   </main>
 </BaseLayout>
@@ -58,11 +22,10 @@ const themeCopy: Record<string, { title: string; note: string }> = {
   }
 
   .themes-hero {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(16rem, 26rem);
-    gap: 2rem;
-    align-items: end;
-    padding: clamp(2rem, 5vw, 4rem) 0 clamp(1.5rem, 3vw, 2.5rem);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: clamp(2rem, 5vw, 4rem) 0;
     border-bottom: 1px solid var(--color-divider);
   }
 
@@ -76,75 +39,5 @@ const themeCopy: Record<string, { title: string; note: string }> = {
     margin: 0;
     font-size: var(--text-md);
     color: var(--color-text-secondary);
-    text-transform: uppercase;
-  }
-
-  .theme-stack {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .theme-row {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(18rem, 24rem);
-    gap: 2rem;
-    align-items: center;
-    padding: 1.5rem 0;
-    border-bottom: 1px solid var(--color-divider);
-  }
-
-  .theme-copy h2 {
-    margin: 0 0 0.45rem;
-    font-family: var(--font-display);
-    font-size: clamp(2.5rem, 6vw, 6rem);
-    line-height: 0.84;
-    text-transform: uppercase;
-  }
-
-  .theme-copy p {
-    margin: 0;
-    max-width: 30rem;
-    color: var(--color-text-secondary);
-    text-transform: uppercase;
-  }
-
-  .theme-index {
-    margin-bottom: 0.75rem !important;
-    color: var(--color-accent) !important;
-    font-family: var(--font-sans);
-    font-size: var(--text-xs) !important;
-  }
-
-  .theme-link {
-    display: block;
-    aspect-ratio: 4 / 3;
-    overflow: hidden;
-    border: 1px solid var(--color-divider);
-    border-radius: 0.5rem;
-  }
-
-  .theme-link img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    filter: saturate(0.92) contrast(1.04);
-    transition: transform 0.35s ease;
-  }
-
-  .theme-link:hover img {
-    transform: scale(1.03);
-  }
-
-  @media (max-width: 860px) {
-    .themes-hero,
-    .theme-row {
-      grid-template-columns: 1fr;
-    }
-  }
-
-  @media (max-width: 560px) {
-    .theme-copy h2 {
-      font-size: clamp(2rem, 11vw, 3rem);
-    }
   }
 </style>

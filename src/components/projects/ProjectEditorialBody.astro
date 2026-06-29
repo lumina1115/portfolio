@@ -1,0 +1,3552 @@
+﻿---
+const { project } = Astro.props as { project: any };
+
+const editorialContent = {
+  'project-2': {
+    accent: '#c8800b',
+    chapterSubtitles: ['设计调研与需求分析', '设计展开与系统定位', '最终呈现与使用场景'],
+    introKicker: 'Why NeuroLimb',
+    introTitle: '截肢人群基数庞大，康复需求持续增长。',
+    introLead: '中国作为全球截肢人数最多的国家之一，肢体残疾人口规模已突破2400万；受人口老龄化加剧、超一亿规模的糖尿病群体引发的并发症以及交通事故等多重因素驱动，下肢截肢人群基数仍呈持续增长态势。',
+    introLeadParts: [
+      { text: '中国作为全球' },
+      { text: '截肢人数最多', highlight: true },
+      { text: '的国家之一，肢体残疾人口规模已' },
+      { text: '突破2400万', highlight: true },
+      { text: '；受人口老龄化加剧、' },
+      { text: '超一亿', highlight: true },
+      { text: '规模的糖尿病群体引发的并发症以及交通事故等多重因素驱动，下肢截肢人群基数仍呈' },
+      { text: '持续增长', highlight: true },
+      { text: '态势。' },
+    ],
+    introImage: 'https://telegraph-image-90w.pages.dev/file/AgACAgUAAyEGAATqb6rsAANRakCdVhricil6jrurw1JKrm8r8HkAAvkOaxvHrAABVs7aI7Hzymm8AQADAgADdwADPAQ.png',
+    stats: [
+      { value: '2400', unit: '万+', label: '中国肢体残疾人口规模' },
+      { value: '1', unit: '亿+', label: '中国糖尿病群体规模' },
+    ],
+    segmentLabel: '用户画像',
+    segments: [
+      {
+        phase: '术后早期患者',
+        time: '1-4 周',
+        image: '/portfolio/project-2/persona-early.png',
+        needParts: [
+          { text: '希望舒适性的设备，能实时监测疼痛并联动医护，同时' },
+          { text: '缓解术后焦虑情绪', highlight: true },
+          { text: '。' },
+        ],
+        need: '希望舒适性的设备，能实时监测疼痛并联动医护，同时缓解术后焦虑情绪。',
+      },
+      {
+        phase: '康复期患者',
+        time: '1-6 个月',
+        image: '/portfolio/project-2/persona-rehab.png',
+        needParts: [
+          { text: '希望兼顾安全与矫正功能的步态训练设备，提升肌肉力量与平衡能力，' },
+          { text: '直观反馈', highlight: true },
+          { text: '训练效果。' },
+        ],
+        need: '希望兼顾安全与矫正功能的步态训练设备，提升肌肉力量与平衡能力，直观反馈训练效果。',
+      },
+    ],
+    supportLabel: '文献支撑',
+    supportQuote: '高保真沉浸式 VR 环境在触发皮层重组方面优于传统方法，为 VR 康复方向提供循证依据。',
+    supportText: '西南医科大学 2025 年 XR 研究指向同一个机会：康复设备不应只处理运动轨迹，也需要把患者重新感知肢体、重新建立行动信心的过程纳入系统设计。',
+    supportImage: 'https://telegraph-image-90w.pages.dev/file/AgACAgUAAyEGAATqb6rsAANaakDJuLNoiLw2Wnktk0lgPOd9aTMAAxBrG8esCFam_c-v7PT33QEAAwIAA3cAAzwE.png',
+    supportCaption: '李琼英，李思敏.虚拟现实结合悬吊减重步态训练对截肢患者幻肢痛及下肢动力学表现的影响[J].实用临床医药杂志，2025,29(9):65-69,74。',
+    gapLabel: '现有方案断层',
+    gapTitle: '现有康复手段：物理与心理割裂，缺乏整合方案。',
+    gapItems: [
+      { type: '镜像疗法', gap: '依赖视觉替代刺激，训练深度有限，难以持续激活真实步态中的神经重塑。', image: 'https://telegraph-image-90w.pages.dev/file/AgACAgUAAyEGAATqb6rsAANUakDE93HSIuwQzNZAFqCiXq7B3FIAAugPaxvHrAhWZOrLkTWhQaQBAAMCAAN5AAM8BA.png' },
+      { type: '平行杆', gap: '提供基础支撑，但场景和路径单一，无法模拟日常行走中的地形变化。', image: 'https://telegraph-image-90w.pages.dev/file/AgACAgUAAyEGAATqb6rsAANVakDFL4AQhG12FqbHH4YsrFRiP7cAAusPaxvHrAhWupJcMSw_SssBAAMCAAN5AAM8BA.png' },
+      { type: '天花板轨道式悬吊', gap: '安装条件苛刻且位置固定，难以适配多空间训练和动态步态跟随。', image: 'https://telegraph-image-90w.pages.dev/file/AgACAgUAAyEGAATqb6rsAANWakDFPfLea_8Vc7HTf0Z35SBdblwAAuwPaxvHrAhWnReuB5xEo1YBAAMCAAN5AAM8BA.png' },
+      { type: '移动龙门架式悬吊', gap: '可移动但体量笨重，占地面积大，使用体验和专业医疗形象都较弱。', image: 'https://telegraph-image-90w.pages.dev/file/AgACAgUAAyEGAATqb6rsAANXakDFXhWh3E1U_EHLLTBLdePfKlgAAu0PaxvHrAhWsZ2EiPSXKSMBAAMCAAN5AAM8BA.png' },
+    ],
+    developmentLabel: '设计展开',
+    developmentKicker: 'System Development',
+    developmentTitle: '把物理减重硬件、VR 内容系统和穿戴交互界面整合为一个产品系统。',
+    developmentSteps: ['弓形悬吊架 + 底盘', 'C 形环抱结构', '流线型悬挑臂', '圆形底座平台', '单侧悬挑机械臂 + 穿戴背心悬吊'],
+    developmentPlaceholder: '草图推演 / 结构迭代 / VR 头显整合图位',
+    structureImage: 'https://portfolio-image-cdn.zongxz66.workers.dev/project-2/structure-stack.png',
+    structureRows: [
+      { title: '稳定系统', text: '吊衣和护腰支撑组成' },
+      { title: '悬吊系统', text: '电机控制的悬吊减重装置' },
+      { title: '支撑系统', text: '宽大的底座和可活动机械臂组成' },
+    ],
+    moodLabel: '情绪版',
+    moodTitle: '极简未来 · 无棱角设计 · 细腻纹理 · 温润亲肤',
+    moodText: '参考图谱涵盖医疗机械外骨骼、智能助行器、腰部支撑带和精密机械臂，对标医疗级专业感与亲和力并存的设计语言。',
+    moodImages: [
+      'https://telegraph-image-90w.pages.dev/file/AgACAgUAAyEGAATqb6rsAANbakD4FMmdlfCZ840VFSeLJ7dxAzoAAp8QaxvHrAhWuf_7T0yeAgwBAAMCAAN4AAM8BA.png',
+      'https://telegraph-image-90w.pages.dev/file/AgACAgUAAyEGAATqb6rsAANcakD4FxX9bwABNqVX3_KtqXtW9iiXAAKgEGsbx6wIVnfwTc1tsyO1AQADAgADeAADPAQ.png',
+      'https://telegraph-image-90w.pages.dev/file/AgACAgUAAyEGAATqb6rsAANdakD4GNmagWUjfsjTN4WxpaaMo9kAAqEQaxvHrAhWREl6cd91FS4BAAMCAAN4AAM8BA.png',
+      'https://telegraph-image-90w.pages.dev/file/AgACAgUAAyEGAATqb6rsAANeakD4Gqves4c0weh3rOGjdgdtVBwAAqIQaxvHrAhWC7F4JqPAWFwBAAMCAAN4AAM8BA.png',
+      'https://telegraph-image-90w.pages.dev/file/AgACAgUAAyEGAATqb6rsAANfakD4G7KSSupfjb8n3DQmNMt7KOIAAqMQaxvHrAhW4xwGwSO2jjABAAMCAAN5AAM8BA.png',
+      'https://telegraph-image-90w.pages.dev/file/AgACAgUAAyEGAATqb6rsAANgakD4HKAGGAHPqJ05KrUXBkyIfagAAqQQaxvHrAhWoaDaUfxxIJ8BAAMCAAN4AAM8BA.png',
+      'https://telegraph-image-90w.pages.dev/file/AgACAgUAAyEGAATqb6rsAANhakD4HgJBCLpwfJ0ByrfuvVNGI6cAAqUQaxvHrAhWmT27PB8BTI8BAAMCAAN4AAM8BA.png',
+      'https://telegraph-image-90w.pages.dev/file/AgACAgUAAyEGAATqb6rsAANiakD4H3JLPrGFZ0XYFVGHCOaWpMEAAqYQaxvHrAhWwww1sVgkW4wBAAMCAAN4AAM8BA.png',
+      'https://telegraph-image-90w.pages.dev/file/AgACAgUAAyEGAATqb6rsAANjakD4IUBYinM6RCkYWKPmI__gQVAAAqcQaxvHrAhW8J0OR-QScswBAAMCAAN4AAM8BA.png',
+    ],
+    moodKeywords: ['极简未来', '无棱角设计', '细腻纹理', '温润亲肤', '医疗级专业感', '亲和力'],
+    positionTitle: '用虚拟肢体的成功信号，替换大脑中错误的疼痛信号。',
+    positionText: 'NeuroLimb 将“神经”与“肢体”合并为品牌命名，暗含神经重塑逻辑：让患者在可控减重中重新相信身体正在恢复。',
+    goalsLabel: '三大设计目标',
+    goals: [
+      { title: '止痛', strategy: '高沉浸 VR 视觉反馈', mechanism: '用虚拟肢体成功活动信号替换错误疼痛信号，触发皮层重组。' },
+      { title: '减负', strategy: '智能动态悬吊', mechanism: '实时抵消 30%-80% 自重压力，保护脆弱残肢伤口。' },
+      { title: '适应', strategy: '多场景虚拟训练', mechanism: '通过社区、公园、楼梯场景建立假肢作为身体一部分的心理认同。' },
+    ],
+    systemLabel: '三大子系统',
+    systemTitle: '稳定、悬吊与支撑构成 NeuroLimb 的硬件骨架。',
+    systems: [
+      { title: '稳定系统', text: '吊衣与护腰支撑，保证患者在训练中的基础安全。' },
+      { title: '悬吊系统', text: '电机控制的悬吊减重装置，承担动态支持与重量补偿。' },
+      { title: '支撑系统', text: '宽大底座与可活动机械臂，兼顾稳定性、移动范围与康复室布置。' },
+    ],
+    finalTitle: '圆形底座、单侧悬挑机械臂与穿戴背心，构成垂直整合的康复训练系统。',
+    finalText: '最终方案让患者佩戴 VR 眼镜和悬吊背心，在治疗师辅助下站立于圆形底座，通过多场景虚拟训练完成身体支持、疼痛干预和心理适应。',
+    finalPlaceholder: '最终产品渲染图位',
+    finalImage: 'https://telegraph-image-90w.pages.dev/file/AgACAgUAAyEGAATqb6rsAANkakENNmJJsCtrqe0s8Up0L5FF0ysAAuwQaxvHrAhW3wSya1fGBikBAAMCAAN3AAM8BA.png',
+    productDetails: [
+      { index: '01', title: '活动铰链', text: '可调节尺寸，并在训练时提供保护支撑。', image: 'https://portfolio-image-cdn.zongxz66.workers.dev/project-2/detail-hinge.png' },
+      { index: '02', title: '交互屏幕', text: '开机按钮位于胸前，渐变护栏显示训练进度。', image: 'https://portfolio-image-cdn.zongxz66.workers.dev/project-2/detail-screen.png' },
+      { index: '03', title: '悬吊系统', text: '通过电机控制减重支撑，降低残肢压力。', image: 'https://portfolio-image-cdn.zongxz66.workers.dev/project-2/detail-suspension.png' },
+      { index: '04', title: '产品底座', text: '旋转限位功能兼顾安全性与沉浸式体验。', image: 'https://portfolio-image-cdn.zongxz66.workers.dev/project-2/detail-base.png' },
+    ],
+    scenarioCards: [
+      { title: 'VR 眼镜视角 UI', text: '（训练场景选择界面）', image: 'https://portfolio-image-cdn.zongxz66.workers.dev/project-2/vr.png' },
+      {
+        title: '多姿态训练展示',
+        text: '平地健步、屈膝稳蹲与抬腿越障三组动作序列，清晰传达训练逻辑。',
+        poses: [
+          { name: '平地健步', image: 'https://telegraph-image-90w.pages.dev/file/AgACAgUAAyEGAATqb6rsAANnakEVBBi6a9Hzd9vr8KLJsS51GCgAAgIRaxvHrAhW5ps-OCVTAwMBAAMCAAN5AAM8BA.png' },
+          { name: '屈膝稳蹲', image: 'https://telegraph-image-90w.pages.dev/file/AgACAgUAAyEGAATqb6rsAANlakEU-9t76P6tFC7iTrmN5HqTneMAAxFrG8esCFZu-ezDKgs_fgEAAwIAA3cAAzwE.png' },
+          { name: '抬腿越障', image: 'https://telegraph-image-90w.pages.dev/file/AgACAgUAAyEGAATqb6rsAANmakEU_57TaQxmEf9yZjaaM7GGv4EAAgERaxvHrAhWGxl5d2Z_MWcBAAMCAAN5AAM8BA.png' },
+        ],
+      },
+      { title: '康复室使用场景', text: '患者佩戴 VR 眼镜、穿着悬吊背心站立于圆形底座，治疗师侧身辅助。' },
+    ],
+    colorSchemes: [
+      { title: 'Pearl White + 橙金色点缀', text: '医疗亲和与活力感并存，是本页右侧内容强调色的来源。', swatch: 'linear-gradient(90deg, #f9f5ec 0 62%, #c8800b 62% 100%)' },
+      { title: '深空灰 + 荧光黄', text: '面向更年轻和运动导向用户群的竞技感方案。', swatch: 'linear-gradient(90deg, #2a2b2c 0 62%, #d7ff45 62% 100%)' },
+    ],
+    summary: 'NeuroLimb 的价值不只是让患者重新站起来，而是在安全减重、沉浸反馈和多场景训练之间建立连续体验，让康复从机械扶持变成身体与大脑共同参与的重建过程。',
+  },
+  'project-3': {
+    accent: '#8cb818',
+    chapterSubtitles: ['市场洞察与用户旅程', '技术展开与产品定位', '最终呈现与品牌系统'],
+    introKicker: 'Why BirdScope',
+    introTitle: '观鸟市场热度攀升，生态科普教育成为景区转型新风口。',
+    introLead: '生态旅游与自然教育升温，观鸟正从专业圈层走向大众。但传统观鸟依赖昂贵器材与知识积累，普通游客常常“看而不见”，景区也面临互动弱、资源转化难的问题。行业正进入数字化变革，AX Visio 已验证 AI 识别与 AR 引导的可行性，本项目以高倍率镜头结合 AR 技术，将物理观测转化为沉浸式数字交互体验。',
+    introLeadParts: [
+      { text: '生态旅游与自然教育', highlight: true },
+      { text: '升温，观鸟正从专业圈层走向大众。但传统观鸟依赖' },
+      { text: '昂贵器材与知识积累', highlight: true },
+      { text: '，普通游客常常' },
+      { text: '“看而不见”', highlight: true },
+      { text: '，景区也面临互动弱、资源转化难的问题。行业正进入数字化变革，AX Visio 已验证' },
+      { text: 'AI 识别与 AR 引导', highlight: true },
+      { text: '的可行性，本项目以高倍率镜头结合 AR 技术，将物理观测转化为' },
+      { text: '沉浸式数字交互体验', highlight: true },
+      { text: '。' },
+    ],
+    introImage: 'https://telegraph-image-90w.pages.dev/file/AgACAgUAAyEGAATqb6rsAANSakCru5ceOidPaVQtuY85XYzGuAIAAhEPaxvHrAABVtq0BdsSNPKCAQADAgADdwADPAQ.png',
+    stats: [
+      { value: '19', unit: '倍', label: '观鸟市场热度增长' },
+      { value: '500', unit: '万+', label: '核心观鸟受众规模' },
+    ],
+    supportLabel: '市场参照',
+    supportQuote: '施华洛世奇 AX Visio 已验证“AI 识别 + AR 引导”的商业可行性。',
+    supportText: 'BirdScope 选择固定站点而非个人手持设备，既降低游客使用门槛，也限制游客进入核心保护区，更适合景区与自然教育场景。',
+    journeyMapImage: 'https://telegraph-image-90w.pages.dev/file/AgACAgUAAyEGAATqb6rsAANsakE6fBUaynopoWs0gNl9Z0XiObEAAj0RaxvHrAhWWx3Z8TMJ8V4BAAMCAAN3AAM8BA.png',
+    gapLabel: '用户旅程痛点',
+    gapTitle: '从搜索、辨识到记录，传统观鸟体验在每一步都有信息断点。',
+    gapItems: [
+      { type: '搜索观察', gap: '视野极窄，目标容易消失，需要 AR 自动框选降低寻找难度。' },
+      { type: '品种辨识', gap: '手机、图鉴和望远镜频繁切换，识别链路被打断。' },
+      { type: '影像记录', gap: '长时间手持消耗体力，拍摄容易模糊。' },
+    ],
+    developmentLabel: '设计展开',
+    developmentKicker: 'Multimodal AI',
+    developmentTitle: '同时整合视觉 AI 与声学 AI 两条感知链路，在 AR 目镜内实时叠加。',
+    developmentSteps: ['支架形态', 'AR 目镜', '旋转云台', '交互屏幕', '翻转链链'],
+    developmentPlaceholder: '2D 草图 / 双轴云台 / 视听 AI 融合图位',
+    designIterationImage: 'https://telegraph-image-90w.pages.dev/file/AgACAgUAAyEGAATqb6rsAANrakE6YX7qweu_oHA5oq1vUDXnxXUAAjwRaxvHrAhWbogCGyNapZ8BAAMCAAN3AAM8BA.png',
+    moodLabel: '形态推导',
+    moodTitle: '固定式站点、双轴云台、滑轨高度调节共同服务户外公共场景。',
+    moodText: '产品逐步锁定水平旋转、俯仰角调节和高度适配，让不同年龄用户都能稳定观察。',
+    positionTitle: '固定式智慧观察终端，将静态自然风景转化为可交互的数字体验。',
+    positionText: 'BirdScope 切入景区固定站点，提供生态友好、科普可视和淡季可运营的公共体验。',
+    goalsLabel: '核心功能四层架构',
+    goals: [
+      { title: '看得到', strategy: '高倍率光学变焦 + 算法防抖', mechanism: '稳定获取远距离目标画面。' },
+      { title: '认得出', strategy: '端侧 AI 物种匹配', mechanism: '降低图鉴查找成本。' },
+      { title: '听得见', strategy: '波束成形定向拾音', mechanism: '捕捉目标方向声音。' },
+      { title: '记得住', strategy: 'AR 标注 + 一键分享', mechanism: '转化为可传播的数字内容。' },
+    ],
+    systemLabel: '技术模块',
+    systemTitle: '光学、识别、显示和声学共同构成视听双模态感知闭环。',
+    systems: [
+      { title: '光学成像', text: '保证远距离画面稳定。' },
+      { title: 'AI 识别', text: '进行端侧物种匹配。' },
+      { title: 'AR 显示', text: '保证户外强光下的可见性。' },
+    ],
+    finalTitle: 'AR 双目目镜、交互屏幕和稳定底座共同形成景区里的智慧观察站。',
+    finalText: '方案把自然观察从个人经验转化为公共学习体验。',
+    finalPlaceholder: 'BirdScope 最终渲染图位',
+    finalImage: 'https://telegraph-image-90w.pages.dev/file/AgACAgUAAyEGAATqb6rsAANuakE9oOb4Ow0brtOhThLOr-KDp20AAkERaxvHrAhW0_s7MdazLXwBAAMCAAN3AAM8BA.png',
+    productDetails: [
+      {
+        image: 'https://portfolio-image-cdn.zongxz66.workers.dev/project-3/detail-1.png',
+        title: '细节图 1',
+        label: 'AR目镜',
+        text: '双目AR眼镜，舒适',
+        side: 'right',
+      },
+      {
+        image: 'https://portfolio-image-cdn.zongxz66.workers.dev/project-3/detail-2.png',
+        title: '细节图 2',
+        label: '握持把手',
+        text: '柔软把手设计，省力控制镜头',
+        side: 'left',
+      },
+      {
+        image: 'https://portfolio-image-cdn.zongxz66.workers.dev/project-3/detail-3.png',
+        title: '细节图 3',
+        label: '交互屏幕',
+        text: '给周围游客提供视听服务，承担科普任务',
+        side: 'right',
+      },
+      {
+        image: 'https://portfolio-image-cdn.zongxz66.workers.dev/project-3/detail-4.png',
+        title: '细节图 4',
+        label: '望远镜',
+        text: '透光栅格，保障双目望远镜视野',
+        side: 'left',
+      },
+      {
+        image: 'https://portfolio-image-cdn.zongxz66.workers.dev/project-3/detail-5.png',
+        title: '细节图 5',
+        label: '底座',
+        text: '圆角矩形的底座，保证设备稳定',
+        side: 'right',
+      },
+      {
+        image: 'https://portfolio-image-cdn.zongxz66.workers.dev/project-3/detail-6.png',
+        title: '细节图 6',
+        label: '支架结构',
+        text: '实现高度调节，满足不同身高的游客',
+        side: 'left',
+      },
+      {
+        image: 'https://portfolio-image-cdn.zongxz66.workers.dev/project-3/detail-7.png',
+        title: '细节图 7',
+        label: '云台',
+        text: '实现260°以及俯仰角度的转换',
+        side: 'right',
+      },
+      {
+        image: 'https://portfolio-image-cdn.zongxz66.workers.dev/project-3/detail-8.png',
+        title: '细节图 8',
+        label: '主机外壳',
+        text: '金属外壳，保障设备内部结构',
+        side: 'left',
+      },
+    ],
+    usageFlows: [
+      {
+        image: 'https://telegraph-image-90w.pages.dev/file/AgACAgUAAyEGAATqb6rsAAN4akFKBQdkwDRQWwwsLXGW_C7v9C0AAlYRaxvHrAhWrtDEyhY3zqoBAAMCAAN4AAM8BA.png',
+        title: '使用流程 1',
+      },
+      {
+        image: 'https://telegraph-image-90w.pages.dev/file/AgACAgUAAyEGAATqb6rsAAN5akFKjCoZILwu781sXRL3fIOvlOUAAlcRaxvHrAhWRNamcqgKMgIBAAMCAAN4AAM8BA.png',
+        title: '使用流程 2',
+      },
+      {
+        image: 'https://telegraph-image-90w.pages.dev/file/AgACAgUAAyEGAATqb6rsAAN6akFKsz0tB8zW_sG7rUw4T3sAAXAfAAJYEWsbx6wIVjuCvTklHgU3AQADAgADeAADPAQ.png',
+        title: '使用流程 3',
+      },
+      {
+        image: 'https://telegraph-image-90w.pages.dev/file/AgACAgUAAyEGAATqb6rsAANzakFHVvS-TuyEQfGlqoQJLDif1EEAAlIRaxvHrAhWFQeBs2PcmPEBAAMCAAN4AAM8BA.png',
+        title: '使用流程 4',
+      },
+      {
+        image: 'https://telegraph-image-90w.pages.dev/file/AgACAgUAAyEGAATqb6rsAAN2akFH5vxEa11kNubERyomqztRATYAAlMRaxvHrAhWR-IqLtsAARZbAQADAgADeAADPAQ.png',
+        title: '使用流程 5',
+      },
+      {
+        image: 'https://telegraph-image-90w.pages.dev/file/AgACAgUAAyEGAATqb6rsAAN3akFH-WupKVfzMxGLGwXchPa16SoAAlQRaxvHrAhWOpJlMMjm_f8BAAMCAAN4AAM8BA.png',
+        title: '使用流程 6',
+      },
+    ],
+    scenarioCards: [
+      { title: '扫码启动', text: '游客快速进入观察流程。' },
+      { title: 'AI 识别与 AR 标注', text: '画面中同步叠加科普信息。' },
+      { title: '存图分享', text: '转化为可传播的数字纪念。' },
+    ],
+    colorSchemes: [
+      { title: '新芽绿', text: '表达活力与识别度。', swatch: 'linear-gradient(90deg, #8cb818 0 46%, #f4f7e7 46% 100%)' },
+      { title: '玄夜黑 + 深空灰', text: '建立户外专业感。', swatch: 'linear-gradient(90deg, #0f0f0f 0 42%, #989898 42% 100%)' },
+    ],
+    summary: 'BirdScope 让自然教育被普通游客看见、理解和分享。',
+  },
+  'project-4': {
+    accent: '#c8800b',
+    chapterSubtitles: ['市场洞察与家居机会', '形态展开与设计定位', '最终呈现与 CMF 系统'],
+    introKicker: 'Why KAIZO',
+    introTitle: '披萨炉市场正从商用向家用及智能化方向加速转型',
+    introLead: '全球披萨炉市场稳步增长，2025年规模约20-26亿美元，亚太地区年复合增长超11%。智能化、家用紧凑型产品正成为核心增长引擎。中国披萨门店已超6万家，四年增长60%，推动设备迭代。当前国内硬件接近国际水平，但底层算法与软件生态仍存差距。设计智能披萨窑炉旨在将依赖人工经验的工艺转化为标准化智能体验。',
+    introLeadParts: [
+      { text: '全球披萨炉市场稳步增长，' },
+      { text: '2025年规模约20-26亿美元', highlight: true },
+      { text: '，亚太地区' },
+      { text: '年复合增长超11%', highlight: true },
+      { text: '。' },
+      { text: '智能化、家用紧凑型产品', highlight: true },
+      { text: '正成为核心增长引擎。中国披萨门店已' },
+      { text: '超6万家', highlight: true },
+      { text: '，四年增长' },
+      { text: '60%', highlight: true },
+      { text: '，推动设备迭代。当前国内硬件接近国际水平，但' },
+      { text: '底层算法与软件生态', highlight: true },
+      { text: '仍存差距。设计智能披萨窑炉旨在将依赖人工经验的工艺转化为' },
+      { text: '标准化智能体验', highlight: true },
+      { text: '。' },
+    ],
+    introImage: 'https://telegraph-image-90w.pages.dev/file/AgACAgUAAyEGAATqb6rsAANTakCr_H1X5e9JhNA-DUUmBgUXDY4AAhIPaxvHrAABVrHuPLNQoBssAQADAgADdwADPAQ.png',
+    stats: [
+      { value: '20-26', unit: '亿美元', label: '全球披萨炉市场规模' },
+      { value: '11', unit: '%+', label: '亚太市场 CAGR' },
+    ],
+    segmentLabel: '双场景痛点',
+    segments: [
+      { phase: '商用门店', time: '稳定出品', need: '烤箱不稳定导致出品依赖师傅经验。' },
+      { phase: '家庭用户', time: '简单好用', need: '操作复杂、火候难掌控。' },
+    ],
+    supportLabel: '竞品空白',
+    supportQuote: 'Ooni、Ninja、THOMSON 共同盲点是外观硬朗、强调户外感。',
+    supportText: 'KAIZO 的机会是把高温烘烤设备转化为家居空间中有呼吸感的艺术品。',
+    gapLabel: '竞品扫描',
+    gapTitle: '当披萨炉进入家用场景，功能参数之外的材质、情绪和仪式感同样重要。',
+    gapItems: [
+      { type: 'Ooni', gap: '价格较高，工业感强，户外属性显著。' },
+      { type: 'Ninja', gap: '功能覆盖广，但形态粗犷，缺少家居温度。' },
+      { type: 'THOMSON', gap: '功能基础，智能扩展和情绪价值不足。' },
+    ],
+    developmentLabel: '设计展开',
+    developmentKicker: 'Warm Craft',
+    developmentTitle: '将顶部烟囱从散热结构重新定义为情感状态界面。',
+    developmentSteps: ['穹顶语意', '视窗分区', '控制板整合', '下翻式翻盖', '温度指示灯渐变系统'],
+    developmentPlaceholder: '草图 / 翻盖方案 / 温度灯光状态图位',
+    designGoalLabel: '设计目标',
+    designGoalTitle: '一款兼具古朴美学与温润科技的艺术厨电',
+    designGoalHighlight: '古朴美学与温润科技',
+    designGoalLead: '不仅是一台能够实现 450°C 专业级烘烤的性能机器，更是家居空间中一件具有“呼吸感”的艺术品，致力于为追求生活仪式感的中产家庭提供一种“慢生活”的社交中心。',
+    designGoalImage: 'https://telegraph-image-90w.pages.dev/file/AgACAgUAAyEGAATqb6rsAANTakCr_H1X5e9JhNA-DUUmBgUXDY4AAhIPaxvHrAABVrHuPLNQoBssAQADAgADdwADPAQ.png',
+      designGoalItems: [
+        { title: '有机美学', text: '借鉴传统窑炉的浑圆形态，减少机械线条的堆砌。' },
+        { title: '智能交互', text: '强调技术的“低干预”，让复杂功能隐于无形。' },
+        { title: '温润自然', text: '强调砂砾触感与原木温润的结合。' },
+      ],
+      structureFeatureImage: 'https://telegraph-image-90w.pages.dev/file/AgACAgUAAyEGAATqb6rsAAOGakIBbBvYHQ5AT0jQX6vAFRo2R-MAAhYUaxvVJxFW7Blo_3bu8p0BAAMCAAN3AAM8BA.png',
+      structureGalleryRows: [
+        [
+          'https://telegraph-image-90w.pages.dev/file/AgACAgUAAyEGAATqb6rsAAN-akH7fvklEdF7IJKl2G_pK5HiWQQAAgUUaxvVJxFWAkwwfqDup5MBAAMCAAN3AAM8BA.png',
+          'https://telegraph-image-90w.pages.dev/file/AgACAgUAAyEGAATqb6rsAAN8akH7Wrvnt42nq13Ab6TtmCCH4XQAAgIUaxvVJxFW8ro8pF4wYtkBAAMCAAN3AAM8BA.png',
+          'https://telegraph-image-90w.pages.dev/file/AgACAgUAAyEGAATqb6rsAAN9akH7YCUF5OGfpRCpyXr7BbLFXl0AAgMUaxvVJxFW0bYhnitU2lUBAAMCAAN3AAM8BA.png',
+        ],
+        [
+          'https://telegraph-image-90w.pages.dev/file/AgACAgUAAyEGAATqb6rsAAOBakH77G1RORElkrxb4dJjzx4bG5AAAgkUaxvVJxFWhDUeqs0VbvABAAMCAAN3AAM8BA.png',
+          'https://telegraph-image-90w.pages.dev/file/AgACAgUAAyEGAATqb6rsAAN_akH7xdXGwCa8tpIpgbUa2f1N694AAgcUaxvVJxFW-LaVxpQlHEIBAAMCAAN3AAM8BA.png',
+          'https://telegraph-image-90w.pages.dev/file/AgACAgUAAyEGAATqb6rsAAOAakH7zmF1gPgrdLltU_JUtZPZZbAAAggUaxvVJxFWGBT8H7be54YBAAMCAAN3AAM8BA.png',
+        ],
+        [
+          'https://telegraph-image-90w.pages.dev/file/AgACAgUAAyEGAATqb6rsAAOCakH8HQMDe_pVjQocbwe00jfmHP4AAgoUaxvVJxFWU95FdnqdftUBAAMCAAN3AAM8BA.png',
+          'https://telegraph-image-90w.pages.dev/file/AgACAgUAAyEGAATqb6rsAAODakH8JQABEXA8xm96lOUSx9X2gtmOAAILFGsb1ScRVmxK0q-qtevnAQADAgADdwADPAQ.png',
+          'https://telegraph-image-90w.pages.dev/file/AgACAgUAAyEGAATqb6rsAAOEakH8KgVE31DpZ6BjTMYsqsGGq_gAAgwUaxvVJxFWBS24MfEH15EBAAMCAAN3AAM8BA.png',
+          'https://telegraph-image-90w.pages.dev/file/AgACAgUAAyEGAATqb6rsAAOFakH8MM-gc0yZC3smxDOSxSaq6kIAAg0UaxvVJxFWfVH4iU8uSYsBAAMCAAN3AAM8BA.png',
+        ],
+      ],
+      moodLabel: '关键节点决策',
+      moodTitle: '有机烟囱、原木把手、下翻门和圆柱支脚共同建立温润家居语言。',
+      moodText: '用穹顶、圆柱支脚和柔和转角消解工业设备的硬朗感。',
+    positionTitle: '“意承古窑，温润入家”——把粗犷工业设备转化为家庭陪伴者。',
+    positionText: 'KAIZO 为追求仪式感的家庭打造慢生活社交中心。',
+    goalsLabel: '三大设计支柱',
+    goals: [
+      { title: '有机美学', strategy: '传统窑炉浑圆形态', mechanism: '消解工业设备的硬朗感。' },
+      { title: '智能交互', strategy: '技术低干预', mechanism: '把复杂温控隐藏到状态反馈中。' },
+      { title: '温润自然', strategy: '砂砾触感 × 原木把手', mechanism: '让材质成为产品叙事。' },
+    ],
+    systemLabel: '结构技术落地',
+    systemTitle: '多区温控、五层结构和情感灯光共同构成 KAIZO 的体验系统。',
+    systems: [
+      { title: '多区温控', text: '保证烘烤稳定。' },
+      { title: '五层分解', text: '分层工作。' },
+      { title: '温度指示灯', text: '直观传达炉温状态。' },
+    ],
+      finalTitle: 'KAIZO 以紧凑台面尺寸、三态 UI 和系统化 CMF 进入家庭厨房。',
+      finalText: '方案通过材质和光建立完整情感闭环。',
+      finalPlaceholder: 'KAIZO 最终渲染图位',
+      finalImage: 'https://telegraph-image-90w.pages.dev/file/AgACAgUAAyEGAATqb6rsAAOHakIRM_hYjYIqDsn5ZaY5Lf-INaYAAiwUaxvVJxFW9FFSdg7wGF4BAAMCAAN3AAM8BA.png',
+      productDetails: [
+        { index: '01', title: '紧凑整机', text: '适配家用台面。' },
+        { index: '02', title: '450°C 高温', text: '覆盖多种烘烤。' },
+      { index: '03', title: '三态 UI', text: '状态清晰递进。' },
+    ],
+      scenarioCards: [
+        { title: '温度光晕', text: '无需盯屏即可感知炉温。' },
+        { title: '系统化 CMF', text: '覆盖不同消费情绪。' },
+        { title: '配件体系', text: '构成完整使用闭环。' },
+      ],
+      sceneShowcaseImages: [
+        'https://telegraph-image-90w.pages.dev/file/BQACAgUAAyEGAATqb6rsAAOIakIS0H-kveYdNCJovxsmHnDezY0AAgQfAALVJxFW5zDRBeVfXQU8BA.png',
+        'https://telegraph-image-90w.pages.dev/file/AgACAgUAAyEGAATqb6rsAAOJakITC7Lfl41t5oWkSWhBXMliZgYAAmoUaxvVJxFWag4_yiQF-EkBAAMCAAN3AAM8BA.png',
+      ],
+      colorSchemes: [
+        { title: '玄武岩', text: '表达专业蓄热感。', swatch: 'linear-gradient(90deg, #171411 0 52%, #6b452e 52% 100%)' },
+        { title: '云砂白', text: '面向核心家用场景。', swatch: 'linear-gradient(90deg, #efe6d4 0 58%, #caa876 58% 100%)' },
+    ],
+    summary: 'KAIZO 把高温、材质和光转化成家庭空间里的情绪体验。',
+  },
+};
+
+const content = editorialContent[project.id as keyof typeof editorialContent] ?? editorialContent['project-2'];
+const isProject2 = project.id === 'project-2';
+const isProject3 = project.id === 'project-3';
+const isProject4 = project.id === 'project-4';
+const hexToRgb = (hex: string) => {
+  const normalized = hex.replace('#', '');
+  const value = Number.parseInt(normalized.length === 3
+    ? normalized.split('').map((char) => char + char).join('')
+    : normalized, 16);
+  const red = (value >> 16) & 255;
+  const green = (value >> 8) & 255;
+  const blue = value & 255;
+  return `${red}, ${green}, ${blue}`;
+};
+const accentRgb = hexToRgb(content.accent);
+---
+
+<main class="p2-root" data-project={project.id} style={`--p2-accent: ${content.accent}; --p2-accent-rgb: ${accentRgb};`} aria-label={`${project.data.title} 姝ｆ枃妗堜緥鐮旂┒`}>
+  <section class="p2-section p2-chapter is-active" id="p2-insight" data-chapter-section data-chapter="insight">
+    <div class="p2-editorial-track">
+      <aside class="p2-sticky-rail">
+        <a href="#p2-insight" class="p2-sticky-tag" data-chapter-link>
+          <span class="p2-sidebar-rule" aria-hidden="true"></span>
+          <span class="p2-sidebar-copy">
+            <span class="p2-sidebar-index">01</span>
+            <span class="p2-sidebar-title">
+              <span>INSIGHT</span>
+              <span>&amp;</span>
+              <span>RESEARCH</span>
+            </span>
+            <span class="p2-sidebar-subtitle">{content.chapterSubtitles[0]}</span>
+          </span>
+        </a>
+      </aside>
+
+      <div class="p2-section-main">
+        <article class="p2-rect-card p2-context-card" data-section-label="璁捐鑳屾櫙">
+          <div class="p2-context-copy-panel">
+            <p class="p2-context-title">{content.introTitle}</p>
+          </div>
+
+          <div class="p2-context-detail-panel">
+            <p class="p2-context-body">
+              {content.introLeadParts
+                ? content.introLeadParts.map((part) => (
+                    part.highlight ? <span class="p2-context-key">{part.text}</span> : part.text
+                  ))
+                : content.introLead}
+            </p>
+
+            <div class="p2-stat-rail">
+              {content.stats.map((stat) => (
+                <div class="p2-stat">
+                  <span class="p2-stat-note">{stat.label}</span>
+                  <div class="p2-stat-row">
+                    <span class="p2-stat-num">{stat.value}</span>
+                    <span class="p2-stat-unit">{stat.unit}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {content.introImage && (
+            <figure class="p2-context-media">
+              <img loading="lazy" decoding="async" src={content.introImage} alt="" />
+            </figure>
+          )}
+        </article>
+
+        {!isProject4 && (isProject3 ? (
+          <article class="p2-rect-card p2-gap-card p2-journey-image-card" data-section-label="用户旅程地图">
+            <p class="p2-journey-image-label">用户旅程地图</p>
+            <figure class="p2-journey-image-frame">
+              <img loading="lazy" decoding="async" src={content.journeyMapImage} alt="用户旅程地图" />
+            </figure>
+          </article>
+        ) : (
+          <article class="p2-rect-card p2-gap-card" data-section-label={content.gapLabel}>
+            <header class="p2-card-head">
+              <h2>{content.gapTitle}</h2>
+            </header>
+
+            <div class="p2-gap-grid">
+              {content.gapItems.map((item, index) => (
+                <section class="p2-gap-item">
+                  {item.image && (
+                    <figure class="p2-gap-media">
+                      <img loading="lazy" decoding="async" src={item.image} alt="" />
+                    </figure>
+                  )}
+                  <span>{String(index + 1).padStart(2, '0')}</span>
+                  <h3>{item.type}</h3>
+                  <p>{item.gap}</p>
+                </section>
+              ))}
+            </div>
+          </article>
+        ))}
+
+        {!isProject3 && !isProject4 && (
+          <article class:list={['p2-rect-card', 'p2-insight-merged-card', !content.segments?.length && 'p2-insight-merged-card--evidence-only']} data-section-label={content.segmentLabel ?? content.supportLabel}>
+            {content.segments?.length > 0 && (
+              <section class="p2-insight-merged-panel p2-segment-card">
+                <div class="p2-segment-list">
+                  {content.segments.map((segment, index) => (
+                    <section class="p2-segment p2-segment-persona" style={`--persona-index: ${index};`}>
+                      {segment.image && (
+                        <figure class="p2-segment-media">
+                          <img loading="lazy" decoding="async" src={segment.image} alt="" />
+                        </figure>
+                      )}
+                      <div class="p2-segment-card-body">
+                        <span class="p2-segment-persona-label">{segment.phase}</span>
+                        <h3>核心需求：</h3>
+                        <p>{segment.needParts ? segment.needParts.map((part) => (part.highlight ? <span class="p2-segment-key">{part.text}</span> : part.text)) : segment.need}</p>
+                      </div>
+                    </section>
+                  ))}
+                </div>
+              </section>
+            )}
+
+            <section class="p2-insight-merged-panel p2-evidence-card" aria-label={content.supportLabel}>
+              {content.supportImage && (
+                <figure class="p2-evidence-paper">
+                  <img loading="lazy" decoding="async" src={content.supportImage} alt="" />
+                  <figcaption>{content.supportCaption}</figcaption>
+                </figure>
+              )}
+              <div class="p2-evidence-quote-box">
+                <p>{content.supportQuote}</p>
+              </div>
+            </section>
+          </article>
+        )}
+      </div>
+    </div>
+  </section>
+
+  <section class="p2-section p2-chapter" id="p2-refinement" data-chapter-section data-chapter="refinement">
+    <div class="p2-editorial-track">
+      <aside class="p2-sticky-rail">
+        <a href="#p2-refinement" class="p2-sticky-tag" data-chapter-link>
+          <span class="p2-sidebar-rule" aria-hidden="true"></span>
+          <span class="p2-sidebar-copy">
+            <span class="p2-sidebar-index">02</span>
+            <span class="p2-sidebar-title">
+              <span>REFINEMENT</span>
+              <span>&amp;</span>
+              <span>PROTOTYPING</span>
+            </span>
+            <span class="p2-sidebar-subtitle">{content.chapterSubtitles[1]}</span>
+          </span>
+        </a>
+      </aside>
+
+      <div class="p2-section-main">
+        {isProject4 && (
+          <article class="p2-rect-card p2-design-goal-card">
+            <div class="p2-design-goal-copy">
+              <h2 class="p2-design-goal-title">
+                {content.designGoalTitle.split(content.designGoalHighlight)[0]}
+                <span class="p2-design-goal-highlight">{content.designGoalHighlight}</span>
+                {content.designGoalTitle.split(content.designGoalHighlight)[1]}
+              </h2>
+              <p class="p2-design-goal-lead">{content.designGoalLead}</p>
+            </div>
+
+            <div class="p2-design-goal-media">
+              <img loading="lazy" decoding="async" src={content.designGoalImage} alt="KAIZO 设计目标氛围图" />
+              <div class="p2-design-goal-overlay">
+                <div class="p2-design-goal-list">
+                  {content.designGoalItems.map((item) => (
+                    <section class="p2-design-goal-item">
+                      <span class="p2-design-goal-pill">{item.title}</span>
+                      <p>{item.text}</p>
+                    </section>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </article>
+        )}
+
+        {isProject2 && (
+          <article class="p2-rect-card p2-goal-card" data-section-label={content.goalsLabel}>
+            <div class="p2-goal-grid">
+              {content.goals.map((goal, index) => (
+                <section class="p2-goal p2-goal--with-icon" style={`--goal-index: ${index};`}>
+                  <span class="p2-goal-icon" aria-hidden="true">
+                    {index === 0 && (
+                      <svg viewBox="0 0 64 64" role="img">
+                        <path d="M24 49c-7.2-2.6-11.6-8.8-11.6-16.2 0-9.3 7.2-16.8 16.2-16.8 3.8 0 7.3 1.3 10 3.5 1.6-.6 3.4-.9 5.2-.6 5 .7 8.6 5.2 8.1 10.3-.3 3-1.9 5.4-4.1 7" />
+                        <path d="M26.2 27.2c3.9-3.1 9.6-2.2 12.4 1.9" />
+                        <path d="M22.6 36.7c4.5 3.4 10.8 3.4 15.4 0" />
+                        <path d="M40.5 35.4l6.2 6.2" />
+                        <path d="M50.3 45.2l1.9 1.9" />
+                        <path d="M19 49h20" />
+                      </svg>
+                    )}
+                    {index === 1 && (
+                      <svg viewBox="0 0 64 64" role="img">
+                        <path d="M32 9v36" />
+                        <path d="M21 20l11-11 11 11" />
+                        <path d="M18 43c2.8 5.8 7.4 8.8 14 8.8s11.2-3 14-8.8" />
+                        <path d="M15 43h34" />
+                        <path d="M22 32h20" />
+                        <path d="M25 32c0 4.2 2.8 7 7 7s7-2.8 7-7" />
+                      </svg>
+                    )}
+                    {index === 2 && (
+                      <svg viewBox="0 0 64 64" role="img">
+                        <path d="M14 46c8-15 28-4 36-19" />
+                        <path d="M42 27h8v8" />
+                        <circle cx="17" cy="47" r="4" />
+                        <circle cx="31" cy="34" r="4" />
+                        <circle cx="49" cy="25" r="4" />
+                        <path d="M20.4 44.7l7.2-7.8" />
+                        <path d="M34.8 32.7l10.5-6" />
+                      </svg>
+                    )}
+                  </span>
+                  <span class="p2-goal-index">{String(index + 1).padStart(2, '0')}</span>
+                  <h3>{goal.title}</h3>
+                  <strong>{goal.strategy}</strong>
+                  <p>{goal.mechanism}</p>
+                </section>
+              ))}
+            </div>
+          </article>
+        )}
+
+        {isProject3 ? (
+          <article class="p2-rect-card p2-development-card p2-journey-image-card" data-section-label="设计推演">
+            <p class="p2-journey-image-label">设计推演</p>
+            <figure class="p2-journey-image-frame">
+              <img loading="lazy" decoding="async" src={content.designIterationImage} alt="设计推演" />
+            </figure>
+          </article>
+        ) : isProject4 ? (
+          <article class="p2-rect-card p2-development-card p2-structure-card p2-structure-card--gallery" data-section-label="细节迭代对比">
+            <div class="p2-structure-gallery" aria-label="细节迭代对比图组">
+              {content.structureGalleryRows?.map((row, rowIndex) => (
+                <div class={`p2-structure-gallery-row p2-structure-gallery-row--${rowIndex + 1}`}>
+                  <p class="p2-structure-gallery-label p2-structure-gallery-pill">
+                    {rowIndex === 0 ? '烟囱设计' : rowIndex === 1 ? '把手设计' : '底座设计'}
+                  </p>
+                  {row.map((image, imageIndex) => (
+                    <figure class="p2-structure-gallery-item">
+                      <img
+                        loading="lazy"
+                        decoding="async"
+                        src={image}
+                        alt={`KAIZO 细节迭代图 ${rowIndex + 1}-${imageIndex + 1}`}
+                      />
+                    </figure>
+                  ))}
+                </div>
+              ))}
+            </div>
+
+            <figure class="p2-structure-feature-media">
+              <img loading="lazy" decoding="async" src={content.structureFeatureImage} alt="KAIZO 细节迭代大图" />
+              <span class="p2-structure-focus p2-structure-focus--1" aria-hidden="true"></span>
+              <span class="p2-structure-focus p2-structure-focus--2" aria-hidden="true"></span>
+              <span class="p2-structure-focus p2-structure-focus--3" aria-hidden="true"></span>
+            </figure>
+
+          </article>
+        ) : (
+            <article class="p2-rect-card p2-development-card p2-structure-card" data-section-label="细节迭代对比">
+            <figure class="p2-structure-media">
+              <img loading="lazy" decoding="async" src={content.structureImage} alt="" />
+              <span class="p2-structure-mark p2-structure-mark--stable" aria-hidden="true"></span>
+              <span class="p2-structure-mark p2-structure-mark--suspend" aria-hidden="true"></span>
+              <span class="p2-structure-mark p2-structure-mark--support" aria-hidden="true"></span>
+            </figure>
+
+            <div class="p2-structure-list" aria-label="结构系统说明">
+              {content.structureRows?.map((row) => (
+                <section class="p2-structure-row">
+                  <span>{row.title}</span>
+                  <p>{row.text}</p>
+                </section>
+              ))}
+            </div>
+          </article>
+        )}
+
+        {!isProject3 && !isProject4 && (isProject2 ? (
+          <article class="p2-rect-card p2-moodboard-card" data-section-label={content.moodLabel}>
+            <div class="p2-moodboard-collage" aria-label="情绪版参考图">
+              {content.moodImages?.map((image, index) => (
+                <figure class={`p2-moodboard-image p2-moodboard-image--${index + 1}`}>
+                  <img loading="lazy" decoding="async" src={image} alt="" />
+                </figure>
+              ))}
+            </div>
+
+            <div class="p2-moodboard-copy">
+              <div class="p2-moodboard-keywords" aria-label="情绪版关键词">
+                {content.moodKeywords?.map((keyword) => (
+                  <span>{keyword}</span>
+                ))}
+              </div>
+            </div>
+          </article>
+        ) : (
+          <div class="p2-rect-grid p2-two-up">
+            <article class="p2-rect-card p2-mood-card" data-section-label={content.moodLabel}>
+              <p class="p2-eyebrow">CMF Direction</p>
+              <h3>{content.moodTitle}</h3>
+              <p>{content.moodText}</p>
+            </article>
+
+            <article class="p2-rect-card p2-position-card" data-section-label="璁捐瀹氫綅">
+              <p class="p2-eyebrow">Core Positioning</p>
+              <h3>{content.positionTitle}</h3>
+              <p>{content.positionText}</p>
+            </article>
+          </div>
+        ))}
+
+        {!isProject2 && !isProject3 && !isProject4 && (
+          <article class="p2-rect-card p2-goal-card" data-section-label={content.goalsLabel}>
+            <div class="p2-goal-grid">
+              {content.goals.map((goal, index) => (
+                <section class="p2-goal">
+                  <span class="p2-goal-index">{String(index + 1).padStart(2, '0')}</span>
+                  <h3>{goal.title}</h3>
+                  <strong>{goal.strategy}</strong>
+                  <p>{goal.mechanism}</p>
+                </section>
+              ))}
+            </div>
+          </article>
+        )}
+
+        {!isProject2 && !isProject3 && !isProject4 && (
+          <article class="p2-rect-card p2-system-card" data-section-label={content.systemLabel}>
+            <header class="p2-card-head">
+              <p class="p2-eyebrow">Hardware Architecture</p>
+              <h2>{content.systemTitle}</h2>
+            </header>
+            <div class="p2-system-map">
+              {content.systems.map((system) => (
+                <section class="p2-system-node">
+                  <h3>{system.title}</h3>
+                  <p>{system.text}</p>
+                </section>
+              ))}
+            </div>
+          </article>
+        )}
+      </div>
+    </div>
+  </section>
+
+  <section class="p2-section p2-chapter" id="p2-final" data-chapter-section data-chapter="final">
+    <div class="p2-editorial-track">
+      <aside class="p2-sticky-rail">
+        <a href="#p2-final" class="p2-sticky-tag" data-chapter-link>
+          <span class="p2-sidebar-rule" aria-hidden="true"></span>
+          <span class="p2-sidebar-copy">
+            <span class="p2-sidebar-index">03</span>
+            <span class="p2-sidebar-title">
+              <span>FINAL</span>
+              <span>DELIVERY</span>
+            </span>
+            <span class="p2-sidebar-subtitle">{content.chapterSubtitles[2]}</span>
+          </span>
+        </a>
+      </aside>
+
+      <div class="p2-section-main">
+        <article class={`p2-rect-card p2-final-hero${isProject2 || isProject3 || isProject4 ? ' p2-final-hero--image-only' : ''}`} data-section-label={isProject2 || isProject3 || isProject4 ? undefined : '最终结果'}>
+          {!isProject2 && !isProject3 && !isProject4 && (
+            <div>
+              <p class="p2-eyebrow">Final System</p>
+              <h2>{content.finalTitle}</h2>
+              <p>{content.finalText}</p>
+            </div>
+          )}
+          {(isProject2 || isProject3 || isProject4) && content.finalImage ? (
+            <figure class="p2-final-reveal" data-p2-modular-reveal>
+              <img loading="lazy" decoding="async" src={content.finalImage} alt={isProject2 ? 'NeuroLimb 最终产品渲染图' : isProject3 ? 'BirdScope 最终产品渲染图' : 'KAIZO 最终产品渲染图'} />
+            </figure>
+          ) : (
+            <div class="p2-placeholder p2-placeholder--product" aria-label="最终产品渲染占位">
+              <span class="p2-device-base"></span>
+              <span class="p2-device-arm"></span>
+              <span class="p2-device-vr"></span>
+              <p>{content.finalPlaceholder}</p>
+            </div>
+          )}
+        </article>
+
+        {isProject4 && (
+          <article class="p2-rect-card p2-scene-showcase-card">
+            <div class="p2-scene-showcase-stack" aria-label="KAIZO 场景图展示">
+              {content.sceneShowcaseImages?.map((image, index) => (
+                <figure class="p2-scene-showcase-item">
+                  <img loading="lazy" decoding="async" src={image} alt={`KAIZO 场景展示图 ${index + 1}`} />
+                </figure>
+              ))}
+            </div>
+          </article>
+        )}
+
+        {!isProject4 && (
+        <article class="p2-rect-card p2-detail-card" data-section-label="产品细节">
+          {isProject2 ? (
+            <div class="p2-detail-gallery" data-p2-render-reveal>
+              {content.productDetails.map((detail) => (
+                <figure class="p2-detail-render" data-p2-render-tilt aria-label={detail.title}>
+                  <img loading="lazy" decoding="async" src={detail.image} alt={detail.title} />
+                </figure>
+              ))}
+            </div>
+          ) : isProject3 ? (
+            <div class="p2-detail-image-grid">
+              {content.productDetails.map((detail) => (
+                <figure class:list={['p2-detail-image-card', detail.label && 'p2-detail-image-card--annotated']}>
+                  <img loading="lazy" decoding="async" src={detail.image} alt={detail.title} />
+                  {detail.label && (
+                    <figcaption class:list={['p2-detail-image-copy', detail.side === 'left' ? 'is-left' : 'is-right']}>
+                      <h3>{detail.label}</h3>
+                      <p>{detail.text}</p>
+                    </figcaption>
+                  )}
+                </figure>
+              ))}
+            </div>
+          ) : (
+            <div class="p2-detail-grid">
+              {content.productDetails.map((detail) => (
+                <section class="p2-detail">
+                  <span>{detail.index}</span>
+                  <h3>{detail.title}</h3>
+                  <p>{detail.text}</p>
+                </section>
+              ))}
+            </div>
+          )}
+        </article>
+        )}
+
+        {!isProject4 && (isProject3 ? (
+          <article class="p2-rect-card p2-usage-card" data-section-label="使用流程">
+            <div class="p2-usage-grid">
+              {content.usageFlows.map((flow) => (
+                <figure class="p2-usage-item">
+                  <img loading="lazy" decoding="async" src={flow.image} alt={flow.title} />
+                </figure>
+              ))}
+            </div>
+          </article>
+        ) : (
+          <div class="p2-rect-grid p2-scenario-grid">
+            {content.scenarioCards
+              .filter((card) => !isProject2 || card.image || card.poses)
+              .map((card) => (
+              <article class={`p2-rect-card p2-scenario${card.poses ? ' p2-scenario--poses' : ''}${card.image ? ' p2-scenario--vr' : ''}`}>
+                {card.poses ? (
+                  <div class="p2-pose-gallery" aria-label={card.title}>
+                    {card.poses.map((pose) => (
+                      <figure class="p2-pose-item">
+                        <img loading="lazy" decoding="async" src={pose.image} alt={pose.name} />
+                        <figcaption>{pose.name}</figcaption>
+                      </figure>
+                    ))}
+                  </div>
+                ) : card.image ? (
+                  <figure class="p2-vr-scene">
+                    <img loading="lazy" decoding="async" src={card.image} alt={card.title} />
+                    <figcaption>{card.text}</figcaption>
+                  </figure>
+                ) : (
+                  <>
+                    <div class="p2-placeholder p2-placeholder--small" aria-hidden="true">
+                      <span></span>
+                    </div>
+                    <h3>{card.title}</h3>
+                    <p>{card.text}</p>
+                  </>
+                )}
+              </article>
+            ))}
+          </div>
+        ))}
+
+        {!isProject2 && !isProject3 && !isProject4 && (
+          <>
+            <article class="p2-rect-card p2-color-card" data-section-label="閰嶈壊鏂规">
+              {content.colorSchemes.map((scheme) => (
+                <section>
+                  <span class="p2-swatch" style={`background: ${scheme.swatch};`} aria-hidden="true"></span>
+                  <h3>{scheme.title}</h3>
+                  <p>{scheme.text}</p>
+                </section>
+              ))}
+            </article>
+
+            <article class="p2-rect-card p2-summary-card">
+              <p>{content.summary}</p>
+            </article>
+          </>
+        )}
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+  const setupChapterSidebar = () => {
+    const chapters = Array.from(document.querySelectorAll('.p2-root [data-chapter-section]'))
+      .filter((chapter) => chapter instanceof HTMLElement);
+
+    if (!chapters.length) {
+      return;
+    }
+
+    let activeChapter = null;
+    let ticking = false;
+
+    const activateChapter = (chapter) => {
+      if (activeChapter === chapter) {
+        return;
+      }
+
+      activeChapter = chapter;
+      chapters.forEach((item) => {
+        item.classList.toggle('is-active', item === chapter);
+      });
+    };
+
+    const getDocumentTop = (element) => element.getBoundingClientRect().top + window.scrollY;
+
+    const getActiveChapter = () => {
+      const anchorY = window.scrollY + window.innerHeight * 0.32;
+      const currentChapter = chapters.find((chapter) => {
+        const top = getDocumentTop(chapter);
+        const bottom = top + chapter.offsetHeight;
+
+        return anchorY >= top && anchorY < bottom;
+      });
+
+      if (currentChapter) {
+        return currentChapter;
+      }
+
+      return chapters.reduce((closest, chapter) => {
+        const distance = Math.abs(chapter.getBoundingClientRect().top - window.innerHeight * 0.32);
+        const closestDistance = Math.abs(closest.getBoundingClientRect().top - window.innerHeight * 0.32);
+
+        return distance < closestDistance ? chapter : closest;
+      }, chapters[0]);
+    };
+
+    const updateActiveChapter = () => {
+      activateChapter(getActiveChapter());
+      ticking = false;
+    };
+
+    const requestUpdate = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateActiveChapter);
+        ticking = true;
+      }
+    };
+
+    activateChapter(getActiveChapter());
+    window.addEventListener('scroll', requestUpdate, { passive: true });
+    window.addEventListener('resize', requestUpdate);
+    window.addEventListener('load', requestUpdate, { once: true });
+
+    if ('ResizeObserver' in window) {
+      const resizeObserver = new ResizeObserver(requestUpdate);
+      chapters.forEach((chapter) => resizeObserver.observe(chapter));
+    }
+  };
+
+  const setupRailMenuVisibility = () => {
+    const chapters = Array.from(document.querySelectorAll('.p2-root [data-chapter-section]'));
+    const firstChapter = chapters[0];
+    const lastChapter = chapters[chapters.length - 1];
+
+    if (!(firstChapter instanceof HTMLElement) || !(lastChapter instanceof HTMLElement)) {
+      return;
+    }
+
+    const setVisible = (isVisible) => {
+      document.body.classList.toggle('menu-on-rail', isVisible);
+    };
+
+    let ticking = false;
+
+    const updateVisibility = () => {
+      const stickyOffset = window.innerHeight * 0.12;
+      const firstTop = firstChapter.getBoundingClientRect().top + window.scrollY;
+      const lastBottom = lastChapter.getBoundingClientRect().bottom + window.scrollY;
+      const scrollAnchor = window.scrollY + stickyOffset;
+
+      setVisible(scrollAnchor >= firstTop && window.scrollY < lastBottom);
+      ticking = false;
+    };
+
+    const requestUpdate = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateVisibility);
+        ticking = true;
+      }
+    };
+
+    window.addEventListener('scroll', requestUpdate, { passive: true });
+    window.addEventListener('resize', requestUpdate);
+    updateVisibility();
+  };
+
+  const setupProject2FinalReveal = () => {
+    const reveal = document.querySelector('[data-p2-modular-reveal]');
+    if (!(reveal instanceof HTMLElement)) {
+      return;
+    }
+
+    let progress = 0;
+
+    const setReveal = (nextProgress) => {
+      progress = Math.min(1, Math.max(0, nextProgress));
+      const easedProgress = 1 - Math.pow(1 - progress, 3);
+      const scale = 1.05 - easedProgress * 0.05;
+
+      reveal.style.setProperty('--p2-final-reveal', easedProgress.toFixed(4));
+      reveal.style.setProperty('--p2-final-scale', scale.toFixed(4));
+    };
+
+    reveal.addEventListener('pointerenter', () => {
+      setReveal(Math.max(progress, 0.36));
+    });
+    reveal.addEventListener('wheel', (event) => {
+      setReveal(progress + event.deltaY * 0.0016);
+    }, { passive: true });
+    reveal.querySelectorAll('img').forEach((image) => {
+      image.addEventListener('load', () => setReveal(progress), { once: true });
+    });
+    setReveal(0);
+  };
+
+  const setupProject2DetailGallery = () => {
+    const reveal = document.querySelector('[data-p2-render-reveal]');
+    const tiltItems = Array.from(document.querySelectorAll('[data-p2-render-tilt]'));
+
+    if (reveal instanceof HTMLElement) {
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.2 });
+        observer.observe(reveal);
+      } else {
+        reveal.classList.add('is-visible');
+      }
+    }
+
+    tiltItems.forEach((item) => {
+      if (!(item instanceof HTMLElement)) {
+        return;
+      }
+
+      const resetTilt = () => {
+        item.style.setProperty('--rx', '0deg');
+        item.style.setProperty('--ry', '0deg');
+        item.style.setProperty('--shine-x', '50%');
+      };
+
+      item.addEventListener('pointermove', (event) => {
+        const rect = item.getBoundingClientRect();
+        const x = (event.clientX - rect.left) / Math.max(1, rect.width);
+        const y = (event.clientY - rect.top) / Math.max(1, rect.height);
+        item.style.setProperty('--rx', `${(0.5 - y) * 8}deg`);
+        item.style.setProperty('--ry', `${(x - 0.5) * 10}deg`);
+        item.style.setProperty('--shine-x', `${x * 100}%`);
+      });
+
+      item.addEventListener('pointerleave', resetTilt);
+      resetTilt();
+    });
+  };
+
+  setupChapterSidebar();
+  setupRailMenuVisibility();
+  setupProject2FinalReveal();
+  setupProject2DetailGallery();
+</script>
+
+<style>
+  .p2-root {
+    --p2-bg: #e1cba6;
+    --p2-surface: #fbf7ed;
+    --p2-surface-2: #f0e5d3;
+    --p2-text: #1a1a1a;
+    --p2-text-dim: rgba(26, 26, 26, 0.64);
+    --p2-accent: #c8800b;
+    --p2-accent-rgb: 200, 128, 11;
+    --p2-accent-soft: rgba(var(--p2-accent-rgb), 0.13);
+    --p2-rail: #a93207;
+    --p2-rail-text: #e1cba6;
+    --p2-rail-axis: clamp(1.45rem, 2.4vw, 2rem);
+    --p2-section-px: clamp(0.9rem, 1.35vw, 1.25rem);
+    --p2-section-py: clamp(1rem, 2.2vh, 1.5rem);
+    --p2-card-pad: clamp(1.2rem, 2vw, 1.8rem);
+    --p2-gap: clamp(0.9rem, 1.35vw, 1.25rem);
+    --p2-type-h2: clamp(1.75rem, 2vw, 2rem);
+    --p2-type-h3: clamp(1.75rem, 2vw, 2rem);
+    --p2-type-h4: clamp(1.2rem, 1.55vw, 1.62rem);
+    --p2-type-h5: clamp(0.98rem, 1.12vw, 1.16rem);
+    --p2-type-body: 1rem;
+    --p2-type-dense: clamp(0.82rem, 0.9vw, 0.94rem);
+    --p2-type-caption: 0.875rem;
+    --p2-leading-body: 1.8;
+    --p2-leading-long: 2.05;
+    --p2-leading-dense: 1.58;
+    min-height: 100vh;
+    padding-bottom: clamp(3rem, 8vh, 5rem);
+    background: var(--p2-bg);
+    color: var(--p2-text);
+    font-family: var(--font-cjk-sans);
+  }
+
+  .p2-section {
+    padding: var(--p2-section-py) var(--p2-section-px);
+    margin-bottom: clamp(3.75rem, 6.5vh, 5rem);
+    content-visibility: visible;
+    contain-intrinsic-size: 900px;
+    overflow: visible;
+    scroll-margin-top: 1.5rem;
+  }
+
+  .p2-section:last-of-type {
+    margin-bottom: 0;
+  }
+
+  .p2-chapter {
+    padding-left: 0;
+  }
+
+  .p2-editorial-track {
+    --p2-editorial-gap: var(--p2-gap);
+    position: relative;
+    display: flex;
+    align-items: stretch;
+    column-gap: var(--p2-editorial-gap);
+    width: 100%;
+  }
+
+  .p2-sticky-rail {
+    position: relative;
+    flex: 0 0 clamp(9rem, 14.25vw, 15rem);
+    min-width: 0;
+    background: var(--p2-rail);
+    color: var(--p2-rail-text);
+  }
+
+  .p2-sticky-rail::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: var(--p2-rail-axis);
+    width: 1px;
+    background: rgba(225, 203, 166, 0.28);
+  }
+
+  .p2-sticky-rail::after {
+    display: none;
+  }
+
+  .p2-sticky-tag {
+    --p2-sidebar-index-size: clamp(4.6rem, 7.4vw, 8rem);
+    position: sticky;
+    top: 12vh;
+    display: grid;
+    grid-template-columns: clamp(1rem, 1.8vw, 2rem) minmax(0, 1fr);
+    grid-template-areas: 'rule copy';
+    column-gap: clamp(0.52rem, 0.8vw, 0.72rem);
+    align-items: start;
+    width: calc(100% - var(--p2-rail-axis) - clamp(0.55rem, 1vw, 0.9rem));
+    margin-left: var(--p2-rail-axis);
+    padding-top: 0.05rem;
+    color: rgba(225, 203, 166, 0.22);
+    text-decoration: none;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 1;
+  }
+
+  .p2-chapter.is-active .p2-sticky-tag {
+    color: var(--p2-rail-text);
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .p2-sidebar-rule {
+    grid-area: rule;
+    width: 100%;
+    height: 1px;
+    margin-top: calc(var(--p2-sidebar-index-size) * 0.4);
+    background: currentColor;
+    transform-origin: left center;
+    transform: scaleX(0.42);
+    transition: inherit;
+  }
+
+  .p2-chapter.is-active .p2-sidebar-rule {
+    transform: scaleX(1);
+  }
+
+  .p2-sidebar-title {
+    display: block;
+    font-family: var(--font-display);
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+
+  .p2-sidebar-title span {
+    display: block;
+  }
+
+  .p2-sidebar-copy {
+    grid-area: copy;
+    position: relative;
+    display: grid;
+    gap: 0.68rem;
+    justify-items: start;
+    min-width: 0;
+    padding-block: 0.32rem;
+    isolation: isolate;
+  }
+
+  .p2-sidebar-index {
+    position: relative;
+    z-index: 0;
+    font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+    font-size: var(--p2-sidebar-index-size);
+    font-weight: 700;
+    line-height: 0.7;
+    letter-spacing: -0.1em;
+    color: currentColor;
+    opacity: 0.16;
+  }
+
+  .p2-sidebar-title {
+    color: currentColor;
+    font-size: clamp(0.86rem, 1.05vw, 1.18rem);
+    line-height: 1.48;
+    letter-spacing: 0.18em;
+    text-wrap: balance;
+  }
+
+  .p2-sidebar-subtitle {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 0.62rem;
+    font-weight: 500;
+    line-height: 1.58;
+    letter-spacing: 0.1em;
+    color: rgba(225, 203, 166, 0.24);
+    transition: inherit;
+  }
+
+  .p2-chapter.is-active .p2-sidebar-subtitle {
+    color: rgba(225, 203, 166, 0.48);
+  }
+
+  .p2-section-main {
+    display: grid;
+    flex: 1 1 auto;
+    min-width: 0;
+    row-gap: var(--p2-gap);
+  }
+
+  .p2-rect-grid {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: var(--p2-gap);
+  }
+
+  .p2-rect-card {
+    position: relative;
+    width: 100%;
+    padding: var(--p2-card-pad);
+    background: var(--p2-surface);
+    color: var(--p2-text);
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    overflow: hidden;
+  }
+
+  .p2-rect-card[data-section-label]::before {
+    content: attr(data-section-label);
+    display: block;
+    margin-bottom: 1.1rem;
+    font-family: var(--font-sans);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(var(--p2-accent-rgb), 0.74);
+  }
+
+  #p2-insight .p2-rect-card[data-section-label]::before {
+    display: none;
+  }
+
+  .p2-eyebrow,
+  .p2-kicker {
+    margin: 0 0 0.7rem;
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--p2-accent);
+  }
+
+  .p2-card-head {
+    max-width: min(48rem, 100%);
+    margin-bottom: clamp(1.4rem, 3vw, 2.5rem);
+  }
+
+  .p2-root h2,
+  .p2-root h3,
+  .p2-root p {
+    margin-top: 0;
+  }
+
+  .p2-root h2 {
+    max-width: min(58rem, 100%);
+    margin-bottom: 1rem;
+    color: var(--p2-accent);
+    font-size: var(--p2-type-h2);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+  }
+
+  .p2-root h3 {
+    margin-bottom: 0.75rem;
+    color: var(--p2-accent);
+    font-size: var(--p2-type-h3);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+  }
+
+  .p2-root p {
+    max-width: min(42rem, 100%);
+    color: var(--p2-text-dim);
+    font-size: var(--p2-type-body);
+    line-height: var(--p2-leading-body);
+  }
+
+  .p2-lead {
+    font-size: clamp(1.2rem, 2.2vw, 1.55rem) !important;
+    line-height: 1.7 !important;
+    color: rgba(26, 26, 26, 0.72) !important;
+  }
+
+  .p2-context-card {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.96fr);
+    column-gap: var(--p2-gap);
+    row-gap: clamp(0.9rem, 1.35vw, 1.25rem);
+    align-items: start;
+    min-height: 31rem;
+  }
+
+  .p2-context-copy-panel {
+    grid-column: 1;
+    grid-row: 1;
+    display: flex;
+    min-width: 0;
+    padding-top: 0;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 0;
+  }
+
+  .p2-context-detail-panel {
+    grid-column: 1;
+    grid-row: 2;
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-self: center;
+    gap: var(--p2-gap);
+  }
+
+  .p2-root .p2-context-title {
+    max-width: none;
+    margin: 0;
+    padding-top: 0.15rem;
+    color: var(--p2-accent) !important;
+    font-size: var(--p2-type-h2) !important;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    white-space: nowrap;
+    text-wrap: nowrap;
+  }
+
+  .p2-context-body {
+    max-width: 31.5rem;
+    margin: 0;
+    padding-left: 0;
+    color: var(--p2-text-dim);
+    font-size: var(--p2-type-body) !important;
+    line-height: var(--p2-leading-long) !important;
+    text-align: justify;
+    text-justify: inter-ideograph;
+    hanging-punctuation: allow-end;
+  }
+
+  .p2-context-key {
+    color: var(--p2-accent);
+    font-weight: 800;
+  }
+
+  .p2-stat-rail {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
+    align-items: end;
+    padding-top: 0.4rem;
+  }
+
+  .p2-stat {
+    display: flex;
+    min-height: auto;
+    padding: 0;
+    flex-direction: column;
+    gap: 0.4rem;
+    background: transparent;
+    border-left: 0;
+  }
+
+  .p2-stat-note {
+    color: rgba(26, 26, 26, 0.62);
+    font-size: var(--p2-type-caption);
+    letter-spacing: 0.02em;
+    line-height: 1.5;
+  }
+
+  .p2-stat-row {
+    display: inline-flex;
+    align-items: flex-end;
+    gap: 0.34rem;
+    width: fit-content;
+    max-width: 100%;
+    padding: 0 0.18rem 0.32rem 0;
+    color: var(--p2-accent);
+    border-bottom: 1.5px solid rgba(var(--p2-accent-rgb), 0.14);
+  }
+
+  .p2-stat-num {
+    display: block;
+    color: currentColor;
+    font-family: var(--font-sans);
+    font-size: clamp(2.35rem, 4.15vw, 3.35rem);
+    font-weight: 800;
+    line-height: 0.86;
+    letter-spacing: 0;
+  }
+
+  .p2-stat-unit {
+    display: block;
+    margin: 0 0 0.2rem;
+    color: currentColor;
+    font-family: var(--font-sans);
+    font-size: clamp(0.62rem, 0.72vw, 0.78rem);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    transform: translateY(-0.26rem);
+  }
+
+  .p2-context-media {
+    grid-column: 2;
+    grid-row: 2;
+    position: relative;
+    align-self: start;
+    justify-self: stretch;
+    margin: 0;
+    display: flex;
+    align-items: stretch;
+    width: 100%;
+    min-width: 0;
+    height: 22rem;
+    overflow: hidden;
+    background: var(--p2-surface);
+  }
+
+  .p2-context-media img {
+    display: block;
+    width: 106%;
+    height: 100%;
+    min-height: 0;
+    object-fit: cover;
+    object-position: center;
+    transform: translateX(-2.5%) scale(1.06);
+    transform-origin: center;
+    -webkit-mask-image:
+      linear-gradient(90deg, transparent 0%, #000 18%, #000 82%, transparent 100%),
+      linear-gradient(180deg, transparent 0%, #000 13%, #000 87%, transparent 100%);
+    -webkit-mask-composite: source-in;
+    mask-image:
+      linear-gradient(90deg, transparent 0%, #000 18%, #000 82%, transparent 100%),
+      linear-gradient(180deg, transparent 0%, #000 13%, #000 87%, transparent 100%);
+    mask-composite: intersect;
+  }
+
+  .p2-root[data-project="project-4"] .p2-context-media img {
+    object-position: center 48%;
+    transform: translateX(-2.5%) scale(1.16);
+  }
+
+  .p2-context-media::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(90deg, var(--p2-surface) 0%, rgba(251, 247, 237, 0.94) 10%, rgba(251, 247, 237, 0.62) 22%, rgba(251, 247, 237, 0) 44%);
+  }
+
+  .p2-two-up > * {
+    grid-column: span 6;
+  }
+
+  .p2-insight-merged-card {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 0;
+    align-items: stretch;
+  }
+
+  .p2-insight-merged-card--evidence-only {
+    grid-template-columns: 1fr;
+  }
+
+  .p2-insight-merged-panel {
+    min-width: 0;
+  }
+
+  .p2-insight-merged-panel + .p2-insight-merged-panel {
+    padding-left: clamp(1.2rem, 2.2vw, 2rem);
+  }
+
+  .p2-segment-list {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .p2-segment-list {
+    gap: clamp(1.4rem, 2.7vw, 2.4rem);
+  }
+
+  .p2-segment {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(7rem, 0.35fr) minmax(0, 1fr);
+    align-items: center;
+    gap: 0;
+    min-height: clamp(8.5rem, 14vw, 11.5rem);
+  }
+
+  .p2-segment:last-child {
+    padding-bottom: 0;
+    border-bottom: 0;
+  }
+
+  .p2-segment-media {
+    position: relative;
+    z-index: 3;
+    grid-column: 1 / 2;
+    grid-row: 1;
+    align-self: center;
+    justify-self: start;
+    margin: calc(-0.8rem + var(--persona-index, 0) * 0.2rem) -2.2rem 0 0;
+    height: clamp(8.2rem, 13vw, 11.2rem);
+  }
+
+
+  .p2-segment-persona[style*="--persona-index: 1"] .p2-segment-media {
+    align-self: end;
+    margin-top: -1.4rem;
+  }
+
+  .p2-segment-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: left bottom;
+  }
+
+  .p2-segment-card-body {
+    position: relative;
+    z-index: 1;
+    grid-column: 2 / 3;
+    grid-row: 1;
+    transform: translateX(-2em);
+    min-height: clamp(4.8rem, 7.4vw, 6.4rem);
+    padding: clamp(1rem, 1.6vw, 1.45rem) clamp(1.2rem, 2vw, 1.8rem) clamp(1rem, 1.55vw, 1.35rem) clamp(2rem, 4vw, 3.7rem);
+    background: rgba(255, 255, 255, 0.78);
+    border: 1.5px solid rgba(200, 128, 11, 0.82);
+    border-radius: 0 0.75rem 0.75rem 0;
+    box-shadow: 0 0 1rem rgba(200, 128, 11, 0.22);
+  }
+
+  .p2-segment-persona-label {
+    display: block;
+    margin-bottom: 0.42rem;
+    color: var(--p2-accent);
+    font-size: clamp(1.05rem, 1.35vw, 1.28rem);
+    font-weight: 800;
+    letter-spacing: 0.04em;
+  }
+
+  .p2-segment h3 {
+    margin: 0 0 0.45rem;
+    color: rgba(114, 76, 54, 0.78);
+    font-size: clamp(0.78rem, 0.86vw, 0.9rem);
+    font-weight: 700;
+    line-height: 1.15;
+  }
+
+  .p2-segment p {
+    margin: 0;
+    color: rgba(114, 76, 54, 0.68);
+    font-size: clamp(0.84rem, 0.94vw, 0.96rem);
+    font-weight: 400;
+    line-height: 1.7;
+  }
+
+  .p2-segment-key {
+    color: var(--p2-accent);
+    font-weight: 800;
+  }
+
+
+  .p2-evidence-card {
+    display: grid;
+    align-content: start;
+    gap: clamp(0.9rem, 1.5vw, 1.25rem);
+  }
+
+  .p2-evidence-paper {
+    margin: 0;
+  }
+
+  .p2-evidence-paper img {
+    width: 100%;
+    height: clamp(10rem, 17vw, 14rem);
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+  }
+
+  .p2-evidence-paper figcaption {
+    margin-top: 0.55rem;
+    color: rgba(26, 26, 26, 0.58);
+    font-size: clamp(0.7rem, 0.78vw, 0.82rem);
+    line-height: 1.55;
+  }
+
+  .p2-evidence-quote-box {
+    padding: clamp(1rem, 1.6vw, 1.35rem) clamp(1.1rem, 2vw, 1.6rem);
+    background: rgba(255, 255, 255, 0.78);
+    border: 1.5px solid rgba(200, 128, 11, 0.82);
+    border-radius: 0.75rem;
+    box-shadow: 0 0 1rem rgba(200, 128, 11, 0.22);
+  }
+
+  .p2-evidence-quote-box p {
+    margin: 0;
+    color: var(--p2-accent);
+    font-size: clamp(0.9rem, 1vw, 1.05rem);
+    font-weight: 800;
+    line-height: 1.72;
+  }
+
+  .p2-quote {
+    color: rgba(26, 26, 26, 0.72) !important;
+    font-size: clamp(1.15rem, 1.8vw, 1.35rem) !important;
+    line-height: var(--p2-leading-body) !important;
+    font-weight: 700;
+  }
+
+  .p2-gap-grid,
+  .p2-goal-grid,
+  .p2-detail-grid,
+  .p2-system-map,
+  .p2-color-card {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .p2-gap-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .p2-gap-card .p2-card-head {
+    max-width: none;
+    margin-bottom: 1rem;
+  }
+
+  .p2-gap-card .p2-card-head h2 {
+    max-width: none;
+    margin-bottom: 0;
+    white-space: nowrap;
+  }
+
+  .p2-journey-image-card::before {
+    display: none !important;
+  }
+
+  .p2-journey-image-label {
+    margin: 0 0 1.1rem;
+    font-family: var(--font-sans);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(var(--p2-accent-rgb), 0.74);
+  }
+
+  .p2-gap-item,
+  .p2-goal,
+  .p2-detail,
+  .p2-system-node,
+  .p2-color-card section {
+    padding: 1rem;
+    background: rgba(240, 229, 211, 0.76);
+    border-top: 2px solid var(--p2-accent);
+  }
+
+  .p2-gap-media {
+    margin: 0 0 0.85rem;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.48);
+  }
+
+  .p2-gap-media img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .p2-gap-item span,
+  .p2-goal-index,
+  .p2-detail span {
+    display: block;
+    margin-bottom: 1rem;
+    color: var(--p2-accent);
+    font-family: var(--font-sans);
+    font-size: 0.76rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+  }
+
+  .p2-gap-item h3,
+  .p2-detail h3,
+  .p2-system-node h3 {
+    margin-bottom: 0.55rem;
+    font-size: var(--p2-type-h5);
+    line-height: 1.12;
+  }
+
+
+  .p2-structure-card {
+    display: grid;
+    grid-template-columns: minmax(18rem, 0.9fr) minmax(20rem, 1.1fr);
+    align-items: center;
+    gap: clamp(1.2rem, 3vw, 3rem);
+  }
+
+  .p2-structure-media {
+    margin: 0;
+    min-width: 0;
+  }
+
+  .p2-structure-media img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .p2-structure-list {
+    display: grid;
+    gap: clamp(1.1rem, 2.3vw, 2rem);
+  }
+
+  .p2-structure-row {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(5.2rem, auto) minmax(0, 1fr);
+    align-items: center;
+    gap: clamp(0.9rem, 1.6vw, 1.35rem);
+    min-height: clamp(3.3rem, 5vw, 4.4rem);
+    padding: 0.75rem clamp(1rem, 1.8vw, 1.5rem);
+    background: rgba(255, 255, 255, 0.72);
+    border: 1.5px solid var(--p2-accent);
+    border-radius: 999px;
+    box-shadow: 0 0 1rem rgba(200, 128, 11, 0.18);
+  }
+
+  .p2-structure-row::before {
+    content: "";
+    position: absolute;
+    right: calc(100% + 0.5rem);
+    top: 50%;
+    width: clamp(3rem, 7vw, 6rem);
+    height: 2px;
+    background: var(--p2-accent);
+    transform: translateY(-50%);
+  }
+
+  .p2-structure-row::after {
+    content: "";
+    position: absolute;
+    right: calc(100% + 0.1rem);
+    top: 50%;
+    border-top: 0.45rem solid transparent;
+    border-bottom: 0.45rem solid transparent;
+    border-left: 0.75rem solid var(--p2-accent);
+    transform: translateY(-50%);
+  }
+
+  .p2-structure-row span {
+    color: rgba(58, 44, 31, 0.9);
+    font-size: clamp(1rem, 1.35vw, 1.25rem);
+    font-weight: 800;
+    white-space: nowrap;
+  }
+
+  .p2-structure-row p {
+    margin: 0;
+    padding-left: clamp(0.9rem, 1.6vw, 1.35rem);
+    border-left: 1px solid rgba(26, 26, 26, 0.16);
+    color: rgba(58, 44, 31, 0.78);
+    font-size: clamp(0.95rem, 1.15vw, 1.1rem);
+    font-weight: 700;
+    line-height: 1.5;
+  }
+
+  .p2-process {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 0.75rem;
+    margin-bottom: clamp(1.6rem, 3vw, 2.4rem);
+  }
+
+  .p2-process-step {
+    position: relative;
+    min-height: 8.5rem;
+    padding: 1rem;
+    background: var(--p2-surface-2);
+    border-bottom: 2px solid var(--p2-accent);
+  }
+
+  .p2-process-step span {
+    display: block;
+    color: var(--p2-accent);
+    font-family: var(--font-sans);
+    font-weight: 800;
+    margin-bottom: 1.4rem;
+  }
+
+  .p2-process-step p,
+  .p2-gap-item p,
+  .p2-goal p,
+  .p2-detail p,
+  .p2-system-node p,
+  .p2-scenario p,
+  .p2-color-card p {
+    margin-bottom: 0;
+    font-size: var(--p2-type-dense);
+    line-height: var(--p2-leading-dense);
+  }
+
+  .p2-gap-item p {
+    line-height: 1.55;
+  }
+
+  .p2-placeholder {
+    position: relative;
+    display: grid;
+    place-items: center;
+    min-height: 18rem;
+    padding: 1rem;
+    border: 1px solid rgba(var(--p2-accent-rgb), 0.32);
+    border-radius: 10px;
+    background:
+      linear-gradient(90deg, rgba(var(--p2-accent-rgb), 0.08) 1px, transparent 1px),
+      linear-gradient(180deg, rgba(var(--p2-accent-rgb), 0.08) 1px, transparent 1px),
+      rgba(255, 255, 255, 0.36);
+    background-size: 2.4rem 2.4rem;
+    color: var(--p2-accent);
+    overflow: hidden;
+  }
+
+  .p2-placeholder p {
+    position: relative;
+    z-index: 2;
+    margin: 0;
+    color: rgba(var(--p2-accent-rgb), 0.86);
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .p2-placeholder-grid {
+    position: absolute;
+    inset: 1.2rem;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    opacity: 0.72;
+  }
+
+  .p2-placeholder-grid span,
+  .p2-placeholder--small span {
+    border: 1px solid rgba(var(--p2-accent-rgb), 0.35);
+    border-radius: 8px;
+    background: rgba(251, 247, 237, 0.42);
+  }
+
+  .p2-mood-card,
+  .p2-position-card {
+    min-height: 23rem;
+  }
+
+  .p2-root[data-project="project-2"] .p2-moodboard-card {
+    display: grid;
+    grid-template-columns: minmax(26rem, 1.35fr) minmax(18rem, 0.65fr);
+    grid-template-rows: auto minmax(0, 1fr);
+    column-gap: clamp(1.5rem, 3.2vw, 3.4rem);
+    row-gap: 1.1rem;
+    align-items: center;
+    min-height: 23rem;
+    overflow: hidden;
+  }
+
+  .p2-root[data-project="project-2"] .p2-moodboard-card::before {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    margin-bottom: 0;
+  }
+
+  .p2-moodboard-collage {
+    position: relative;
+    display: grid;
+    grid-column: 1;
+    grid-row: 2;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    grid-template-rows: repeat(8, minmax(0, 1fr));
+    gap: clamp(0.35rem, 0.8vw, 0.7rem);
+    height: clamp(17rem, 34vw, 26rem);
+    min-width: 0;
+  }
+
+  .p2-moodboard-image {
+    position: relative;
+    margin: 0;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.56);
+    box-shadow: 0 0.7rem 1.5rem rgba(58, 44, 31, 0.12);
+  }
+
+  .p2-moodboard-image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .p2-moodboard-image--1 {
+    grid-column: 1 / span 4;
+    grid-row: 1 / span 3;
+  }
+
+  .p2-moodboard-image--2 {
+    grid-column: 5 / span 3;
+    grid-row: 1 / span 4;
+  }
+
+  .p2-moodboard-image--3 {
+    grid-column: 8 / span 5;
+    grid-row: 1 / span 3;
+  }
+
+  .p2-moodboard-image--4 {
+    grid-column: 1 / span 3;
+    grid-row: 4 / span 3;
+  }
+
+  .p2-moodboard-image--5 {
+    grid-column: 4 / span 5;
+    grid-row: 4 / span 3;
+  }
+
+  .p2-moodboard-image--6 {
+    grid-column: 9 / span 4;
+    grid-row: 4 / span 2;
+  }
+
+  .p2-moodboard-image--7 {
+    grid-column: 1 / span 4;
+    grid-row: 7 / span 2;
+  }
+
+  .p2-moodboard-image--8 {
+    grid-column: 5 / span 3;
+    grid-row: 7 / span 2;
+  }
+
+  .p2-moodboard-image--9 {
+    grid-column: 8 / span 5;
+    grid-row: 6 / span 3;
+  }
+
+  .p2-moodboard-copy {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-column: 2;
+    grid-row: 2;
+    min-width: 0;
+  }
+
+  .p2-moodboard-keywords {
+    display: grid;
+    gap: clamp(0.8rem, 1.5vw, 1.2rem);
+    width: min(66%, 15rem);
+  }
+
+  .p2-moodboard-keywords span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: clamp(2.7rem, 4.4vw, 3.6rem);
+    padding: 0.65rem clamp(1rem, 1.7vw, 1.45rem);
+    color: var(--p2-accent);
+    font-size: clamp(0.95rem, 1.18vw, 1.12rem);
+    font-weight: 800;
+    line-height: 1.2;
+    text-align: center;
+    white-space: nowrap;
+    background: rgba(255, 255, 255, 0.72);
+    border: 1.5px solid var(--p2-accent);
+    border-radius: 999px;
+    box-shadow: 0 0 1rem rgba(200, 128, 11, 0.16);
+  }
+
+  .p2-goal-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .p2-goal strong {
+    display: block;
+    margin-bottom: 0.9rem;
+    color: rgba(26, 26, 26, 0.78);
+    font-size: var(--p2-type-dense);
+    line-height: var(--p2-leading-dense);
+  }
+
+  .p2-root[data-project="project-2"] .p2-goal-card {
+    min-height: clamp(23rem, 44vh, 32rem);
+    overflow: hidden;
+  }
+
+  .p2-design-goal-card {
+      padding: 0;
+      overflow: hidden;
+      background: var(--p2-surface);
+      border: 0;
+      box-shadow: none;
+    }
+
+  .p2-design-goal-card::before {
+      display: none;
+      content: none;
+    }
+
+  .p2-design-goal-copy {
+    padding: clamp(1.4rem, 3vw, 2.2rem) clamp(1.4rem, 3vw, 2.2rem);
+    background: none;
+  }
+
+  .p2-design-goal-title {
+    margin: 0;
+    max-width: 18em;
+    font-size: clamp(1.8rem, 3.4vw, 3rem);
+    line-height: 1.14;
+    letter-spacing: -0.03em;
+    color: #26180f;
+  }
+
+  .p2-design-goal-highlight {
+    color: var(--p2-accent);
+  }
+
+  .p2-design-goal-lead {
+    margin: 1rem 0 0;
+    max-width: 48rem;
+    font-size: clamp(0.98rem, 1.25vw, 1.08rem);
+    line-height: 1.9;
+    color: rgba(49, 34, 22, 0.82);
+  }
+
+  .p2-design-goal-media {
+      margin: 0 clamp(1.4rem, 3vw, 2.2rem) clamp(1.4rem, 3vw, 2.2rem);
+      position: relative;
+      aspect-ratio: 16 / 5;
+      min-height: clamp(8.5rem, 16vw, 11rem);
+      background: #15110e;
+    }
+
+  .p2-design-goal-media > img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 58%;
+    filter: saturate(0.86) brightness(0.56);
+  }
+
+  .p2-design-goal-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: flex-end;
+    padding: clamp(1.4rem, 3vw, 2.2rem);
+    background:
+      linear-gradient(180deg, rgba(21, 17, 14, 0.08) 0%, rgba(21, 17, 14, 0.28) 36%, rgba(12, 10, 8, 0.84) 100%);
+  }
+
+  .p2-design-goal-list {
+    display: grid;
+    gap: 0.85rem;
+    width: min(100%, 46rem);
+  }
+
+  .p2-design-goal-item {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .p2-design-goal-item p {
+    margin: 0;
+    font-size: clamp(0.94rem, 1.12vw, 1rem);
+    line-height: 1.75;
+    color: rgba(255, 249, 241, 0.92);
+  }
+
+  .p2-design-goal-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 6.2rem;
+    padding: 0.65rem 1rem;
+    border-radius: 999px;
+    background: #d8c2a2;
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: #4f3824;
+    box-shadow: 0 0.5rem 1.2rem rgba(17, 10, 5, 0.16);
+  }
+
+  .p2-root[data-project="project-2"] .p2-goal-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(1rem, 2vw, 1.55rem);
+    align-items: stretch;
+  }
+
+  .p2-root[data-project="project-2"] .p2-goal--with-icon {
+    position: relative;
+    min-height: clamp(16rem, 25vw, 20rem);
+    padding: clamp(1.15rem, 1.8vw, 1.55rem);
+    background: rgba(255, 255, 255, 0.55);
+    border: 1.5px solid rgba(var(--p2-accent-rgb), 0.28);
+    border-top: 3px solid var(--p2-accent);
+    border-radius: 0.65rem;
+    box-shadow: 0 0.75rem 1.8rem rgba(80, 55, 24, 0.08);
+    transform: translateY(0);
+    transition:
+      transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+      border-color 0.35s ease,
+      box-shadow 0.35s ease,
+      background 0.35s ease;
+  }
+
+  .p2-root[data-project="project-2"] .p2-goal--with-icon::before {
+    content: "";
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 0.25rem;
+    background: rgba(var(--p2-accent-rgb), 0.72);
+    opacity: 0.32;
+    transform: scaleY(0.42);
+    transform-origin: top center;
+    transition: opacity 0.35s ease, transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .p2-root[data-project="project-2"] .p2-goal-icon {
+    display: grid;
+    place-items: center;
+    width: 3.2rem;
+    height: 3.2rem;
+    margin-bottom: clamp(1.2rem, 1.8vw, 1.55rem);
+    color: var(--p2-accent);
+    transform: translateY(0);
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), color 0.35s ease;
+  }
+
+  .p2-root[data-project="project-2"] .p2-goal-icon svg {
+    width: 100%;
+    height: 100%;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.35;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    overflow: visible;
+  }
+
+  .p2-root[data-project="project-2"] .p2-goal-icon path,
+  .p2-root[data-project="project-2"] .p2-goal-icon circle {
+    vector-effect: non-scaling-stroke;
+    stroke-dasharray: 92;
+    stroke-dashoffset: 0;
+    transition: stroke-width 0.35s ease;
+  }
+
+  .p2-root[data-project="project-2"] .p2-goal-index {
+    margin-bottom: 0.65rem;
+    letter-spacing: 0;
+    opacity: 0.78;
+  }
+
+  .p2-root[data-project="project-2"] .p2-goal h3 {
+    margin: 0 0 0.55rem;
+    color: var(--p2-accent);
+    font-size: clamp(1.6rem, 3vw, 2.45rem);
+    font-weight: 800;
+    line-height: 1;
+  }
+
+  .p2-root[data-project="project-2"] .p2-goal strong {
+    margin-bottom: clamp(0.75rem, 1.2vw, 1rem);
+    color: rgba(26, 26, 26, 0.86);
+    font-size: clamp(0.95rem, 1.1vw, 1.08rem);
+    font-weight: 800;
+    line-height: 1.45;
+  }
+
+  .p2-root[data-project="project-2"] .p2-goal p {
+    color: rgba(58, 44, 31, 0.76);
+    font-size: clamp(0.86rem, 0.95vw, 0.96rem);
+    font-weight: 400;
+    line-height: 1.68;
+  }
+
+  .p2-root[data-project="project-2"] .p2-goal--with-icon:hover {
+    background: rgba(255, 255, 255, 0.72);
+    border-color: rgba(var(--p2-accent-rgb), 0.72);
+    box-shadow: 0 1rem 2.4rem rgba(200, 128, 11, 0.18);
+    transform: translateY(-0.32rem);
+  }
+
+  .p2-root[data-project="project-2"] .p2-goal--with-icon:hover::before {
+    opacity: 0.88;
+    transform: scaleY(1);
+  }
+
+  .p2-root[data-project="project-2"] .p2-goal--with-icon:hover .p2-goal-icon {
+    color: var(--p2-accent);
+    transform: translateY(-0.38rem);
+  }
+
+  .p2-root[data-project="project-2"] .p2-goal--with-icon:hover .p2-goal-icon path,
+  .p2-root[data-project="project-2"] .p2-goal--with-icon:hover .p2-goal-icon circle {
+    animation: p2-goal-line-draw 0.85s ease both;
+    stroke-width: 2.8;
+  }
+
+  @keyframes p2-goal-line-draw {
+    from {
+      stroke-dashoffset: 92;
+    }
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  .p2-system-map {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .p2-root[data-project="project-2"] .p2-detail-card {
+    overflow: hidden;
+  }
+
+  .p2-detail-gallery {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: clamp(1rem, 1.8vw, 1.6rem);
+    opacity: 0;
+    transform: translateY(2rem);
+    transition:
+      opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .p2-detail-gallery.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .p2-detail-render {
+    --rx: 0deg;
+    --ry: 0deg;
+    --shine-x: 50%;
+    position: relative;
+    margin: 0;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    border-radius: 0.75rem;
+    background: rgba(255, 255, 255, 0.55);
+    transform: perspective(1000px) rotateX(var(--rx)) rotateY(var(--ry)) scale(1);
+    transform-style: preserve-3d;
+    transition:
+      transform 0.38s cubic-bezier(0.16, 1, 0.3, 1),
+      filter 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform, filter;
+  }
+
+  .p2-detail-render::after {
+    content: "";
+    position: absolute;
+    inset: -35%;
+    pointer-events: none;
+    background: linear-gradient(105deg, transparent 30%, rgba(255, 255, 255, 0.45) 50%, transparent 70%);
+    opacity: 0;
+    transform: translateX(calc(var(--shine-x) - 55%)) rotate(6deg);
+    transition:
+      opacity 0.35s ease,
+      transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .p2-detail-render:hover {
+    transform: perspective(1000px) rotateX(var(--rx)) rotateY(var(--ry)) scale(1.02);
+    filter: drop-shadow(0 1.8rem 2.8rem rgba(var(--p2-accent-rgb), 0.16));
+  }
+
+  .p2-detail-render:hover::after {
+    opacity: 1;
+  }
+
+  .p2-detail-render img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .p2-final-hero {
+    display: grid;
+    grid-template-columns: minmax(18rem, 0.82fr) minmax(22rem, 1.18fr);
+    gap: clamp(1.5rem, 4vw, 3.4rem);
+    align-items: center;
+  }
+
+  .p2-final-hero > * {
+    min-width: 0;
+  }
+
+  .p2-root[data-project="project-2"] .p2-final-hero--image-only,
+  .p2-root[data-project="project-3"] .p2-final-hero--image-only,
+  .p2-root[data-project="project-4"] .p2-final-hero--image-only {
+    display: block;
+    min-height: clamp(30rem, 72vh, 48rem);
+  }
+
+  .p2-placeholder--product {
+    min-height: clamp(24rem, 52vh, 36rem);
+  }
+
+  .p2-final-reveal {
+    --p2-final-reveal: 0;
+    --p2-final-scale: 1.05;
+    position: relative;
+    display: grid;
+    place-items: center;
+    min-height: clamp(24rem, 52vh, 36rem);
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+    background:
+      radial-gradient(
+        circle at 50% 50%,
+        rgba(var(--p2-accent-rgb), calc(0.1 * var(--p2-final-reveal))) 0%,
+        rgba(255, 255, 255, calc(0.22 * var(--p2-final-reveal))) 38%,
+        transparent 72%
+      );
+  }
+
+  .p2-final-reveal img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-height: none;
+    object-fit: cover;
+    clip-path: circle(calc(6% + 96% * var(--p2-final-reveal)) at 50% 50%);
+    filter: drop-shadow(0 2rem 3rem rgba(var(--p2-accent-rgb), 0.16));
+    transform: scale(var(--p2-final-scale));
+    transform-origin: center center;
+    transition:
+      clip-path 4.8s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 4.8s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: clip-path, transform;
+  }
+
+  .p2-root[data-project="project-2"] .p2-final-hero--image-only .p2-final-reveal,
+  .p2-root[data-project="project-3"] .p2-final-hero--image-only .p2-final-reveal,
+  .p2-root[data-project="project-4"] .p2-final-hero--image-only .p2-final-reveal {
+    min-height: calc(clamp(30rem, 72vh, 48rem) - var(--p2-card-pad) * 2);
+  }
+
+  .p2-root[data-project="project-4"] .p2-final-reveal {
+    background: transparent;
+  }
+
+  .p2-root[data-project="project-4"] .p2-final-reveal img {
+    object-fit: contain;
+    object-position: center center;
+  }
+
+  .p2-device-base,
+  .p2-device-arm,
+  .p2-device-vr {
+    position: absolute;
+    display: block;
+    border: 2px solid rgba(var(--p2-accent-rgb), 0.48);
+  }
+
+  .p2-device-base {
+    bottom: 24%;
+    left: 22%;
+    width: 56%;
+    height: 12%;
+    border-radius: 999px;
+  }
+
+  .p2-device-arm {
+    bottom: 31%;
+    left: 54%;
+    width: 26%;
+    height: 42%;
+    border-left-width: 5px;
+    border-bottom: 0;
+    border-radius: 999px 999px 0 0;
+  }
+
+  .p2-device-vr {
+    top: 28%;
+    left: 34%;
+    width: 15%;
+    height: 8%;
+    border-radius: 10px;
+    background: rgba(var(--p2-accent-rgb), 0.11);
+  }
+
+  .p2-detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .p2-scene-showcase-card {
+    padding: 0;
+    overflow: hidden;
+    background: var(--p2-surface);
+  }
+
+  .p2-scene-showcase-stack {
+    display: grid;
+    gap: clamp(1rem, 2vw, 1.6rem);
+    padding: var(--p2-card-pad);
+  }
+
+  .p2-scene-showcase-item {
+    margin: 0;
+    overflow: hidden;
+    background: transparent;
+  }
+
+  .p2-scene-showcase-item img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    object-position: center center;
+  }
+
+  .p2-detail-image-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: clamp(0.85rem, 1.8vw, 1.15rem);
+  }
+
+  .p2-detail-image-card {
+    margin: 0;
+    position: relative;
+    overflow: hidden;
+    background: transparent;
+  }
+
+  .p2-detail-image-card img {
+    display: block;
+    width: 100%;
+    height: auto;
+    background: transparent;
+  }
+
+  .p2-detail-image-copy {
+    position: absolute;
+    top: clamp(0.22rem, 0.75vw, 0.6rem);
+    width: min(43%, 10rem);
+    display: grid;
+    gap: clamp(0.22rem, 0.45vw, 0.42rem);
+    color: #2f2f2f;
+    text-align: left;
+    align-content: start;
+  }
+
+  .p2-detail-image-copy.is-right {
+    right: clamp(0.7rem, 1.8vw, 1.3rem);
+  }
+
+  .p2-detail-image-copy.is-left {
+    left: clamp(0.7rem, 1.8vw, 1.3rem);
+  }
+
+  .p2-detail-image-copy h3,
+  .p2-detail-image-copy p {
+    margin: 0;
+  }
+
+  .p2-detail-image-copy h3 {
+    color: rgb(139, 183, 21);
+    font-size: clamp(0.75rem, 1.2375vw, 1.0875rem);
+    font-weight: 700;
+    line-height: 1.12;
+    letter-spacing: 0.01em;
+  }
+
+  .p2-detail-image-copy p {
+    font-size: clamp(0.495rem, 0.75vw, 0.675rem);
+    font-weight: 400;
+    line-height: 1.4;
+    letter-spacing: 0.01em;
+  }
+
+  .p2-usage-card {
+    padding: clamp(0.8rem, 1vw, 1rem);
+  }
+
+  .p2-usage-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: clamp(2.025rem, 3.3vw, 2.85rem);
+    row-gap: clamp(0.9rem, 1.4vw, 1.1rem);
+    max-width: min(100%, 50rem);
+    margin: 0 auto;
+  }
+
+  .p2-usage-item {
+    margin: 0;
+    overflow: hidden;
+    border-radius: 0.75rem;
+    background: transparent;
+  }
+
+  .p2-usage-item img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: auto;
+    object-fit: fill;
+    background: transparent;
+  }
+
+  .p2-usage-item:first-child img {
+    transform: translateY(-2.4%);
+  }
+
+  .p2-detail {
+    display: grid;
+    grid-template-columns: 3.6rem minmax(7rem, 0.28fr) minmax(0, 1fr);
+    align-items: start;
+    gap: clamp(0.8rem, 1.5vw, 1.25rem);
+    min-height: 0;
+  }
+
+  .p2-detail span,
+  .p2-detail h3,
+  .p2-detail p {
+    margin: 0;
+  }
+
+  .p2-scenario-grid > * {
+    grid-column: 1 / -1;
+  }
+
+  #p2-final .p2-scenario-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .p2-scenario {
+    display: grid;
+    grid-template-columns: minmax(12rem, 0.34fr) minmax(8rem, 0.24fr) minmax(0, 1fr);
+    align-items: center;
+    gap: clamp(0.9rem, 1.7vw, 1.35rem);
+  }
+
+  .p2-scenario--poses {
+    display: block;
+  }
+
+  .p2-scenario--vr {
+    display: block;
+  }
+
+  .p2-vr-scene {
+    margin: 0;
+  }
+
+  .p2-vr-scene img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: min(68vh, 44rem);
+    object-fit: contain;
+    object-position: center;
+    background: rgba(255, 255, 255, 0.48);
+  }
+
+  .p2-vr-scene figcaption {
+    margin-top: 0.55rem;
+    color: rgba(26, 26, 26, 0.58);
+    font-size: clamp(0.7rem, 0.78vw, 0.82rem);
+    line-height: 1.55;
+    text-align: center;
+  }
+
+  .p2-pose-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(1rem, 1.8vw, 1.6rem);
+    align-items: stretch;
+  }
+
+  .p2-pose-item {
+    display: grid;
+    gap: clamp(0.8rem, 1.25vw, 1.1rem);
+    margin: 0;
+    min-width: 0;
+  }
+
+  .p2-pose-item img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: contain;
+    object-position: center;
+    background: rgba(255, 255, 255, 0.58);
+  }
+
+  .p2-pose-item figcaption {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+    width: min(50%, 11rem);
+    margin-inline: auto;
+    min-height: clamp(2.7rem, 4.2vw, 3.35rem);
+    padding: 0.62rem clamp(0.85rem, 1.4vw, 1.2rem);
+    color: var(--p2-accent);
+    font-size: clamp(0.9rem, 1.08vw, 1rem);
+    font-weight: 800;
+    line-height: 1.2;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.72);
+    border: 1.5px solid var(--p2-accent);
+    border-radius: 999px;
+    box-shadow: 0 0 1rem rgba(200, 128, 11, 0.16);
+  }
+
+  .p2-placeholder--small {
+    min-height: clamp(10rem, 17vw, 13rem);
+    margin-bottom: 0;
+  }
+
+  .p2-color-card {
+    grid-template-columns: 1fr;
+  }
+
+  .p2-color-card section {
+    display: grid;
+    grid-template-columns: minmax(8rem, 0.24fr) minmax(12rem, 0.32fr) minmax(0, 1fr);
+    align-items: center;
+    gap: clamp(0.9rem, 1.7vw, 1.35rem);
+  }
+
+  .p2-color-card section h3,
+  .p2-color-card section p {
+    margin: 0;
+  }
+
+  #p2-final .p2-detail-grid,
+  #p2-final .p2-scenario-grid,
+  #p2-final .p2-color-card {
+    grid-template-columns: 1fr;
+  }
+
+  #p2-final .p2-scenario-grid > * {
+    grid-column: 1 / -1;
+  }
+
+  .p2-swatch {
+    display: block;
+    width: 100%;
+    height: 4rem;
+    margin-bottom: 0;
+    border-radius: 8px;
+  }
+
+  .p2-swatch--a {
+    background: linear-gradient(90deg, #f9f5ec 0 62%, #c8800b 62% 100%);
+  }
+
+  .p2-swatch--b {
+    background: linear-gradient(90deg, #2a2b2c 0 62%, #d7ff45 62% 100%);
+  }
+
+  .p2-summary-card {
+    display: grid;
+    place-items: center;
+    gap: clamp(1.8rem, 3vw, 2.4rem);
+    padding-block: clamp(3rem, 6vw, 5rem);
+    text-align: center;
+  }
+
+  .p2-summary-card p {
+    max-width: min(48rem, 100%);
+    color: rgba(26, 26, 26, 0.72);
+    font-size: clamp(1.2rem, 2vw, 1.45rem);
+    line-height: 1.95;
+  }
+
+  #p2-final .p2-section-main {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    min-width: 0;
+    gap: var(--p2-gap);
+  }
+
+  #p2-final .p2-section-main > * {
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+  }
+
+  @media (max-width: 1100px) {
+    .p2-rect-grid {
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+    }
+
+    .p2-context-card,
+    .p2-final-hero {
+      grid-template-columns: 1fr;
+    }
+
+    .p2-design-goal-media {
+      min-height: clamp(7.5rem, 14vw, 9rem);
+    }
+
+    .p2-detail-image-copy {
+      top: clamp(0.75rem, 2vw, 1.2rem);
+      right: clamp(0.75rem, 2vw, 1.2rem);
+      width: min(40%, 10rem);
+    }
+
+    .p2-placeholder--product {
+      min-height: clamp(22rem, 44vh, 30rem);
+    }
+
+    .p2-final-reveal {
+      min-height: clamp(22rem, 44vh, 30rem);
+    }
+
+    .p2-stat-grid,
+    .p2-gap-grid,
+    .p2-process,
+    .p2-goal-grid,
+    .p2-detail-gallery,
+    .p2-detail-image-grid,
+    .p2-system-map,
+    .p2-detail-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .p2-scenario-grid > * {
+      grid-column: span 6;
+    }
+
+    #p2-final .p2-detail-grid,
+    #p2-final .p2-scenario-grid,
+    #p2-final .p2-color-card {
+      grid-template-columns: 1fr;
+    }
+
+    #p2-final .p2-scenario-grid > * {
+      grid-column: 1 / -1;
+    }
+  }
+
+
+  .p2-root .p2-structure-row {
+    width: min(100%, 37rem) !important;
+    justify-self: start !important;
+    grid-template-columns: minmax(5rem, auto) minmax(0, 1fr) !important;
+    padding-inline: clamp(1rem, 1.45vw, 1.3rem) clamp(1.1rem, 1.7vw, 1.6rem) !important;
+  }
+
+  .p2-root .p2-structure-row::before {
+    right: calc(100% + 1.15rem) !important;
+    width: clamp(2.2rem, 4.5vw, 4.3rem) !important;
+  }
+
+  .p2-root .p2-structure-row::after {
+    right: calc(100% + 0.74rem) !important;
+  }
+
+  .p2-root .p2-structure-row span {
+    color: var(--p2-accent) !important;
+  }
+
+  .p2-root .p2-structure-row p {
+    font-weight: 400 !important;
+  }
+
+  .p2-root .p2-structure-media {
+    position: relative !important;
+  }
+
+  .p2-root .p2-structure-mark {
+    position: absolute;
+    display: block;
+    border: 2px dashed var(--p2-accent);
+    border-radius: 0.18rem;
+    pointer-events: none;
+    opacity: 0.95;
+  }
+
+  .p2-root .p2-structure-mark--stable {
+    left: 48%;
+    top: 12%;
+    width: 19%;
+    height: 24%;
+  }
+
+  .p2-root .p2-structure-mark--suspend {
+    left: 39%;
+    top: 35%;
+    width: 38%;
+    height: 20%;
+  }
+
+  .p2-root .p2-structure-mark--support {
+    left: 16%;
+    top: 58%;
+    width: 70%;
+    height: 34%;
+  }
+
+  @media (max-width: 768px) {
+    .p2-root {
+      --p2-section-px: clamp(0.75rem, 3vw, 1rem);
+      --p2-card-pad: clamp(0.9rem, 4vw, 1.15rem);
+      padding-bottom: clamp(2.125rem, 5.5vh, 3rem);
+    }
+
+    .p2-section {
+      margin-bottom: clamp(2.125rem, 5.5vh, 3rem);
+    }
+
+    .p2-design-goal-copy {
+      padding: 1rem;
+    }
+
+    .p2-design-goal-title {
+      max-width: none;
+      font-size: clamp(1.45rem, 7vw, 2.1rem);
+    }
+
+    .p2-design-goal-lead {
+      font-size: 0.94rem;
+      line-height: 1.75;
+    }
+
+    .p2-design-goal-media {
+        margin: 0 1rem 1rem;
+        aspect-ratio: 16 / 6;
+        min-height: 6.5rem;
+      }
+
+    .p2-design-goal-overlay {
+      align-items: stretch;
+      padding: 1rem;
+    }
+
+    .p2-design-goal-list {
+      align-self: end;
+      width: 100%;
+      gap: 0.7rem;
+    }
+
+    .p2-design-goal-item {
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+      align-items: start;
+    }
+
+    .p2-design-goal-pill {
+      min-width: 0;
+      width: fit-content;
+      padding: 0.55rem 0.9rem;
+    }
+
+    .p2-editorial-track {
+      flex-direction: column;
+      --p2-editorial-gap: var(--p2-gap);
+      gap: var(--p2-editorial-gap);
+    }
+
+    .p2-sticky-rail {
+      flex: none;
+      width: 100%;
+      background: var(--p2-rail);
+    }
+
+    .p2-sticky-rail::before {
+      display: none;
+    }
+
+    .p2-sticky-rail::after {
+      display: none;
+    }
+
+    .p2-sticky-tag {
+      --p2-sidebar-index-size: 3.1rem;
+      position: static;
+      display: grid;
+      grid-template-columns: 2.8rem minmax(0, 1fr);
+      width: 100%;
+      margin: 0;
+      padding: 0.85rem 1rem 0.9rem clamp(4.75rem, 15vw, 5.35rem);
+      border-bottom: 0;
+      color: var(--p2-rail-text);
+      opacity: 1;
+      transform: none !important;
+    }
+
+    .p2-sidebar-rule {
+      width: 100%;
+      transform: scaleX(1);
+    }
+
+    .p2-sidebar-index {
+      right: auto;
+    }
+
+    .p2-sidebar-title {
+      font-size: 0.76rem;
+      letter-spacing: 0.2em;
+      line-height: 1.18;
+    }
+
+    .p2-sidebar-subtitle {
+      font-size: 0.58rem;
+    }
+
+    .p2-rect-grid,
+    .p2-stat-grid,
+    .p2-gap-grid,
+    .p2-process,
+    .p2-goal-grid,
+    .p2-detail-gallery,
+    .p2-detail-image-grid,
+    .p2-system-map,
+    .p2-detail-grid,
+    .p2-color-card {
+      grid-template-columns: 1fr;
+    }
+
+    .p2-two-up > *,
+    .p2-scenario-grid > * {
+      grid-column: 1;
+    }
+
+    #p2-final .p2-detail,
+    #p2-final .p2-scenario,
+    #p2-final .p2-color-card section {
+      grid-template-columns: 1fr;
+    }
+
+    .p2-insight-merged-card {
+      grid-template-columns: 1fr;
+    }
+
+    .p2-insight-merged-panel + .p2-insight-merged-panel {
+      padding-top: clamp(1.2rem, 3vw, 1.8rem);
+      padding-left: 0;
+    }
+
+    .p2-root h2 {
+      font-size: var(--p2-type-h2);
+    }
+
+    .p2-root p {
+      font-size: 0.98rem !important;
+    }
+
+    .p2-lead {
+      font-size: 0.98rem !important;
+      line-height: 1.7 !important;
+    }
+
+    .p2-process-step p,
+    .p2-gap-item p,
+    .p2-goal p,
+    .p2-detail p,
+    .p2-system-node p,
+    .p2-scenario p,
+    .p2-color-card p,
+    .p2-goal strong {
+      font-size: max(0.82rem, var(--p2-type-dense));
+      line-height: var(--p2-leading-dense);
+    }
+
+    .p2-segment {
+      grid-template-columns: minmax(5.8rem, 0.34fr) minmax(0, 1fr);
+      min-height: clamp(7rem, 28vw, 9rem);
+    }
+
+    .p2-segment-media {
+      height: clamp(6.8rem, 28vw, 8.8rem);
+      margin: -0.5rem -1.6rem 0 0;
+    }
+
+    .p2-segment-card-body {
+      transform: translateX(-1em);
+      padding-left: clamp(1.6rem, 7vw, 2.6rem);
+    }
+
+    .p2-stat {
+      min-height: 9rem;
+    }
+
+
+    .p2-placeholder--product {
+      min-height: clamp(18rem, 58vw, 24rem);
+    }
+
+    .p2-final-reveal {
+      min-height: clamp(18rem, 58vw, 24rem);
+    }
+
+    .p2-final-reveal img {
+      max-height: min(52vh, 24rem);
+    }
+
+    .p2-pose-gallery {
+      grid-template-columns: 1fr;
+    }
+
+    .p2-detail-render {
+      aspect-ratio: 4 / 3;
+    }
+
+    .p2-summary-card {
+      text-align: left;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .p2-sticky-tag,
+    .p2-sidebar-rule {
+      transition: none;
+    }
+
+    .p2-final-reveal {
+      --p2-final-reveal: 1 !important;
+      --p2-final-scale: 1 !important;
+    }
+
+    .p2-final-reveal img {
+      transition: none !important;
+    }
+
+    .p2-detail-gallery {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
+
+    .p2-detail-render,
+    .p2-detail-render::after {
+      transition: none !important;
+    }
+  }
+
+  .p2-root .p2-structure-card {
+    display: grid !important;
+    grid-template-columns: minmax(18rem, 0.82fr) minmax(22rem, 1.18fr) !important;
+    grid-template-rows: auto minmax(0, 1fr) !important;
+    min-height: 66vh !important;
+    max-height: 72vh !important;
+    align-items: center !important;
+    column-gap: clamp(2rem, 4.5vw, 5rem) !important;
+    row-gap: clamp(0.85rem, 1.4vw, 1.2rem) !important;
+    overflow: hidden;
+  }
+
+  .p2-root .p2-structure-card::before {
+    grid-column: 1 / -1 !important;
+    grid-row: 1 !important;
+    margin-bottom: 0 !important;
+  }
+
+  .p2-root .p2-structure-media {
+    grid-column: 1 !important;
+    grid-row: 2 !important;
+    align-self: center !important;
+    justify-self: stretch !important;
+    width: 100% !important;
+    height: min(56vh, 100%) !important;
+    margin: 0 !important;
+    min-width: 0 !important;
+    overflow: hidden;
+  }
+
+  .p2-root .p2-structure-media img {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-height: 56vh !important;
+    object-fit: contain !important;
+    object-position: center center !important;
+    position: relative !important;
+    z-index: 1 !important;
+  }
+
+  .p2-root .p2-structure-list {
+      grid-column: 2 !important;
+      grid-row: 2 !important;
+      align-self: center !important;
+      display: grid !important;
+    gap: clamp(1.15rem, 2.4vw, 2rem) !important;
+    min-width: 0 !important;
+  }
+
+
+  .p2-root .p2-structure-row {
+    width: min(100%, 37rem) !important;
+    justify-self: start !important;
+    grid-template-columns: minmax(5rem, auto) minmax(0, 1fr) !important;
+    padding-inline: clamp(1rem, 1.45vw, 1.3rem) clamp(1.1rem, 1.7vw, 1.6rem) !important;
+  }
+
+  .p2-root .p2-structure-row::before {
+    right: calc(100% + 1.15rem) !important;
+    width: clamp(2.2rem, 4.5vw, 4.3rem) !important;
+  }
+
+  .p2-root .p2-structure-row::after {
+    right: calc(100% + 0.74rem) !important;
+  }
+
+  .p2-root .p2-structure-row span {
+    color: var(--p2-accent) !important;
+  }
+
+  .p2-root .p2-structure-row p {
+    font-weight: 400 !important;
+  }
+
+  .p2-root .p2-structure-media {
+      position: relative !important;
+    }
+
+  .p2-root[data-project="project-4"] .p2-structure-card--gallery {
+      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr) !important;
+      grid-template-rows: auto minmax(0, 1fr) !important;
+      position: relative;
+      min-height: min(94vh, 72rem) !important;
+      max-height: min(94vh, 72rem) !important;
+      align-items: stretch !important;
+      gap: clamp(1rem, 2vw, 1.4rem) !important;
+      padding-bottom: clamp(1rem, 2vw, 1.35rem);
+    }
+
+  .p2-root[data-project="project-4"] .p2-structure-card--gallery::before {
+      grid-column: 1 / -1 !important;
+      grid-row: 1 !important;
+    }
+
+  .p2-root[data-project="project-4"] .p2-structure-feature-media {
+      grid-column: 2 !important;
+      grid-row: 2 !important;
+      position: relative;
+      z-index: 1;
+      min-width: 0;
+      min-height: 0;
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+      background: transparent;
+    }
+
+  .p2-root[data-project="project-4"] .p2-structure-feature-media img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center center;
+    }
+
+  .p2-root[data-project="project-4"] .p2-structure-gallery {
+      grid-column: 1 !important;
+      grid-row: 2 !important;
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-rows: 1fr 1fr 1fr;
+      gap: clamp(1.2rem, 2vw, 1.6rem);
+      min-width: 0;
+      min-height: 0;
+      height: 100%;
+    }
+
+  .p2-root[data-project="project-4"] .p2-structure-gallery-row {
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr);
+      gap: clamp(0.65rem, 1vw, 0.8rem);
+      min-width: 0;
+      min-height: 0;
+    }
+
+  .p2-root[data-project="project-4"] .p2-structure-gallery-label {
+      margin: 0;
+      font-family: var(--font-sans);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(var(--p2-accent-rgb), 0.88);
+    }
+
+  .p2-root[data-project="project-4"] .p2-structure-gallery-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: fit-content;
+      min-height: 2rem;
+      padding: 0.38rem 0.95rem 0.34rem;
+      border-radius: 999px;
+      background: rgba(var(--p2-accent-rgb), 0.12);
+      box-shadow: inset 0 0 0 1px rgba(var(--p2-accent-rgb), 0.18);
+    }
+
+  .p2-root[data-project="project-4"] .p2-structure-gallery-row--1,
+  .p2-root[data-project="project-4"] .p2-structure-gallery-row--2 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+  .p2-root[data-project="project-4"] .p2-structure-gallery-row--3 {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+  .p2-root[data-project="project-4"] .p2-structure-gallery-row--1 .p2-structure-gallery-label,
+  .p2-root[data-project="project-4"] .p2-structure-gallery-row--2 .p2-structure-gallery-label,
+  .p2-root[data-project="project-4"] .p2-structure-gallery-row--3 .p2-structure-gallery-label {
+      grid-column: 1 / -1;
+    }
+
+  .p2-root[data-project="project-4"] .p2-structure-gallery-item {
+      min-width: 0;
+      min-height: 0;
+      margin: 0;
+      overflow: hidden;
+      background: rgba(255, 252, 246, 0.82);
+    }
+
+  .p2-root[data-project="project-4"] .p2-structure-gallery-item img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+    }
+
+  .p2-root[data-project="project-4"] .p2-structure-focus {
+      position: absolute;
+      border: 2px dashed rgba(var(--p2-accent-rgb), 0.78);
+      border-radius: 1rem;
+      background: rgba(var(--p2-accent-rgb), 0.2);
+    }
+
+  .p2-root[data-project="project-4"] .p2-structure-focus--1 {
+      top: 19%;
+      left: 54%;
+      width: 33%;
+      height: 13%;
+    }
+
+  .p2-root[data-project="project-4"] .p2-structure-focus--2 {
+      top: 38.5%;
+      left: 9%;
+      width: 66%;
+      height: 12%;
+    }
+
+  .p2-root[data-project="project-4"] .p2-structure-focus--3 {
+      right: 3%;
+      bottom: 12%;
+      width: 34%;
+      height: 20%;
+    }
+
+    .p2-root .p2-structure-mark {
+      position: absolute;
+      display: block;
+    box-sizing: border-box;
+    border: 2px dashed var(--p2-accent);
+    border-radius: 0.18rem;
+    pointer-events: none;
+    opacity: 0.95;
+    z-index: 4;
+  }
+
+  .p2-root .p2-structure-mark--stable {
+    left: 48%;
+    top: 12%;
+    width: 19%;
+    height: 24%;
+  }
+
+  .p2-root .p2-structure-mark--suspend {
+    left: 39%;
+    top: 35%;
+    width: 38%;
+    height: 20%;
+  }
+
+  .p2-root .p2-structure-mark--support {
+    left: 16%;
+    top: 58%;
+    width: 70%;
+    height: 34%;
+  }
+
+    @media (max-width: 768px) {
+      .p2-root .p2-structure-card {
+        grid-template-columns: minmax(11rem, 0.82fr) minmax(13rem, 1.18fr) !important;
+        min-height: 58vh !important;
+        max-height: none !important;
+        column-gap: 1rem !important;
+      }
+
+      .p2-root[data-project="project-4"] .p2-structure-card--gallery {
+        grid-template-columns: 1fr !important;
+        grid-template-rows: auto auto auto !important;
+        min-height: auto !important;
+        max-height: none !important;
+        gap: 0.9rem !important;
+      }
+
+      .p2-root[data-project="project-4"] .p2-structure-card--gallery::before {
+        grid-column: 1 !important;
+        grid-row: 1 !important;
+      }
+
+      .p2-root[data-project="project-4"] .p2-structure-feature-media {
+        grid-column: 1 !important;
+        grid-row: 2 !important;
+        height: clamp(12rem, 42vw, 18rem);
+      }
+
+      .p2-root[data-project="project-4"] .p2-structure-gallery {
+        grid-column: 1 !important;
+        grid-row: 3 !important;
+        height: auto;
+      }
+
+      .p2-root[data-project="project-4"] .p2-structure-focus {
+        display: none;
+      }
+
+      .p2-root[data-project="project-4"] .p2-structure-gallery-row--3 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .p2-root .p2-structure-media,
+      .p2-root .p2-structure-media img {
+        max-height: 46vh !important;
+    }
+  }
+
+  @media (max-width: 1100px) {
+    .p2-root[data-project="project-2"] .p2-goal-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .p2-root[data-project="project-2"] .p2-goal--with-icon {
+      min-height: 17rem;
+    }
+  }
+
+  @media (max-width: 860px) {
+    .p2-root[data-project="project-2"] .p2-goal-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .p2-root[data-project="project-2"] .p2-goal-card {
+      min-height: 0;
+    }
+
+    .p2-root[data-project="project-2"] .p2-goal--with-icon {
+      min-height: 0;
+    }
+
+    .p2-root[data-project="project-2"] .p2-moodboard-card {
+      grid-template-columns: 1fr;
+    }
+
+    .p2-moodboard-collage,
+    .p2-moodboard-copy {
+      grid-column: 1;
+      grid-row: auto;
+    }
+
+    .p2-moodboard-collage {
+      height: clamp(22rem, 96vw, 34rem);
+    }
+
+    .p2-moodboard-keywords {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      width: 100%;
+    }
+
+    .p2-moodboard-keywords span {
+      justify-content: center;
+      white-space: normal;
+      text-align: center;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .p2-root[data-project="project-2"] .p2-goal--with-icon,
+    .p2-root[data-project="project-2"] .p2-goal--with-icon::before,
+    .p2-root[data-project="project-2"] .p2-goal-icon {
+      transition: none !important;
+    }
+
+    .p2-root[data-project="project-2"] .p2-goal--with-icon:hover,
+    .p2-root[data-project="project-2"] .p2-goal--with-icon:hover .p2-goal-icon {
+      transform: none !important;
+    }
+
+    .p2-root[data-project="project-2"] .p2-goal--with-icon:hover .p2-goal-icon path,
+    .p2-root[data-project="project-2"] .p2-goal--with-icon:hover .p2-goal-icon circle {
+      animation: none !important;
+    }
+  }
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

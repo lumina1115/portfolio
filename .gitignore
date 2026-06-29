@@ -5,3 +5,13 @@ dist/
 .DS_Store
 .wrangler/
 *.log
+
+# Local Netlify folder
+.netlify
+
+# Local tool/browser state
+.chrome-profile/
+.chrome-profile-noimg/
+.edge-profile/
+.codex/
+tmp/

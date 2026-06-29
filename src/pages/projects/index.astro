@@ -1,27 +1,30 @@
 ---
-import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SiteNav from '../../components/layout/SiteNav.astro';
+import { projects } from '../../data/projects';
 
-const projects = await getCollection('projects');
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const editorialProjectOrder = ['project-1', 'project-2', 'project-3', 'project-4'];
 const sorted = [...projects].sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf());
+const customProjects = editorialProjectOrder
+  .map((id) => sorted.find((project) => project.id === id))
+  .filter((project): project is (typeof sorted)[number] => Boolean(project));
 ---
 
-<BaseLayout title="Work — Zong Xuezhen" pageClass="projects-page">
+<BaseLayout title="Projects — Zong Xuezhen" pageClass="projects-page">
   <SiteNav slot="nav" />
   <main class="projects-shell">
     <section class="projects-hero">
-      <p class="eyebrow">Selected Work</p>
+      <p class="eyebrow">Selected Projects</p>
       <div class="projects-hero-title">
-        <h1 class="display-title">Work</h1>
+        <h1 class="display-title">Projects</h1>
         <p>Product design, interaction systems, and medical devices.</p>
       </div>
     </section>
 
     <section class="projects-list" aria-label="Selected projects">
-      {sorted.map((project, index) => (
-        <a class="project-row" href={`${base}/projects/${project.id}`} data-project-index={index + 1}>
+      {customProjects.map((project, index) => (
+        <a class="project-row" href={`${base}/projects/${project.data.slug}`} data-project-index={index + 1}>
           <span class="project-number">{String(index + 1).padStart(2, '0')}</span>
           <span class="project-title">{project.data.title.split(' — ')[0]}</span>
           <span class="project-meta">{project.data.subtitle ?? project.data.tags.slice(0, 2).join(' / ')}</span>

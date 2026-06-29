@@ -4,6 +4,23 @@ const { project } = Astro.props as { project: any };
 const heroTitle = project.data.title?.split(' — ')[0] ?? project.data.title;
 const heroSubtitle = project.data.subtitle ?? project.data.title?.split(' — ')[1] ?? '';
 const heroSummary = project.data.summary;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const publicAsset = (path: string) => `${base}${path}`;
+const project1CdnAssets = {
+  aigc1: 'https://telegraph-image-90w.pages.dev/file/AgACAgUAAyEGAATqb6rsAAMzajjexAUAAWBPYN9tXEBv811hsbodAAIEEWsbKH_JVT6vkBPVFISDAQADAgADeAADPAQ.png',
+  aigc2: 'https://telegraph-image-90w.pages.dev/file/AgACAgUAAyEGAATqb6rsAAM0ajjex02ptCgSZSU7yA4yGmZeuCYAAgURaxsof8lVlD70SuMIhAwBAAMCAAN4AAM8BA.png',
+  aigc3: 'https://telegraph-image-90w.pages.dev/file/AgACAgUAAyEGAATqb6rsAAM1ajjeyUfSnWDG3QABpkUuMfhsATKgAAIGEWsbKH_JVcETE5zEto_AAQADAgADeAADPAQ.png',
+  aigc4: 'https://telegraph-image-90w.pages.dev/file/AgACAgUAAyEGAATqb6rsAAM2ajjey6Wf4RncLnL8Nh8YzhyhYrcAAgcRaxsof8lV8sw3Po92M98BAAMCAAN4AAM8BA.png',
+  aigc5: 'https://telegraph-image-90w.pages.dev/file/AgACAgUAAyEGAATqb6rsAAM3ajjezDpNo3GPNmmS4SYKjB4-4RcAAggRaxsof8lVkjC_tMXu0QABAQADAgADeAADPAQ.png',
+  aigc6: 'https://telegraph-image-90w.pages.dev/file/AgACAgUAAyEGAATqb6rsAAM4ajjezg6B982CbTF1oYDUiV8X_KYAAgkRaxsof8lVbY6a5om_MLoBAAMCAAN4AAM8BA.png',
+  detailBuckle: 'https://telegraph-image-90w.pages.dev/file/AgACAgUAAyEGAATqb6rsAAMJajEgNqKuSSnPUN5KHeDalQmgBSQAAuwRaxtuOolViXSh50yaojkBAAMCAAN3AAM8BA.png',
+  detailMesh: 'https://telegraph-image-90w.pages.dev/file/AgACAgUAAyEGAATqb6rsAAMnajaiah1WyP1Jtty39kI6ktOwhswAAu0QaxtlnrhV29dhoJemvu0BAAMCAAN3AAM8BA.png',
+  detailStrap: 'https://telegraph-image-90w.pages.dev/file/AgACAgUAAyEGAATqb6rsAAMIajEfcyZ2wtiV8tVCSGSNxwWrwXkAAusRaxtuOolVQdFuhmqNtQEBAAMCAAN3AAM8BA.png',
+  modular: 'https://telegraph-image-90w.pages.dev/file/AgACAgUAAyEGAATqb6rsAAMuajajkIcK0-6hH9EIGtWeAAGyvXRlAALvEGsbZZ64Vdco5f6ZZMjuAQADAgADdwADPAQ.png',
+  tech1: 'https://telegraph-image-90w.pages.dev/file/AgACAgUAAyEGAATqb6rsAAMPajFh65JmtmzYTTsGvL-_y5HB1fEAAigTaxtuOolVFdCxS_8LY0sBAAMCAAN3AAM8BA.png',
+  tech2: 'https://telegraph-image-90w.pages.dev/file/AgACAgUAAyEGAATqb6rsAAMQajFiBf9u_GfuCQPri6p3tn47SMcAAikTaxtuOolVB_ArZUBgG0wBAAMCAAN3AAM8BA.png',
+  tech3: 'https://telegraph-image-90w.pages.dev/file/AgACAgUAAyEGAATqb6rsAAMRajFiKZIQ89cchJ_x-fBn07sETTAAAioTaxtuOolVN8BiMd6ySwYBAAMCAAN3AAM8BA.png',
+};
 
 // 标注坐标调节说明：
 // anchor 是箭头指向产品结构的位置，label 是文字卡片的位置。
@@ -133,12 +150,14 @@ const explodedAnnotations = [
           />
         </figure>
       </article>
-    </div>
-    </section>
+      </div>
 
-    <section class="p1-chapter-block p1-pain">
-    <div class="p1-pain-grid" data-section-label="痛点分析">
-      <article class="p1-rect-card p1-pain-card">
+    <section class="p1-chapter-block p1-insight-combo" data-insight-combo data-active-pain="1">
+      <div class="p1-insight-combo-grid">
+    <section class="p1-insight-combo-panel p1-pain">
+    <div class="p1-pain-showcase" data-section-label="痛点分析">
+      <div class="p1-pain-stage">
+      <article class="p1-rect-card p1-pain-feature" data-pain-index="1">
         <figure class="p1-pain-media p1-pain-media--a">
           <img loading="lazy" decoding="async" src="https://telegraph-image-90w.pages.dev/file/AgACAgUAAyEGAATqb6rsAAMMajFexxuqLKbtPJMakJpLUs53BJUAAhETaxtuOolVWYdoNIcc9CoBAAMCAAN3AAM8BA.png" alt="足内翻痛点图" />
           <span class="p1-pain-tag">痛点 01</span>
@@ -149,7 +168,7 @@ const explodedAnnotations = [
         </div>
       </article>
 
-      <article class="p1-rect-card p1-pain-card">
+      <article class="p1-rect-card p1-pain-feature" data-pain-index="2">
         <figure class="p1-pain-media p1-pain-media--b">
           <img loading="lazy" decoding="async" src="https://telegraph-image-90w.pages.dev/file/AgACAgUAAyEGAATqb6rsAAMNajFe_Ht_ja9cu3xVBbaGGdAB86AAAhYTaxtuOolV0Q8bZvj3L5sBAAMCAAN3AAM8BA.png" alt="沟通障碍痛点图" />
           <span class="p1-pain-tag">痛点 02</span>
@@ -160,7 +179,7 @@ const explodedAnnotations = [
         </div>
       </article>
 
-      <article class="p1-rect-card p1-pain-card">
+      <article class="p1-rect-card p1-pain-feature" data-pain-index="3">
         <figure class="p1-pain-media p1-pain-media--c">
           <img loading="lazy" decoding="async" src="https://telegraph-image-90w.pages.dev/file/AgACAgUAAyEGAATqb6rsAAMOajFfI_iSaNhP-_ueoQ5pVEwsj2EAAhcTaxtuOolVsQXYrrG-hiIBAAMCAAN3AAM8BA.png" alt="病耻感痛点图" />
           <span class="p1-pain-tag">痛点 03</span>
@@ -171,13 +190,28 @@ const explodedAnnotations = [
         </div>
       </article>
     </div>
+      <div class="p1-pain-thumbs" aria-label="Pain point carousel index">
+        <button class="p1-pain-thumb" type="button" data-pain-thumb="1" aria-label="PROBLEM 01">
+          <img loading="lazy" decoding="async" src="https://telegraph-image-90w.pages.dev/file/AgACAgUAAyEGAATqb6rsAAMMajFexxuqLKbtPJMakJpLUs53BJUAAhETaxtuOolVWYdoNIcc9CoBAAMCAAN3AAM8BA.png" alt="" />
+          <span>PROBLEM 01</span>
+        </button>
+        <button class="p1-pain-thumb" type="button" data-pain-thumb="2" aria-label="PROBLEM 02">
+          <img loading="lazy" decoding="async" src="https://telegraph-image-90w.pages.dev/file/AgACAgUAAyEGAATqb6rsAAMNajFe_Ht_ja9cu3xVBbaGGdAB86AAAhYTaxtuOolV0Q8bZvj3L5sBAAMCAAN3AAM8BA.png" alt="" />
+          <span>PROBLEM 02</span>
+        </button>
+        <button class="p1-pain-thumb" type="button" data-pain-thumb="3" aria-label="PROBLEM 03">
+          <img loading="lazy" decoding="async" src="https://telegraph-image-90w.pages.dev/file/AgACAgUAAyEGAATqb6rsAAMOajFfI_iSaNhP-_ueoQ5pVEwsj2EAAhcTaxtuOolVsQXYrrG-hiIBAAMCAAN3AAM8BA.png" alt="" />
+          <span>PROBLEM 03</span>
+        </button>
+      </div>
+    </div>
     </section>
 
-    <section class="p1-chapter-block p1-positioning">
+    <section class="p1-insight-combo-panel p1-positioning">
     <div class="p1-rect-grid" data-section-label="技术调研">
-      <article class="p1-rect-card p1-card-feature">
+      <article class="p1-rect-card p1-card-feature" data-tech-index="1">
         <figure class="p1-feature-media p1-feature-media--cutout">
-          <img loading="lazy" decoding="async" src="/portfolio/project-1/processed/tech-1-raw.png" alt="矫正功能展示图" />
+          <img loading="lazy" decoding="async" src={project1CdnAssets.tech1} alt="矫正功能展示图" />
         </figure>
         <div class="p1-feature-copy">
           <h2 class="p1-feature-title">矫正</h2>
@@ -185,9 +219,9 @@ const explodedAnnotations = [
         </div>
       </article>
 
-      <article class="p1-rect-card p1-card-feature">
+      <article class="p1-rect-card p1-card-feature" data-tech-index="2">
         <figure class="p1-feature-media">
-          <img loading="lazy" decoding="async" src="/portfolio/project-1/processed/tech-2-raw.png" alt="监测功能展示图" />
+          <img loading="lazy" decoding="async" src={project1CdnAssets.tech2} alt="监测功能展示图" />
         </figure>
         <div class="p1-feature-copy">
           <h2 class="p1-feature-title">监测</h2>
@@ -195,9 +229,9 @@ const explodedAnnotations = [
         </div>
       </article>
 
-      <article class="p1-rect-card p1-card-feature">
+      <article class="p1-rect-card p1-card-feature" data-tech-index="3">
         <figure class="p1-feature-media">
-          <img loading="lazy" decoding="async" src="/portfolio/project-1/processed/tech-3-raw.png" alt="模块化连接机制展示图" />
+          <img loading="lazy" decoding="async" src={project1CdnAssets.tech3} alt="模块化连接机制展示图" />
         </figure>
         <div class="p1-feature-copy">
           <h2 class="p1-feature-title">模块化连接机制</h2>
@@ -205,6 +239,8 @@ const explodedAnnotations = [
         </div>
       </article>
     </div>
+    </section>
+      </div>
     </section>
       </div>
     </div>
@@ -228,65 +264,6 @@ const explodedAnnotations = [
       </aside>
       <div class="p1-section-main">
     <div class="p1-rect-grid">
-      <article class="p1-rect-card p1-card-mapping" data-section-label="设计目标" data-target-map>
-        <div class="p1-mapping-bg" aria-hidden="true"></div>
-        <header class="p1-mapping-head">
-          <p class="p1-overline">design target</p>
-          <h2>设计目标</h2>
-          <p>基于前期深入调研，项目将痉挛型脑瘫儿童的运动生物力学障碍、情感表达隔阂及社交病耻感，解构并转化为与之对应的三点力学结构、柔性传感机能与去医疗化的外观设计策略。</p>
-        </header>
-
-        <div class="p1-mapping-list">
-          <article class="p1-mapping-row" data-target-card tabindex="0">
-            <div class="p1-mapping-meta">
-              <span class="p1-mapping-num">01</span>
-              <span class="p1-mapping-label">PROBLEM</span>
-            </div>
-            <div class="p1-mapping-cell p1-mapping-issue">
-              <small>痛点</small>
-              <strong>足内翻问题</strong>
-            </div>
-            <span class="p1-mapping-line" aria-hidden="true"></span>
-            <div class="p1-mapping-cell p1-mapping-solution">
-              <small>TARGET</small>
-              <strong>AFO 三点力学矫形</strong>
-            </div>
-          </article>
-
-          <article class="p1-mapping-row" data-target-card tabindex="0">
-            <div class="p1-mapping-meta">
-              <span class="p1-mapping-num">02</span>
-              <span class="p1-mapping-label">PROBLEM</span>
-            </div>
-            <div class="p1-mapping-cell p1-mapping-issue">
-              <small>痛点</small>
-              <strong>沟通障碍</strong>
-            </div>
-            <span class="p1-mapping-line" aria-hidden="true"></span>
-            <div class="p1-mapping-cell p1-mapping-solution">
-              <small>TARGET</small>
-              <strong>智能压力传感监测</strong>
-            </div>
-          </article>
-
-          <article class="p1-mapping-row" data-target-card tabindex="0">
-            <div class="p1-mapping-meta">
-              <span class="p1-mapping-num">03</span>
-              <span class="p1-mapping-label">PROBLEM</span>
-            </div>
-            <div class="p1-mapping-cell p1-mapping-issue">
-              <small>痛点</small>
-              <strong>病耻感</strong>
-            </div>
-            <span class="p1-mapping-line" aria-hidden="true"></span>
-            <div class="p1-mapping-cell p1-mapping-solution">
-              <small>TARGET</small>
-              <strong>模块化运动鞋外观</strong>
-            </div>
-          </article>
-        </div>
-      </article>
-
       <article class="p1-rect-card p1-card-exploration-hardware" data-section-label="Exploration & Hardware">
         <header class="p1-lab-head">
           <p class="p1-lab-eyebrow">SECTION 1 / Exploration &amp; Hardware</p>
@@ -313,12 +290,12 @@ const explodedAnnotations = [
             <div class="p1-aigc-bg p1-aigc-bg--base" aria-hidden="true"></div>
             <div class="p1-aigc-bg p1-aigc-bg--spotlight" aria-hidden="true"></div>
             <div class="p1-aigc-tiles">
-              <figure class="p1-aigc-tile"><img loading="lazy" decoding="async" src="/portfolio/project-1/aigc/aigc-1.png" alt="外观意向图 1" /></figure>
-              <figure class="p1-aigc-tile"><img loading="lazy" decoding="async" src="/portfolio/project-1/aigc/aigc-2.png" alt="外观意向图 2" /></figure>
-              <figure class="p1-aigc-tile"><img loading="lazy" decoding="async" src="/portfolio/project-1/aigc/aigc-3.png" alt="外观意向图 3" /></figure>
-              <figure class="p1-aigc-tile"><img loading="lazy" decoding="async" src="/portfolio/project-1/aigc/aigc-4.png" alt="外观意向图 4" /></figure>
-              <figure class="p1-aigc-tile"><img loading="lazy" decoding="async" src="/portfolio/project-1/aigc/aigc-5.png" alt="外观意向图 5" /></figure>
-              <figure class="p1-aigc-tile"><img loading="lazy" decoding="async" src="/portfolio/project-1/aigc/aigc-6.png" alt="外观意向图 6" /></figure>
+              <figure class="p1-aigc-tile"><img loading="lazy" decoding="async" src={project1CdnAssets.aigc1} alt="外观意向图 1" /></figure>
+              <figure class="p1-aigc-tile"><img loading="lazy" decoding="async" src={project1CdnAssets.aigc2} alt="外观意向图 2" /></figure>
+              <figure class="p1-aigc-tile"><img loading="lazy" decoding="async" src={project1CdnAssets.aigc3} alt="外观意向图 3" /></figure>
+              <figure class="p1-aigc-tile"><img loading="lazy" decoding="async" src={project1CdnAssets.aigc4} alt="外观意向图 4" /></figure>
+              <figure class="p1-aigc-tile"><img loading="lazy" decoding="async" src={project1CdnAssets.aigc5} alt="外观意向图 5" /></figure>
+              <figure class="p1-aigc-tile"><img loading="lazy" decoding="async" src={project1CdnAssets.aigc6} alt="外观意向图 6" /></figure>
             </div>
           </div>
         </section>
@@ -391,10 +368,6 @@ const explodedAnnotations = [
             </div>
 
             <aside class="p1-sandbox-panel p1-sensor-panel" aria-label="数据可视化与硬件联动窗口">
-              <figure class="p1-sensor-photo">
-                <img loading="lazy" decoding="async" src="https://telegraph-image-90w.pages.dev/file/AgACAgUAAyEGAATqb6rsAAMfajabGdY7294hBVNineLsc2SgCh4AAtcQaxtlnrhVXK43uJZvjEcBAAMCAAN5AAM8BA.png" alt="Arduino 主控与传感器连接实拍" />
-              </figure>
-
               <div class="p1-waveform-card">
                 <div class="p1-waveform-head">
                   <span>FSR gait pressure stream</span>
@@ -445,7 +418,7 @@ const explodedAnnotations = [
         <section class="p1-render-screen p1-render-screen--modular" data-modular-reveal>
           <div class="p1-modular-pin">
             <figure class="p1-render-item p1-render-item--full p1-render-item--modular" data-modular-figure>
-              <img loading="lazy" decoding="async" src="/portfolio/project-1/renders/modular.png" alt="模块化产品渲染图" />
+              <img loading="lazy" decoding="async" src={project1CdnAssets.modular} alt="模块化产品渲染图" />
             </figure>
           </div>
         </section>
@@ -456,11 +429,11 @@ const explodedAnnotations = [
               <video
                 class="p1-exploded-video"
                 data-exploded-video
-                src="/portfolio/project-1/renders/afo-exploded.mp4"
+                src={publicAsset('/project-1/renders/afo-exploded.mp4')}
                 muted
                 playsinline
                 preload="auto"
-                poster="/portfolio/project-1/renders/exploded.png"
+                poster={publicAsset('/project-1/renders/exploded.png')}
                 aria-label="产品爆炸图展开动画"
               ></video>
 
@@ -499,13 +472,13 @@ const explodedAnnotations = [
 
         <section class="p1-render-screen p1-render-screen--details" data-render-reveal>
           <figure class="p1-render-item" data-render-tilt>
-            <img loading="lazy" decoding="async" src="/portfolio/project-1/renders/detail-strap.png" alt="可调节绑带细节渲染图" />
+            <img loading="lazy" decoding="async" src={project1CdnAssets.detailStrap} alt="可调节绑带细节渲染图" />
           </figure>
           <figure class="p1-render-item" data-render-tilt>
-            <img loading="lazy" decoding="async" src="/portfolio/project-1/renders/detail-buckle.png" alt="蓝粉卡扣渐变细节渲染图" />
+            <img loading="lazy" decoding="async" src={project1CdnAssets.detailBuckle} alt="蓝粉卡扣渐变细节渲染图" />
           </figure>
           <figure class="p1-render-item" data-render-tilt>
-            <img loading="lazy" decoding="async" src="/portfolio/project-1/renders/detail-mesh.png" alt="透气网面细节渲染图" />
+            <img loading="lazy" decoding="async" src={project1CdnAssets.detailMesh} alt="透气网面细节渲染图" />
           </figure>
         </section>
       </article>
@@ -520,14 +493,6 @@ const explodedAnnotations = [
           Gradient 通过<span class="p1-em">AFO 三点力学矫形 × 智能传感监测 × 去医疗化美学</span>回应，
           最终将冰冷的医疗器械<span class="p1-em">重构为孩子眼中“很酷的运动鞋”</span>。
         </p>
-      </article>
-
-      <article class="p1-rect-card p1-card-next" data-section-label="下一项目">
-        <p class="p1-overline">next project</p>
-        <a href="/projects/project-2" class="p1-next-link">
-          NeuroLimb — 腿部截肢患者术后康复 VR 悬吊系统
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10h12m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
       </article>
     </div>
     </section>
@@ -648,38 +613,71 @@ const explodedAnnotations = [
   };
 
   const setupChapterSidebar = () => {
-    const chapters = Array.from(document.querySelectorAll('[data-chapter-section]'));
+    const chapters = Array.from(document.querySelectorAll('[data-chapter-section]'))
+      .filter((chapter): chapter is HTMLElement => chapter instanceof HTMLElement);
 
     if (!chapters.length) {
       return;
     }
 
-    const activateChapter = (chapter: Element) => {
+    let activeChapter: HTMLElement | null = null;
+    let ticking = false;
+
+    const activateChapter = (chapter: HTMLElement) => {
+      if (activeChapter === chapter) {
+        return;
+      }
+
+      activeChapter = chapter;
       chapters.forEach((item) => {
         item.classList.toggle('is-active', item === chapter);
       });
     };
 
-    activateChapter(chapters[0]);
+    const getDocumentTop = (element: HTMLElement) => element.getBoundingClientRect().top + window.scrollY;
 
-    if (!('IntersectionObserver' in window)) {
-      return;
-    }
+    const getActiveChapter = () => {
+      const anchorY = window.scrollY + window.innerHeight * 0.32;
+      const currentChapter = chapters.find((chapter) => {
+        const top = getDocumentTop(chapter);
+        const bottom = top + chapter.offsetHeight;
 
-    const observer = new IntersectionObserver((entries) => {
-      const visibleEntries = entries
-        .filter((entry) => entry.isIntersecting)
-        .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+        return anchorY >= top && anchorY < bottom;
+      });
 
-      if (visibleEntries[0]?.target) {
-        activateChapter(visibleEntries[0].target);
+      if (currentChapter) {
+        return currentChapter;
       }
-    }, {
-      rootMargin: '-28% 0px -42% 0px',
-      threshold: [0, 0.12, 0.28, 0.5, 0.72],
-    });
 
-    chapters.forEach((chapter) => observer.observe(chapter));
+      return chapters.reduce((closest, chapter) => {
+        const distance = Math.abs(chapter.getBoundingClientRect().top - window.innerHeight * 0.32);
+        const closestDistance = Math.abs(closest.getBoundingClientRect().top - window.innerHeight * 0.32);
+
+        return distance < closestDistance ? chapter : closest;
+      }, chapters[0]);
+    };
+
+    const updateActiveChapter = () => {
+      activateChapter(getActiveChapter());
+      ticking = false;
+    };
+
+    const requestUpdate = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateActiveChapter);
+        ticking = true;
+      }
+    };
+
+    activateChapter(getActiveChapter());
+    window.addEventListener('scroll', requestUpdate, { passive: true });
+    window.addEventListener('resize', requestUpdate);
+    window.addEventListener('load', requestUpdate, { once: true });
+
+    if ('ResizeObserver' in window) {
+      const resizeObserver = new ResizeObserver(requestUpdate);
+      chapters.forEach((chapter) => resizeObserver.observe(chapter));
+    }
   };
 
   const setupRailMenuVisibility = () => {
@@ -752,6 +750,101 @@ const explodedAnnotations = [
     });
 
     observer.observe(mapping);
+  };
+
+  const setupInsightComboAutoplay = () => {
+    const combo = document.querySelector('[data-insight-combo]');
+
+    if (!(combo instanceof HTMLElement)) {
+      return;
+    }
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const total = 3;
+    let index = 1;
+    let timer = 0;
+    let isVisible = false;
+    let isThumbHovering = false;
+
+    const setActive = (next: number) => {
+      index = ((next - 1 + total) % total) + 1;
+      combo.dataset.activePain = String(index);
+    };
+
+    const stop = () => {
+      if (timer) {
+        window.clearInterval(timer);
+        timer = 0;
+      }
+    };
+
+    const start = () => {
+      if (reduceMotion || timer || !isVisible || isThumbHovering) {
+        return;
+      }
+
+      timer = window.setInterval(() => setActive(index + 1), 3200);
+    };
+
+    setActive(1);
+
+    const thumbs = Array.from(combo.querySelectorAll('[data-pain-thumb]'));
+
+    thumbs.forEach((thumb) => {
+      if (!(thumb instanceof HTMLElement)) {
+        return;
+      }
+
+      const thumbIndex = Number(thumb.dataset.painThumb);
+
+      if (!Number.isFinite(thumbIndex) || thumbIndex < 1 || thumbIndex > total) {
+        return;
+      }
+
+      const activateThumb = () => {
+        isThumbHovering = true;
+        combo.dataset.thumbHover = 'true';
+        stop();
+        setActive(thumbIndex);
+      };
+
+      const releaseThumb = () => {
+        isThumbHovering = false;
+        delete combo.dataset.thumbHover;
+        start();
+      };
+
+      thumb.addEventListener('pointerenter', activateThumb);
+      thumb.addEventListener('pointerleave', releaseThumb);
+      thumb.addEventListener('focus', activateThumb);
+      thumb.addEventListener('blur', releaseThumb);
+    });
+
+    if (reduceMotion) {
+      return;
+    }
+
+    if (!('IntersectionObserver' in window)) {
+      isVisible = true;
+      start();
+      return;
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      const entry = entries[0];
+      isVisible = Boolean(entry?.isIntersecting);
+
+      if (isVisible) {
+        start();
+      } else {
+        stop();
+      }
+    }, {
+      rootMargin: '0px 0px -18% 0px',
+      threshold: 0.18,
+    });
+
+    observer.observe(combo);
   };
 
   const setupLabInteractions = () => {
@@ -1019,39 +1112,32 @@ const explodedAnnotations = [
     const modularReveal = document.querySelector('[data-modular-reveal]');
     const revealItems = Array.from(document.querySelectorAll('[data-render-reveal]'));
     const tiltItems = Array.from(document.querySelectorAll('[data-render-tilt]'));
-    let modularTicking = false;
+    let modularProgress = 0;
 
-    const updateModularReveal = () => {
+    const setModularReveal = (progress: number) => {
       if (!(modularReveal instanceof HTMLElement)) {
-        modularTicking = false;
         return;
       }
 
-      const rect = modularReveal.getBoundingClientRect();
-      const scrollable = Math.max(1, rect.height - window.innerHeight);
-      const progress = Math.min(1, Math.max(0, -rect.top / scrollable));
-      const easedProgress = 1 - Math.pow(1 - progress, 3);
+      modularProgress = Math.min(1, Math.max(0, progress));
+      const easedProgress = 1 - Math.pow(1 - modularProgress, 3);
       const scale = 1.05 - easedProgress * 0.05;
 
       modularReveal.style.setProperty('--modular-reveal', easedProgress.toFixed(4));
       modularReveal.style.setProperty('--modular-scale', scale.toFixed(4));
-      modularTicking = false;
-    };
-
-    const requestModularReveal = () => {
-      if (!modularTicking) {
-        window.requestAnimationFrame(updateModularReveal);
-        modularTicking = true;
-      }
     };
 
     if (modularReveal instanceof HTMLElement) {
-      window.addEventListener('scroll', requestModularReveal, { passive: true });
-      window.addEventListener('resize', requestModularReveal);
-      modularReveal.querySelectorAll('img').forEach((image) => {
-        image.addEventListener('load', requestModularReveal, { once: true });
+      modularReveal.addEventListener('pointerenter', () => {
+        setModularReveal(Math.max(modularProgress, 0.36));
       });
-      updateModularReveal();
+      modularReveal.addEventListener('wheel', (event) => {
+        setModularReveal(modularProgress + event.deltaY * 0.0016);
+      }, { passive: true });
+      modularReveal.querySelectorAll('img').forEach((image) => {
+        image.addEventListener('load', () => setModularReveal(modularProgress), { once: true });
+      });
+      setModularReveal(0);
     }
 
     if (revealItems.length) {
@@ -1104,6 +1190,7 @@ const explodedAnnotations = [
     setupChapterSidebar();
     setupRailMenuVisibility();
     setupTargetMappingReveal();
+    setupInsightComboAutoplay();
     setupLabInteractions();
     setupRenderGalleryInteractions();
   };
@@ -1520,7 +1607,6 @@ const explodedAnnotations = [
   .p1-lead,
   .p1-body-text,
   .p1-flow-note,
-  .p1-next-link,
   .p1-card-summary p,
   .p1-note-strip p {
     color: var(--p1-text-dim);
@@ -1926,8 +2012,8 @@ const explodedAnnotations = [
   }
 
   .p1-lab-copy h3 {
-    font-size: clamp(1.35rem, 2.1vw, 2rem);
-    line-height: 1.16;
+    font-size: clamp(1.75rem, 2vw, 2rem);
+    line-height: 1.1;
   }
 
   .p1-lab-sketch {
@@ -2268,7 +2354,7 @@ const explodedAnnotations = [
 
   .p1-sandbox-grid {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1.02fr) minmax(18rem, 0.98fr);
     gap: clamp(1rem, 1.45vw, 1.35rem);
     align-items: stretch;
     min-height: 0;
@@ -2460,8 +2546,8 @@ const explodedAnnotations = [
 
   .p1-sensor-panel {
     display: grid;
-    grid-template-rows: minmax(0, 1fr) minmax(0, 1fr);
-    gap: 20px;
+    grid-template-rows: minmax(0, 1fr);
+    gap: 0;
     padding: clamp(0.75rem, 1.2vw, 1rem);
     background: rgba(245, 246, 248, 0.75);
   }
@@ -2492,12 +2578,15 @@ const explodedAnnotations = [
     position: relative;
     display: grid;
     grid-template-rows: auto minmax(0, 1fr) auto;
-    gap: 0.62rem;
+    gap: clamp(0.8rem, 1.2vw, 1.05rem);
+    height: 100%;
     overflow: hidden;
     border-radius: 12px;
-    padding: clamp(0.8rem, 1.2vw, 1rem);
+    padding: clamp(1rem, 1.55vw, 1.35rem);
     border: 1px solid rgba(226, 228, 233, 0.8);
-    background: rgba(245, 246, 248, 0.75);
+    background:
+      radial-gradient(circle at 18% 12%, rgba(0, 102, 255, 0.1), transparent 32%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(239, 243, 248, 0.72));
     backdrop-filter: blur(12px);
     min-height: 0;
   }
@@ -2533,7 +2622,8 @@ const explodedAnnotations = [
 
   .p1-waveform {
     width: 100%;
-    min-height: 9rem;
+    height: 100%;
+    min-height: clamp(13rem, 24vw, 22rem);
     overflow: hidden;
   }
 
@@ -2566,6 +2656,9 @@ const explodedAnnotations = [
   }
 
   .p1-signal-metrics {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.58rem;
     color: rgba(42, 45, 52, 0.72);
     font-family: 'Fira Code', 'SF Mono', 'Cascadia Code', Consolas, monospace;
     font-size: 0.84rem;
@@ -2576,7 +2669,12 @@ const explodedAnnotations = [
 
   .p1-signal-metrics span {
     display: grid;
-    gap: 0.15rem;
+    gap: 0.2rem;
+    min-width: 0;
+    padding: 0.58rem 0.62rem;
+    border: 1px solid rgba(0, 102, 255, 0.1);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.56);
   }
 
   .p1-signal-metrics strong {
@@ -2586,7 +2684,7 @@ const explodedAnnotations = [
     align-items: baseline;
     justify-content: flex-start;
     color: #2a2d34;
-    font-size: 1.32rem;
+    font-size: clamp(1rem, 1.35vw, 1.32rem);
     font-weight: 800;
     line-height: 1;
   }
@@ -2669,8 +2767,8 @@ const explodedAnnotations = [
     }
 
     .p1-sensor-panel {
-      grid-template-rows: minmax(0, 1fr) minmax(0, 1fr);
-      min-height: 32rem;
+      grid-template-rows: minmax(0, 1fr);
+      min-height: 24rem;
     }
   }
 
@@ -3684,6 +3782,7 @@ const explodedAnnotations = [
     column-gap: var(--p1-grid-gap);
     row-gap: var(--p1-grid-gap);
     align-items: start;
+    min-height: 31rem;
   }
 
   .p1-context-copy-panel {
@@ -3718,6 +3817,7 @@ const explodedAnnotations = [
     width: 100%;
     min-width: 0;
     align-self: start;
+    height: 22rem;
     position: relative;
     overflow: hidden;
     background: var(--p1-surface);
@@ -3726,7 +3826,7 @@ const explodedAnnotations = [
   .p1-context-media :global(img) {
     width: 106%;
     height: 100%;
-    min-height: 22rem;
+    min-height: 0;
     object-fit: cover;
     object-position: 78% center;
     transform: translateX(-2.5%) scale(1.06);
@@ -3754,9 +3854,9 @@ const explodedAnnotations = [
   .p1-context-title {
     margin: 0;
     max-width: 26rem;
-    font-size: clamp(1.95rem, 2.3vw, 2.25rem);
-    font-weight: 700;
-    line-height: 1.08;
+    font-size: clamp(1.75rem, 2vw, 2rem);
+    font-weight: 800;
+    line-height: 1.1;
     letter-spacing: -0.03em;
     color: var(--p1-accent);
     white-space: nowrap;
@@ -4231,24 +4331,6 @@ const explodedAnnotations = [
   .p1-em {
     color: var(--p1-text);
     font-weight: 600;
-  }
-
-  .p1-next-link {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    padding-top: 0.9rem;
-    border-top: 1px solid rgba(26, 26, 26, 0.08);
-    font-family: var(--font-cjk-sans);
-    font-size: 1.2rem;
-    line-height: 1.5;
-    text-decoration: none;
-  }
-
-  .p1-next-link svg {
-    flex-shrink: 0;
-    color: var(--p1-accent);
   }
 
   .p1-section-main .p1-context-title,
@@ -4980,7 +5062,6 @@ const explodedAnnotations = [
     .p1-hero-desc,
     .p1-note-strip p,
     .p1-flow-note,
-    .p1-next-link,
     .p1-card-summary p,
     .p1-quote-item p {
       font-size: 0.98rem;
@@ -5036,9 +5117,747 @@ const explodedAnnotations = [
       align-self: center;
       transform: rotate(90deg);
     }
+  }
 
-    .p1-next-link {
-      font-size: 1.05rem;
+  .p1-chapter--insight .p1-insight-combo {
+    min-width: 0;
+    margin-top: clamp(1.15rem, 2.2vw, 2rem);
+  }
+
+  .p1-chapter--insight .p1-insight-combo-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.08fr) minmax(18rem, 0.92fr);
+    gap: clamp(1.35rem, 2.1vw, 2.35rem);
+    align-items: stretch;
+    width: 100%;
+    min-width: 0;
+    padding: clamp(1rem, 1.6vw, 1.45rem);
+    background: var(--p1-surface);
+    box-sizing: border-box;
+  }
+
+  .p1-chapter--insight .p1-insight-combo-panel {
+    min-width: 0;
+  }
+
+  .p1-chapter--insight .p1-insight-combo-panel.p1-pain {
+    display: flex;
+    align-items: center;
+  }
+
+  .p1-chapter--insight .p1-insight-combo .p1-pain-grid,
+  .p1-chapter--insight .p1-insight-combo .p1-positioning .p1-rect-grid {
+    padding: 0;
+    background: transparent;
+  }
+
+  .p1-chapter--insight .p1-insight-combo .p1-pain-grid[data-section-label],
+  .p1-chapter--insight .p1-insight-combo .p1-positioning .p1-rect-grid[data-section-label] {
+    padding-top: 0;
+  }
+
+  .p1-chapter--insight .p1-insight-combo .p1-pain-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    width: 100%;
+    height: auto;
+    gap: clamp(0.65rem, 0.88vw, 0.88rem);
+    align-content: start;
+    align-items: start;
+  }
+
+  .p1-chapter--insight .p1-insight-combo .p1-pain-card {
+    height: auto;
+    min-height: 0;
+    align-self: start;
+    gap: clamp(0.24rem, 0.42vw, 0.38rem);
+    transform-origin: center;
+    transition:
+      filter 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+      opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .p1-chapter--insight .p1-insight-combo .p1-pain-media {
+    aspect-ratio: 4 / 5;
+    border-radius: 0.85rem;
+  }
+
+  .p1-chapter--insight .p1-insight-combo .p1-pain-tag {
+    left: 0.7rem;
+    bottom: 0.65rem;
+    font-size: 0.68rem;
+  }
+
+  .p1-chapter--insight .p1-insight-combo .p1-pain-title {
+    font-size: clamp(0.98rem, 1.12vw, 1.12rem);
+    line-height: 1.08;
+  }
+
+  .p1-chapter--insight .p1-insight-combo .p1-pain-text {
+    font-size: clamp(0.76rem, 0.82vw, 0.86rem);
+    line-height: 1.48;
+  }
+
+  .p1-chapter--insight .p1-insight-combo .p1-positioning {
+    display: flex;
+    align-items: stretch;
+  }
+
+  .p1-chapter--insight .p1-insight-combo .p1-positioning .p1-rect-grid {
+    grid-template-columns: 1fr;
+    grid-auto-rows: 1fr;
+    gap: clamp(0.65rem, 0.88vw, 0.88rem);
+    align-content: start;
+  }
+
+  .p1-chapter--insight .p1-insight-combo .p1-positioning .p1-card-feature {
+    grid-template-columns: 1fr;
+    gap: clamp(0.4rem, 0.62vw, 0.56rem);
+    align-items: start;
+    min-height: 0;
+    align-self: stretch;
+    transform-origin: center;
+    transition:
+      filter 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+      opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .p1-chapter--insight .p1-insight-combo .p1-positioning .p1-feature-media {
+    width: 100%;
+    aspect-ratio: 4.5 / 1;
+    min-height: clamp(3.35rem, 4.8vw, 4.8rem);
+    border-radius: 0.85rem;
+  }
+
+  .p1-chapter--insight .p1-insight-combo .p1-positioning .p1-feature-copy {
+    gap: clamp(0.26rem, 0.42vw, 0.38rem);
+    max-width: none;
+  }
+
+  .p1-chapter--insight .p1-insight-combo .p1-positioning .p1-feature-title {
+    font-size: clamp(0.98rem, 1.18vw, 1.18rem);
+    line-height: 1.1;
+  }
+
+  .p1-chapter--insight .p1-insight-combo .p1-positioning .p1-feature-text {
+    max-width: none;
+    font-size: clamp(0.76rem, 0.82vw, 0.86rem);
+    line-height: 1.48;
+  }
+
+  .p1-chapter--insight .p1-insight-combo .p1-pain-copy,
+  .p1-chapter--insight .p1-insight-combo .p1-positioning .p1-feature-copy {
+    display: grid;
+    align-content: start;
+  }
+
+  .p1-chapter--insight .p1-insight-combo .p1-pain-copy {
+    gap: clamp(0.2rem, 0.32vw, 0.32rem);
+  }
+
+  .p1-chapter--insight .p1-insight-combo .p1-positioning .p1-feature-copy::before,
+  .p1-chapter--insight .p1-insight-combo .p1-pain-copy::before {
+    display: block;
+    margin-bottom: clamp(0.04rem, 0.16vw, 0.12rem);
+    font-family: var(--font-sans);
+    font-size: clamp(0.58rem, 0.64vw, 0.68rem);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: 0.13em;
+    color: rgba(26, 26, 26, 0.46);
+  }
+
+  .p1-chapter--insight .p1-insight-combo .p1-pain-card:nth-child(1) .p1-pain-copy::before {
+    content: "PROBLEM 01";
+  }
+
+  .p1-chapter--insight .p1-insight-combo .p1-pain-card:nth-child(2) .p1-pain-copy::before {
+    content: "PROBLEM 02";
+  }
+
+  .p1-chapter--insight .p1-insight-combo .p1-pain-card:nth-child(3) .p1-pain-copy::before {
+    content: "PROBLEM 03";
+  }
+
+  .p1-chapter--insight .p1-insight-combo .p1-positioning .p1-card-feature:nth-child(1) .p1-feature-copy::before {
+    content: "01 / ALIGNMENT";
+  }
+
+  .p1-chapter--insight .p1-insight-combo .p1-positioning .p1-card-feature:nth-child(2) .p1-feature-copy::before {
+    content: "02 / MONITOR";
+  }
+
+  .p1-chapter--insight .p1-insight-combo .p1-positioning .p1-card-feature:nth-child(3) .p1-feature-copy::before {
+    content: "03 / MODULAR";
+  }
+
+  .p1-chapter--insight .p1-insight-combo .p1-pain-media,
+  .p1-chapter--insight .p1-insight-combo .p1-positioning .p1-feature-media {
+    transition:
+      box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .p1-chapter--insight .p1-insight-combo .p1-pain-media :global(img),
+  .p1-chapter--insight .p1-insight-combo .p1-positioning .p1-feature-media :global(img) {
+    transition:
+      filter 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .p1-chapter--insight .p1-insight-combo-grid:has(.p1-pain-card:hover, .p1-card-feature:hover) .p1-pain-card,
+  .p1-chapter--insight .p1-insight-combo-grid:has(.p1-pain-card:hover, .p1-card-feature:hover) .p1-card-feature {
+    filter: grayscale(1);
+    opacity: 0.66;
+  }
+
+  .p1-chapter--insight .p1-insight-combo-grid:has(.p1-pain-card:nth-child(1):hover) .p1-pain-card:nth-child(1),
+  .p1-chapter--insight .p1-insight-combo-grid:has(.p1-pain-card:nth-child(1):hover) .p1-card-feature:nth-child(1),
+  .p1-chapter--insight .p1-insight-combo-grid:has(.p1-pain-card:nth-child(2):hover) .p1-pain-card:nth-child(2),
+  .p1-chapter--insight .p1-insight-combo-grid:has(.p1-pain-card:nth-child(2):hover) .p1-card-feature:nth-child(2),
+  .p1-chapter--insight .p1-insight-combo-grid:has(.p1-pain-card:nth-child(3):hover) .p1-pain-card:nth-child(3),
+  .p1-chapter--insight .p1-insight-combo-grid:has(.p1-pain-card:nth-child(3):hover) .p1-card-feature:nth-child(3),
+  .p1-chapter--insight .p1-insight-combo-grid:has(.p1-card-feature:nth-child(1):hover) .p1-pain-card:nth-child(1),
+  .p1-chapter--insight .p1-insight-combo-grid:has(.p1-card-feature:nth-child(1):hover) .p1-card-feature:nth-child(1),
+  .p1-chapter--insight .p1-insight-combo-grid:has(.p1-card-feature:nth-child(2):hover) .p1-pain-card:nth-child(2),
+  .p1-chapter--insight .p1-insight-combo-grid:has(.p1-card-feature:nth-child(2):hover) .p1-card-feature:nth-child(2),
+  .p1-chapter--insight .p1-insight-combo-grid:has(.p1-card-feature:nth-child(3):hover) .p1-pain-card:nth-child(3),
+  .p1-chapter--insight .p1-insight-combo-grid:has(.p1-card-feature:nth-child(3):hover) .p1-card-feature:nth-child(3) {
+    filter: none;
+    opacity: 1;
+    transform: scale(1.025);
+    z-index: 2;
+  }
+
+  .p1-chapter--insight .p1-insight-combo-grid:has(.p1-pain-card:nth-child(1):hover) .p1-pain-card:nth-child(1) .p1-pain-media,
+  .p1-chapter--insight .p1-insight-combo-grid:has(.p1-pain-card:nth-child(1):hover) .p1-card-feature:nth-child(1) .p1-feature-media,
+  .p1-chapter--insight .p1-insight-combo-grid:has(.p1-pain-card:nth-child(2):hover) .p1-pain-card:nth-child(2) .p1-pain-media,
+  .p1-chapter--insight .p1-insight-combo-grid:has(.p1-pain-card:nth-child(2):hover) .p1-card-feature:nth-child(2) .p1-feature-media,
+  .p1-chapter--insight .p1-insight-combo-grid:has(.p1-pain-card:nth-child(3):hover) .p1-pain-card:nth-child(3) .p1-pain-media,
+  .p1-chapter--insight .p1-insight-combo-grid:has(.p1-pain-card:nth-child(3):hover) .p1-card-feature:nth-child(3) .p1-feature-media,
+  .p1-chapter--insight .p1-insight-combo-grid:has(.p1-card-feature:nth-child(1):hover) .p1-pain-card:nth-child(1) .p1-pain-media,
+  .p1-chapter--insight .p1-insight-combo-grid:has(.p1-card-feature:nth-child(1):hover) .p1-card-feature:nth-child(1) .p1-feature-media,
+  .p1-chapter--insight .p1-insight-combo-grid:has(.p1-card-feature:nth-child(2):hover) .p1-pain-card:nth-child(2) .p1-pain-media,
+  .p1-chapter--insight .p1-insight-combo-grid:has(.p1-card-feature:nth-child(2):hover) .p1-card-feature:nth-child(2) .p1-feature-media,
+  .p1-chapter--insight .p1-insight-combo-grid:has(.p1-card-feature:nth-child(3):hover) .p1-pain-card:nth-child(3) .p1-pain-media,
+  .p1-chapter--insight .p1-insight-combo-grid:has(.p1-card-feature:nth-child(3):hover) .p1-card-feature:nth-child(3) .p1-feature-media {
+    box-shadow: 0 1.2rem 2.4rem rgba(var(--p1-accent-rgb), 0.2);
+  }
+
+  @media screen and (max-width: 1100px) {
+    .p1-chapter--insight .p1-insight-combo-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .p1-chapter--insight .p1-insight-combo .p1-positioning .p1-card-feature {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .p1-chapter--insight .p1-insight-combo-grid {
+      gap: var(--row-gap-section);
+    }
+
+    .p1-chapter--insight .p1-insight-combo .p1-pain-grid,
+    .p1-chapter--insight .p1-insight-combo .p1-positioning .p1-rect-grid {
+      width: 100%;
+      padding: clamp(0.85rem, 3.5vw, 1rem);
+    }
+
+    .p1-chapter--insight .p1-insight-combo .p1-pain-grid[data-section-label],
+    .p1-chapter--insight .p1-insight-combo .p1-positioning .p1-rect-grid[data-section-label] {
+      padding-top: 2.35rem;
+    }
+
+    .p1-chapter--insight .p1-insight-combo .p1-pain-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .p1-chapter--insight .p1-insight-combo .p1-pain-card {
+      grid-template-columns: minmax(7.5rem, 0.42fr) minmax(0, 0.58fr);
+      grid-template-rows: auto;
+      align-items: center;
+    }
+
+    .p1-chapter--insight .p1-insight-combo .p1-positioning .p1-card-feature {
+      grid-template-columns: 1fr;
+    }
+
+    .p1-chapter--insight .p1-insight-combo .p1-pain-media {
+      width: 100%;
+      height: auto;
+      margin: 0;
+      aspect-ratio: 4 / 5;
+    }
+
+    .p1-chapter--insight .p1-insight-combo .p1-positioning .p1-feature-media {
+      width: 100%;
+      height: auto;
+      margin: 0;
+      aspect-ratio: 4.5 / 1;
+    }
+  }
+
+  @media screen and (max-width: 520px) {
+    .p1-chapter--insight .p1-insight-combo .p1-pain-card,
+    .p1-chapter--insight .p1-insight-combo .p1-positioning .p1-card-feature {
+      grid-template-columns: 1fr;
+    }
+
+    .p1-chapter--insight .p1-insight-combo .p1-pain-media {
+      aspect-ratio: 4 / 5;
+    }
+
+    .p1-chapter--insight .p1-insight-combo .p1-positioning .p1-feature-media {
+      aspect-ratio: 4.5 / 1;
+    }
+  }
+
+  .p1-chapter--insight .p1-insight-combo {
+    min-width: 0;
+  }
+
+  .p1-chapter--insight .p1-insight-combo-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.88fr) minmax(22rem, 1.12fr);
+    gap: clamp(1.05rem, 1.75vw, 1.8rem);
+    align-items: stretch;
+    width: 100%;
+    min-width: 0;
+    padding: clamp(0.78rem, 1.18vw, 1.05rem);
+    background: var(--p1-surface);
+    box-sizing: border-box;
+  }
+
+  .p1-chapter--insight .p1-insight-combo-panel {
+    min-width: 0;
+  }
+
+  .p1-chapter--insight .p1-pain-showcase {
+    position: relative;
+    display: grid;
+    grid-template-rows: minmax(0, 1fr) auto;
+    gap: clamp(0.58rem, 0.85vw, 0.78rem);
+    height: 100%;
+    align-self: stretch;
+    min-width: 0;
+    padding-top: clamp(1rem, 1.35vw, 1.22rem);
+  }
+
+  .p1-chapter--insight .p1-pain-showcase::before,
+  .p1-chapter--insight .p1-insight-combo .p1-positioning .p1-rect-grid::before {
+    top: 0;
+    left: 0;
+  }
+
+  .p1-chapter--insight .p1-pain-stage {
+    position: relative;
+    min-height: clamp(20rem, 26vw, 24.5rem);
+    min-width: 0;
+    isolation: isolate;
+  }
+
+  .p1-chapter--insight .p1-pain-feature {
+    --pain-feature-width: min(80%, 20rem);
+    position: absolute;
+    inset: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    gap: clamp(0.68rem, 0.95vw, 0.9rem);
+    align-content: start;
+    align-items: start;
+    min-width: 0;
+    padding: clamp(0.72rem, 1vw, 1rem) 0 0;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(0.45rem);
+    transition:
+      opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .p1-chapter--insight .p1-insight-combo[data-active-pain="1"] .p1-pain-feature[data-pain-index="1"],
+  .p1-chapter--insight .p1-insight-combo[data-active-pain="2"] .p1-pain-feature[data-pain-index="2"],
+  .p1-chapter--insight .p1-insight-combo[data-active-pain="3"] .p1-pain-feature[data-pain-index="3"] {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+    z-index: 1;
+  }
+
+  .p1-chapter--insight .p1-pain-feature .p1-pain-media {
+    width: var(--pain-feature-width);
+    height: auto;
+    max-height: none;
+    aspect-ratio: 4 / 5;
+    justify-self: center;
+    border-radius: 0.9rem;
+    box-shadow: 0 1rem 2.3rem rgba(26, 26, 26, 0.1);
+    overflow: hidden;
+  }
+
+  .p1-chapter--insight .p1-pain-feature .p1-pain-media :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .p1-chapter--insight .p1-pain-feature .p1-pain-copy {
+    display: grid;
+    align-content: start;
+    gap: clamp(0.26rem, 0.42vw, 0.42rem);
+    width: var(--pain-feature-width);
+    justify-self: center;
+    min-width: 0;
+  }
+
+  .p1-chapter--insight .p1-pain-feature .p1-pain-copy::before,
+  .p1-chapter--insight .p1-positioning .p1-card-feature .p1-feature-copy::before {
+    display: block;
+    margin-bottom: clamp(0.02rem, 0.08vw, 0.08rem);
+    font-family: var(--font-sans);
+    font-size: clamp(0.54rem, 0.58vw, 0.62rem);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: 0.12em;
+    color: rgba(26, 26, 26, 0.48);
+  }
+
+  .p1-chapter--insight .p1-pain-feature[data-pain-index="1"] .p1-pain-copy::before {
+    content: "PROBLEM 01";
+  }
+
+  .p1-chapter--insight .p1-pain-feature[data-pain-index="2"] .p1-pain-copy::before {
+    content: "PROBLEM 02";
+  }
+
+  .p1-chapter--insight .p1-pain-feature[data-pain-index="3"] .p1-pain-copy::before {
+    content: "PROBLEM 03";
+  }
+
+  .p1-chapter--insight .p1-pain-feature .p1-pain-title {
+    font-size: clamp(1.04rem, 1.28vw, 1.34rem);
+    line-height: 1.12;
+  }
+
+  .p1-chapter--insight .p1-pain-feature .p1-pain-text {
+    font-size: clamp(0.76rem, 0.82vw, 0.86rem);
+    line-height: 1.46;
+  }
+
+  .p1-chapter--insight .p1-pain-thumbs {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(0.42rem, 0.62vw, 0.58rem);
+    min-width: 0;
+  }
+
+  .p1-chapter--insight .p1-pain-thumb {
+    display: grid;
+    gap: 0.28rem;
+    min-width: 0;
+    padding: 0.34rem;
+    border: 1px solid rgba(26, 26, 26, 0.11);
+    border-radius: 0.8rem;
+    background: rgba(255, 255, 255, 0.3);
+    color: rgba(26, 26, 26, 0.52);
+    font-family: var(--font-sans);
+    font-size: clamp(0.52rem, 0.56vw, 0.6rem);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: 0.1em;
+    text-align: left;
+    cursor: pointer;
+    appearance: none;
+    transition:
+      border-color 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+      color 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+      background 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .p1-chapter--insight .p1-pain-thumb :global(img) {
+    width: 100%;
+    aspect-ratio: 20 / 9;
+    border-radius: 0.55rem;
+    object-fit: cover;
+    filter: grayscale(0.72) saturate(0.72);
+    opacity: 0.78;
+    transition:
+      filter 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+      opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+      box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .p1-chapter--insight .p1-insight-combo[data-active-pain="1"] .p1-pain-thumb[data-pain-thumb="1"],
+  .p1-chapter--insight .p1-insight-combo[data-active-pain="2"] .p1-pain-thumb[data-pain-thumb="2"],
+  .p1-chapter--insight .p1-insight-combo[data-active-pain="3"] .p1-pain-thumb[data-pain-thumb="3"] {
+    border-color: rgba(var(--p1-accent-rgb), 0.48);
+    background: rgba(var(--p1-accent-rgb), 0.08);
+    color: rgba(26, 26, 26, 0.82);
+  }
+
+  .p1-chapter--insight .p1-insight-combo[data-active-pain="1"] .p1-pain-thumb[data-pain-thumb="1"] :global(img),
+  .p1-chapter--insight .p1-insight-combo[data-active-pain="2"] .p1-pain-thumb[data-pain-thumb="2"] :global(img),
+  .p1-chapter--insight .p1-insight-combo[data-active-pain="3"] .p1-pain-thumb[data-pain-thumb="3"] :global(img) {
+    filter: none;
+    opacity: 1;
+    box-shadow: 0 0.8rem 1.6rem rgba(var(--p1-accent-rgb), 0.16);
+  }
+
+  .p1-chapter--insight .p1-insight-combo .p1-positioning {
+    display: flex;
+    min-width: 0;
+  }
+
+  .p1-chapter--insight .p1-insight-combo .p1-positioning .p1-rect-grid {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+    grid-auto-rows: minmax(clamp(8.4rem, 10.8vw, 9.8rem), auto);
+    gap: clamp(0.98rem, 1.24vw, 1.16rem);
+    align-content: start;
+    width: 100%;
+    min-width: 0;
+    padding: clamp(1rem, 1.35vw, 1.22rem) 0 0;
+    background: transparent;
+  }
+
+  .p1-chapter--insight .p1-positioning .p1-card-feature {
+    display: grid;
+    grid-template-columns: minmax(7.35rem, 0.39fr) minmax(0, 0.61fr);
+    grid-template-rows: 1fr;
+    gap: clamp(0.62rem, 0.82vw, 0.76rem);
+    align-items: center;
+    min-width: 0;
+    min-height: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    filter: saturate(0.68);
+    opacity: 0.72;
+    transform: none;
+    transition:
+      filter 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+      opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+      border-color 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+      background 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .p1-chapter--insight .p1-positioning .p1-card-feature .p1-feature-media {
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    aspect-ratio: auto;
+    border-radius: 0.72rem;
+    box-shadow: none;
+    background: transparent;
+    display: block;
+    align-self: center;
+    overflow: visible;
+    line-height: 0;
+  }
+
+  .p1-chapter--insight .p1-positioning .p1-card-feature .p1-feature-media :global(img) {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    max-height: none;
+    object-fit: contain;
+    transition:
+      filter 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .p1-chapter--insight .p1-positioning .p1-card-feature[data-tech-index="1"] .p1-feature-media :global(img) {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    object-fit: contain;
+  }
+
+  .p1-chapter--insight .p1-positioning .p1-card-feature .p1-feature-copy {
+    display: grid;
+    align-content: start;
+    gap: clamp(0.14rem, 0.24vw, 0.24rem);
+    max-width: none;
+    margin-top: 0;
+  }
+
+  .p1-chapter--insight .p1-positioning .p1-card-feature[data-tech-index="1"] .p1-feature-copy::before {
+    content: "01 / ALIGNMENT";
+  }
+
+  .p1-chapter--insight .p1-positioning .p1-card-feature[data-tech-index="2"] .p1-feature-copy::before {
+    content: "02 / MONITOR";
+  }
+
+  .p1-chapter--insight .p1-positioning .p1-card-feature[data-tech-index="3"] .p1-feature-copy::before {
+    content: "03 / MODULAR";
+  }
+
+  .p1-chapter--insight .p1-positioning .p1-card-feature .p1-feature-title {
+    font-size: clamp(0.92rem, 1.02vw, 1.06rem);
+    line-height: 1.12;
+  }
+
+  .p1-chapter--insight .p1-positioning .p1-card-feature .p1-feature-text {
+    max-width: none;
+    font-size: clamp(0.7rem, 0.76vw, 0.8rem);
+    line-height: 1.38;
+  }
+
+  .p1-chapter--insight .p1-insight-combo[data-active-pain="1"] .p1-card-feature[data-tech-index="1"],
+  .p1-chapter--insight .p1-insight-combo[data-active-pain="2"] .p1-card-feature[data-tech-index="2"],
+  .p1-chapter--insight .p1-insight-combo[data-active-pain="3"] .p1-card-feature[data-tech-index="3"] {
+    border-color: transparent;
+    background: transparent;
+    filter: none;
+    opacity: 1;
+  }
+
+  .p1-chapter--insight .p1-insight-combo[data-active-pain="1"] .p1-card-feature[data-tech-index="1"] .p1-feature-media,
+  .p1-chapter--insight .p1-insight-combo[data-active-pain="2"] .p1-card-feature[data-tech-index="2"] .p1-feature-media,
+  .p1-chapter--insight .p1-insight-combo[data-active-pain="3"] .p1-card-feature[data-tech-index="3"] .p1-feature-media {
+    box-shadow: 0 0.85rem 1.8rem rgba(var(--p1-accent-rgb), 0.14);
+  }
+
+  .p1-chapter--insight .p1-insight-combo[data-thumb-hover="true"][data-active-pain="1"] .p1-pain-feature[data-pain-index="1"],
+  .p1-chapter--insight .p1-insight-combo[data-thumb-hover="true"][data-active-pain="2"] .p1-pain-feature[data-pain-index="2"],
+  .p1-chapter--insight .p1-insight-combo[data-thumb-hover="true"][data-active-pain="3"] .p1-pain-feature[data-pain-index="3"] {
+    transform: translateY(0) scale(1.012);
+  }
+
+  .p1-chapter--insight .p1-insight-combo[data-thumb-hover="true"][data-active-pain="1"] .p1-card-feature[data-tech-index="1"],
+  .p1-chapter--insight .p1-insight-combo[data-thumb-hover="true"][data-active-pain="2"] .p1-card-feature[data-tech-index="2"],
+  .p1-chapter--insight .p1-insight-combo[data-thumb-hover="true"][data-active-pain="3"] .p1-card-feature[data-tech-index="3"] {
+    transform: scale(1.015);
+  }
+
+  .p1-chapter--insight .p1-insight-combo[data-thumb-hover="true"][data-active-pain="1"] .p1-card-feature[data-tech-index="1"] .p1-feature-media,
+  .p1-chapter--insight .p1-insight-combo[data-thumb-hover="true"][data-active-pain="2"] .p1-card-feature[data-tech-index="2"] .p1-feature-media,
+  .p1-chapter--insight .p1-insight-combo[data-thumb-hover="true"][data-active-pain="3"] .p1-card-feature[data-tech-index="3"] .p1-feature-media {
+    box-shadow: 0 1rem 2rem rgba(var(--p1-accent-rgb), 0.2);
+  }
+
+  .p1-chapter--insight .p1-insight-combo[data-active-pain] .p1-insight-combo-grid:has(.p1-card-feature:hover) .p1-card-feature {
+    filter: saturate(0.68);
+    opacity: 0.72;
+    transform: none;
+    z-index: auto;
+  }
+
+  .p1-chapter--insight .p1-insight-combo[data-active-pain] .p1-insight-combo-grid:has(.p1-card-feature:hover) .p1-card-feature .p1-feature-media {
+    box-shadow: none;
+  }
+
+  .p1-chapter--insight .p1-insight-combo[data-active-pain="1"] .p1-insight-combo-grid:has(.p1-card-feature:hover) .p1-card-feature[data-tech-index="1"],
+  .p1-chapter--insight .p1-insight-combo[data-active-pain="2"] .p1-insight-combo-grid:has(.p1-card-feature:hover) .p1-card-feature[data-tech-index="2"],
+  .p1-chapter--insight .p1-insight-combo[data-active-pain="3"] .p1-insight-combo-grid:has(.p1-card-feature:hover) .p1-card-feature[data-tech-index="3"] {
+    filter: none;
+    opacity: 1;
+  }
+
+  .p1-chapter--insight .p1-insight-combo[data-active-pain="1"] .p1-insight-combo-grid:has(.p1-card-feature:hover) .p1-card-feature[data-tech-index="1"] .p1-feature-media,
+  .p1-chapter--insight .p1-insight-combo[data-active-pain="2"] .p1-insight-combo-grid:has(.p1-card-feature:hover) .p1-card-feature[data-tech-index="2"] .p1-feature-media,
+  .p1-chapter--insight .p1-insight-combo[data-active-pain="3"] .p1-insight-combo-grid:has(.p1-card-feature:hover) .p1-card-feature[data-tech-index="3"] .p1-feature-media {
+    box-shadow: 0 0.85rem 1.8rem rgba(var(--p1-accent-rgb), 0.14);
+  }
+
+  @media screen and (max-width: 1100px) {
+    .p1-chapter--insight .p1-insight-combo-grid {
+      grid-template-columns: 1fr;
+      gap: clamp(1.4rem, 4vw, 2.2rem);
+    }
+
+    .p1-chapter--insight .p1-pain-stage {
+      min-height: clamp(20rem, 40vw, 26rem);
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .p1-chapter--insight .p1-insight-combo-grid {
+      padding: clamp(0.85rem, 3.5vw, 1rem);
+    }
+
+    .p1-chapter--insight .p1-pain-stage {
+      min-height: clamp(22rem, 82vw, 29rem);
+    }
+
+    .p1-chapter--insight .p1-pain-feature {
+      --pain-feature-width: min(88%, 20rem);
+      grid-template-columns: 1fr;
+      grid-template-rows: auto auto;
+      gap: clamp(0.65rem, 2.6vw, 0.95rem);
+    }
+
+    .p1-chapter--insight .p1-pain-feature .p1-pain-media {
+      max-height: none;
+      aspect-ratio: 4 / 5;
+    }
+
+    .p1-chapter--insight .p1-insight-combo .p1-positioning .p1-rect-grid {
+      grid-template-rows: none;
+    }
+
+    .p1-chapter--insight .p1-positioning .p1-card-feature {
+      grid-template-columns: minmax(6.8rem, 0.34fr) minmax(0, 0.66fr);
+    }
+  }
+
+  @media screen and (max-width: 560px) {
+    .p1-chapter--insight .p1-pain-stage {
+      min-height: clamp(21rem, 108vw, 28rem);
+    }
+
+    .p1-chapter--insight .p1-pain-feature {
+      --pain-feature-width: min(88%, 18rem);
+      grid-template-columns: 1fr;
+      align-content: center;
+    }
+
+    .p1-chapter--insight .p1-pain-feature .p1-pain-media {
+      height: auto;
+      aspect-ratio: 4 / 5;
+    }
+
+    .p1-chapter--insight .p1-pain-thumbs {
+      gap: 0.45rem;
+    }
+
+    .p1-chapter--insight .p1-pain-thumb {
+      padding: 0.35rem;
+      font-size: 0.54rem;
+    }
+
+    .p1-chapter--insight .p1-positioning .p1-card-feature {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto auto;
+    }
+
+    .p1-chapter--insight .p1-positioning .p1-card-feature .p1-feature-media {
+      height: auto;
+      min-height: 0;
+      aspect-ratio: auto;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .p1-chapter--insight .p1-pain-feature,
+    .p1-chapter--insight .p1-pain-thumb,
+    .p1-chapter--insight .p1-pain-thumb :global(img),
+    .p1-chapter--insight .p1-positioning .p1-card-feature,
+    .p1-chapter--insight .p1-positioning .p1-card-feature .p1-feature-media :global(img) {
+      transition: none !important;
     }
   }
 </style>

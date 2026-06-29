@@ -1,0 +1,442 @@
+---
+const { project, index, descriptionLines, quote, tags, logoUrl, logoMode = 'none' } = Astro.props as {
+  project: any;
+  index?: number;
+  descriptionLines?: string[];
+  quote?: string;
+  tags?: string[];
+  logoUrl?: string;
+  logoMode?: 'none' | 'replace' | 'prefix';
+};
+
+const titleParts = String(project.data.title ?? '').split(/\s+[—-]\s+/);
+const heroTitle = titleParts[0] || project.data.title;
+const heroSummary = project.data.summary ?? '';
+const heroLines = descriptionLines?.length
+  ? descriptionLines
+  : String(heroSummary)
+      .split(/(?<=[。.!！?？])\s*/)
+      .filter(Boolean)
+      .slice(0, 3);
+const heroTags = tags?.length ? tags : project.data.tags?.slice(0, 3) ?? [];
+const heroIndex = String(index ?? 1).padStart(2, '0');
+const breakable = (value: string) => Array.from(value).join('\u200B');
+const chunkText = (value: string, size = 16) => {
+  const chars = Array.from(value);
+  const chunks: string[] = [];
+  for (let index = 0; index < chars.length; index += size) {
+    chunks.push(chars.slice(index, index + size).join(''));
+  }
+  return chunks;
+};
+const mobileHeroLines = heroLines.flatMap((line) => chunkText(line));
+const projectAccents = {
+  'project-2': { accent: '#c8800b', accentRgb: '200, 128, 11', gradientEnd: '#a93207' },
+  'project-3': { accent: '#8cb818', accentRgb: '140, 184, 24', gradientEnd: '#315f16' },
+  'project-4': { accent: '#c8800b', accentRgb: '200, 128, 11', gradientEnd: '#6b452e' },
+} as const;
+const projectAccent = projectAccents[project.id as keyof typeof projectAccents] ?? projectAccents['project-2'];
+---
+
+<section
+  class="p1-root p1-hero"
+  data-project={project.id}
+  style={`--p1-accent: ${projectAccent.accent}; --p1-accent-rgb: ${projectAccent.accentRgb}; --p1-gradient-end: ${projectAccent.gradientEnd};`}
+  aria-labelledby={`project-hero-${project.id}`}
+>
+  <div class="p1-hero-shell">
+    <div class="p1-hero-media" aria-hidden="true">
+      <img
+        loading="eager"
+        decoding="async"
+        src={project.data.coverUrl}
+        alt=""
+        class="p1-hero-img"
+      />
+    </div>
+
+    <div class="p1-hero-copy">
+      <p class="p1-caption p1-hero-caption">{heroIndex} · Case Study</p>
+
+      <div class="p1-copy-stack">
+        {logoUrl && logoMode === 'replace' ? (
+          <div class="p1-hero-brand p1-hero-brand--replace">
+            <img
+              loading="eager"
+              decoding="async"
+              src={logoUrl}
+              alt=""
+              class="p1-hero-logo p1-hero-logo--replace"
+            />
+            <h1 id={`project-hero-${project.id}`} class="p1-hero-title p1-sr-only">{heroTitle}</h1>
+          </div>
+        ) : logoUrl && logoMode === 'prefix' ? (
+          <h1 id={`project-hero-${project.id}`} class="p1-hero-title p1-hero-brand p1-hero-brand--prefix">
+            <img
+              loading="eager"
+              decoding="async"
+              src={logoUrl}
+              alt=""
+              class="p1-hero-logo p1-hero-logo--prefix"
+            />
+            <span>{heroTitle}</span>
+          </h1>
+        ) : (
+          <h1 id={`project-hero-${project.id}`} class="p1-hero-title">{heroTitle}</h1>
+        )}
+      </div>
+
+      <p class="p1-hero-desc p1-hero-desc--desktop" aria-label={heroSummary}>
+        {heroLines.map((line) => <span>{breakable(line)}</span>)}
+      </p>
+
+      <p class="p1-hero-desc p1-hero-desc--mobile" aria-label={heroSummary}>
+        {mobileHeroLines.map((line) => <span>{line}</span>)}
+      </p>
+
+      {quote && <p class="p1-hero-quote">{quote}</p>}
+
+      {heroTags.length > 0 && (
+        <div class="p1-hero-tags">
+          {heroTags.map((tag) => <span>{breakable(tag)}</span>)}
+        </div>
+      )}
+    </div>
+  </div>
+</section>
+
+<style>
+  .p1-root {
+    --p1-bg: #e1cba6;
+    --p1-surface: #fbf7ed;
+    --p1-surface-2: #efe3c9;
+    --p1-text: #1a1a1a;
+    --p1-text-dim: rgba(26, 26, 26, 0.62);
+    --p1-accent: #c8800b;
+    --p1-accent-rgb: 200, 128, 11;
+    --p1-gradient-end: #a93207;
+    --p1-gradient: linear-gradient(135deg, var(--p1-accent) 28%, var(--p1-gradient-end) 72%);
+    --p1-measure: min(42rem, 100%);
+    background: var(--p1-bg);
+    color: var(--p1-text);
+    font-family: var(--font-cjk-sans);
+  }
+
+  .p1-hero {
+    content-visibility: visible;
+    min-height: 100svh;
+    padding: 0;
+    background: var(--p1-bg);
+  }
+
+  .p1-hero-shell {
+    position: relative;
+    width: 100%;
+    min-height: 100svh;
+    display: flex;
+    align-items: stretch;
+    overflow: hidden;
+    isolation: isolate;
+    background: var(--p1-surface);
+  }
+
+  .p1-hero-media {
+    position: absolute;
+    inset: 0;
+    margin: 0;
+    z-index: 0;
+  }
+
+  .p1-hero-media::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(90deg, rgba(255, 247, 237, 0.9) 0%, rgba(255, 247, 237, 0.64) 32%, rgba(255, 247, 237, 0.16) 58%, rgba(255, 247, 237, 0) 82%),
+      linear-gradient(180deg, rgba(255, 247, 237, 0.1) 0%, rgba(255, 247, 237, 0) 38%, rgba(255, 247, 237, 0.12) 100%);
+  }
+
+  .p1-hero-img {
+    width: 100%;
+    max-width: none;
+    height: 100%;
+    object-fit: cover;
+    object-position: 70% 76%;
+    background: var(--p1-surface-2);
+  }
+
+  .p1-hero-copy {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.05rem;
+    width: min(100%, 39rem);
+    min-width: 0;
+    min-height: 100svh;
+    padding: clamp(2rem, 5vw, 4rem);
+  }
+
+  .p1-copy-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .p1-sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .p1-caption {
+    margin-top: 0.8rem;
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(var(--p1-accent-rgb), 0.62);
+  }
+
+  .p1-hero-caption {
+    margin: 0;
+  }
+
+  .p1-hero-title {
+    margin: 0;
+    font-family: var(--font-cjk-sans);
+    font-size: clamp(3.6rem, 8vw, 6rem);
+    font-weight: 600;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    background: var(--p1-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .p1-hero-brand {
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .p1-hero-brand--replace {
+    position: relative;
+    display: block;
+    width: min(100%, 34rem);
+    line-height: 0;
+  }
+
+  .p1-hero-brand--prefix {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: clamp(0.8rem, 1.4vw, 1.25rem);
+    width: fit-content;
+    background: none;
+    -webkit-text-fill-color: currentColor;
+    background-clip: border-box;
+  }
+
+  .p1-hero-brand--prefix span {
+    min-width: 0;
+    background: var(--p1-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .p1-hero-logo {
+    display: block;
+    flex: 0 0 auto;
+    width: auto;
+    object-fit: contain;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+    mix-blend-mode: normal;
+  }
+
+  .p1-hero-logo--replace {
+    max-width: min(100%, 34rem);
+    max-height: clamp(4rem, 8vw, 7rem);
+  }
+
+  .p1-hero-logo--prefix {
+    height: clamp(2.6rem, 5vw, 4.6rem);
+    max-width: clamp(4.2rem, 12vw, 8rem);
+  }
+
+  .p1-root[data-project="project-3"] .p1-hero-logo--prefix {
+    filter: hue-rotate(86deg) saturate(1.35) brightness(0.92);
+  }
+
+  .p1-root[data-project="project-3"] .p1-hero-brand--prefix {
+    gap: clamp(0.45rem, 0.8vw, 0.7rem);
+    max-width: 100%;
+    font-size: clamp(3.15rem, 6.5vw, 5rem);
+    letter-spacing: -0.04em;
+  }
+
+  .p1-root[data-project="project-3"] .p1-hero-brand--prefix span {
+    padding-right: 0.04em;
+  }
+
+  .p1-hero-desc {
+    display: grid;
+    gap: 0.14em;
+    max-width: min(43rem, 100%);
+    min-width: 0;
+    margin: 0;
+    color: var(--p1-text-dim);
+    font-size: 1rem;
+    line-height: var(--leading-loose);
+    overflow-wrap: anywhere;
+    line-break: loose;
+  }
+
+  .p1-hero-desc span {
+    display: block;
+    min-width: 0;
+    text-align: left;
+    white-space: normal;
+    word-break: break-word;
+  }
+
+  .p1-hero-desc--mobile {
+    display: none;
+  }
+
+  .p1-hero-quote {
+    margin: 0.15rem 0 0;
+    font-family: var(--font-cjk-sans);
+    font-size: clamp(1.18rem, 2vw, 1.55rem);
+    font-weight: 700;
+    line-height: 1.45;
+    color: rgba(var(--p1-accent-rgb), 0.9);
+  }
+
+  .p1-hero-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+    max-width: 100%;
+    min-width: 0;
+    margin-top: 0.45rem;
+  }
+
+  .p1-hero-tags span {
+    max-width: 100%;
+    padding: 0.48rem 0.82rem;
+    border-radius: 999px;
+    border: 0.5px solid rgba(var(--p1-accent-rgb), 0.14);
+    background: rgba(255, 255, 255, 0.4);
+    color: rgba(var(--p1-accent-rgb), 0.86);
+    box-shadow: 0 0.4rem 1.2rem rgba(var(--p1-accent-rgb), 0.05);
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    overflow-wrap: anywhere;
+    white-space: normal;
+  }
+
+  @media screen and (max-width: 1100px) {
+    .p1-hero-shell {
+      min-height: clamp(32rem, 72vh, 42rem);
+    }
+
+    .p1-hero-copy {
+      width: min(100%, 34rem);
+      min-height: clamp(32rem, 72vh, 42rem);
+      max-width: none;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .p1-hero,
+    .p1-hero-shell {
+      min-height: 100svh;
+    }
+
+    .p1-hero-media::after {
+      background:
+        linear-gradient(180deg, rgba(255, 247, 237, 0.16) 0%, rgba(255, 247, 237, 0.36) 38%, rgba(255, 247, 237, 0.9) 100%),
+        linear-gradient(90deg, rgba(255, 247, 237, 0.62) 0%, rgba(255, 247, 237, 0.12) 100%);
+    }
+
+    .p1-hero-copy {
+      width: calc(100vw - 3rem);
+      max-width: calc(100vw - 3rem);
+      min-height: 100svh;
+      margin-inline: 1.5rem;
+      padding: 1.5rem 0;
+      justify-content: flex-end;
+      overflow: hidden;
+    }
+
+    .p1-hero-brand--prefix {
+      gap: 0.65rem;
+    }
+
+    .p1-hero-logo--replace {
+      max-width: 100%;
+      max-height: clamp(3.2rem, 17vw, 5.4rem);
+    }
+
+    .p1-hero-logo--prefix {
+      height: clamp(2rem, 11vw, 3.15rem);
+      max-width: clamp(3.2rem, 18vw, 5.4rem);
+    }
+
+    .p1-hero-desc {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      font-size: 0.98rem;
+      word-break: break-all;
+    }
+
+    .p1-hero-desc--desktop {
+      display: none;
+    }
+
+    .p1-hero-desc--mobile {
+      display: block;
+    }
+
+    .p1-hero-desc span {
+      display: block;
+      max-width: 100%;
+      word-break: break-all;
+    }
+
+    .p1-hero-desc span + span {
+      margin-top: 0.14em;
+    }
+
+    .p1-hero-tags {
+      display: grid !important;
+      grid-template-columns: 1fr;
+      width: 100%;
+      max-width: 100%;
+    }
+
+    .p1-hero-tags span {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex: 1 1 100%;
+      width: 100%;
+      min-width: 0;
+      text-align: center;
+    }
+  }
+</style>

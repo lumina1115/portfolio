@@ -7,6 +7,7 @@ const projects = defineCollection({
   schema: z.object({
     /** 项目标题 */
     title: z.string(),
+    slug: z.string(),
     /** 副标题 */
     subtitle: z.string().optional(),
     /** 发布日期 */
@@ -35,4 +36,4 @@ const themes = defineCollection({
   }),
 });
 
-export const collections = { projects, themes };
+export const collections = { themes };

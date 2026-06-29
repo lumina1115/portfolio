@@ -18,6 +18,7 @@
   --font-display: Impact, Haettenschweiler, 'Arial Narrow Bold', 'Arial Narrow', 'Microsoft YaHei', sans-serif;
   --font-serif: 'EB Garamond', Georgia, serif;
   --font-sans: 'Inter', 'Microsoft YaHei', system-ui, sans-serif;
+  --font-cjk-sans: 'Microsoft YaHei', 'PingFang SC', 'Hiragino Sans GB', 'SimHei', 'Noto Sans CJK SC', sans-serif;
 
   --text-xs: 0.75rem;
   --text-sm: 0.875rem;
@@ -75,7 +76,7 @@ body.project-detail-page {
   --color-divider: #E5E3DD;
   --color-accent: #2B2620;
   --font-serif: 'EB Garamond', Georgia, serif;
-  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-sans: 'Inter', var(--font-cjk-sans);
   --text-sm: 0.875rem;
   --text-base: 1.125rem;
   --text-lg: 1.375rem;
@@ -90,7 +91,7 @@ body.project-detail-page {
   --leading-loose: 1.8;
   background: var(--color-bg);
   color: var(--color-text);
-  font-family: var(--font-serif);
+  font-family: var(--font-cjk-sans);
 }
 
 ::selection {
